@@ -1,0 +1,59 @@
+.site-main .comment-navigation,
+.site-main .posts-navigation,
+.site-main .post-navigation {
+	margin: 1.5em 0;
+	overflow: hidden;
+	a {
+		text-decoration: none;
+		text-transform: uppercase;
+		font-weight: bold;
+		font-family: $font__headings;
+		@include font-size(0.875);
+		&:hover {
+			color: $color__link-hover-alt;
+		}
+	}
+	.nav-previous a:before {
+		position: relative;
+		top: 1px;
+		content: '\f430';
+		font-family: Genericons;
+	}
+	.nav-next a:after {
+		position: relative;
+		top: 1px;
+		content: '\f429';
+		font-family: Genericons;
+	}
+}
+.comment-navigation .nav-previous,
+.posts-navigation .nav-previous,
+.post-navigation .nav-previous {
+	float: left;
+	width: 50%;
+}
+.comment-navigation .nav-next,
+.posts-navigation .nav-next,
+.post-navigation .nav-next {
+	float: right;
+	text-align: right;
+	width: 50%;
+}
+.single-post .site-main .post-navigation {
+	margin: 2.5em 0;
+}
+
+/*--------------------------------------------------------------
+6.1 Links
+--------------------------------------------------------------*/
+@import "links";
+
+/*--------------------------------------------------------------
+6.2 Menus
+--------------------------------------------------------------*/
+@import "menus";
+
+/*--------------------------------------------------------------
+6.3 Social
+--------------------------------------------------------------*/
+@import "social";

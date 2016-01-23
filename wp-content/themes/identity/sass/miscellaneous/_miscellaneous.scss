@@ -1,0 +1,95 @@
+/* Prevent font from appearing much bolder on Chrome. */
+body {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+body {
+	word-wrap: break-word;
+}
+
+/* Audio element. */
+.mejs-container, .mejs-embed, .mejs-embed body, .mejs-container .mejs-controls {
+	border-radius: 4px;
+}
+
+/* Hide WebKits pseudo elements. */
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+	display: none;
+}
+
+/* Change font search placeholder text. */
+.search-bar input::-webkit-input-placeholder {
+	font-family: $font__search-bar;
+	color: $color__text-search-bar;
+}
+
+.search-bar :-moz-placeholder { /* Firefox 18- */
+	font: $font__search-bar;
+	color: $color__text-search-bar;
+}
+
+.search-bar ::-moz-placeholder {  /* Firefox 19+ */
+	font: $font__search-bar;
+	color: $color__text-search-bar;
+}
+
+.search-bar :-ms-input-placeholder {  
+	font: $font__search-bar;
+	color: $color__text-search-bar;
+}
+
+/* Fade placeholder text on focus. */
+input:focus::-webkit-input-placeholder {
+	color:transparent; 
+}
+
+input:focus:-moz-placeholder { /* Firefox 18- */
+	color:transparent;
+} 
+
+input:focus::-moz-placeholder { /* Firefox 19+ */
+	color:transparent;
+}
+
+input:focus:-ms-input-placeholder {
+	color:transparent;
+} 
+
+/* Back to top. */
+.back-to-top {
+	position: fixed;
+	right: 5%;
+	bottom: -7.5%;
+	padding: 5px;
+	color: white;
+	opacity: 0.25;
+	outline: none;
+	visibility: hidden;
+	text-decoration: none;
+	transition: all 0.25s ease-in-out;
+	background: $color__background-footer;
+	span {
+		color: white;
+		font-size: 24px;
+	}
+	&:hover,
+	&:focus {
+		opacity: 1;
+	}
+}
+.show-back-to-top {
+	display: block;
+	bottom: 2.5%;
+	visibility: visible;
+}
+
+/* Selection colors. */
+::selection {
+    color: $white;
+    color: $red;
+    background: $black-transparent;
+}

@@ -1,0 +1,115 @@
+h1, h2, h3, h4, h5, h6 {
+	clear: both;
+	margin: 24px 0;
+	margin: 1.5rem 0;
+	line-height: 1.2;
+	font-weight: 700;
+	color: $color__headings;
+	font-family: $font__headings;
+}
+
+h1 {
+	@include font-size(2.0);
+}
+h2 {
+	@include font-size(1.75);
+}
+h3 {
+	@include font-size(1.5);
+}
+h4 {
+	@include font-size(1.25);
+}
+h5 {
+	@include font-size(1.0);
+}
+h6 {
+	@include font-size(1.00);
+}
+
+@media (min-width: 800px) {
+	h1 {
+		@include font-size(2.5);
+	}
+	h2 {
+		@include font-size(2.25);
+	}
+	h3 {
+		@include font-size(2.0);
+	}
+	h4 {
+		@include font-size(1.75);
+	}
+	h5 {
+		@include font-size(1.5);
+	}
+	h6 {
+		@include font-size(1.25);
+	}
+}
+
+
+/* Header. */
+h1.site-title {
+	margin: 1.25rem 0;
+	@include font-size(1.75);
+	a,
+	a:visited {
+		color: $color__header-site-title;
+	}
+	a:hover {
+		color: $color__header-site-title-hover;
+	}
+}
+h1.site-title a,
+h1.site-title a:hover,
+h1.site-title a:visited {
+	text-decoration: none;
+}
+h2.site-description {
+	font-size: 40px;
+	font-size: 2.5em;
+	font-weight: 700;
+	text-align: center;
+	text-decoration: none;
+}
+h1.author-name {
+	@include font-size(2.0);
+}
+h2.author-description {
+	line-height: 1.4;
+	font-style: italic;
+	font-weight: 300;
+}
+
+/* Content. */
+h1.entry-title,
+h1.entry-title a,
+h1.entry-title a:visited {
+	margin: 0;
+	padding-bottom: 0.75rem;
+	font-weight: 700;
+	text-decoration: none;
+	color: $color__headings;
+}
+h1.entry-title a:hover {
+	color: $color__headings-hover;
+}
+h3.comment-reply-title {
+	margin-top: 0;
+}
+
+/* Sidebar. */
+.widget-title {
+	font-size: 16px;
+	font-size: 1rem;
+	text-transform: uppercase;
+	color: $color__headings;
+}
+
+@media (min-width: 800px) {
+	/* Header. */
+	h1.site-title {
+		@include font-size(2.0);
+	}
+}

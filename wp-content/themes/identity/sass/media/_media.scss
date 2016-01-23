@@ -1,0 +1,45 @@
+.page-content .wp-smiley,
+.entry-content .wp-smiley,
+.comment-content .wp-smiley {
+	border: none;
+	margin-bottom: 0;
+	margin-top: 0;
+	padding: 0;
+}
+
+a img {
+	transition: 0.25s ease-in-out;
+	&:hover {
+		filter: grayscale(50%);
+	}
+}
+
+/* Make sure embeds and iframes fit their containers. */
+embed,
+iframe,
+object {
+	max-width: 100%;
+}
+
+figure {
+	margin: 0;
+	max-width: 100%;
+	overflow: hidden;
+	box-sizing: border-box;
+}
+
+.entry-thumbnail img {
+	width: 100%;
+	height: auto;
+	max-width: 100%;
+}
+
+/*--------------------------------------------------------------
+13.1 Captions
+--------------------------------------------------------------*/
+@import "captions";
+
+/*--------------------------------------------------------------
+13.2 Galleries
+--------------------------------------------------------------*/
+@import "galleries";

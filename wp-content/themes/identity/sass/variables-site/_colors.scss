@@ -1,0 +1,124 @@
+// Color pallette.
+$black: #101010;
+$red: #f60525;
+$white: #ffffff;
+$grey: #4b6a88;
+$black-transparent: rgba(21,21,21,0.9);
+
+// Background colors.
+$color__background-body: #1c2a43;
+$color__background-screen: #f1f1f1;
+$color__background-hr: #ccc;
+$color__background-button: #e6e6e6;
+$color__background-pre: $black-transparent;
+$color__background-ins: $red;
+
+// Header colors.
+$color__header-background: $black;
+$color__header-social-background: $black-transparent;
+$color__header-social-background-hover: rgba(21,21,21,0.75);
+$color__header-site-title: $white;
+$color__header-site-title-hover: $red;
+$color__header-author-title: $white;
+$color__header-author-title-hover: $red;
+$color__header-author-description: $white;
+$color__header-background-overlay: radial-gradient(ellipse at center, rgba(0,0,0,0.25) 0%,rgba(0,0,0,0.5) 100%);
+
+// Menu colors.
+$color__button-menu-background: $white;
+$color__button-menu-lines: $black;
+$color__mobile-menu-links: $white;
+$color__mobile-menu-links-hover: $black;
+$color__mobile-menu-background-hover: $white;
+$color__desktop-menu-links: $white;
+$color__desktop-menu-links-hover: $red;
+$color__desktop-menu-background: $black-transparent;
+
+// Content colors.
+$color__sidebar-text: $white;
+$color__sidebar-bullets: $red;
+$color__sidebar-background: $black-transparent;
+$color__headings: $white;
+$color__headings-alt: $black;
+$color__headings-hover: $red;
+$color__image-overlay: $black-transparent;
+$color__comments-background: $black-transparent;
+$color__archive-page-header-background: $black-transparent;
+
+// Post format colors.
+$color__pf-standard-text: $white;
+$color__pf-standard-background: #162236; // Dark Blue.
+$color__pf-aside-text: $white;
+$color__pf-aside-background: #004d86; // Light Blue.
+$color__pf-quote-text: $white;
+$color__pf-quote-background: #2e343b; // Very dark grey.
+$color__pf-link-text: $white;
+$color__pf-link-background: #753394; // Purple.
+$color__pf-link-background: $grey; // Grey.
+$color__pf-image-text: $black;
+$color__pf-image-background: #e2b123; // Yellow.
+$color__pf-gallery-text: $white;
+$color__pf-gallery-background: #006d52; // Green.
+$color__pf-status-text: $white;
+$color__pf-status-background: #d35400; // Orange.
+$color__pf-video-text: $white;
+$color__pf-video-background: #a72012; // Dark red.
+$color__pf-audio-text: $white;
+$color__pf-audio-background: #146868; 
+$color__pf-chat-text: $black;
+$color__pf-chat-background: #7f8c8d; // Asbestos grey.
+
+// Post format link colors.
+$color__pf-aside-link: #9bcbf6; // Light blue.
+$color__pf-quote-link: #50a8f6; // Light blue.
+$color__pf-link-link: #d6efe8; // Very light blue.
+$color__pf-image-link: #980109; // Dark brown/red.
+$color__pf-gallery-link: #cde3f6; // Very light blue.
+$color__pf-video-link: #fcc527; // Yellow.
+$color__pf-audio-link: #cddfee; // Very light blue.
+$color__pf-chat-link: #470133; // Dark purple.
+
+// Text and link colors.
+$color__entry-meta-background: $black-transparent;
+$color__text-screen: #21759b;
+$color__text-input: #666;
+$color__text-input-focus: #111;
+$color__link: $red;
+$color__link-visited: $red;
+$color__link-hover: $red;
+$color__link-grey: $grey;
+$color__link-black: $black;
+$color__link-blue: #1c2a43;
+$color__link-yellow: #e2b123;
+$color__link-hover-alt: $white;
+$color__text-main: $white;
+$color__text-alt: $black;
+$color__text-search-bar: yellow;
+$color__blockquote-background: #151515;
+$color__blockquote-border: $red;
+
+// Table colors.
+$color__table-header-background: #ed062e;
+$color__table-footer-background: $white;
+$color__table-uneven-background: $white;
+$color__table-even-background: #ddecfa; // Before: #98b7d5
+$color__table-border-color: $black;
+$color__table-border-color-widgets: #181818;
+$color__table-accessible-links: #cc042f;
+
+// Button colors.
+$color__button-background: $black;
+$color__button-background-hover: $red;
+$color__button-text: $white;
+$color__button-text-hover: $black;
+
+// Footer colors.
+$color__background-footer: $black;
+$color__footer-text: $white;
+$color__site-info-text: $white;
+$color__site-info-link: #6588aa;
+$color__site-info-link-hover: #7e7e7e;
+
+// Other element colors.
+$color__border-input: #ccc;
+$color__border-abbr: #666;
