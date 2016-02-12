@@ -12,7 +12,65 @@ body {
 }
 
 body {
-    padding-top: 50px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    padding-top: 0em; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+}
+
+.navbar {
+    background-color: white;
+    border: none;
+    color: black;
+    padding-left: 10%;
+    padding-right: 10%;
+    margin-bottom: 0;
+    width: 100%;
+}
+
+
+.container {
+    width: 100%;
+}
+
+#logo-div {
+    width: 100%;
+}
+
+#title-p {
+    display: inline-block;
+    margin-top: 5%;
+    width: 70%;
+    height: 40%;
+    font-size: 1.7em;
+    text-align: center;
+}
+#menu-nav {
+    padding: 0;
+}
+#menu {
+    width: 100%;
+    margin: 0%;
+    font-size: 1.2em;
+    background-color: #DC143C;
+}
+
+#navbar-collapse ul{
+    padding-left: 10%;
+}
+
+#navbar-collapse ul li a{
+    background-color: #DC143C;
+    color: white;
+    text-align: center;
+}
+
+#navbar-collapse ul li a:hover{
+    background-color: black;
+    color: red;
+    text-align: center;
+}
+
+#logo {
+    width: 20%;
+    height: 50%;
 }
 
 .img-portfolio {
