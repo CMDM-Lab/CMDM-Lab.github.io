@@ -1,0 +1,47 @@
+Version 1.0
+i) Intial version Release
+
+Version 1.1
+i) Converted to Customizer
+
+Version 1.2
+i) Resolved minor issues as asked by reviewer.
+
+Version 1.2.1
+i) Resolved minor issues as asked by reviewer.
+
+Version 1.2.2
+i) Resolved minor issues of slider 2 not working.
+
+Version 1.2.3
+i) Resolved issues as asked by reviewer.
+
+Version 1.2.4
+i) Resolved issues as asked by reviewer.
+
+Version 1.2.5
+i) Resolved homepage boxes read more link issue.
+
+Version 1.2.6
+i) Resolved homepage boxes link issue and pro and theme url changed.
+
+Version 1.2.7
+i) Changed index latest posts thumbnail links and added author info.
+
+Version 1.2.8
+i) Rectified slider link and theme check errors.
+
+Version 1.2.9
+i)  Rectified static front page boxes visibility.
+ii) Demo Url Added in description.
+
+Version 1.3
+i)  Rectified footer menu child issue.
+ii) Rectified social icons hover effect.
+
+Version 1.4
+i)  Solved text domain issue.
+ii) Add 'printf' in inc/template-tags.php instead of using both 'printf' and 'sprintf'
+
+Version 1.5
+i)  Rectified theme description.

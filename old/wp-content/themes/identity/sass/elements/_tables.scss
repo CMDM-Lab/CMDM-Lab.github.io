@@ -1,0 +1,105 @@
+table {
+	margin: 0 0 1.5em;
+	width: 100%;
+	max-width: 100%;
+	text-shadow: none!important;
+	border: 1px solid $color__table-border-color;
+	@include font-size(0.875);
+	a {
+		text-shadow: none!important;
+		color: $color__table-accessible-links;
+	}
+}
+thead tr {
+	text-shadow: 1px 1px 3px #000;
+	background: $color__table-header-background;
+}
+thead tr th,
+tbody tr th,
+tbody tr td,
+tfoot tr th,
+tfoot tr td {
+	border: 1px solid $color__table-border-color;
+}
+thead tr th {
+	padding: 0.25rem;
+}
+tbody tr th,
+tbody tr td,
+tfoot tr th,
+tfoot tr td {
+	padding: 0.125rem 0.25rem;
+}
+tfoot tr {
+	color: $color__text-alt;
+	background: $color__table-footer-background;
+}
+
+/* Rows with alternating colors. */
+tbody tr:nth-child(1),
+tbody tr:nth-child(3),
+tbody tr:nth-child(5),
+tbody tr:nth-child(7),
+tbody tr:nth-child(9),
+tbody tr:nth-child(11),
+tbody tr:nth-child(13),
+tbody tr:nth-child(15),
+tbody tr:nth-child(17),
+tbody tr:nth-child(19),
+tbody tr:nth-child(21),
+tbody tr:nth-child(23),
+tbody tr:nth-child(25),
+tbody tr:nth-child(27),
+tbody tr:nth-child(29),
+tbody tr:nth-child(31),
+tbody tr:nth-child(33),
+tbody tr:nth-child(35),
+tbody tr:nth-child(37),
+tbody tr:nth-child(39),
+tbody tr:nth-child(41),
+tbody tr:nth-child(43),
+tbody tr:nth-child(45),
+tbody tr:nth-child(47),
+tbody tr:nth-child(49) {
+	color: $color__text-alt;
+	background: $color__table-uneven-background;
+}
+tbody tr:nth-child(2),
+tbody tr:nth-child(4),
+tbody tr:nth-child(6),
+tbody tr:nth-child(8),
+tbody tr:nth-child(10),
+tbody tr:nth-child(12),
+tbody tr:nth-child(14),
+tbody tr:nth-child(16),
+tbody tr:nth-child(18),
+tbody tr:nth-child(20),
+tbody tr:nth-child(22),
+tbody tr:nth-child(24),
+tbody tr:nth-child(26),
+tbody tr:nth-child(28),
+tbody tr:nth-child(30),
+tbody tr:nth-child(32),
+tbody tr:nth-child(34),
+tbody tr:nth-child(36),
+tbody tr:nth-child(38),
+tbody tr:nth-child(40),
+tbody tr:nth-child(42),
+tbody tr:nth-child(44),
+tbody tr:nth-child(46),
+tbody tr:nth-child(48),
+tbody tr:nth-child(50) {
+	color: $color__text-alt;
+	background: $color__table-even-background;
+}
+
+/* Slightly different border color for widgets. */
+.widget {
+	table {
+		border-color: $color__table-border-color-widgets;
+	}
+	th,
+	td {
+		border-color: $color__table-border-color-widgets;
+	}
+}

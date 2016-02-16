@@ -1,0 +1,739 @@
+# Copyright (C) 2014 Automattic
+# This file is distributed under the GNU General Public License v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: oprum\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tags/_s\n"
+"POT-Creation-Date: 2015-01-13 01:02+0800\n"
+"PO-Revision-Date: 2015-01-13 01:02+0800\n"
+"Last-Translator: dinevthemes <post@makewp.ru>\n"
+"Language-Team: \n"
+"Language: EN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../404.php:19
+msgid "Oops! That page can&rsquo;t be found."
+msgstr ""
+
+#: ../404.php:20
+msgid ""
+"It looks like nothing was found at this location. Maybe try one of the links "
+"below or a search?"
+msgstr ""
+
+#: ../archive.php:23
+#, php-format
+msgid "Author: %s"
+msgstr ""
+
+#: ../archive.php:27
+#, php-format
+msgid "Day: %s"
+msgstr ""
+
+#: ../archive.php:30
+#, php-format
+msgid "Month: %s"
+msgstr ""
+
+#: ../archive.php:33
+#, php-format
+msgid "Year: %s"
+msgstr ""
+
+#: ../archive.php:36
+msgid "Asides"
+msgstr ""
+
+#: ../archive.php:39
+msgid "Images"
+msgstr ""
+
+#: ../archive.php:42
+msgid "Videos"
+msgstr ""
+
+#: ../archive.php:45
+msgid "Quotes"
+msgstr ""
+
+#: ../archive.php:48
+msgid "Links"
+msgstr ""
+
+#: ../archive.php:51
+msgid "Archives"
+msgstr ""
+
+#: ../comments.php:23
+msgid "Comments: "
+msgstr ""
+
+#: ../comments.php:23
+msgid "0"
+msgstr ""
+
+#: ../comments.php:23
+msgid "1"
+msgstr ""
+
+#: ../comments.php:23
+msgid "%"
+msgstr ""
+
+#: ../comments.php:28 ../comments.php:42
+msgid "Comment navigation"
+msgstr ""
+
+#: ../comments.php:29 ../comments.php:43
+msgid "&larr; Older Comments"
+msgstr ""
+
+#: ../comments.php:30 ../comments.php:44
+msgid "Newer Comments &rarr;"
+msgstr ""
+
+#: ../comments.php:54
+msgid "Comments are closed."
+msgstr ""
+
+#: ../content-aside.php:19 ../content-gallery.php:20 ../content-link.php:31
+#: ../content-page.php:22 ../content-quote.php:32 ../content-single.php:29
+#: ../content-status.php:23 ../content-video.php:23 ../content.php:83
+msgid "Pages:"
+msgstr ""
+
+#: ../content-aside.php:28 ../content-gallery.php:29 ../content-link.php:40
+#: ../content-quote.php:41 ../content-status.php:32 ../content-video.php:33
+#: ../content.php:92
+msgid "Leave a comment"
+msgstr ""
+
+#: ../content-aside.php:28 ../content-gallery.php:29 ../content-link.php:40
+#: ../content-quote.php:41 ../content-status.php:32 ../content-video.php:33
+#: ../content.php:92
+msgid "1 Comment"
+msgstr ""
+
+#: ../content-aside.php:28 ../content-gallery.php:29 ../content-link.php:40
+#: ../content-quote.php:41 ../content-status.php:32 ../content-video.php:33
+#: ../content.php:92
+msgid "Comments: %"
+msgstr ""
+
+#: ../content-aside.php:31 ../content-gallery.php:32 ../content-link.php:43
+#: ../content-page.php:28 ../content-quote.php:44 ../content-single.php:73
+#: ../content-status.php:35 ../content-video.php:36 ../content.php:95
+#: ../image.php:60 ../inc/template-tags.php:71 ../inc/template-tags.php:89
+msgid "Edit"
+msgstr ""
+
+#: ../content-home.php:36
+msgid "More"
+msgstr ""
+
+#: ../content-home.php:114
+msgid "Recent Posts"
+msgstr ""
+
+#: ../content-single.php:43 ../content-single.php:46 ../content.php:23
+#: ../content.php:33
+msgid ", "
+msgstr ""
+
+#: ../content-single.php:50
+#, php-format
+msgid "%2$s"
+msgstr ""
+
+#: ../content-single.php:57
+#, php-format
+msgid "%1$s %2$s"
+msgstr ""
+
+#: ../content.php:27 ../content.php:37
+#, php-format
+msgid "%1$s"
+msgstr ""
+
+#: ../footer.php:75
+msgid "Scroll Up"
+msgstr ""
+
+#: ../functions.php:71
+msgid "Primary Menu"
+msgstr ""
+
+#: ../functions.php:72 ../inc/contextual-help.php:108
+msgid "Social Menu"
+msgstr ""
+
+#: ../functions.php:111
+msgid "Sidebar Posts"
+msgstr ""
+
+#: ../functions.php:119
+msgid "Sidebar Pages"
+msgstr ""
+
+#: ../functions.php:127
+msgid "Home Bottom"
+msgstr ""
+
+#: ../functions.php:128
+msgid "Located at the bottom of the Home page"
+msgstr ""
+
+#: ../functions.php:136
+msgid "Footer1"
+msgstr ""
+
+#: ../functions.php:137
+msgid "Located in the footer left."
+msgstr ""
+
+#: ../functions.php:145
+msgid "Footer2"
+msgstr ""
+
+#: ../functions.php:146
+msgid "Located in the footer center."
+msgstr ""
+
+#: ../functions.php:154
+msgid "Footer3"
+msgstr ""
+
+#: ../functions.php:155
+msgid "Located in the footer right."
+msgstr ""
+
+#: ../functions.php:298
+#, php-format
+msgid "Powered by %s"
+msgstr ""
+
+#: ../functions.php:300
+#, php-format
+msgid "Theme by %s"
+msgstr ""
+
+#: ../functions.php:373
+msgid "Store Sidebar"
+msgstr ""
+
+#: ../functions.php:374
+msgid "Located in the sidebar woocommerce page."
+msgstr ""
+
+#: ../header.php:62
+msgid "Menu"
+msgstr ""
+
+#: ../image.php:46
+#, php-format
+msgid ""
+"Published <span class=\"entry-date\"><time class=\"entry-date\" datetime="
+"\"%1$s\">%2$s</time></span> at <a href=\"%3$s\">%4$s &times; %5$s</a> in <a "
+"href=\"%6$s\" rel=\"gallery\">%7$s</a>"
+msgstr ""
+
+#: ../no-results.php:17
+#, php-format
+msgid ""
+"Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+
+#: ../no-results.php:21
+msgid ""
+"Sorry, but nothing matched your search terms. Please try again with some "
+"different keywords."
+msgstr ""
+
+#: ../no-results.php:26
+msgid ""
+"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
+"searching can help."
+msgstr ""
+
+#: ../search.php:13
+#, php-format
+msgid "Search Results for: %s"
+msgstr ""
+
+#: ../search.php:35
+msgid "Nothing Found"
+msgstr ""
+
+#: ../searchform.php:11
+msgid "Search"
+msgstr ""
+
+#: ../inc/breadcrumbs.php:10
+msgid "Home"
+msgstr ""
+
+#: ../inc/breadcrumbs.php:11
+#, php-format
+msgid "Archive for %s"
+msgstr ""
+
+#: ../inc/breadcrumbs.php:12
+#, php-format
+msgid "Search results for: %s"
+msgstr ""
+
+#: ../inc/breadcrumbs.php:13
+#, php-format
+msgid "Posts tagged %s"
+msgstr ""
+
+#: ../inc/breadcrumbs.php:14
+#, php-format
+msgid "View all posts by %s"
+msgstr ""
+
+#: ../inc/breadcrumbs.php:15
+msgid "Error 404"
+msgstr ""
+
+#: ../inc/breadcrumbs.php:149 ../inc/extras.php:66
+#, php-format
+msgid "Page %s"
+msgstr ""
+
+#: ../inc/contextual-help.php:16 ../inc/contextual-help.php:17
+msgid "Welcome!"
+msgstr ""
+
+#: ../inc/contextual-help.php:17
+msgid "Thank you for choosing this Theme!"
+msgstr ""
+
+#: ../inc/contextual-help.php:17
+msgid "The theme has a contextual help almost all screens."
+msgstr ""
+
+#: ../inc/contextual-help.php:17
+msgid ""
+"More information, help and support you will find on the website Studio <a "
+"href=\"http://dinevthemes.com/\">DinevThemes</a>"
+msgstr ""
+
+#: ../inc/contextual-help.php:22 ../inc/contextual-help.php:23
+msgid "Quick Start"
+msgstr ""
+
+#: ../inc/contextual-help.php:23
+msgid ""
+"Using Customizer set your color, upload a logo (face - for personal) image, "
+"upload a background image (or select any color), upload the image (or select "
+"any color) header and other settings."
+msgstr ""
+
+#: ../inc/contextual-help.php:23
+msgid ""
+"As the Front page displays select Your latest posts, go to Customize > "
+"section Static Front Page: select Your latest posts. You can display the "
+"contents of any page on the home by using theme Options Feature Page."
+msgstr ""
+
+#: ../inc/contextual-help.php:23
+msgid ""
+"In the section of Home Tagline can be used shortcode. For example, instead "
+"of heading to place the slider using shortcode slideshow plugin Soliloquy "
+"Sliders."
+msgstr ""
+
+#: ../inc/contextual-help.php:23
+msgid ""
+"If you want to display the posts without the sidebar just leave blank (no "
+"widgets) sidebar posts."
+msgstr ""
+
+#: ../inc/contextual-help.php:23
+msgid ""
+"This theme is ready for the Woocommerce plugin. Can create a store and sell "
+"your products, e-books."
+msgstr ""
+
+#: ../inc/contextual-help.php:36
+msgid "Plugins"
+msgstr ""
+
+#: ../inc/contextual-help.php:37
+msgid "Recommended plugins"
+msgstr ""
+
+#: ../inc/contextual-help.php:37
+msgid "Jetpack By WordPress.com"
+msgstr ""
+
+#: ../inc/contextual-help.php:37
+msgid "WooCommerce By WooThemes"
+msgstr ""
+
+#: ../inc/contextual-help.php:37
+msgid "Contact Form 7 By Takayuki Miyoshi"
+msgstr ""
+
+#: ../inc/contextual-help.php:37
+msgid "Soliloquy Sliders By Thomas Griffin"
+msgstr ""
+
+#: ../inc/contextual-help.php:37
+msgid "Shortcodes Ultimate By Vladimir Anokhin."
+msgstr ""
+
+#: ../inc/contextual-help.php:37
+msgid "WP Google Maps By WP Google Maps"
+msgstr ""
+
+#: ../inc/contextual-help.php:61
+msgid "For more information:"
+msgstr ""
+
+#: ../inc/contextual-help.php:61
+msgid "<a href=\"http://dinevthemes.com/\">DinevThemes</a>"
+msgstr ""
+
+#: ../inc/contextual-help.php:61
+msgid "<a href=\"http://dinevthemes.com/documentation/\">Documentation</a>"
+msgstr ""
+
+#: ../inc/contextual-help.php:61
+msgid "<a href=\"http://dinevthemes.com/support/\">Premium Support</a>"
+msgstr ""
+
+#: ../inc/contextual-help.php:70 ../inc/contextual-help.php:71
+#: ../inc/contextual-help.php:80 ../inc/contextual-help.php:81
+#: ../inc/contextual-help.php:90 ../inc/contextual-help.php:99
+msgid "Theme Features"
+msgstr ""
+
+#: ../inc/contextual-help.php:71 ../inc/contextual-help.php:81
+msgid "Use Featured image"
+msgstr ""
+
+#: ../inc/contextual-help.php:71
+msgid "Upload the image that will be displayed header on single post."
+msgstr ""
+
+#: ../inc/contextual-help.php:71 ../inc/contextual-help.php:81
+msgid "Use Excerpt"
+msgstr ""
+
+#: ../inc/contextual-help.php:71
+msgid ""
+"Enter text in Metabox Excerpt to show announcement or the focus of the post."
+msgstr ""
+
+#: ../inc/contextual-help.php:71
+msgid "Format"
+msgstr ""
+
+#: ../inc/contextual-help.php:71
+msgid ""
+"<b>Quote.</b> As title, type the author quotes. Quote place in the main text "
+"box without using tag blockquote (b-quote). Featured image and Excerpt are "
+"not used.<br /><b>Link.</b> As title, type the name Link. URL place in the "
+"main text box without using http (http://). Featured image and Excerpt are "
+"not used."
+msgstr ""
+
+#: ../inc/contextual-help.php:71 ../inc/contextual-help.php:81
+msgid "Button"
+msgstr ""
+
+#: ../inc/contextual-help.php:71 ../inc/contextual-help.php:81
+msgid ""
+"To show the button, use the link class, , for example <code>class=\"btn blue"
+"\"</code>. Color options: green, blue, red."
+msgstr ""
+
+#: ../inc/contextual-help.php:81
+msgid "Upload the image that will be displayed header on page."
+msgstr ""
+
+#: ../inc/contextual-help.php:81
+msgid ""
+"Enter text in Metabox Excerpt to show announcement or the focus of the page."
+msgstr ""
+
+#: ../inc/contextual-help.php:81
+msgid "Templates"
+msgstr ""
+
+#: ../inc/contextual-help.php:81
+msgid ""
+"The theme is the templates page without the sidebar, wooCommerce template, "
+"and wooTestimonials template. Use metabox Page Attributes > dropdown "
+"Template. Note: In the page template FullPage is not showing the page title."
+msgstr ""
+
+#: ../inc/contextual-help.php:91 ../inc/contextual-help.php:100
+#: ../inc/contextual-help.php:109
+msgid "Custom widgets"
+msgstr ""
+
+#: ../inc/contextual-help.php:91
+msgid ""
+"The theme has a custom widgets to display posts format video, gallery, quote "
+"or aside in places sidebars (sidebar or footer). If these widgets to Link "
+"for archive by default, the link will be in the form of icons format."
+msgstr ""
+
+#: ../inc/contextual-help.php:91 ../inc/contextual-help.php:109
+msgid ""
+"<b>Note:</b> If you want in the sidebar to display social menu as links "
+"social media icons of the menu name should be Social."
+msgstr ""
+
+#: ../inc/contextual-help.php:100
+msgid ""
+"Background color header set using Customizer. Go to Customize > Colors: "
+"Header BG Color"
+msgstr ""
+
+#: ../inc/contextual-help.php:109
+msgid ""
+"Menu icons social media is displayed in the footer. Included all popular "
+"icons of social media, and Feedburner. To create a menu item, use the tab "
+"Links (Edit Menus). And select Social Menu as Theme locations."
+msgstr ""
+
+#: ../inc/contextual-help.php:109
+msgid ""
+"Example:<br />tab <strong>Links</strong><br /><em>URL</em> http://twitter."
+"com/your<br /><em>Navigation Label</em> Twitter"
+msgstr ""
+
+#: ../inc/customizer.php:99
+msgid "Header BG Color"
+msgstr ""
+
+#: ../inc/customizer.php:111
+msgid "Link Color"
+msgstr ""
+
+#: ../inc/customizer.php:123
+msgid "Hover Color"
+msgstr ""
+
+#: ../inc/customizer.php:135
+msgid "Menu Bar Color"
+msgstr ""
+
+#: ../inc/customizer.php:147
+msgid "Menu Bar Current"
+msgstr ""
+
+#: ../inc/customizer.php:159
+msgid "Additional Color"
+msgstr ""
+
+#: ../inc/customizer.php:171
+msgid "Footer TXT Color"
+msgstr ""
+
+#: ../inc/customizer.php:183
+msgid "Footer BG Color"
+msgstr ""
+
+#: ../inc/customizer.php:197
+msgid "Logo Options"
+msgstr ""
+
+#: ../inc/customizer.php:213
+msgid "Logo Image"
+msgstr ""
+
+#: ../inc/customizer.php:224
+msgid "Home Tagline"
+msgstr ""
+
+#: ../inc/customizer.php:262
+msgid "Tagline Text"
+msgstr ""
+
+#: ../inc/customizer.php:273
+msgid "Background Color"
+msgstr ""
+
+#: ../inc/customizer.php:280
+msgid "Background Image"
+msgstr ""
+
+#: ../inc/customizer.php:285
+msgid "SubTagline Txt"
+msgstr ""
+
+#: ../inc/customizer.php:297
+msgid "Call to Action"
+msgstr ""
+
+#: ../inc/customizer.php:329
+msgid "Call Action Text"
+msgstr ""
+
+#: ../inc/customizer.php:337
+msgid "Button Text"
+msgstr ""
+
+#: ../inc/customizer.php:345
+msgid "URL Button"
+msgstr ""
+
+#: ../inc/customizer.php:355
+msgid "Footer Copyright"
+msgstr ""
+
+#: ../inc/customizer.php:372
+msgid "Copyright"
+msgstr ""
+
+#: ../inc/format-aside-widget.php:10
+msgid "Post Format Aside"
+msgstr ""
+
+#: ../inc/format-aside-widget.php:83 ../inc/format-gallery-widget.php:83
+#: ../inc/format-quote-widget.php:83 ../inc/format-video-widget.php:83
+msgid "Post Format"
+msgstr ""
+
+#: ../inc/format-aside-widget.php:84
+msgid "Aside"
+msgstr ""
+
+#: ../inc/format-aside-widget.php:90 ../inc/format-gallery-widget.php:90
+#: ../inc/format-quote-widget.php:90 ../inc/format-video-widget.php:90
+msgid "Title"
+msgstr ""
+
+#: ../inc/format-aside-widget.php:93
+msgid "Link for archive Aside"
+msgstr ""
+
+#: ../inc/format-gallery-widget.php:10
+msgid "Post Format Gallery"
+msgstr ""
+
+#: ../inc/format-gallery-widget.php:84
+msgid "Gallery"
+msgstr ""
+
+#: ../inc/format-gallery-widget.php:93
+msgid "Link for archive Gallery"
+msgstr ""
+
+#: ../inc/format-quote-widget.php:10
+msgid "Post Format Quote"
+msgstr ""
+
+#: ../inc/format-quote-widget.php:84
+msgid "Quote"
+msgstr ""
+
+#: ../inc/format-quote-widget.php:93
+msgid "Link for archive Quote"
+msgstr ""
+
+#: ../inc/format-video-widget.php:10
+msgid "Post Format Video"
+msgstr ""
+
+#: ../inc/format-video-widget.php:84
+msgid "Video"
+msgstr ""
+
+#: ../inc/format-video-widget.php:93
+msgid "Link for archive Video"
+msgstr ""
+
+#: ../inc/pagination.php:46
+msgid "Posts navigation"
+msgstr ""
+
+#: ../inc/template-tags.php:34
+msgid "Post navigation"
+msgstr ""
+
+#: ../inc/template-tags.php:44
+msgid "<span class=\"meta-nav\">&larr;</span> Older posts"
+msgstr ""
+
+#: ../inc/template-tags.php:48
+msgid "Newer posts <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: ../inc/template-tags.php:71
+msgid "Pingback:"
+msgstr ""
+
+#: ../inc/template-tags.php:81
+#, php-format
+msgid "%s <span class=\"says\">says:</span>"
+msgstr ""
+
+#: ../inc/template-tags.php:93
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: ../inc/template-tags.php:184
+#, php-format
+msgid ""
+"<span class=\"byline\">By %2$s</span> <span class=\"posted-on\">on %1$s</"
+"span>"
+msgstr ""
+
+#: ../theme-options/theme-admin.php:27
+msgid "Theme Options"
+msgstr ""
+
+#: ../theme-options/theme-admin.php:46
+msgid "Options Saved"
+msgstr ""
+
+#: ../theme-options/theme-admin.php:49
+msgid " Theme Options"
+msgstr ""
+
+#: ../theme-options/theme-admin.php:60
+msgid "Feature Page"
+msgstr ""
+
+#: ../theme-options/theme-admin.php:67
+msgid "None Feature Page"
+msgstr ""
+
+#: ../theme-options/theme-admin.php:76
+msgid "Select the page, the contents of which will be shown on the homepage."
+msgstr ""
+
+#: ../theme-options/theme-admin.php:81
+msgid "Custom Title Recent Posts"
+msgstr ""
+
+#: ../theme-options/theme-admin.php:85
+msgid "Enter your custom title recent blog posts."
+msgstr ""
+
+#: ../theme-options/theme-admin.php:90
+msgid "Number of Blog Posts"
+msgstr ""
+
+#: ../theme-options/theme-admin.php:103
+msgid "Number of Recent Blog Posts in HomePage"
+msgstr ""
+
+#: ../theme-options/theme-admin.php:110
+msgid "Save Options"
+msgstr ""

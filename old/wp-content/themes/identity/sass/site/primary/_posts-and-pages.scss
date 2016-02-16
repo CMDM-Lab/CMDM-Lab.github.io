@@ -1,0 +1,156 @@
+/* Archive. */
+header.page-header h1 {
+	margin: 0;
+	padding: 44px 28px 36px 28px;
+	padding: 1.25rem 1.75rem;
+	border-radius: 4px;
+	text-transform: uppercase;
+	@include font-size(1);
+	background: $color__archive-page-header-background;
+}
+.taxonomy-description {
+	display: none;
+}
+
+/* Header meta and footer meta. */
+.entry-category {
+	padding-bottom: 0.5rem;
+}
+.entry-category .cat-links a { 
+	text-decoration: none;
+	text-transform: uppercase;
+	font-weight: 700;
+	font-family: $font__headings;
+	@include font-size(0.875);
+	&:hover {
+		color: $white;
+	}
+}
+.sticky-post {
+	margin-right: 8px;
+}
+.entry-meta,
+.tags-links,
+.sticky-post,
+.comments-link,
+.no-comments,
+.pingback div,
+.entry-footer .posted-on {
+	display: table;
+	padding: 2px 8px;
+	padding: 0.125rem 0.5rem;
+	border-radius: 4px;
+	color: $white;
+	background: $color__entry-meta-background;
+	@include font-size(0.875);
+	.genericon {
+		vertical-align: text-bottom;
+		color: $grey;
+		margin-right: 0.25rem;
+	}
+	a {
+		text-decoration: none;
+		color: $white;
+		&:hover {
+			color: $color__link-hover;
+		}
+	}
+}
+.entry-footer {
+	display: flex;
+	flex-direction: column;
+}
+.comments-link {
+	margin-top: 8px;
+	margin-top: 0.5rem;
+}
+
+/* Underscores default styles. */
+.sticky {
+	display: block;
+}
+.hentry {
+	margin: 0;
+}
+.byline,
+.updated:not(.published){
+	display: none;
+}
+.single .byline,
+.group-blog .byline {
+	display: inline;
+}
+.entry-thumbnail {
+	margin-top: 1.5em;
+}
+.entry-content,
+.entry-summary {
+	margin: 1.5em 0;
+}
+.page-content {
+	padding-top: 1.5em;
+}
+
+/* Page links. */
+.page-links {
+	display: inline-block;
+	margin: 0 0 1.5em;
+	padding: 4px 8px;
+	padding: 0.25rem 0.5rem;
+	border-radius: 4px;
+	color: $white;
+	background: $color__entry-meta-background;
+	@include font-size(0.875);
+	.genericon {
+		vertical-align: text-bottom;
+		color: $grey;
+		margin-right: 0.25rem;
+	}
+	a {
+		margin-right: 4px;
+		margin-right: 0.25rem;
+		text-decoration: none;
+		color: $white;
+		&:hover {
+			color: $red;
+		}
+	}
+}
+
+/* Read more link. */
+a.more-link {
+	display: table;
+	clear: both;
+	height: 40px;
+	margin-top: 16px;
+	margin-top: 1rem;
+	border: none;
+	border-radius: 4px;
+	background: $color__button-background;
+	color: $color__button-text;
+	padding: .6em 1em;
+	text-shadow: none!important;
+	text-decoration: none;
+	transition: all 0.125s ease-in-out;
+	&:hover {
+		color: $color__button-text-hover;
+		background: $color__button-background-hover;
+	}
+	&:active,
+	&:focus {
+		border-color: $color__button-background;
+	}
+}
+
+@media (min-width: 1000px) {
+	.sticky-post {
+		display: inline-block;
+	}
+	.comments-link {
+		margin-top: 0;
+	}
+	.entry-footer {
+		flex-direction: row;
+		justify-content: space-between;
+	}
+}

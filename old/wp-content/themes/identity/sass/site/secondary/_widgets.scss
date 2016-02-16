@@ -1,0 +1,193 @@
+.widget {
+	margin: 0;
+	font-size: 14px;
+	font-size: 0.875rem;
+	color: $color__sidebar-text;
+	.widget-title {
+		position: relative;
+		margin: 0;
+		padding-bottom: 12px;
+		padding-bottom: 0.75rem;
+		color: $color__sidebar-text;
+		&::after {
+			content: "";
+			position: absolute;
+			left: 0;
+			top: -14px;
+			height: 1px;
+			width: 40px;
+			border-bottom: 4px solid $color__sidebar-bullets;
+		}
+	}
+	ul {
+		margin: 0;
+		padding-left: 0;
+		list-style: none;
+	}
+	ul.sub-menu,
+	ul.children {
+		margin-left: 16px;
+		margin-left: 1rem;
+	}
+	li {
+		margin-top: 4px;
+		margin-top: 0.25rem;
+		padding-top: 4px;
+		padding-top: 0.25rem;
+		&::before {
+			display: inline-block;
+			position: relative;
+			top: -1px;
+			content: '\f428';
+			font: 16px/1 'Genericons';
+			width: 16px;
+			width: 1rem;
+			height: 16px;
+			height: 1rem;
+			vertical-align: middle;
+			margin-right: 8px;
+			margin-right: 0.5rem;
+			color: $color__sidebar-bullets;
+			color: $grey;
+		}
+	}
+	/* Style the individual widgets. */
+	&.widget_recent_comments {
+		li::before {
+			content: '\f300';
+		}
+	}
+	&.widget_categories {
+		li::before {
+			content: '\f301';
+		}
+	}
+	&.widget_archive {
+		li::before {
+			content: '\f307';
+		}
+	}
+	&.widget_recent_entries {
+		li::before {
+			content: '\f408';
+		}
+	}
+	&.widget_rss {
+		li::before {
+			content: '\f413';
+		}
+	}
+	&.widget_meta {
+		li::before {
+			content: '\f429';
+		}
+	}
+	&.widget_pages {
+		li::before {
+			content: '\f443';
+		}
+	}
+	&.widget_links {
+		li::before {
+			content: '\f475';
+		}
+	}
+	&.widget_calendar {
+		tbody tr td {
+			text-align: center;
+		}
+		tbody tr td a,
+		tfoot tr td a {
+			font-weight: bold;
+			color: $color__table-accessible-links!important;
+		}
+		tfoot tr td#next {
+			text-align: right;
+		}
+	}
+	&.widget_search {
+		.search-form {
+			position: relative;
+			border-radius: 4px;
+			overflow: hidden;
+		}
+		.search-field {
+			height: 40px;
+			width: 100%;
+			max-width: 100%;
+			padding: 0 5%;
+			border: none;
+			border-radius: 0;
+			box-sizing: border-box;
+		}
+		.search-submit {
+			position: absolute;
+			top: 0;
+			right: 0;
+			height: 45px;
+			width: 45px;
+			border: none;
+			border-radius: 0;
+			background: $red;
+			display: inline-block;
+			&:hover,
+			&:focus {
+				background: $grey;
+				.genericon-search {
+					color: $white;
+				}
+			}
+		}
+		.genericon-search {
+			font-weight: 700;
+			color: $black;
+			transition: all 0.125s ease-in-out;
+		}
+	}
+
+	/* Make sure select elements fit in widgets. */
+	select {
+		max-width: 100%;
+	}
+}
+
+/* Left or right sidebar. */
+#secondary .widget {
+	border-radius: 4px;
+	margin: 48px 0;
+	margin: 3rem 0;
+	padding: 44px 28px 36px 28px;
+	padding: 2.75rem 1.75rem 2.25rem 1.75rem;
+	background: $color__sidebar-background;
+	a {
+		text-decoration: none;
+		transition: color 0.125s;
+		color: $color__sidebar-text;
+		&:hover {
+			color: $color__link-hover;
+		}
+	}
+	&:last-child {
+		margin-bottom: 48px;
+		margin-bottom: 3rem;
+	}
+}
+
+/* Footer sidebar. */
+#tertiary {
+	.widget {
+		padding-top: 40px;
+		padding-top: 2.5rem;
+		.widget-title {
+
+		}
+		a {
+			text-decoration: none;
+			transition: color 0.125s;
+			color: $color__sidebar-text;
+			&:hover {
+				color: $color__link-hover;
+			}
+		}
+	}
+}

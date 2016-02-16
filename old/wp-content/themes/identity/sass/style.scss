@@ -1,0 +1,122 @@
+/*
+Theme Name: Identity
+Theme URI: http://michaelvandenberg.com/portfolio/themes/identity/
+Author: Michael Van Den Berg
+Author URI: http://michaelvandenberg.com/
+Description: Identity is a modern, bright and colorful tumblog style theme designed for the many bloggers who are young of heart, mind and/or spirit. Identity supports all post formats (standard, aside, image, video, audio, gallery, quote, link, status) and in the header you can display your gravatar image and users description.
+Version: 2.1.2
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: identity
+Tags: black, blue, gray, green, orange, red, white, yellow, purple, dark, light, fluid-layout, responsive-layout, one-column, two-columns, left-sidebar, right-sidebar, accessibility-ready, custom-header, custom-menu, editor-style, featured-image-header, featured-images, microformats, post-formats, sticky-post, theme-options, threaded-comments, translation-ready
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+
+Identity is based on Underscores http://underscores.me/, (C) 2012-2015 Automattic, Inc.
+
+Normalizing styles have been helped along thanks to the fine work of
+Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
+*/
+
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+1.0 Normalize
+2.0 Typography
+3.0 Elements
+4.0 Forms
+5.0 Layout
+	5.1 Header
+	5.2 Content
+	5.3 Footer
+6.0 Navigation
+	6.1 Links
+	6.2 Menus
+	6.3 Social
+7.0 Alignments
+8.0 Clearings
+9.0 Widgets
+10.0 Content
+	10.1 Posts and pages
+	10.2 Post formats
+	10.3 Comments
+11.0 Accessibility
+12.0 Infinite scroll
+13.0 Media
+	13.1 Captions
+	13.2 Galleries
+14.0 Miscellaneous
+--------------------------------------------------------------*/
+@import "variables-site/variables-site";
+@import "mixins/mixins-master";
+
+/*--------------------------------------------------------------
+1.0 Normalize
+--------------------------------------------------------------*/
+@import "normalize";
+
+/*--------------------------------------------------------------
+2.0 Typography
+--------------------------------------------------------------*/
+@import "typography/typography";
+
+/*--------------------------------------------------------------
+3.0 Elements
+--------------------------------------------------------------*/
+@import "elements/elements";
+
+/*--------------------------------------------------------------
+4.0 Forms
+--------------------------------------------------------------*/
+@import "forms/forms";
+
+/*--------------------------------------------------------------
+5.0 Layout
+--------------------------------------------------------------*/
+@import "layout/layout";
+
+/*--------------------------------------------------------------
+6.0 Navigation
+--------------------------------------------------------------*/
+@import "navigation/navigation";
+
+/*--------------------------------------------------------------
+7.0 Alignments
+--------------------------------------------------------------*/
+@import "modules/alignments";
+
+/*--------------------------------------------------------------
+8.0 Clearings
+--------------------------------------------------------------*/
+@import "modules/clearings";
+
+/*--------------------------------------------------------------
+9.0 Widgets
+--------------------------------------------------------------*/
+@import "site/secondary/widgets";
+
+/*--------------------------------------------------------------
+10.0 Content
+--------------------------------------------------------------*/
+@import "site/site";
+
+/*--------------------------------------------------------------
+11.0 Accessibility
+--------------------------------------------------------------*/
+@import "modules/accessibility";
+
+/*--------------------------------------------------------------
+12.0 Infinite scroll
+--------------------------------------------------------------*/
+@import "modules/infinite-scroll";
+
+/*--------------------------------------------------------------
+13.0 Media
+--------------------------------------------------------------*/
+@import "media/media";
+
+/*--------------------------------------------------------------
+14.0 Miscellaneous
+--------------------------------------------------------------*/
+@import "miscellaneous/miscellaneous";

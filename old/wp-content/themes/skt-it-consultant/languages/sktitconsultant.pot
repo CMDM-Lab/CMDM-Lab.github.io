@@ -1,0 +1,558 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: IT Consultant\n"
+"POT-Creation-Date: 2015-05-27 19:12+0530\n"
+"PO-Revision-Date: 2015-05-27 19:12+0530\n"
+"Last-Translator: SKT Themes <support@sktthemes.com>\n"
+"Language-Team: SKT Themes <support@sktthemes.com>\n"
+"Language: English\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+
+#: 404.php:15
+msgid "<strong>404</strong> Not Found"
+msgstr ""
+
+#: 404.php:17
+msgid ""
+"Looks like you have taken a wrong turn.....<br />Don't worry... it happens "
+"to the best of us."
+msgstr ""
+
+#: archive.php:31
+#, php-format
+msgid "Author: %s"
+msgstr ""
+
+#: archive.php:39
+#, php-format
+msgid "Day: %s"
+msgstr ""
+
+#: archive.php:42
+#, php-format
+msgid "Month: %s"
+msgstr ""
+
+#: archive.php:45
+#, php-format
+msgid "Year: %s"
+msgstr ""
+
+#: archive.php:48
+msgid "Asides"
+msgstr ""
+
+#: archive.php:51
+msgid "Images"
+msgstr ""
+
+#: archive.php:54
+msgid "Videos"
+msgstr ""
+
+#: archive.php:57
+msgid "Quotes"
+msgstr ""
+
+#: archive.php:60
+msgid "Links"
+msgstr ""
+
+#: archive.php:63
+#: sidebar.php:19
+msgid "Archives"
+msgstr ""
+
+#: comments.php:36
+#: comments.php:56
+msgid "Comment navigation"
+msgstr ""
+
+#: comments.php:37
+#: comments.php:57
+msgid "&larr; Older Comments"
+msgstr ""
+
+#: comments.php:38
+#: comments.php:58
+msgid "Newer Comments &rarr;"
+msgstr ""
+
+#: comments.php:68
+msgid "Comments are closed."
+msgstr ""
+
+#: content-page.php:18
+#: content-single.php:28
+#: content.php:32
+#: image.php:58
+msgid "Pages:"
+msgstr ""
+
+#: content-page.php:23
+#: content-single.php:40
+#: content.php:66
+#: image.php:32
+#: image.php:64
+#: inc/template-tags.php:70
+#: inc/template-tags.php:89
+msgid "Edit"
+msgstr ""
+
+#: content-single.php:33
+#: content.php:14
+#: content.php:43
+#: content.php:53
+#: index.php:91
+msgid ", "
+msgstr ""
+
+#: content.php:25
+msgid "read more &rarr;"
+msgstr ""
+
+#: content.php:29
+msgid "read more <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: content.php:47
+#, php-format
+msgid "Posted in %1$s"
+msgstr ""
+
+#: content.php:57
+#, php-format
+msgid "Tagged %1$s"
+msgstr ""
+
+#: content.php:63
+msgid "Leave a comment"
+msgstr ""
+
+#: content.php:63
+msgid "1 Comment"
+msgstr ""
+
+#: content.php:63
+msgid "% Comments"
+msgstr ""
+
+#: footer.php:22
+msgid "Latest Tweets"
+msgstr ""
+
+#: footer.php:31
+msgid "Facebook"
+msgstr ""
+
+#: footer.php:32
+msgid "Twitter"
+msgstr ""
+
+#: footer.php:33
+msgid "Google +"
+msgstr ""
+
+#: footer.php:34
+msgid "Linkedin"
+msgstr ""
+
+#: footer.php:41
+msgid "Phone:"
+msgstr ""
+
+#: footer.php:42
+msgid "Fax:"
+msgstr ""
+
+#: footer.php:44
+msgid "Email:"
+msgstr ""
+
+#: footer.php:45
+msgid "Website:"
+msgstr ""
+
+#: functions.php:34
+msgid "Primary Menu"
+msgstr ""
+
+#: functions.php:35
+msgid "Footer Menu"
+msgstr ""
+
+#: functions.php:46
+msgid "Sidebar Main"
+msgstr ""
+
+#: functions.php:47
+msgid "Appears on all site"
+msgstr ""
+
+#: functions.php:56
+msgid "Footer Twitter Widget"
+msgstr ""
+
+#: functions.php:57
+msgid "Appears on footer of the page"
+msgstr ""
+
+#: header.php:30
+msgid "Call Us:"
+msgstr ""
+
+#: header.php:31
+msgid "Menu..."
+msgstr ""
+
+#: image.php:22
+#, php-format
+msgid ""
+"Published <span class=\"entry-date\"><time class=\"entry-date\" datetime="
+"\"%1$s\">%2$s</time></span> at <a href=\"%3$s\">%4$s &times; %5$s</a> in <a "
+"href=\"%6$s\" rel=\"gallery\">%7$s</a>"
+msgstr ""
+
+#: image.php:37
+msgid "<span class=\"meta-nav\">&larr;</span> Previous"
+msgstr ""
+
+#: image.php:38
+msgid "Next <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: index.php:74
+msgid "Page Title"
+msgstr ""
+
+#: index.php:75
+msgid ""
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque augue eros, "
+"posuere a condimentum sit amet, rhoncus eu libero. Maecenas in tincidunt "
+"turpis, ut rhoncus neque."
+msgstr ""
+
+#: index.php:76
+msgid "Read More"
+msgstr ""
+
+#: index.php:82
+msgid "Latest Blog"
+msgstr ""
+
+#: index.php:98
+msgid "read more"
+msgstr ""
+
+#: no-results.php:14
+msgid "Nothing Found"
+msgstr ""
+
+#: no-results.php:20
+#, php-format
+msgid ""
+"Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+
+#: no-results.php:24
+msgid ""
+"Sorry, but nothing matched your search terms. Please try again with some "
+"different keywords."
+msgstr ""
+
+#: no-results.php:29
+msgid ""
+"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
+"searching can help."
+msgstr ""
+
+#: search.php:17
+#, php-format
+msgid "Search Results for: %s"
+msgstr ""
+
+#: sidebar.php:11
+msgid "Categories"
+msgstr ""
+
+#: inc/customizer.php:42
+msgid "Logo (PRO Version)"
+msgstr ""
+
+#: inc/customizer.php:43
+msgid "Logo uplaod option available only in <strong><a href=\""
+msgstr ""
+
+#: inc/customizer.php:75
+msgid "Color Scheme"
+msgstr ""
+
+#: inc/customizer.php:76
+msgid "More color options available in <strong><a href=\""
+msgstr ""
+
+#: inc/customizer.php:84
+msgid "Slider Settings"
+msgstr ""
+
+#: inc/customizer.php:85
+msgid ""
+"Add slider images here. More slider settings available in <strong><a href=\""
+msgstr ""
+
+#: inc/customizer.php:99
+msgid "Add slide image 1"
+msgstr ""
+
+#: inc/customizer.php:107
+msgid "Use information technology to meet your business objectives."
+msgstr ""
+
+#: inc/customizer.php:116
+msgid "Add slide caption 1 here"
+msgstr ""
+
+#: inc/customizer.php:129
+msgid "Add slide link 1 here."
+msgstr ""
+
+#: inc/customizer.php:144
+msgid "Add slide image 2"
+msgstr ""
+
+#: inc/customizer.php:152
+#: inc/customizer.php:197
+#: inc/customizer.php:242
+msgid "Use information technology to meet your business objectives"
+msgstr ""
+
+#: inc/customizer.php:161
+msgid "Add slide caption 2 here"
+msgstr ""
+
+#: inc/customizer.php:174
+msgid "Add slide link 2 here"
+msgstr ""
+
+#: inc/customizer.php:189
+msgid "Add slide image 3"
+msgstr ""
+
+#: inc/customizer.php:206
+msgid "Add slide caption 3 here"
+msgstr ""
+
+#: inc/customizer.php:219
+msgid "Add slide link 3 here"
+msgstr ""
+
+#: inc/customizer.php:234
+msgid "Add slide image 4"
+msgstr ""
+
+#: inc/customizer.php:251
+msgid "Add slide caption 4 here"
+msgstr ""
+
+#: inc/customizer.php:264
+msgid "Add slide link 4 here"
+msgstr ""
+
+#: inc/customizer.php:279
+msgid "Add slide image 5"
+msgstr ""
+
+#: inc/customizer.php:296
+msgid "Add slide caption 5 here"
+msgstr ""
+
+#: inc/customizer.php:309
+msgid "Add slide link 5"
+msgstr ""
+
+#: inc/customizer.php:315
+#: inc/customizer.php:322
+msgid "Homepage Boxes"
+msgstr ""
+
+#: inc/customizer.php:316
+msgid "Select page for homepage boxes"
+msgstr ""
+
+#: inc/customizer.php:323
+msgid "Select Pages from the dropdown"
+msgstr ""
+
+#: inc/customizer.php:338
+msgid "Choose a page for box one:"
+msgstr ""
+
+#: inc/customizer.php:354
+msgid "Choose a page for box Two:"
+msgstr ""
+
+#: inc/customizer.php:370
+msgid "Choose a page for box Three:"
+msgstr ""
+
+#: inc/customizer.php:386
+msgid "Choose a page for box Four:"
+msgstr ""
+
+#: inc/customizer.php:392
+msgid "Footer"
+msgstr ""
+
+#: inc/customizer.php:393
+msgid "Customize footer content from here."
+msgstr ""
+
+#: inc/customizer.php:398
+msgid "john doe"
+msgstr ""
+
+#: inc/customizer.php:403
+msgid "Add footer column one title"
+msgstr ""
+
+#: inc/customizer.php:409
+msgid ""
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque augue eros, "
+"posuere a condimentum sit amet, rhoncus eu libero. Maecenas in tincidunt "
+"turpis, ut rhoncus neque. Nullam sit amet porta odio. Maecenas mattis nulla "
+"ac aliquet facilisis. "
+msgstr ""
+
+#: inc/customizer.php:418
+msgid "Add footer column one content"
+msgstr ""
+
+#: inc/customizer.php:426
+msgid "Connect with us"
+msgstr ""
+
+#: inc/customizer.php:431
+msgid "Social Icons"
+msgstr ""
+
+#: inc/customizer.php:432
+msgid "Add social title here"
+msgstr ""
+
+#: inc/customizer.php:443
+msgid "Add facebook link here"
+msgstr ""
+
+#: inc/customizer.php:454
+msgid "Add twitter link here"
+msgstr ""
+
+#: inc/customizer.php:465
+msgid "Add Linkedin link here"
+msgstr ""
+
+#: inc/customizer.php:476
+msgid "Add google plus link here"
+msgstr ""
+
+#: inc/customizer.php:482
+msgid "Contact info"
+msgstr ""
+
+#: inc/customizer.php:487
+msgid "Contact details"
+msgstr ""
+
+#: inc/customizer.php:488
+msgid "Add contact title here"
+msgstr ""
+
+#: inc/customizer.php:494
+msgid "Office Blvd No. 000-000, Farmville Town, LA 12345"
+msgstr ""
+
+#: inc/customizer.php:503
+msgid "Add contact address here"
+msgstr ""
+
+#: inc/customizer.php:516
+msgid "Add contact number here"
+msgstr ""
+
+#: inc/customizer.php:527
+msgid "Add fax number here"
+msgstr ""
+
+#: inc/customizer.php:538
+msgid "Add email address here"
+msgstr ""
+
+#: inc/customizer.php:549
+msgid "Add web url here"
+msgstr ""
+
+#: inc/customizer.php:555
+msgid "Homepage Sections (PRO Version)"
+msgstr ""
+
+#: inc/customizer.php:556
+msgid "Homepage sections available in <strong><a href=\""
+msgstr ""
+
+#: inc/customizer.php:578
+msgid "Typography (PRO Version)"
+msgstr ""
+
+#: inc/customizer.php:579
+msgid "Typography option available in <strong><a href=\""
+msgstr ""
+
+#: inc/customizer.php:602
+msgid "Layout Settings (PRO Version)"
+msgstr ""
+
+#: inc/customizer.php:603
+msgid "Layout settings available in <strong><a href=\""
+msgstr ""
+
+#: inc/customizer.php:628
+msgid "Documentation &amp; Support"
+msgstr ""
+
+#: inc/customizer.php:630
+msgid "For documentation and support check this link : <a href=\""
+msgstr ""
+
+#: inc/template-tags.php:33
+msgid "Post navigation"
+msgstr ""
+
+#: inc/template-tags.php:43
+msgid "<span class=\"meta-nav\">&larr;</span> Older posts"
+msgstr ""
+
+#: inc/template-tags.php:47
+msgid "Newer posts <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: inc/template-tags.php:70
+msgid "Pingback:"
+msgstr ""
+
+#: inc/template-tags.php:93
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: inc/template-tags.php:184
+#, php-format
+msgid ""
+"<span class=\"posted-on\">Published %1$s</span><span class=\"byline\"> by "
+"%2$s</span>"
+msgstr ""
