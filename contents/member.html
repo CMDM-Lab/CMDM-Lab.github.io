@@ -1,80 +1,295 @@
-<html>
-	<div>
-		<h3>Members</h3>
-		<div class="first">
-				<h2><a name=faculty>Faculty</a></h2>
-				<div><img src=http://cmdd.csie.ntu.edu.tw/images/image001.png>
-				    <h2>曾宇鳳(Y. Jane Tseng)</h2>
-				    <p>Tel: +886-2-33664888 Ext. 529</p>
-				    <p>Email: yjtseng [at] csie.ntu.edu.tw</p>
-				    <p>Office: R529, Department of Computer Science and Information Engineering, No. 1 Roosevelt Rd. Sec. 4, Taipei, Taiwan 106</p>
-				    <h5>Education</h5>
-				    <p><ul>
-					<li>Ph.D, Medicinal Chemistry and Pharmacognosy, University of Illinois at Chicago</li>
-					<li>BS, School of Pharmacy, College of Medicine, National Taiwan University</li>
-				    </ul></p>
-				</div>
-			<div class="section">
-				<div id="aside">
-				<?php foreach($members as $cat => $people):?>
-				   <h2><a name="<?php echo $cat?>"><?php echo $cat?></a>
-					<a href="<?php echo current_url()?>#body"><img class=top_arrow src="<?php echo base_url()?>images/top_arrow.jpg"/></a></h2>
-				<?php	foreach($people as $std):?>
-				<?php
-								if(array_key_exists('photo',$std)):
-								print '<div><img src="'.base_url().'images/'.$std['photo'].'" style=height:110px class=member_photo>';
-								else:
-								print '<div><img src="'.base_url().'images/no_photo.png">';
-								endif;
-							?>
-						<h2><?php echo $std['ch_name']?>(<?php if (isset($std['en_name'])) echo $std['en_name']?>)</h2>
-						<p>Email: <?php if (isset($std['email'])) echo $std['email']?></p>
-							<?php if(array_key_exists('topic',$std)):?>
-								<p><ul class=research_topic>
-								<?php foreach($std['topic'] as $p):?>
-									<li><?php echo $p?></li>
-								<?php endforeach;?>
-								</ul></p>
-							<?php endif; ?>
+<!DOCTYPE html>
+<html lang="en-US">
 
-							<?php if(array_key_exists('award',$std)):?>
-								<p><ul class=member_lists>
-								<?php foreach($std['award'] as $a):?>
-									<li><?php echo $a?></li>
-								<?php endforeach;?>
-								</ul></p>
-							<?php endif; ?>
-							<?php if(array_key_exists('pub',$std)):?>
-								<ul style="float:left;font-style:italic;font-size:small;margin:5px 0px 0px -30px;list-style-type:none;">
-								<li><span style="font-weight:bold">Journal papers</span></li>
-								<?php foreach($std['pub'] as $a):?>
-								<li><?php echo $a['author']?>,<?php echo $a['title']?>,<?php echo $a['info']?></li>
-								<?php endforeach;?>
-								</ul>
-							<?php endif; ?>
-							<?php if(array_key_exists('con',$std)):?>
-								<ul style="float:left;font-style:italic;font-size:small;margin:5px 0px 0px -30px;list-style-type:none;">
-								<li><span style="font-weight:bold">Conference papers</span></li>
-								<?php foreach($std['con'] as $a):?>
-								<li><?php echo $a['author']?>,<?php echo $a['title']?>,<?php echo $a['info']?></li>
-								<?php endforeach;?>
-								</ul>
-							<?php endif; ?>
-							</div>
-				<?php endforeach;?>
-				<?php endforeach;?>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta charset="UTF-8" />
+
+    <title>CMDM - Members</title>
+    
+    <!--<link rel="stylesheet" type="text/css" href="http://cmdm.tw/css/style.css" />-->
+    <!-- Bootstrap Core CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../css/main.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse" role="navigation">
+        <div class="container">
+            <div class="navbar-header" id="logo-div">
+                <button id="toggle-button" type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <img src="../img/logo_big.png" class="navbar-brand" id="logo" href="#">
+                <p id="title-p"><strong>Computational Molecular Design & Metabolomics Lab</strong></p> 
+            </div>
+        </div>
+    </nav>
+    <nav class="navbar navbar-inverse" role="navigation" id="menu-nav">
+        <div class="container" id="menu">
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="navbutton" id="home_button"><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Research</a></li>
+                    <li><a href="#">Publications&Patents</a></li>
+                    <li><a href="#">Professional Activities</a></li>
+                    <li><a href="#">Members</a></li>
+                    <li><a href="#">Courses</a></li>
+                    <li><a href="#">Services</a></li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+    <div id="content">
+		<h3>Members</h3>
+		<h4>Faculty</h4>
+		<div id="member">
+        	<img src="http://cmdd.csie.ntu.edu.tw/images/image001.png"/>
+        	<h5>Professor, director 曾宇鳳(Y. Jane Tseng)</h5>
+        	<p>Tel: +886-2-33664888 Ext. 529</p>
+		    <p>Email: yjtseng [at] csie.ntu.edu.tw</p>
+			<p>Office: R529, Department of Computer Science and Information Engineering, No. 1 Roosevelt Rd. Sec. 4, Taipei, Taiwan 106</p>
+        	<p>Education</p>
+			<ul>
+				<li>Ph.D, Medicinal Chemistry and Pharmacognosy, University of Illinois at Chicago</li>
+				<li>BS, School of Pharmacy, College of Medicine, National Taiwan University</li>
+			</ul>
+        	<a href="#">Read more</a>
+        </div>
+        <hr/>
+    	<h4>Postdocs</h4>
+    	<div id="member">
+        	<img src="http://cmdm.tw/images/no_photo.png"/>
+        	<font class="fontTitle">王三源(SAN-YUAN WANG)</font><br/>
+        	Email: sanyuan731@gmail.com
+        	<a href="#">Read more</a>
+        </div>
+        <div id="member">
+        	<img src="http://cmdm.tw/images/no_photo.png"/>
+        	<font class="fontTitle">蘇柏翰(B.H. SU)</font><br/>
+        	Email: suborhang@gmail.com
+        	<a href="#">Read more</a>
+    	</div>
+    	<hr>
+    	<h4>PhD Students</h4>
+    	<div id="member">
+    		<img src="http://cmdm.tw/images/no_photo.png"/>
+        	<font class="fontTitle">郭天爵(TIEN-CHUEH KUO)</font><br/>
+        	Email: cotcage@gmail.com
+        	<ul>
+        		<li>Biological interpretation in Metabolomics</li>
+        		<li>Workflow in Lipidomics</li>
+        		<li>台大生醫電資所第三屆獎勵研究創新學生傑出研究獎</li>
+        	</ul>
+        	<a href="#">Read more</a>
+    	</div>
+    	<div id="member">
+    		<img src="http://cmdm.tw/images/no_photo.png"/>
+        	<font class="fontTitle">杜羿樞(YI-SHU TU)</font><br/>
+        	Email: georgetu@gmail.com
+        	<ul>
+        		<li>台大生醫電資所第二屆獎勵研究創新學生傑出研究獎</li>
+        	</ul>
+        	<a href="#">Read more</a>
+    	</div>
+    	<div id="member">
+    		<img src="http://cmdm.tw/images/no_photo.png"/>
+        	<font class="fontTitle">蔡東銘(DONG-MING TSAI)</font><br/>
+        	Email: dongming7829@gmail.com
+        	<a href="#">Read more</a>
+    	</div>
+    	<div id="member">
+    		<img src="http://cmdm.tw/images/no_photo.png"/>
+        	<font class="fontTitle">徐銘聰(M.T. HSU)</font><br/>
+        	Email: trams10@gmail.com
+        	<ul>
+        		<li>Systems Biology</li>
+        	</ul>
+        	<a href="#">Read more</a>
+    	</div>
+    	<hr>
+    	<h4>Master Students</h4>
+    	<div id="member">
+    		<img src="http://cmdm.tw/images/no_photo.png"/>
+        	<font class="fontTitle">譚承恩(C.E. TAN)</font><br/>
+        	Email: b96b02054@csie.ntu.edu.tw
+        	<a href="#">Read more</a>
+    	</div>
+    	<div id="member">
+    		<img src="http://cmdm.tw/images/no_photo.png"/>
+        	<font class="fontTitle">劉家瑋</font><br/>
+        	Email: mark.jwliu@gmail.com
+        	<a href="#">Read more</a>
+    	</div>
+    	<div id="member">
+    		<img src="http://cmdm.tw/images/no_photo.png"/>
+        	<font class="fontTitle">Brendan Reilly 路本庭</font><br/>
+        	Email: brendan.lbt@gmail.com
+        	<a href="#">Read more</a>
+    	</div>
+    	<div id="member">
+    		<img src="http://cmdm.tw/images/no_photo.png"/>
+        	<font class="fontTitle">鄭羽嫣</font><br/>
+        	Email: yuyen255@gmail.com
+        	<a href="#">Read more</a>
+    	</div>
+    	<div id="member">
+    		<img src="http://cmdm.tw/images/no_photo.png"/>
+        	<font class="fontTitle">王珮驊</font><br/>
+        	Email: kitty50221@gmail.com
+        	<a href="#">Read more</a>
+    	</div>
+    	<div id="member">
+    		<img src="http://cmdm.tw/images/no_photo.png"/>
+        	<font class="fontTitle">謝秉翰(P.H. HSIEH)</font><br/>
+        	Email: b96b02054@csie.ntu.edu.tw
+        	<a href="#">Read more</a>
+    	</div>
+    	<div id="member">
+    		<img src="http://cmdm.tw/images/no_photo.png"/>
+        	<font class="fontTitle">蕭毅</font><br/>
+        	Email: hsiaoyi0504@gmail.com
+        	<a href="#">Read more</a>
+    	</div>
+    	<div id="member">
+    		<img src="http://cmdm.tw/images/no_photo.png"/>
+        	<font class="fontTitle">劉律琪</font><br/>
+        	Email: evelynliu324@gmail.com
+        	<a href="#">Read more</a>
+    	</div>
+    </div>
+    <!--Side content-->
+    Current Members
+    <div id="memberDir">
+    	<ul>
+    		<li><a href="#">曾宇鳳</a></li>
+    		<li><a href="#">王三源</a></li>
+    		<li><a href="#">蘇柏翰</a></li>
+    		<li><a href="#">郭天爵</a></li>
+    		<li><a href="#">杜羿樞</a></li>
+    		<li><a href="#">蔡東銘</a></li>
+    		<li><a href="#">徐銘聰</a></li>
+    		<li><a href="#">譚承恩</a></li>
+    		<li><a href="#">劉家瑋</a></li>
+    		<li><a href="#">路本庭</a></li>
+    		<li><a href="#">鄭羽嫣</a></li>
+    		<li><a href="#">王珮驊</a></li>
+    		<li><a href="#">謝秉翰</a></li>
+    		<li><a href="#">蕭毅</a></li>
+    		<li><a href="#">劉律琪</a></li>	
+    	</ul>
+    </div>
+    Former Members
+    <div id="memberDir">
+    	<ul>
+    		Alumni 2014
+    		<li><a href="#">杜宗霖</a></li>
+    		<li><a href="#">徐國翔</a></li>
+    		<li><a href="#">林潔</a></li>
+    		<li><a href="#">唐皇</a></li>
+    		<li><a href="#">張乃文</a></li>
+    		Alumni 2013
+    		<li><a href="#">張嘉芸</a></li>
+    		<li><a href="#">王國清</a></li>
+    		<li><a href="#">Alioune Schurz 舒艾琉</a></li>
+    		<li><a href="#">邵祈諭</a></li>
+    		<li><a href="#">鍾宇彥</a></li>
+    		<li><a href="#">陳加頎</a></li>
+    		<li><a href="#">陳奕竹</a></li>
+    		<li><a href="#">陳琤</a></li>
+    		<li><a href="#">楊裕宏</a></li>
+    		<li><a href="#">盧泓志</a></li>
+    		<li><a href="#">彭康偉</a></li>
+    		<li><a href="#">黃雍文</a></li>
+    		Alumni 2012
+    		<li><a href="#">林澤豪</a></li>
+    		<li><a href="#">陳星佐</a></li>
+    		<li><a href="#">陳柏安</a></li>
+    		<li><a href="#">林群皓</a></li>
+    		Alumni 2011
+    		<li><a href="#">林芳宇</a></li>
+    		<li><a href="#">何宗融</a></li>
+    		<li><a href="#">田士鋒</a></li>
+    		<li><a href="#">韓羽晨</a></li>
+    		<li><a href="#">張軍裕</a></li>
+    		<li><a href="#">沈子琪</a></li>
+    		<li><a href="#">柯伊庭</a></li>
+    		<li><a href="#">楊應甲</a></li>
+    		<li><a href="#">黃庭箴</a></li>
+    		Alumni 2010
+    		<li><a href="#">蔡政倢</a></li>
+    		<li><a href="#">沈孟俞</a></li>
+    		<li><a href="#">黃薏璇</a></li>
+    		<li><a href="#">黃永沅</a></li>
+    		Alumni 2009
+    		<li><a href="#">康文譯</a></li>
+    		Alumni 2008
+    		<li><a href="#">葉欣宜</a></li>
+    		<li><a href="#">吳東潤</a></li>
+    		<li><a href="#">江任捷</a></li>
+    	</ul>
+    </div>
+    <!--Side content End-->
+	<hr>
+	<div id="footer">
+		<div>
+			<div id="connect">
+			<!--<a href="http://facebook.com/freewebsitetemplates" target="_blank"><img src="http://cmdm.tw/images/icon-facebook.gif" alt="Facebook" /></a>
+			<a href="http://twitter.com/fwtemplates" target="_blank"><img src="http://cmdm.tw/images/icon-twitter.gif" alt="Twitter" /></a>
+			<a href="http://www.youtube.com/fwtemplates" target="_blank"><img src="http://cmdm.tw/images/icon-youtube.gif" alt="Youtube" /></a>-->
 			</div>
-			<div id="sidebar">
-				<h6>Members</h6>
-				<ul class="links">
-					<li><a href="<?php echo current_url()?>#faculty">Faculty</a></li>
-				<?php $keys = array_keys($members);
-				    foreach($keys as $k):?>
-					<li><a href="<?php echo current_url()?>#<?php echo $k?>"><?php echo $k?></a></li>
-				<?php  endforeach;?>
+			<div class="section">
+				<ul>
+			    	<li><a href="/">Home</a></li>
+			    	<li><a href="/">About</a></li>
+			    	<li><a href="/">Research</a></li>
+			    	<li><a href="/">Publications & Paterns</a></li>
+			    	<li><a href="/">Professional Activities</a></li>
+			    	<li><a href="/">Members</a></li>
+			    	<li><a href="/">Courses</a></li>
+			    	<li class=last ><a href="/">Services</a></li>
 				</ul>
+				<p>No. 1 Roosevelt Rd. Sec. 4, Taipei, Taiwan 106, ROC &nbsp; +886-2-33664888#403
+				<br>Copyright &copy; 2006-2016 Computational Molecular Design &amp; Metabolomics Laboratory. All Rights Reserved.</p>
 			</div>
-		    </div>
 		</div>
 	</div>
+	
+
+	<!-- jQuery -->
+    <script src="../js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../js/bootstrap.min.js"></script>
+
+    <!-- Script to Activate the Carousel -->
+    <script>
+    $('.carousel').carousel({
+        interval: 5000 //changes the speed
+    })
+    </script>
+
+</body>
 </html>
