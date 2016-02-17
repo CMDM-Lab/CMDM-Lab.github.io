@@ -8,6 +8,7 @@
 
 html,
 body {
+    background: url(http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/square_bg.png);
     height: 100%;
 }
 
@@ -28,6 +29,10 @@ body {
 
 .container {
     width: 100%;
+}
+
+#content {
+    width: 80%;
 }
 
 #toggle-button{
@@ -180,5 +185,15 @@ footer {
 
     header.carousel .carousel {
         height: 70%;
+    }
+}
+
+@media (max-width: 991px) {
+    #content {
+        top: 50%; /* IMPORTANT */
+        left: 50%; /* IMPORTANT */
+        display: block;
+        position: absolute;
+        margin: auto;
     }
 }
