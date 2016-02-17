@@ -26,13 +26,20 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    <!-- JQuery JavaScript -->
     <script src="js/jquery.js"></script> 
+    
+    <!-- Load The  Page Components-->
     <script> 
     $(function(){
       $("#nav_bar").load("template/nav_bar.html"); 
     });
     $(function(){
       $("#contents").load("contents/home.html"); 
+    });
+    $(function(){
+      $("#footer").load("template/footer.html"); 
     });
     </script> 
 
@@ -41,6 +48,7 @@
 <body>
     <div id="nav_bar"></div>
     <div id="contents"></div>
+    <div id="footer"></div>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
