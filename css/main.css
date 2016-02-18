@@ -9,7 +9,6 @@
 html,
 body {
     background: url(http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/square_bg.png);
-    height: 100%;
 }
 
 body {
@@ -166,8 +165,12 @@ header.carousel .fill {
 /* Footer Styles */
 
 footer {
-    margin: 50px 0;
+	width: 100%;
+	height: auto;
+	text-align: center;
+	background-color: #f5f5f5;
 }
+
 
 /* Responsive Styles */
 
