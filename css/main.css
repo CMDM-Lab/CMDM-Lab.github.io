@@ -8,19 +8,26 @@
 
 html,
 body {
-    background: url(http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/square_bg.png);
+    background: url(../img/square_bg.png);
+    padding-top: 0em; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    opacity: 1;
 }
 
-body {
-    padding-top: 0em; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+h2 {
+    text-align: center;
+}
+
+#about_cover {
+    padding-left: auto;
+    padding-right: auto;
 }
 
 .navbar {
     background-color: white;
     border: none;
     color: black;
-    padding-left: 10%;
-    padding-right: 10%;
+    padding-left: 15%;
+    padding-right: 15%;
     margin-bottom: 0;
     width: 100%;
 }
@@ -31,7 +38,8 @@ body {
 }
 
 #content {
-    width: 80%;
+    padding-left: 15%;
+    padding-right: 15%;
 }
 
 #toggle-button{
@@ -80,7 +88,8 @@ body {
 }
 
 .navbar-collapse ul{
-    padding-left: 10%;
+    padding-left: 15%;
+    padding-right: 15%;
     color: white;
 }
 
@@ -168,7 +177,6 @@ footer {
 	width: 100%;
 	height: auto;
 	text-align: center;
-	background-color: #f5f5f5;
 }
 
 
