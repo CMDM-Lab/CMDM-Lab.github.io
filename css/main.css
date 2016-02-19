@@ -9,11 +9,41 @@
 html,
 body {
     background: url(http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/square_bg.png);
+    margin: auto;
 }
 
 body {
     padding-top: 0em; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
 }
+
+#img-inside { /*about.html img*/  /*janetseng.html*/ 
+    display: block;
+    width: auto;
+    height: auto;
+    margin: auto;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+#img-left { /*member.html*/ /*janetseng.html*/ 
+    display: block;
+    width: auto;
+    height: auto;
+    position: relative;
+}
+
+#rightPane { /*member.html*/
+    width: 29.99%;
+    float: left;
+    text-align: right;
+}
+
+#leftPane { /*member.html*/
+    float: left;
+    width: 70%;
+}
+
+
 
 .navbar {
     background-color: white;
@@ -191,12 +221,11 @@ footer {
     }
 }
 
-@media (max-width: 991px) {
+@media (max-width: 100%) {
     #content {
         top: 50%; /* IMPORTANT */
         left: 50%; /* IMPORTANT */
         display: block;
-        position: absolute;
-        margin: auto;
+        position: relative;
     }
 }
