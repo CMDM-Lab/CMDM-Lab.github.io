@@ -14,7 +14,7 @@ body {
     opacity: 1;
 }
 
-h2, h3, h4 {
+h2, h3 {
     text-align: center;
 }
 
@@ -39,9 +39,10 @@ h2, h3, h4 {
 }
 
 #rightPane { /*member.html*/
-    width: 29.99%;
-    float: left;
-    text-align: right;
+	margin-top:10%;
+	float: right;
+    text-align: left;
+	width: 30%;
 }
 
 #leftPane { /*member.html*/
@@ -144,8 +145,8 @@ h2, h3, h4 {
 }
 
 #logo {
-    width: 20%;
-    height: 50%;
+    width: 100%;
+    height: 80%;
 }
 
 .img-portfolio {
