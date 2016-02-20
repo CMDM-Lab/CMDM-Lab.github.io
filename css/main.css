@@ -14,12 +14,8 @@ body {
     opacity: 1;
 }
 
-h2 {
+h2, h3, h4 {
     text-align: center;
-}
-
-h3 {
-	text-align: center;
 }
 
 #about_cover {
