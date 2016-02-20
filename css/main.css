@@ -10,12 +10,11 @@ html,
 body {
     background: url(../img/square_bg.png);
     margin: auto;
-    /*background: url(../img/square_bg.png);*/
     padding-top: 0em; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
     opacity: 1;
 }
 
-h2 {
+h2, h3, h4 {
     text-align: center;
 }
 
