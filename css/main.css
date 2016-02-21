@@ -18,6 +18,16 @@ h2, h3 {
     text-align: center;
 }
 
+.service-img {
+    width: auto;
+    height: auto;
+}
+
+#service-img-2 {
+    width: 40%;
+    height: 30%;
+}
+
 #about_cover {
     padding-left: auto;
     padding-right: auto;
