@@ -28,6 +28,13 @@ h2, h3 {
     height: 30%;
 }
 
+#home-img {
+    width: 60%;
+    height: auto;
+    margin-right: auto;
+    margin-left: auto;
+}
+
 #about_cover {
     padding-left: auto;
     padding-right: auto;
