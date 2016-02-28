@@ -30,45 +30,38 @@
 </head>
 
 <body>
-
+    <script src="../js/nav_bar.js"></script>
     <!-- Navigation -->
     <nav class="navbar navbar-inverse" role="navigation">
         <div class="container">
             <div class="navbar-header" id="logo-div">
-                <button id="toggle-button" type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <button type="button" id="toggle-button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <img src="../img/logo_big.png" class="navbar-brand" id="logo" href="#">
+                <img src="../img/logo_big.png" class="navbar-brand" id="logo"/>
                 <!-- <p id="title-p"><strong>Computational Molecular Design & Metabolomics Lab</strong></p> -->
             </div>
-        </div>
-    </nav>
-    <nav class="navbar navbar-inverse" role="navigation" id="menu-nav">
-        <div class="container" id="menu">
-            <div class="collapse navbar-collapse">
-                <ul class="nav navbar-nav navbar-left">
+            <!-- <nav class="navbar navbar-inverse" role="navigation" id="menu-nav"> -->
+        
+            <div class="collapse navbar-collapse" id="navbar-collapse">
+                <ul class="nav navbar-nav">
                     <li><a href="../index.html">首頁</a></li>
-                    <li><a href="../about.html">關於</a></li>
-                    <li><a href="../research.html">研究</a></li>
-                    <li><a href="../honor.html">榮譽</a></li>
+                    <li><a href="../about.html">關於我們</a></li>
+                    <li><a href="../research.html">研究內容</a></li>
+                    <li><a href="../honor.html">榮譽事蹟</a></li>
                     <li><a href="../prof_acts.html">專業活動</a></li>
-                    <li><a href="../member.html">成員</a></li>
-                    <li><a href="../course.html">課程</a></li>
+                    <li><a href="../member.html">實驗室成員</a></li>
+                    <li><a href="../course.html">開設課程</a></li>
                     <li><a href="../service.html">服務</a></li>
+                    <li><a href="#" onclick="goURL()">English</a></li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
-        </div>
         <!-- /.container -->
-    </nav>
-    <!-- jQuery -->
-    <script src="../js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="../js/bootstrap.min.js"></script>
-
+        </div>
+    
     <!-- Script to Activate the Carousel -->
     <script>
     $('.carousel').carousel({
