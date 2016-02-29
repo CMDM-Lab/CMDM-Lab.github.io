@@ -91,8 +91,7 @@ h2, h3 {
     padding: 0;
     width: 100%;
 }
-
-.container>.navbar-header {
+.container-fluid>.navbar-collapse, .container-fluid>.navbar-header, .container>.navbar-collapse, .container>.navbar-header {
     margin-right: 0;
     margin-left: 0;
 }
