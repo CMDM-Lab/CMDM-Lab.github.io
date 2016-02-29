@@ -66,11 +66,6 @@ h2, h3 {
     width: 70%;
 }
 
-.navbar-header {
-    margin-right: 0;
-    margin-left: 0;
-}
-
 .navbar .navbar-nav {
   display: inline-block;
   float: none;
@@ -95,6 +90,11 @@ h2, h3 {
 .container {
     padding: 0;
     width: 100%;
+}
+
+.container>.navbar-header {
+    margin-right: 0;
+    margin-left: 0;
 }
 
 #content {
