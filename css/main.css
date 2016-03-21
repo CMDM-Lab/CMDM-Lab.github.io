@@ -17,6 +17,30 @@ h2, h3 {
     text-align: center;
 }
 
+.summary p, .summary li {
+	font-size: 1.2em;
+	font-weight: 300;
+	text-align: justify;
+	margin-right: 10%;
+	margin-left: 10%;
+	padding: 0;
+}
+
+#details-link {
+	display: inline-block;
+	width: auto;
+	padding-top: 5%;
+	padding-bottom: 5%;
+	padding-left: 10%;
+	padding-right: 10%;
+	margin-top: 5%;
+	margin-bottom: 5%;
+	margin-left:10%;
+	margin-right:10%;
+	align:right;
+	text-align:right;
+}
+
 .service-img {
     width: auto;
     height: auto;
@@ -28,7 +52,7 @@ h2, h3 {
 }
 
 #home-img {
-    width: 60%;
+    width: 70%;
     height: auto;
     margin-right: auto;
     margin-left: auto;
