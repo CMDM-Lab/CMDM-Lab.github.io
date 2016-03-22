@@ -16,6 +16,17 @@ a {
 	margin-left: 18%;
 }
 
+.bar {
+	display: block;
+	vertical-align: middle;
+	margin-left: 27%;
+}
+
+.bar img{
+	display: inline;
+	width: 15%;
+}
+
 .bar img:hover{
 	border-bottom: 3px solid #23527c;
 } 
