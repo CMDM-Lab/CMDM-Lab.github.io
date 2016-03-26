@@ -1,0 +1,331 @@
+/*
+Theme Name: Identity
+Description: Used to style the TinyMCE editor.
+*/
+/*--------------------------------------------------------------
+1.0 Body
+--------------------------------------------------------------*/
+body {
+  color: #101010;
+  font-family: "Droid Sans", sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  max-width: 720px;
+  vertical-align: baseline;
+  font-size: 16px;
+  font-size: 1rem; }
+
+/*--------------------------------------------------------------
+2.0 Headings
+--------------------------------------------------------------*/
+h1, h2, h3, h4, h5, h6 {
+  clear: both;
+  margin: 24px 0;
+  margin: 1.5rem 0;
+  line-height: 1.2;
+  font-weight: 700;
+  color: #ffffff;
+  font-family: "Roboto", "Droid Sans", sans-serif; }
+
+h1 {
+  font-size: 32px;
+  font-size: 2rem; }
+
+h2 {
+  font-size: 28px;
+  font-size: 1.75rem; }
+
+h3 {
+  font-size: 24px;
+  font-size: 1.5rem; }
+
+h4 {
+  font-size: 20px;
+  font-size: 1.25rem; }
+
+h5 {
+  font-size: 16px;
+  font-size: 1rem; }
+
+h6 {
+  font-size: 16px;
+  font-size: 1rem; }
+
+@media (min-width: 800px) {
+  h1 {
+    font-size: 40px;
+    font-size: 2.5rem; }
+
+  h2 {
+    font-size: 36px;
+    font-size: 2.25rem; }
+
+  h3 {
+    font-size: 32px;
+    font-size: 2rem; }
+
+  h4 {
+    font-size: 28px;
+    font-size: 1.75rem; }
+
+  h5 {
+    font-size: 24px;
+    font-size: 1.5rem; }
+
+  h6 {
+    font-size: 20px;
+    font-size: 1.25rem; } }
+/*--------------------------------------------------------------
+3.0 Elements
+--------------------------------------------------------------*/
+blockquote, q {
+  quotes: "" ""; }
+  blockquote:before, blockquote:after, q:before, q:after {
+    content: ""; }
+
+blockquote {
+  background: #151515;
+  border-radius: 0 4px 4px 0;
+  color: #ffffff;
+  margin: 0;
+  padding: 0.25rem 1rem;
+  border-left: 4px solid;
+  border-left: 0.25rem solid;
+  border-color: #f60525; }
+  blockquote cite {
+    display: block;
+    text-align: right;
+    font-size: 14px;
+    font-size: 0.875rem; }
+
+hr {
+  background-color: #ccc;
+  border: 0;
+  height: 1px;
+  margin-bottom: 1.5em; }
+
+/* Lists. */
+ul, ol {
+  margin: 0 0 0.75em 1.5em; }
+
+ul {
+  list-style: disc; }
+
+ol {
+  list-style: decimal; }
+
+li > ul,
+li > ol {
+  margin-bottom: 0;
+  margin-left: 1.5em; }
+
+dt {
+  font-weight: bold; }
+
+dd {
+  margin: 0 1.5em 1.5em; }
+
+/* Tables. */
+table {
+  margin: 0 0 1.5em;
+  width: 100%;
+  max-width: 100%;
+  border: 1px solid #101010;
+  font-size: 14px;
+  font-size: 0.875rem; }
+
+thead tr {
+  background: #ed062e; }
+
+thead tr th,
+tbody tr th,
+tbody tr td,
+tfoot tr th,
+tfoot tr td {
+  border: 1px solid #101010; }
+
+thead tr th {
+  padding: 0.25rem; }
+
+tbody tr th,
+tbody tr td,
+tfoot tr th,
+tfoot tr td {
+  padding: 0.125rem 0.25rem; }
+
+tfoot tr {
+  color: #101010;
+  background: #ffffff; }
+
+/* Rows with alternating colors. */
+tbody tr:nth-child(1),
+tbody tr:nth-child(3),
+tbody tr:nth-child(5),
+tbody tr:nth-child(7),
+tbody tr:nth-child(9),
+tbody tr:nth-child(11),
+tbody tr:nth-child(13),
+tbody tr:nth-child(15),
+tbody tr:nth-child(17),
+tbody tr:nth-child(19),
+tbody tr:nth-child(21),
+tbody tr:nth-child(23),
+tbody tr:nth-child(25),
+tbody tr:nth-child(27),
+tbody tr:nth-child(29),
+tbody tr:nth-child(31),
+tbody tr:nth-child(33),
+tbody tr:nth-child(35),
+tbody tr:nth-child(37),
+tbody tr:nth-child(39),
+tbody tr:nth-child(41),
+tbody tr:nth-child(43),
+tbody tr:nth-child(45),
+tbody tr:nth-child(47),
+tbody tr:nth-child(49) {
+  color: #101010;
+  background: #ffffff; }
+
+tbody tr:nth-child(2),
+tbody tr:nth-child(4),
+tbody tr:nth-child(6),
+tbody tr:nth-child(8),
+tbody tr:nth-child(10),
+tbody tr:nth-child(12),
+tbody tr:nth-child(14),
+tbody tr:nth-child(16),
+tbody tr:nth-child(18),
+tbody tr:nth-child(20),
+tbody tr:nth-child(22),
+tbody tr:nth-child(24),
+tbody tr:nth-child(26),
+tbody tr:nth-child(28),
+tbody tr:nth-child(30),
+tbody tr:nth-child(32),
+tbody tr:nth-child(34),
+tbody tr:nth-child(36),
+tbody tr:nth-child(38),
+tbody tr:nth-child(40),
+tbody tr:nth-child(42),
+tbody tr:nth-child(44),
+tbody tr:nth-child(46),
+tbody tr:nth-child(48),
+tbody tr:nth-child(50) {
+  color: #101010;
+  background: #98b7d5; }
+
+/*--------------------------------------------------------------
+4.0 Alignments
+--------------------------------------------------------------*/
+.alignnone {
+  display: block;
+  margin-left: 0;
+  margin-right: 0; }
+
+.alignleft {
+  display: inline;
+  float: left;
+  margin-right: 1.5em; }
+
+.alignright {
+  display: inline;
+  float: right;
+  margin-left: 1.5em; }
+
+.aligncenter {
+  display: block;
+  margin-left: auto;
+  margin-right: auto; }
+
+/*--------------------------------------------------------------
+5.0 Media
+--------------------------------------------------------------*/
+figure {
+  padding: 0;
+  margin: 0; }
+
+.wp-caption {
+  margin-bottom: 1.6em;
+  max-width: 100%; }
+
+.wp-caption img[class*="wp-image-"] {
+  display: block;
+  margin: 0; }
+
+.wp-caption-text {
+  line-height: 1.2;
+  padding: 0.5em 0;
+  font-style: italic;
+  font-size: 14px;
+  font-size: 0.875rem; }
+
+.gallery {
+  margin-bottom: 1.6em; }
+
+.gallery-item {
+  display: inline-block;
+  padding: 4px;
+  padding: 0.25rem;
+  text-align: center;
+  vertical-align: top;
+  width: 100%; }
+
+.gallery-columns-2 .gallery-item {
+  max-width: 50%; }
+
+.gallery-columns-3 .gallery-item {
+  max-width: 33.33%; }
+
+.gallery-columns-4 .gallery-item {
+  max-width: 25%; }
+
+.gallery-columns-5 .gallery-item {
+  max-width: 20%; }
+
+.gallery-columns-6 .gallery-item {
+  max-width: 16.66%; }
+
+.gallery-columns-7 .gallery-item {
+  max-width: 14.28%; }
+
+.gallery-columns-8 .gallery-item {
+  max-width: 12.5%; }
+
+.gallery-columns-9 .gallery-item {
+  max-width: 11.11%; }
+
+.gallery-icon img {
+  margin: 0 auto; }
+
+.gallery-columns-6 .gallery-caption,
+.gallery-columns-7 .gallery-caption,
+.gallery-columns-8 .gallery-caption,
+.gallery-columns-9 .gallery-caption {
+  display: none; }
+
+.page-content .wp-smiley,
+.entry-content .wp-smiley,
+.comment-content .wp-smiley {
+  border: none;
+  margin-bottom: 0;
+  margin-top: 0;
+  padding: 0; }
+
+/* Make sure embeds and iframes fit their containers. */
+embed,
+iframe,
+object {
+  max-width: 100%; }
+
+figure {
+  margin: 0;
+  max-width: 100%;
+  overflow: hidden;
+  box-sizing: border-box; }
+
+a img {
+  -webkit-transition: 0.25s ease-in-out;
+          transition: 0.25s ease-in-out; }
+  a img:hover {
+    -webkit-filter: grayscale(50%);
+            filter: grayscale(50%); }

@@ -1,0 +1,303 @@
+/*!
+ * Start Bootstrap - Modern Business HTML Template (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+/* Global Styles */
+
+html,
+body {
+    background: url(../img/square_bg.png);
+    padding-top: 0em; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    opacity: 1;
+}
+
+h2, h3 {
+    text-align: center;
+}
+
+.summary p, .summary li {
+	font-size: 1.2em;
+	font-weight: 300;
+	text-align: justify;
+	margin-right: 10%;
+	margin-left: 10%;
+	padding: 0;
+}
+
+#details-link {
+	display: inline-block;
+	width: auto;
+	padding-top: 5%;
+	padding-bottom: 5%;
+	padding-left: 10%;
+	padding-right: 10%;
+	margin-top: 5%;
+	margin-bottom: 5%;
+	margin-left:10%;
+	margin-right:10%;
+	align:right;
+	text-align:right;
+}
+
+.service-img {
+    width: auto;
+    height: auto;
+}
+
+#service-img-2 {
+    width: 40%;
+    height: 30%;
+}
+
+#home-img {
+    width: 70%;
+    height: auto;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#about_cover {
+    padding-left: auto;
+    padding-right: auto;
+}
+
+#img-inside { /*about.html img*/  /*janetseng.html*/ 
+    display: block;
+    width: auto;
+    height: auto;
+    margin: auto;
+    position: relative;
+}
+
+#img-left { /*member.html*/ /*janetseng.html*/ 
+    display: block;
+    width: auto;
+    height: auto;
+    position: relative;
+}
+
+#rightPane { /*member.html*/
+	margin-top:10%;
+	float: right;
+    text-align: left;
+	width: 30%;
+}
+
+#leftPane { /*member.html*/
+    float: left;
+    width: 70%;
+}
+
+.navbar .navbar-nav {
+  display: inline-block;
+  float: none;
+  padding-left: 18%;
+  padding-right: 18%;
+  text-align: center;;
+}
+
+.navbar .navbar-collapse {
+  text-align: center;
+}
+
+.navbar {
+    background-color: white;
+    border: none;
+    color: black;
+    margin-bottom: 0;
+    width: 100%;
+}
+
+
+.container {
+    padding: 0;
+    width: 100%;
+}
+.container-fluid>.navbar-collapse, .container-fluid>.navbar-header, .container>.navbar-collapse, .container>.navbar-header {
+    margin-right: 0;
+    margin-left: 0;
+}
+
+#content {
+    padding-left: 15%;
+    padding-right: 15%;
+}
+
+#toggle-button{
+    background-color: #DC143C;
+    border: none;
+    color: black;
+}
+
+#logo-div {
+    width: 100%;
+}
+
+#title-p {
+    display: inline-block;
+    margin-top: 5%;
+    width: 70%;
+    height: 40%;
+    font-size: 1.7em;
+    text-align: center;
+}
+#menu-nav {
+    padding: 0;
+}
+#menu {
+    width: 100%;
+    font-size: 1.2em;
+    background-color: #DC143C;
+    border-radius: 4px
+}
+
+
+.collapse ul li a{
+    background-color: #DC143C;
+    color: white;
+    text-align: center;
+}
+
+.collapse ul li a:hover{
+    background-color: white;
+    color: red;
+    text-align: center;
+}
+
+#navbar-collapse {
+    width: 100%;
+    padding: 0;
+    font-weight: bold;
+}
+
+#navbar-collapse ul{
+    color: white;
+    background-color: #DC143C;
+    width: 100%;
+}
+
+#navbar-collapse ul li{
+    padding-right: auto;
+    padding-left: auto;
+}
+
+#navbar-collapse ul li a{
+    background-color: #DC143C;
+    color: white;
+    text-align: center;
+}
+
+#navbar-collapse ul li a:hover{
+    background-color: white;
+    color: black;
+    text-align: center;
+}
+
+.navbar-inverse .navbar-nav>li>a{
+    color: white;
+}
+
+.navbar-inverse .navbar-nav>li>a:focus, .navbar-inverse .navbar-nav>li>a:hover {
+    color: black;
+    background-color: white;
+}
+
+#logo {
+    width: 80%;
+    height: 80%;
+    padding-left: 10%;
+    padding-right: 10%;
+    margin-right: 10%;
+    margin-left: 10%;
+}
+
+.img-portfolio {
+    margin-bottom: 30px;
+}
+
+.img-hover:hover {
+    opacity: 0.8;
+}
+
+/* Home Page Carousel */
+
+header.carousel {
+    height: 50%;
+}
+
+header.carousel .item,
+header.carousel .item.active,
+header.carousel .carousel-inner {
+    height: 100%;
+}
+
+header.carousel .fill {
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+}
+
+/* 404 Page Styles */
+
+.error-404 {
+    font-size: 100px;
+}
+
+/* Pricing Page Styles */
+
+.price {
+    display: block;
+    font-size: 50px;
+    line-height: 50px;
+}
+
+.price sup {
+    top: -20px;
+    left: 2px;
+    font-size: 20px;
+}
+
+.period {
+    display: block;
+    font-style: italic;
+}
+
+/* Footer Styles */
+
+footer {
+	width: 100%;
+	height: auto;
+	text-align: center;
+}
+
+
+/* Responsive Styles */
+
+@media(max-width:991px) {
+    .customer-img,
+    .img-related {
+        margin-bottom: 30px;
+    }
+}
+
+@media(max-width:767px) {
+    .img-portfolio {
+        margin-bottom: 15px;
+    }
+
+    header.carousel .carousel {
+        height: 70%;
+    }
+}
+
+@media (max-width: 100%) {
+    #content {
+        top: 50%; /* IMPORTANT */
+        left: 50%; /* IMPORTANT */
+        display: block;
+        position: relative;
+    }
+}

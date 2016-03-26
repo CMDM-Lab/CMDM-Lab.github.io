@@ -1,0 +1,434 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Identity\n"
+"POT-Creation-Date: 2015-05-04 18:48+0100\n"
+"PO-Revision-Date: 2015-05-04 19:20+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: nl_NL\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.7.6\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: 404.php:15
+msgid "Oops! That page can&rsquo;t be found."
+msgstr "Oeps! Deze pagina kan niet worden gevonden."
+
+#: 404.php:19
+msgid ""
+"It looks like nothing was found at this location. Maybe try one of the links "
+"below or a search?"
+msgstr ""
+"Het lijkt erop dat niets werd gevonden op deze locatie. Misschien wilt u een "
+"zoekopdracht of een van de onderstaande links proberen?"
+
+#: 404.php:27
+msgid "Most Used Categories"
+msgstr "Meest gebruikte Categorieën"
+
+#: 404.php:44
+#, php-format
+msgid "Try looking in the monthly archives. %1$s"
+msgstr "Probeer te kijken in de maandelijkse archieven. %1$s"
+
+#: comments.php:28
+#, php-format
+msgctxt "comments title"
+msgid "One thought on &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
+msgstr[0] "Één reactie op &ldquo;%2$s&rdquo;"
+msgstr[1] "%1$s reacties op &ldquo;%2$s&rdquo;"
+
+#: comments.php:35 comments.php:57
+msgid "Comment navigation"
+msgstr "Reactie-navigatie"
+
+#: comments.php:38 comments.php:60
+msgid "Older Comments"
+msgstr "Oudere reacties"
+
+#: comments.php:39 comments.php:61
+msgid "Newer Comments"
+msgstr "Nieuwere reacties"
+
+#: comments.php:73
+msgid "Comments are closed."
+msgstr "Reacties zijn gesloten."
+
+#: content-aside.php:30 content-chat.php:30 content-link.php:28
+#: content-quote.php:23 content-status.php:25 content.php:33
+#, php-format
+msgid "Continue reading %s <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Lees verder %s <span class=\"meta-nav\">&rarr;</span>"
+
+#: content-aside.php:37 content-chat.php:37 content-link.php:35
+#: content-page.php:25 content-quote.php:30 content-status.php:32
+#: content.php:40
+msgid "Pages:"
+msgstr "Pagina's:"
+
+#: content-none.php:13
+msgid "Nothing Found"
+msgstr "Helaas, er is niets gevonden."
+
+#: content-none.php:19
+#, php-format
+msgid ""
+"Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+"Ben je klaar om je eerste post te publiceren? <a href=\"%1$s\">Klik hier om "
+"aan de slag te gaan</a>."
+
+#: content-none.php:23
+msgid ""
+"Sorry, but nothing matched your search terms. Please try again with some "
+"different keywords."
+msgstr ""
+"Helaas, er is niets gevonden dat overeenkomt met de zoekcriteria. Probeer "
+"het nog eens met andere zoekwoorden."
+
+#: content-none.php:28
+msgid ""
+"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
+"searching can help."
+msgstr ""
+"Het lijkt erop dat wij niet kunnen vinden wat je zoekt. Wellicht biedt de "
+"zoekfunctie uitkomst."
+
+#: content-page.php:32 inc/template-tags.php:131
+msgid "Edit"
+msgstr "Bewerk"
+
+#: content-status.php:21
+msgid "Status update: "
+msgstr "Status update:"
+
+#: footer.php:17
+msgid "Proudly powered by "
+msgstr "Mogelijk gemaakt door %s."
+
+#: footer.php:17
+msgid "http://wordpress.org/"
+msgstr "http://nl.wordpress.org/"
+
+#: footer.php:18
+#, php-format
+msgid "Theme: %1$s by %2$s"
+msgstr "Thema:%1$s door%2$s"
+
+#: functions.php:76
+msgid "Primary Menu"
+msgstr "Hoofdmenu"
+
+#: functions.php:77
+msgid "Social Menu"
+msgstr "Sociale Menu"
+
+#: functions.php:113
+msgid "Sidebar Widget Area"
+msgstr "Zijbalk Widget Gebied"
+
+#: functions.php:122
+msgid "Footer Widget Area"
+msgstr "Voetbalk Widget Gebied"
+
+#: functions.php:146
+msgctxt "Droid sans: on or off"
+msgid "on"
+msgstr "on"
+
+#: functions.php:151
+msgctxt "Roboto font: on or off"
+msgid "on"
+msgstr "on"
+
+#: header.php:24
+msgid "Skip to content"
+msgstr "Naar de inhoud"
+
+#: header.php:28
+msgid "Mobile Menu Navigation"
+msgstr "Mobiele Menu Navigatie"
+
+#: header.php:29
+msgid "Menu"
+msgstr "Menu"
+
+#: header.php:34 header.php:42
+msgid "Enter your search query &#8230"
+msgstr "Voer uw zoekopdracht in &#8230"
+
+#: header.php:60
+msgid "Menu Toggle"
+msgstr "Menu Knop"
+
+#: header.php:65
+msgid "Desktop Menu Navigation"
+msgstr "Desktop Menu Navigatie"
+
+#: header.php:68
+msgid "Search Toggle"
+msgstr "Zoek Knop"
+
+#: inc/customizer.php:62
+msgid "Theme Options"
+msgstr "Thema Opties"
+
+#: inc/customizer.php:68
+msgid "Header Options"
+msgstr "Header Opties"
+
+#: inc/customizer.php:76
+msgid "Sidebar Options"
+msgstr "Zijbalk Opties"
+
+#: inc/customizer.php:84
+msgid "Footer Options"
+msgstr "Voetbalk Opties"
+
+#: inc/customizer.php:96
+msgid "Header image: "
+msgstr "Koptekst afbeelding:"
+
+#: inc/customizer.php:101
+msgid "Custom header image"
+msgstr "Eigen koptekst afbeelding:"
+
+#: inc/customizer.php:102
+msgid "Post thumbnail"
+msgstr "Thumbnail artikel"
+
+#: inc/customizer.php:112
+msgid "Show header content: "
+msgstr "Toon de inhoud van koptekst:"
+
+#: inc/customizer.php:117
+msgid "On all pages"
+msgstr "Op alle pagina&apos;s"
+
+#: inc/customizer.php:118
+msgid "Frontpage only"
+msgstr "Alleen de voorpagina"
+
+#: inc/customizer.php:119
+msgid "Not at all"
+msgstr "Helemaal niet"
+
+#: inc/customizer.php:129
+msgid "Header content: "
+msgstr "Inhoud van de koptekst: "
+
+#: inc/customizer.php:134
+msgid "Default"
+msgstr "Standaard"
+
+#: inc/customizer.php:135
+msgid "Biography"
+msgstr "Biografie"
+
+#: inc/customizer.php:136
+msgid "Page"
+msgstr "Pagina"
+
+#: inc/customizer.php:146
+msgid "Biography selection:"
+msgstr "Biografie selectie:"
+
+#: inc/customizer.php:157
+msgid "Page selection:"
+msgstr "Pagina selectie:"
+
+#: inc/customizer.php:169
+msgid "Sidebar: "
+msgstr "Zijbalk: "
+
+#: inc/customizer.php:174
+msgid "Right sidebar"
+msgstr "Rechter zijbalk"
+
+#: inc/customizer.php:175
+msgid "Left sidebar"
+msgstr "Linker zijbalk"
+
+#: inc/customizer.php:176
+msgid "No sidebar"
+msgstr "Geen zijbalk"
+
+#: inc/customizer.php:186
+msgid "Number of footer widgets: "
+msgstr "Aantal widgets in de voetbalk: "
+
+#: inc/customizer.php:191
+msgid "No widgets"
+msgstr "Geen widgets"
+
+#: inc/customizer.php:192
+msgid "Two widgets"
+msgstr "Twee widgets"
+
+#: inc/customizer.php:193
+msgid "Three widgets"
+msgstr "Drie widgets"
+
+#: inc/customizer.php:194
+msgid "Four widgets"
+msgstr "Vier widgets"
+
+#: inc/extras.php:110
+#, php-format
+msgid "Page %s"
+msgstr "Pagina %s"
+
+#: inc/template-tags.php:23
+msgid "Posts navigation"
+msgstr "Berichtnavigatie"
+
+#: inc/template-tags.php:27
+msgid "Older posts"
+msgstr "Oudere berichten"
+
+#: inc/template-tags.php:31
+msgid "Newer posts"
+msgstr "Nieuwere berichten"
+
+#: inc/template-tags.php:56
+msgid "Post navigation"
+msgstr "Berichtnavigatie"
+
+#: inc/template-tags.php:77
+msgid "Sticky"
+msgstr "Sticky"
+
+#: inc/template-tags.php:81 inc/template-tags.php:144
+msgid ", "
+msgstr ","
+
+#: inc/template-tags.php:160
+msgid "Leave a comment"
+msgstr "Laat een reactie achter"
+
+#: inc/template-tags.php:160
+msgid "1 Comment"
+msgstr "1 Reactie"
+
+#: inc/template-tags.php:160
+msgid "% Comments"
+msgstr "% Reacties"
+
+#: inc/template-tags.php:179
+#, php-format
+msgid "Category: %s"
+msgstr "Categorie: %s"
+
+#: inc/template-tags.php:181
+#, php-format
+msgid "Tag: %s"
+msgstr "Tag: %s"
+
+#: inc/template-tags.php:183
+#, php-format
+msgid "Author: %s"
+msgstr "Auteur: %s"
+
+#: inc/template-tags.php:185
+#, php-format
+msgid "Year: %s"
+msgstr "Jaar: %s"
+
+#: inc/template-tags.php:185
+msgctxt "yearly archives date format"
+msgid "Y"
+msgstr "Y"
+
+#: inc/template-tags.php:187
+#, php-format
+msgid "Month: %s"
+msgstr "Maand: %s"
+
+#: inc/template-tags.php:187
+msgctxt "monthly archives date format"
+msgid "F Y"
+msgstr "F Y"
+
+#: inc/template-tags.php:189
+#, php-format
+msgid "Day: %s"
+msgstr "Dag: %s"
+
+#: inc/template-tags.php:189
+msgctxt "daily archives date format"
+msgid "F j, Y"
+msgstr "d F, Y"
+
+#: inc/template-tags.php:192
+msgctxt "post format archive title"
+msgid "Asides"
+msgstr "Asides"
+
+#: inc/template-tags.php:194
+msgctxt "post format archive title"
+msgid "Galleries"
+msgstr "Galerijen"
+
+#: inc/template-tags.php:196
+msgctxt "post format archive title"
+msgid "Images"
+msgstr "Afbeeldingen"
+
+#: inc/template-tags.php:198
+msgctxt "post format archive title"
+msgid "Videos"
+msgstr "Video's"
+
+#: inc/template-tags.php:200
+msgctxt "post format archive title"
+msgid "Quotes"
+msgstr "Citaten"
+
+#: inc/template-tags.php:202
+msgctxt "post format archive title"
+msgid "Links"
+msgstr "Links"
+
+#: inc/template-tags.php:204
+msgctxt "post format archive title"
+msgid "Statuses"
+msgstr "Statussen"
+
+#: inc/template-tags.php:206
+msgctxt "post format archive title"
+msgid "Audio"
+msgstr "Audio"
+
+#: inc/template-tags.php:208
+msgctxt "post format archive title"
+msgid "Chats"
+msgstr "Chats"
+
+#: inc/template-tags.php:211
+#, php-format
+msgid "Archives: %s"
+msgstr "Archieven: %s"
+
+#: inc/template-tags.php:215
+#, php-format
+msgid "%1$s: %2$s"
+msgstr "%1$s: %2$s"
+
+#: inc/template-tags.php:217
+msgid "Archives"
+msgstr "Archieven"
+
+#: search.php:16
+#, php-format
+msgid "Search Results for: %s"
+msgstr "Zoekresultaten voor: %s"

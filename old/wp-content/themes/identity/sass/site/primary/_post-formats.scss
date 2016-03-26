@@ -1,0 +1,451 @@
+/* Global post-format color schemes. */
+.type-page,
+.type-portfolio,
+.format-standard,
+.single-format-standard {
+	color: $color__pf-standard-text;
+	background: $color__pf-standard-background;
+}
+.format-aside,
+.single-format-aside {
+	color: $color__pf-aside-text;
+	background: $color__pf-aside-background;
+}
+.format-quote,
+.single-format-quote {
+	color: $color__pf-quote-text;
+	background: $color__pf-quote-background;
+}
+.format-link,
+.single-format-link {
+	color: $color__pf-link-text;
+	background: $color__pf-link-background;
+}
+.format-image,
+.single-format-image {
+	color: $color__pf-image-text;
+	background: $color__pf-image-background;
+}
+.format-gallery,
+.single-format-gallery {
+	color: $color__pf-gallery-text;
+	background: $color__pf-gallery-background;
+}
+.format-status,
+.single-format-status {
+	color: $color__pf-status-text;
+	background: $color__pf-status-background;
+}
+.format-video,
+.single-format-video {
+	color: $color__pf-video-text;
+	background: $color__pf-video-background;
+}
+.format-audio,
+.single-format-audio {
+	color: $color__pf-audio-text;
+	background: $color__pf-audio-background;
+}
+.format-chat,
+.single-format-chat {
+	color: $color__pf-chat-text;
+	background: $color__pf-chat-background;
+}
+
+/* Special styling for some post formats. */
+.format-aside .inner-flex,
+.single-format-aside .inner-flex,
+.format-link .inner-flex,
+.single-format-link .inner-flex,
+.format-quote .inner-flex,
+.single-format-quote .inner-flex,
+.format-status .inner-flex,
+.single-format-status .inner-flex,
+.format-chat .inner-flex,
+.single-format-chat .inner-flex {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 1.5em;
+	.inner-left {
+		display: flex;
+		align-items: center;
+		text-align: center;
+		min-width: 50px;
+		min-width: 3.125rem;
+		padding-bottom: 16px;
+		padding-bottom: 1rem;
+		margin-bottom: 32px;
+		margin-bottom: 2rem;
+		border-right: none;
+		border-bottom: 2px dashed $white;
+		.genericon {
+			margin: 0 auto;
+			padding: 8px;
+			padding: 0.5rem;
+			@include font-size(3.5);
+		}
+		.genericon-quote {
+			transform: rotateY(180deg);
+		}
+	}
+	.inner-right {
+		padding-left: 0;
+	}
+	.entry-content {
+		margin-bottom: 0.75em;
+	}
+}
+
+/* Aside post-format. */
+.blog .format-aside .entry-title,
+.archive .format-aside .entry-title {
+	@include font-size(1.5);
+}
+.format-aside,
+.single-format-aside {
+	.entry-content a,
+	h1.entry-title a:hover,
+	.post-navigation .nav-links a,
+	b.fn a:hover,
+	.reply a:hover,
+	.comment-metadata a:hover {
+		text-shadow: none;
+		color: $color__pf-aside-link;
+	}
+	.post-navigation .nav-links a:hover {
+		color: $white;
+	}
+}
+
+/* Quote post-format. */
+.format-quote,
+.single-format-quote {
+	.entry-content {
+		margin-top: 0;
+	}
+	blockquote {
+		margin: 0;
+		padding: 0;
+		font-family: $font__quote;
+		font-weight: 300;
+		font-style: italic;
+		font-size: 24px;
+		font-size: 1.5rem;
+		border: none;
+		background: transparent;
+	}
+	.entry-content a,
+	.post-navigation .nav-links a,
+	b.fn a:hover,
+	.reply a:hover,
+	.comment-metadata a:hover {
+		text-shadow: none;
+		color: $color__pf-quote-link;
+	}
+	.post-navigation .nav-links a:hover {
+		color: $white;
+	}
+}
+
+/* Link post-format. */
+.format-link,
+.single-format-link {
+	.entry-title {
+		@include font-size(1.5);
+	}
+	h1.entry-title a:hover,
+	.entry-content a,
+	.post-navigation .nav-links a,
+	b.fn a:hover,
+	.reply a:hover,
+	.comment-metadata a:hover {
+		text-shadow: none;
+		color: $color__pf-link-link;
+	}
+	h1.link-title .genericon-external {
+		vertical-align: super;
+	}
+}
+
+/* Image post-format. */
+.format-image a,
+.single-format-image a {
+	
+}
+.format-image,
+.single-format-image {
+	h1, h2, h3, h4, h5, h6,
+	h1.entry-title a,
+	b.fn a,
+	.reply a,
+	.comment-metadata a,
+	.cat-links a:hover,
+	.post-navigation .nav-links a:hover {
+		color: $color__headings-alt;
+	}
+	h1.entry-title a:hover,
+	.cat-links a,
+	.entry-content a,
+	.post-navigation .nav-links a,
+	b.fn a:hover,
+	.reply a:hover,
+	.comment-metadata a:hover {
+		text-shadow: none;
+		color: $color__pf-image-link;
+	}
+}
+
+/* Gallery post-format. */
+.format-gallery,
+.single-format-gallery {
+	.cat-links a,
+	.entry-content a,
+	.entry-title a:hover,
+	.post-navigation .nav-links a,
+	b.fn a:hover,
+	.reply a:hover,
+	.comment-metadata a:hover  {
+		text-shadow: none;
+		color: $color__pf-gallery-link;
+	}
+	.entry-content a:hover,
+	.post-navigation .nav-links a:hover {
+		color: $color__link-hover-alt;
+	}
+}
+
+/* Status post-format. */
+.format-status,
+.single-format-status {
+	.entry-content {
+		display: block;
+		width: 100%;
+		border-radius: 4px;
+		padding: 44px 28px 36px 28px;
+		padding: 2.75rem 1.75rem 2.25rem 1.75rem;
+		background: $color__sidebar-background;
+		.status-update {
+			position: relative;
+			margin: 0;
+			font-weight: 700;
+			text-transform: uppercase;
+			font-family: $font__headings;
+			@include font-size(1);
+			&::after {
+				content: "";
+				position: absolute;
+				left: 0;
+				top: -14px;
+				height: 1px;
+				width: 40px;
+				border-bottom: 4px solid $color__sidebar-bullets;
+			}
+		}
+		p {
+			@include font-size(0.875);
+		}
+	}
+}
+
+/* Video post-format. */
+.format-video,
+.single-format-video {
+	.cat-links a,
+	.entry-content a,
+	.entry-title a:hover,
+	.post-navigation .nav-links a,
+	b.fn a:hover,
+	.reply a:hover,
+	.comment-metadata a:hover  {
+		text-shadow: none;
+		color: $color__pf-video-link;
+	}
+	.entry-content a:hover,
+	.post-navigation .nav-links a:hover {
+		color: $color__link-hover-alt;
+	}
+}
+
+/* Audio post-format. */
+.format-audio,
+.single-format-audio {
+	.cat-links a,
+	.entry-content a,
+	.entry-title a:hover,
+	.post-navigation .nav-links a,
+	b.fn a:hover,
+	.reply a:hover,
+	.comment-metadata a:hover  {
+		text-shadow: none;
+		color: $color__pf-audio-link;
+	}
+	.entry-content a:hover,
+	.post-navigation .nav-links a:hover {
+		color: $color__link-hover-alt;
+	}
+}
+
+/* Chat post-format. */
+.format-chat,
+.single-format-chat {
+	.article-inner .inner-flex .inner-left {
+		border-color: $color__pf-chat-text;
+	}
+	h1, h2, h3, h4, h5, h6,
+	h1.entry-title a,
+	b.fn a,
+	.reply a,
+	.comment-metadata a,
+	.cat-links a:hover,
+	.post-navigation .nav-links a:hover {
+		color: $color__headings-alt;
+	}
+	.entry-content a,
+	.entry-title a:hover,
+	.post-navigation .nav-links a,
+	b.fn a:hover,
+	.reply a:hover,
+	.comment-metadata a:hover {
+		text-shadow: none;
+		color: $color__pf-chat-link;
+	}
+}
+
+/* Add a border to two articles with the same post format. */
+.article-inner,
+.nav-com-container {
+	position: relative;
+}
+.format-standard + .format-standard .article-inner::after,
+.format-image + .format-image .article-inner:after,
+.format-gallery + .format-gallery .article-inner:after,
+.format-aside + .format-aside .article-inner:after,
+.format-quote + .format-quote .article-inner:after,
+.format-link + .format-link .article-inner:after,
+.format-status + .format-status .article-inner:after,
+.format-video + .format-video .article-inner:after,
+.format-audio + .format-audio .article-inner:after,
+.format-chat + .format-chat .article-inner:after,
+.page-header + .format-standard .article-inner::after,
+.format-standard + .type-page .article-inner::after,
+.type-page + .format-standard .article-inner::after,
+.type-page + .type-page .article-inner::after {
+	position: absolute;
+	left: 0;
+	top: 0;
+	content: "";
+	height: 1px;
+	width: 100%;
+	border-top: 4px solid $grey;
+}
+.format-image + .format-image .article-inner:after {
+	border-color: $color__pf-image-link;
+}
+.format-gallery + .format-gallery .article-inner:after {
+	border-color: $color__pf-gallery-link;
+}
+.format-aside + .format-aside .article-inner:after,
+.format-quote + .format-quote .article-inner:after,
+.format-link + .format-link .article-inner:after,
+.format-status + .format-status .article-inner:after {
+	border-top: 2px dashed $white;
+}
+.format-video + .format-video .article-inner:after {
+	border-color: $color__pf-video-link;
+}
+.format-audio + .format-audio .article-inner:after {
+	border-color: $color__pf-audio-link;
+}
+.format-chat + .format-chat .article-inner:after {
+	border-top: 2px dashed $black;
+}
+.format-standard + .nav-com-container .navigation::after {
+	top: -1.5em;
+}
+
+/* Pin to the right on a left sidebar layout. */
+.left-sidebar .format-standard + .format-standard .article-inner::after,
+.left-sidebar .format-image + .format-image .article-inner:after,
+.left-sidebar .format-gallery + .format-gallery .article-inner:after,
+.left-sidebar .format-aside + .format-aside .article-inner:after,
+.left-sidebar .format-quote + .format-quote .article-inner:after,
+.left-sidebar .format-link + .format-link .article-inner:after,
+.left-sidebar .format-status + .format-status .article-inner:after,
+.left-sidebar .format-video + .format-video .article-inner:after,
+.left-sidebar .format-audio + .format-audio .article-inner:after,
+.left-sidebar .format-chat + .format-chat .article-inner:after,
+.left-sidebar .page-header + .format-standard .article-inner::after,
+.left-sidebar .format-standard + .type-page .article-inner::after,
+.left-sidebar .type-page + .format-standard .article-inner::after,
+.left-sidebar .type-page + .type-page .article-inner::after {
+	left: auto;
+	right: 0;
+}
+
+@media (min-width: 800px) {
+	/* Special styling for some post formats. */
+	.format-aside .inner-flex,
+	.single-format-aside .inner-flex,
+	.format-link .inner-flex,
+	.single-format-link .inner-flex,
+	.format-quote .inner-flex,
+	.single-format-quote .inner-flex,
+	.format-status .inner-flex,
+	.single-format-status .inner-flex,
+	.format-chat .inner-flex,
+	.single-format-chat .inner-flex {
+		flex-direction: row;
+		.inner-left {
+			min-width: 100px;
+			min-width: 6.25rem;
+			margin-bottom: 0;
+			border-bottom: none;
+			border-right: 2px dashed $white;
+			.genericon {
+				padding: 16px;
+				padding: 1rem;
+				@include font-size(4);
+			}
+		}
+		.inner-right {
+			padding-left: 32px;
+			padding-left: 2rem;
+		}
+	}
+
+	/* Aside post-format. */
+	.blog .format-aside .entry-title,
+	.archive .format-aside .entry-title {
+		@include font-size(2.0);
+	}
+
+	/* Link post-format. */
+	.format-link,
+	.single-format-link {
+		.entry-title {
+			@include font-size(2.0);
+		}
+	}
+}
+
+@media (min-width: 1000px) {
+	/* Limit width of border between the same articles. */
+	.format-standard + .format-standard .article-inner::after,
+	.format-image + .format-image .article-inner:after,
+	.format-gallery + .format-gallery .article-inner:after,
+	.format-aside + .format-aside .article-inner:after,
+	.format-quote + .format-quote .article-inner:after,
+	.format-link + .format-link .article-inner:after,
+	.format-status + .format-status .article-inner:after,
+	.format-video + .format-video .article-inner:after,
+	.format-audio + .format-audio .article-inner:after,
+	.format-chat + .format-chat .article-inner:after,
+	.page-header + .format-standard .article-inner::after,
+	.format-standard + .type-page .article-inner::after,
+	.type-page + .format-standard .article-inner::after,
+	.type-page + .type-page .article-inner::after {
+		max-width: 720px;
+		max-width: 45rem;
+	}
+
+}

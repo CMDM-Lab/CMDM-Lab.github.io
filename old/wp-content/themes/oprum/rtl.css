@@ -1,0 +1,37 @@
+/*
+Theme Name: Oprum
+
+Adding support for language written in a Right To Left (RTL)
+
+*/
+
+body {
+	direction: rtl;
+	unicode-bidi: embed;
+}
+
+body.rtl {
+	font-family: Arial, Tahoma, sans-serif;
+}
+
+.rtl blockquote {
+	border: none;
+	margin: 0 -21px 35px 0;
+	padding-left: 0;
+	padding-right: 17px;
+}
+
+.rtl blockquote > blockquote {
+	margin-left: auto;
+	margin-right: 0;
+}
+
+.rtl li > ul,
+.rtl li > ol {
+	margin: 0 23px 0 0;
+}
+
+.rtl table th,
+.rtl table caption {
+	text-align: right;
+}

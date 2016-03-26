@@ -1,0 +1,302 @@
+/*
+Theme Name: Oprum
+Description: Used to style the TinyMCE editor.
+*/
+
+
+/**
+ * =Body
+ */
+
+body {
+	color: #333;
+	font-family: "Open Sans", Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	margin: 20px 40px;
+	max-width: 660px;
+	vertical-align: baseline;
+}
+
+.col {
+float: left;
+margin-left: 3.2%;
+margin-bottom: 30px;
+}
+/* grid4 col */
+.grid4 .col {
+width: 22.6%;
+}
+/* grid3 col */
+.grid3 .col {
+width: 31.2%;
+}
+/* grid2 col */
+.grid2 .col {
+width: 48.4%;
+}
+/* clear col */
+.grid4 .col:nth-of-type(4n+1),
+.grid3 .col:nth-of-type(3n+1),
+.grid2 .col:nth-of-type(2n+1) {
+margin-left: 0;
+clear: left;
+}
+
+/**
+ * =Responsive colums
+ */
+@media screen and (max-width: 900px) {
+/* grid4 */
+.grid4 .col {
+width: 48.4%;
+}
+.grid4 .col:nth-of-type(3n+1) {
+margin-left: 3.2%;
+clear: none;
+}
+.grid4 .col:nth-of-type(2n+1) {
+margin-left: 0;
+clear: left;
+}
+/* grid3 */
+.grid3 .col {
+width: 31.2%;
+}
+.grid3 .col:nth-of-type(3n+1) {
+margin-left: 0;
+clear: none;
+}
+}
+@media screen and (max-width: 650px) {
+/* grid4 */
+.col {
+width: 100% !important;
+margin-left: 0 !important;
+clear: none !important;
+}
+}
+
+/**
+ * =Typography
+ */
+
+h1, h2, h3, h4 {
+font-family: "Open Sans", Helvetica, Arial, sans-serif;
+font-weight: 600;
+}
+h5, h6 {
+font-family: "Open Sans", Helvetica, Arial, sans-serif;
+font-weight: 600;
+}
+
+p {
+	margin: 0 0 28px;
+}
+
+b,
+strong {
+	font-weight: 600;
+}
+
+dfn,
+cite,
+em,
+i {
+	font-style: italic;
+}
+
+blockquote {
+	font-size: 20px;
+	font-style: italic;
+	line-height: 30px;
+}
+
+blockquote > blockquote {
+	margin-left: 0;
+}
+
+blockquote p {
+	margin-bottom: 25px;
+}
+
+blockquote > p:last-child {
+	margin-bottom: 0;
+}
+
+blockquote cite,
+blockquote small {
+	font-size: 14px;
+}
+
+address {
+	margin: 0 0 25px;
+}
+
+code,
+kbd,
+tt,
+var,
+samp,
+pre {
+	font-family: monospace;
+}
+
+pre {
+	background-color: #fcfcfc;
+	border: 1px solid #eaeaea;
+	font-size: 17px;
+	line-height: 1.2353;
+	margin-bottom: 28px;
+	max-width: 100%;
+	overflow: auto;
+	padding: 14px;
+	white-space: pre;
+	white-space: pre-wrap;
+	word-wrap: break-word;
+}
+
+abbr[title] {
+	border-bottom: 1px dotted #eaeaea;
+	cursor: help;
+}
+
+mark,
+ins {
+	background-color: #fff9c0;
+	text-decoration: none;
+}
+
+sup,
+sub {
+	font-size: 75%;
+	height: 0;
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline;
+}
+
+sup {
+	bottom: 1ex;
+}
+
+sub {
+	top: .5ex;
+}
+
+small {
+	font-size: 75%;
+}
+
+big {
+	font-size: 125%;
+}
+
+img {
+	border: 0;
+	height: auto;
+	max-width: 660px;
+	vertical-align: middle;
+}
+
+a img {
+	display: block;
+}
+
+figure {
+	margin: 0;
+}
+
+del {
+	opacity: 0.8;
+}
+
+a {
+	color: blue;
+}
+
+cite {
+	border-bottom: none;
+}
+
+
+/**
+ * =Alignment
+ */
+
+.alignleft{display:inline;float:left;margin-right:1.5em;}
+.alignright{display:inline;float:right;margin-left:1.5em;}
+.aligncenter{clear:both;display:block;margin:0 auto;}
+
+
+/**
+ * =Caption
+ */
+
+.wp-caption{max-width:100%;}
+.wp-caption img[class*=wp-image-]{display:block;margin:0 auto;}
+.wp-caption-text{text-align:center;}
+.wp-caption .wp-caption-text{margin:.8075em 0;}
+
+.wp-caption-text {
+	font-size: 12px;
+	color: #666;
+	line-height: 18px;
+}
+
+
+/**
+ * =Galleries
+ */
+
+.gallery-item{display:inline-block;text-align:center;vertical-align:top;width:100%;}
+.gallery-columns-2 .gallery-item{max-width:50%;}
+.gallery-columns-3 .gallery-item{max-width:33.33%;}
+.gallery-columns-4 .gallery-item{max-width:25%;}
+.gallery-columns-5 .gallery-item{max-width:20%;}
+.gallery-columns-6 .gallery-item{max-width:16.66%;}
+.gallery-columns-7 .gallery-item{max-width:14.28%;}
+.gallery-columns-8 .gallery-item{max-width:12.5%;}
+.gallery-columns-9 .gallery-item{max-width:11.11%;}
+
+
+/**
+ * =Audio / Video
+ */
+.mce-content-body .wpview-wrap {
+	margin-bottom: 32px;
+}
+.mce-content-body .wp-audio-playlist {
+	margin: 0;
+}
+
+
+/**
+ * =RTL
+ */
+
+body.rtl {
+	font-family: Arial, Tahoma, sans-serif;
+}
+
+.rtl blockquote {
+	border-left: none;
+	border-right: 4px solid #707070;
+	margin: 0 -21px 35px 0;
+	padding-left: 0;
+	padding-right: 17px;
+}
+
+.rtl blockquote > blockquote {
+	margin-left: auto;
+	margin-right: 0;
+}
+
+.rtl li > ul,
+.rtl li > ol {
+	margin: 0 23px 0 0;
+}
+
+.rtl table th,
+.rtl table caption {
+	text-align: right;
+}
