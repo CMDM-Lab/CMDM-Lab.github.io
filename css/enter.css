@@ -1,35 +1,24 @@
 html,
 body {
     background: url(../img/gplaypattern.png);
-    margin: auto;
-    padding-top: 0em; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    /*margin: auto;*/
+    /*padding-top: 0em;*/
+    /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
     opacity: 1;
 }
 
 #logo {
-	margin-top: 5%;
+	/*margin-top: 5%;*/
 }
 
 a {
 	font-size: 16px;
 	font-size: 4vw;
-	margin-left: 18%;
+	/*margin-left: 18%;*/
 }
-
-.bar {
-	display: block;
-	vertical-align: middle;
+/*
+#enter-logo {
+	margin-right: auto;
+	margin-left: auto;
 }
-
-.bar img{
-	display: inline;
-	width: 15%;
-}
-
-.bar img:hover{
-	border-bottom: 3px solid #23527c;
-} 
-
-.bar a:hover{
-	text-decoration: none;
-}
+*/
