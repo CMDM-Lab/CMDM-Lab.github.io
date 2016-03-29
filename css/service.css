@@ -2,13 +2,24 @@
 	display: inline-block;
 	background: rgba(195,216,37,0.5);
 	border-radius: 0.5em;
-	padding: 15px;
-	width: 100%;
+	padding: 10px;
+	width: 46.5%;
+	float: left;
+	min-width: 224px;
+	position: relative;
+}
+
+.offset{
+	margin-right: 7%;
+}
+
+.offset_up{
+	margin-bottom: 3%;
 }
 
 .service_block img{
 	height: auto;
-	width: 80%;
+	width: 100%;
 	position: relative;
 	border: 3px solid #fff;
 	overflow: hidden;
@@ -24,4 +35,16 @@
 .service_block p{
 	overflow: hidden;
 	width: 100%;
+}
+
+@media (min-width: 1200px){
+
+}
+
+@media (min-width: 992px){
+	
+}
+
+@media (min-width: 768px){
+	
 }
