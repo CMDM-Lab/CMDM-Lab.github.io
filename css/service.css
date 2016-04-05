@@ -1,25 +1,14 @@
 .service_block{
 	display: inline-block;
-	background: rgba(195,216,37,0.5);
-	border-radius: 0.5em;
+	/*background: rgba(195,216,37,0.5);*/
 	padding: 10px;
-	width: 46.5%;
-	float: left;
-	min-width: 224px;
-	position: relative;
-}
-
-.offset{
-	margin-right: 7%;
-}
-
-.offset_up{
-	margin-bottom: 3%;
+	margin-bottom: 20px;
+	height: 50%;
 }
 
 .service_block img{
 	height: auto;
-	width: 100%;
+	width: 80%;
 	position: relative;
 	border: 3px solid #fff;
 	overflow: hidden;
@@ -37,14 +26,18 @@
 	width: 100%;
 }
 
-@media (min-width: 1200px){
-
+.row{
+    overflow: hidden; 
 }
 
-@media (min-width: 992px){
-	
+#last-col{
+	border-left: none;
+	border-right: none;
 }
 
-@media (min-width: 768px){
-	
+[class*="col-"]{
+	border: 3px solid gray;
+    margin-bottom: -99999px;
+    padding-bottom: 99999px;
+	margin-right: -3px;
 }

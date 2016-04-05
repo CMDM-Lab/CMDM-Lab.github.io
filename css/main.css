@@ -8,7 +8,8 @@
 
 html,
 body {
-    background: url(../img/square_bg.png);
+    /*background: url(../img/square_bg.png);*/
+    background: #eeeeee;
     padding-top: 0em; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
     opacity: 1;
 }
@@ -92,7 +93,7 @@ h2, h3 {
 
 .navbar .navbar-nav {
   display: inline-block;
-  float: none;
+  float: left;
   padding-left: 18%;
   padding-right: 18%;
   text-align: center;;
