@@ -29,7 +29,9 @@ p {
     text-align: justify;
 }
 
-
+hr {
+    border-top: 3px solid #0073e6; 
+}
 .summary p, .summary li {
 	font-size: 16px;
 	font-weight: 300;
