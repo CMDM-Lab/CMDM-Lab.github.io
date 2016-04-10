@@ -1,9 +1,9 @@
 .service_block{
 	display: inline-block;
-	background: rgba(195,216,37,0.5);
-	border-radius: 0.5em;
-	padding: 15px;
-	width: 100%;
+	/*background: rgba(195,216,37,0.5);*/
+	padding: 10px;
+	margin-bottom: 20px;
+	height: 50%;
 }
 
 .service_block img{
@@ -24,4 +24,30 @@
 .service_block p{
 	overflow: hidden;
 	width: 100%;
+}
+
+.row{
+    overflow: hidden; 
+}
+
+#last-col{
+	border-left: none;
+	border-right: none;
+}
+
+#first-col{
+	border-top: 3px solid gray;
+}
+
+[class*="col-"]{
+	border: 3px solid gray;
+    margin-bottom: -99999px;
+    padding-bottom: 99999px;
+	margin-right: -3px;
+}
+
+.col-only{
+	margin-bottom: 0px;
+	padding-bottom: 0px;
+	border-top: none;
 }

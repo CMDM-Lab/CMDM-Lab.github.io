@@ -96,7 +96,7 @@ p {
 
 .navbar .navbar-nav {
   display: inline-block;
-  float: none;
+  float: left;
   padding-left: 18%;
   padding-right: 18%;
   text-align: center;;
