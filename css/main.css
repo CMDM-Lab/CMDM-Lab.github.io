@@ -19,9 +19,16 @@ h2, h3 {
     text-align: center;
 }
 
-ul {
+ul, ol {
     padding: 0;
 }
+
+p {
+    font-size: 16px;
+    font-weight: 300;
+    text-align: justify;
+}
+
 
 .summary p, .summary li {
 	font-size: 16px;
