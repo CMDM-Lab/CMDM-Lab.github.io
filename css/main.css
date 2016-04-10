@@ -8,22 +8,25 @@
 
 html,
 body {
-    background: url(../img/square_bg.png);
+    /*background: url(../img/square_bg.png);*/
+    background: #eeeeee;
     padding-top: 0em; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
     opacity: 1;
+    font-size: 15px;
 }
 
 h2, h3 {
     text-align: center;
 }
 
+ul {
+    padding: 0;
+}
+
 .summary p, .summary li {
-	font-size: 1.2em;
+	font-size: 16px;
 	font-weight: 300;
 	text-align: justify;
-	margin-right: 10%;
-	margin-left: 10%;
-	padding: 0;
 }
 
 #details-link {
@@ -51,12 +54,6 @@ h2, h3 {
     height: 30%;
 }
 
-#home-img {
-    width: 70%;
-    height: auto;
-    margin-right: auto;
-    margin-left: auto;
-}
 
 #about_cover {
     padding-left: auto;
