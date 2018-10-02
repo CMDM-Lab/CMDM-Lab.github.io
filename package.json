@@ -1,0 +1,23 @@
+{
+  "name": "cmdm-lab.github.io",
+  "version": "1.0.0",
+  "description": "## Run on local",
+  "main": "index.js",
+  "scripts": {
+    "start": "http-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CMDM-Lab/CMDM-Lab.github.io.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CMDM-Lab/CMDM-Lab.github.io/issues"
+  },
+  "homepage": "https://github.com/CMDM-Lab/CMDM-Lab.github.io#readme",
+  "devDependencies": {
+    "http-server": "^0.11.1"
+  }
+}

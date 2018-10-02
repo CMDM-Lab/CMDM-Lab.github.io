@@ -1,5 +1,9 @@
 # CMDM Lab Website
 
+## Installation
+
+`npm install`
+
 ## Run on local
 
-`./run_local.sh`
+`npm run start`
