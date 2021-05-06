@@ -1,3 +1,4 @@
+var theContent;
 function goURL(){
 	var url = window.location.protocol + "//" + window.location.host + window.location.pathname;
 	var pos = url.indexOf(".html");
@@ -12,4 +13,8 @@ function goURL(){
 		}
 	}
 	window.location.href = newURL;
+}
+
+function choose(choice){
+	sessionStorage.setItem("theContent", choice);
 }

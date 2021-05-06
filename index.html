@@ -36,7 +36,30 @@
       $("#nav_bar").load("template/nav_bar.html"); 
     });
     $(function(){
-      $("#contents").load("contents/index.html"); 
+      
+      var theContent;
+      if (sessionStorage.getItem("theContent") === null){
+        theContent = 'home';
+      } else {
+        theContent = sessionStorage.getItem("theContent");
+      }
+      
+      if (theContent === 'home') {
+        $("#contents").load("contents/index.html");
+      } else if (theContent === 'about') {
+        $("#contents").load("contents/about.html");
+      } else if (theContent === 'research') {
+        $("#contents").load("contents/research.html");
+      } else if (theContent === 'honor') {
+        $("#contents").load("contents/honor.html");
+      } else if (theContent === 'member') {
+        $("#contents").load("contents/member.html");
+      } else if (theContent === 'course') {
+        $("#contents").load("contents/course.html");
+      } else if (theContent === 'service') {
+        $("#contents").load("contents/service.html");
+      }
+      
     });
     $(function(){
       $("#footer").load("template/footer.html"); 
