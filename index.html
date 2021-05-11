@@ -36,12 +36,11 @@
       $("#nav_bar").load("template/nav_bar.html");
     });
     $(function () {
-
-      var theContent;
-      if (sessionStorage.getItem("theContent") === null) {
-        theContent = 'home';
-      } else {
-        theContent = sessionStorage.getItem("theContent");
+      var url = window.location.href;
+      var url_param = url.split("?content=")[1];
+      var theContent = 'home';
+      if (url_param !== undefined) {
+        theContent = url_param;
       }
 
       if (theContent === 'home') {
@@ -60,6 +59,8 @@
         $("#contents").load("contents/service.html");
       } else if (theContent === 'janetseng') {
         $("#contents").load("contents/janetseng.html");
+      } else {
+        $("#contents").load("contents/index.html");
       }
 
     });

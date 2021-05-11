@@ -34,40 +34,41 @@
     <nav class="navbar navbar-inverse" role="navigation">
         <div class="container">
             <div class="navbar-header" id="logo-div">
-                <button type="button" id="toggle-button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                <button type="button" id="toggle-button" class="navbar-toggle" data-toggle="collapse"
+                    data-target="#navbar-collapse">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <img src="../img/banner.png" class="navbar-brand" id="logo"/>
+                <img src="../img/banner.png" class="navbar-brand" id="logo" />
                 <!-- <p id="title-p"><strong>Computational Molecular Design & Metabolomics Lab</strong></p> -->
             </div>
             <!-- <nav class="navbar navbar-inverse" role="navigation" id="menu-nav"> -->
-        
+
             <div style="font-family:DFKai-sb;" class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="index_zh.html" onclick="choose('home')">首頁</a></li>
-                    <li><a href="index_zh.html" onclick="choose('about')">關於實驗室</a></li>
-                    <li><a href="index_zh.html" onclick="choose('research')">研究內容</a></li>
-                    <li><a href="index_zh.html" onclick="choose('honor')">榮譽事蹟</a></li>
-                    <li><a href="index_zh.html" onclick="choose('member')">成員</a></li>
-                    <li><a href="index_zh.html" onclick="choose('course')">課程</a></li>
-                    <li><a href="index_zh.html" onclick="choose('service')">軟體服務</a></li>
-					<li class="navbar-right"><a href="#" onclick="goURL()">English</a></li>
+                    <li><a href="index_zh.html">首頁</a></li>
+                    <li><a href="index_zh.html?content=about">關於實驗室</a></li>
+                    <li><a href="index_zh.html?content=research">研究內容</a></li>
+                    <li><a href="index_zh.html?content=honor">榮譽事蹟</a></li>
+                    <li><a href="index_zh.html?content=member">成員</a></li>
+                    <li><a href="index_zh.html?content=course">課程</a></li>
+                    <li><a href="index_zh.html?content=service">軟體服務</a></li>
+                    <li class="navbar-right"><a href="#" onclick="goURL()">English</a></li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
-        <!-- /.container -->
+            <!-- /.container -->
         </div>
     </nav>
-    
+
 
     <!-- Script to Activate the Carousel -->
-    
+
     <script>
-    $('.carousel').carousel({
-        interval: 5000 //changes the speed
-    })
+        $('.carousel').carousel({
+            interval: 5000 //changes the speed
+        })
     </script>
 
 </body>
