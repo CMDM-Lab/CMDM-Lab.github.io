@@ -187,16 +187,13 @@ const people = [...grouped.values()].flat().map((member) => ({
       ]}>
         {grouped.get(role)!.map((member) => (
           <tr>
-            <td>
-              {displayName(member)}
-              {secondaryName(member) && <span> ({secondaryName(member)})</span>}
-            </td>
+            <td>{displayName(member)}{secondaryName(member) && <span> ({secondaryName(member)})</span>}</td>
             <td>{departmentLabel(member.department, locale)}</td>
-            <td>
-              {area(member)
-                ? area(member).split(' · ').map((one) => <Tag tone="brand">{one}</Tag>)
-                : ''}
-            </td>
+            {/* Written on one line on purpose: below 768px each cell becomes a
+                labelled record and `td:empty` is what drops the label of a cell
+                with no value -- and a newline inside the element is a text node,
+                which stops it being empty. */}
+            <td>{area(member) ? area(member).split(' · ').map((one) => <Tag tone="brand">{one}</Tag>) : ''}</td>
           </tr>
         ))}
       </DataTable>
@@ -215,10 +212,7 @@ const people = [...grouped.values()].flat().map((member) => ({
       {alumni.map((person) => (
         <tr>
           <td class="ds-num">{person.graduated ?? ''}</td>
-          <td>
-            {displayName(person)}
-            {secondaryName(person) && <span> ({secondaryName(person)})</span>}
-          </td>
+          <td>{displayName(person)}{secondaryName(person) && <span> ({secondaryName(person)})</span>}</td>
           {/* departmentLabel spells out the vault's codes and returns anything
               else unchanged, which is what the 2008-2022 rows carry. */}
           <td class="ds-mono-sm">{departmentLabel(person.department, locale)}</td>

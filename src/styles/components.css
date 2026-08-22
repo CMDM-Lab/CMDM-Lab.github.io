@@ -475,4 +475,251 @@
     max-width:var(--prose-measure);
   }
   .ds-list--bullet{list-style:disc;padding-left:var(--space-4)}
+
+  /* ══ Mobile (< 768px) ══════════════════════════════════════════════════
+     One breakpoint, and the layout reflow is not here: it is the token
+     override in tokens/layout.css, which re-points --page-pad-*, --nav-pad-*,
+     --column-gap and --grid-min-*, so every auto-fit grid and every container
+     collapses to one column with no rule below.
+
+     What is here is the two components that change *shape* rather than size --
+     the nav becomes a drawer and a table stops being a table -- plus the tap
+     target floor. The type ramp is deliberately untouched: the design system
+     says 13.5px body holds on a phone, and scaling it would break the tabular
+     alignment the tables depend on.
+
+     Every query below is the same `max-width:767px`. One breakpoint means one
+     number; a second number anywhere in this stylesheet is a bug, and
+     tests/design-adherence.test.mjs fails on it. */
+
+  /* The nav swap. Neither of these is a layout decision the tokens can make. */
+  .ds-mnav{display:none}
+  @media (max-width:767px){
+    .ds-nav{display:none}
+    .ds-mnav{display:block}
+  }
+
+  /* ── MobileNav ─────────────────────────────────────────────── */
+  .ds-mnav{
+    position:sticky;
+    top:0;
+    /* Above the drawer's own stacking context and above the skip link's 20. */
+    z-index:21;
+  }
+  .ds-mnav__bar{
+    display:flex;
+    align-items:center;
+    gap:var(--space-3);
+    padding:var(--nav-pad-y) var(--nav-pad-x);
+    background:color-mix(in srgb, var(--bg) 92%, transparent);
+    backdrop-filter:blur(var(--nav-blur));
+    border-bottom:var(--border-ink);
+  }
+  .ds-mnav__brand{
+    display:flex;
+    align-items:center;
+    gap:var(--space-3);
+    color:var(--text);
+    /* min-width:0 so the tagline's ellipsis has something to shrink into. */
+    min-width:0;
+  }
+  .ds-mnav__brand:hover{color:var(--text)}
+  .ds-mnav__logo{height:26px;width:auto;display:block}
+  .ds-mnav__names{display:block;min-width:0}
+  .ds-mnav__name{
+    display:block;
+    font-size:17px;
+    font-weight:var(--weight-medium);
+    letter-spacing:var(--tracking-heading);
+    line-height:1.1;
+  }
+  .ds-mnav__tagline{
+    display:block;
+    font-family:var(--kicker-font);
+    font-size:var(--kicker-size);
+    text-transform:var(--kicker-transform);
+    letter-spacing:.14em;
+    color:var(--neutral-600);
+    margin-top:2px;
+    /* Truncate, never wrap. */
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+  :root:lang(zh-Hant) .ds-mnav__tagline,
+  :root:lang(zh) .ds-mnav__tagline{letter-spacing:var(--tracking-kicker-cjk)}
+
+  .ds-mnav__menu{margin-left:auto;flex:none}
+  .ds-mnav__toggle{
+    /* The 44px floor, which is a floor and not a target. */
+    width:var(--tap-min);
+    height:var(--tap-min);
+    display:grid;
+    place-items:center;
+    border:var(--border-hairline);
+    border-radius:0;
+    cursor:pointer;
+    /* A visible border is required: the design system prohibits an icon-only
+       nav control with no box around it. */
+    list-style:none;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .ds-mnav__toggle::-webkit-details-marker{display:none}
+  .ds-mnav__menu[open] .ds-mnav__toggle{background:var(--neutral-100)}
+  .ds-mnav__glyph{display:grid;gap:5px;place-items:center}
+  .ds-mnav__glyph > span{
+    display:block;
+    width:18px;
+    height:1px;
+    background:var(--text);
+    transition:transform 120ms linear, opacity 120ms linear;
+  }
+  /* The only transition in the component: bars 1 and 3 cross, bar 2 fades. */
+  .ds-mnav__menu[open] .ds-mnav__glyph > span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+  .ds-mnav__menu[open] .ds-mnav__glyph > span:nth-child(2){opacity:0}
+  .ds-mnav__menu[open] .ds-mnav__glyph > span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+  @media (prefers-reduced-motion:reduce){
+    .ds-mnav__glyph > span{transition:none}
+  }
+
+  .ds-mnav__drawer{
+    position:absolute;
+    left:0;
+    right:0;
+    top:100%;
+    /* The drawer is the page: full height, solid background, no scrim, no
+       sheet, no radius, no elevation. */
+    height:calc(100dvh - 100%);
+    overflow-y:auto;
+    background:var(--bg);
+    border-bottom:var(--border-ink);
+    display:flex;
+    flex-direction:column;
+  }
+  /* Scroll lock while the drawer is open, without JavaScript. */
+  body:has(.ds-mnav__menu[open]){overflow:hidden}
+  .ds-mnav__row{
+    display:flex;
+    align-items:center;
+    gap:var(--space-3);
+    min-height:var(--drawer-row-h);
+    padding:0 var(--page-pad-x);
+    border-bottom:var(--border-row);
+    color:var(--text-secondary);
+    font-size:var(--text-lede);
+    -webkit-tap-highlight-color:transparent;
+  }
+  .ds-mnav__row:active{background:var(--neutral-100)}
+  .ds-mnav__index{
+    font-family:var(--font-mono);
+    font-size:var(--text-kicker-sm);
+    letter-spacing:.14em;
+    color:var(--neutral-600);
+    width:var(--drawer-index-w);
+    flex:none;
+  }
+  /* Active row: label and ordinal both accent. No left bar, no fill. */
+  .ds-mnav__row[aria-current="page"]{color:var(--accent-600)}
+  .ds-mnav__row[aria-current="page"] .ds-mnav__index{color:var(--accent-600)}
+  .ds-mnav__foot{
+    margin-top:auto;
+    padding:var(--space-4) var(--page-pad-x);
+    border-top:var(--border-ink);
+    display:flex;
+    align-items:center;
+    gap:var(--space-4);
+    flex-wrap:wrap;
+  }
+  .ds-mnav__lang{
+    color:var(--accent-600);
+    font-size:var(--text-lede);
+    /* Padding-light by design, so it needs the hit box spelled out. */
+    display:inline-flex;
+    align-items:center;
+    min-height:var(--tap-min);
+  }
+
+  /* ── One column, including the ones the tokens cannot reach ────
+     The token override collapses every auto-fit grid, because those read
+     --grid-min-*. ArticleFlow is a CSS multi-column, not a grid, so nothing
+     re-points it: at 390px it kept two 170px justified columns of English,
+     hyphenating mid-word on nearly every line. The design system's rule is
+     "everything below it is one column", so this is that rule reaching the one
+     component the tokens miss. Chinese already folds to one column at every
+     width, via the :lang() rule above. */
+  @media (max-width:767px){
+    .ds-article-flow{
+      columns:1;
+      column-rule:none;
+      text-align:left;
+      hyphens:manual;
+    }
+  }
+
+  /* ── Tap targets on touch ──────────────────────────────────────
+     Ghost buttons are visually padding-light, which is fine with a cursor and
+     not with a thumb. The floor applies wherever there is no hover, not below
+     a width: a tablet in landscape is still a thumb. */
+  @media (hover:none){
+    .ds-btn--ghost{min-height:var(--tap-min)}
+  }
+
+  /* ── Tables become records ─────────────────────────────────────
+     Below the breakpoint a table stops being a table: each row is a stacked
+     label/value record. The alternative -- scrolling a five-column table
+     sideways on a phone -- is what the design system explicitly prohibits.
+
+     Labels come from the same `columns` prop that renders <th>, handed down as
+     --col-1..--col-6 custom properties on the table element, so a cell's label
+     and its column head cannot drift apart. An unset --col-N makes `content`
+     invalid at computed-value time, which renders no pseudo-element at all --
+     so a table with fewer columns degrades silently and correctly. */
+  @media (max-width:767px){
+    .ds-table-wrap{overflow-x:visible}
+    .ds-table--stack{display:block;border-top:var(--border-ink)}
+    .ds-table--stack thead{display:none}
+    .ds-table--stack tbody{display:block}
+    .ds-table--stack tr{
+      display:grid;
+      gap:var(--space-1);
+      padding:var(--space-3) 0;
+      border-bottom:var(--border-row);
+    }
+    .ds-table--stack tr:hover{background:none}
+    /* The label hangs in its own column and the value keeps normal flow, so a
+       cell holding several things -- a name plus a romanisation, three tags --
+       stays one block. A grid here instead would make every child its own grid
+       item and drop the second one into the label column: "古庭榮" in the value
+       column and "(Ting-Jung Ku)" on the next line under the label. */
+    .ds-table--stack td{
+      display:block;
+      position:relative;
+      padding:0 0 0 calc(max(88px,32%) + var(--space-2));
+      border-bottom:0;
+      min-height:1lh;
+    }
+    /* A label with nothing beside it is noise, not information. Cells that can
+       render blank must emit no whitespace at all for this to bite --
+       tests/design-adherence.test.mjs holds the call sites to that. */
+    .ds-table--stack td:empty{display:none}
+    .ds-table--stack td::before{
+      content:var(--col-label);
+      position:absolute;
+      left:0;
+      top:0;
+      width:max(88px,32%);
+      font-family:var(--font-mono);
+      font-size:var(--text-kicker-sm);
+      line-height:inherit;
+      letter-spacing:var(--tracking-table-head);
+      text-transform:uppercase;
+      color:var(--neutral-600);
+    }
+    .ds-table--stack td:nth-child(1){--col-label:var(--col-1)}
+    .ds-table--stack td:nth-child(2){--col-label:var(--col-2)}
+    .ds-table--stack td:nth-child(3){--col-label:var(--col-3)}
+    .ds-table--stack td:nth-child(4){--col-label:var(--col-4)}
+    .ds-table--stack td:nth-child(5){--col-label:var(--col-5)}
+    .ds-table--stack td:nth-child(6){--col-label:var(--col-6)}
+  }
 }

@@ -21,6 +21,7 @@
 import '../styles/site.css';
 import { getStrings, type Locale } from '../lib/data';
 import { ROUTES, langTag, otherLocale, pathFor } from '../lib/routes';
+import MobileNav from '../components/ds/MobileNav.astro';
 
 interface Props {
   locale: Locale;
@@ -138,6 +139,13 @@ const year = new Date().getFullYear();
 
   <body>
     <a class="ds-skip" href="#main">{t.label_skip_to_content}</a>
+
+    {/* Two navs, one shown at a time. The design system's SiteNav swaps itself
+        for MobileNav at 768px by calling matchMedia; a static page has no
+        runtime to ask, so the swap is `display:none` on either side of the same
+        breakpoint. A hidden element is not in the accessibility tree, so only
+        one nav is ever announced. */}
+    <MobileNav locale={locale} slug={slug} />
 
     <nav class="ds-nav" aria-label={t.nav_label}>
       <a class="ds-nav__brand" href={pathFor('', locale)}>

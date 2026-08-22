@@ -1,0 +1,90 @@
+---
+// The under-768px form of the site nav, per the design system's MobileNav:
+// compact sticky bar, 44x44 hamburger, full-height hairline drawer.
+//
+// WHY <details> AND NOT A SCRIPT. The bundle's prototype is React and toggles
+// with component state; a static site has no such state. `<details>`/`<summary>`
+// is the only native disclosure control, so the drawer opens, closes and
+// announces its expanded state with no JavaScript at all -- which matters here
+// more than usual, because a nav that needs JS to open is a nav a crawler and a
+// reader with JS off cannot use, and this whole rebuild exists because the
+// previous site hid its content behind JavaScript.
+//
+// The one behaviour `<details>` does not give us is Escape-to-close. That is the
+// inline script at the bottom, and it is the only thing in here that needs JS:
+// everything else, including the body scroll lock (`body:has()` in
+// components.css), is CSS.
+//
+// The bar is not a summary. Making the whole bar the toggle would put the brand
+// link inside it, and nested interactive content is invalid; the brand stays a
+// link home, and only the hamburger toggles.
+import { ROUTES, langTag, otherLocale, pathFor } from '../../lib/routes';
+import { getStrings, type Locale } from '../../lib/data';
+
+interface Props {
+  locale: Locale;
+  /** Route slug of the current page, so its drawer row reads as current. */
+  slug: string;
+}
+const { locale, slug } = Astro.props;
+
+const t = getStrings(locale);
+const navRoutes = ROUTES.filter((entry) => entry.inNav);
+const other = otherLocale(locale);
+---
+
+<nav class="ds-mnav" aria-label={t.nav_label}>
+  <div class="ds-mnav__bar">
+    <a class="ds-mnav__brand" href={pathFor('', locale)}>
+      <img class="ds-mnav__logo" src="/img/logo.png" alt="" width="65" height="26" />
+      <span class="ds-mnav__names">
+        <span class="ds-mnav__name">{t.lab_name_short}</span>
+        {/* Truncates with an ellipsis, never wraps: a two-line tagline would
+            push the bar taller than the hamburger it sits beside. */}
+        <span class="ds-mnav__tagline">{t.tagline}</span>
+      </span>
+    </a>
+
+    <details class="ds-mnav__menu">
+      <summary class="ds-mnav__toggle" aria-label={t.nav_menu}>
+        <span class="ds-mnav__glyph" aria-hidden="true"><span></span><span></span><span></span></span>
+      </summary>
+
+      <div class="ds-mnav__drawer">
+        {navRoutes.map((entry, index) => (
+          <a
+            class="ds-mnav__row"
+            href={pathFor(entry.slug, locale)}
+            aria-current={entry.slug === slug ? 'page' : undefined}
+          >
+            <span class="ds-mnav__index">{String(index + 1).padStart(2, '0')}</span>
+            <span>{t[entry.navKey]}</span>
+          </a>
+        ))}
+        {/* The design system's `right` slot: pinned to the drawer's foot above
+            an ink rule. Here that is the language link -- a real link, as on the
+            desktop nav, not a handler that rewrites location. */}
+        <div class="ds-mnav__foot">
+          <a
+            class="ds-mnav__lang"
+            href={pathFor(slug, other)}
+            hreflang={langTag(other)}
+            rel="alternate"
+          >{t.nav_language}</a>
+        </div>
+      </div>
+    </details>
+  </div>
+</nav>
+
+<script is:inline>
+  // Escape closes the drawer. Everything else about it is CSS; this listener is
+  // an enhancement, and the nav works fully without it.
+  document.addEventListener('keydown', (event) => {
+    if (event.key !== 'Escape') return;
+    const menu = document.querySelector('.ds-mnav__menu[open]');
+    if (!menu) return;
+    menu.removeAttribute('open');
+    menu.querySelector('summary')?.focus();
+  });
+</script>

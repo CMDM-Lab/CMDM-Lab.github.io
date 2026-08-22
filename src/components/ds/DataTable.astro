@@ -6,18 +6,52 @@
 // `<tr><td>` markup, so a cell can carry a Tag, a link or a mono span without
 // this component needing to know about any of them.
 //
-// The wrapper scrolls horizontally. The design handoff lists wide tables below
-// 768px as unresolved; containing the overflow here at least keeps the page
-// itself from scrolling sideways.
+// MOBILE. Below 768px the table stops being a table and each row becomes a
+// stacked label/value record (see components.css) -- the design system prohibits
+// scrolling a five-column table sideways on a phone.
+//
+// The labels for those records are the column heads, handed to CSS as
+// --col-1..--col-N on the table element. The slot means this component never
+// sees the cells, so it cannot add a `data-label` to each one; passing the
+// labels down as custom properties instead keeps a cell's label and its column
+// head from drifting, because both come from `columns` here. The stylesheet
+// carries rules for MAX_STACKED_COLUMNS of them, so exceeding that would
+// silently leave the last column's records unlabelled -- hence the throw.
 interface Props {
   columns: Array<{ label: string; width?: string }>;
   class?: string;
+  /**
+   * Keep the table a table on mobile. Only for a genuinely narrow, numeric
+   * table, per the design system.
+   */
+  stack?: boolean;
 }
-const { columns, class: klass = '' } = Astro.props;
+const { columns, class: klass = '', stack = true } = Astro.props;
+
+/** How many `--col-N` rules components.css declares. */
+const MAX_STACKED_COLUMNS = 6;
+
+if (stack && columns.length > MAX_STACKED_COLUMNS) {
+  throw new Error(
+    `DataTable: ${columns.length} columns exceeds the ${MAX_STACKED_COLUMNS} that the `
+    + 'mobile record layout has rules for. Add the missing --col-N rules in '
+    + 'src/styles/components.css and raise MAX_STACKED_COLUMNS, or pass stack={false}.',
+  );
+}
+
+// A CSS string value, quoted. Labels are the lab's own copy rather than user
+// input, but an unescaped quote would break the whole declaration silently.
+const cssString = (value: string) => `"${value.replace(/["\\]/g, '\\$&')}"`;
+const labelVars = stack
+  ? columns.map((column, index) => `--col-${index + 1}:${cssString(column.label)}`).join(';')
+  : undefined;
 ---
 
 <div class="ds-table-wrap">
-  <table class={['ds-table', klass].filter(Boolean).join(' ')}>
+  <table
+    class={['ds-table', stack ? 'ds-table--stack' : '', klass].filter(Boolean).join(' ')}
+    style={labelVars}
+  >
     <thead>
       <tr>
         {columns.map((column) => (

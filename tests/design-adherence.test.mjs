@@ -207,8 +207,10 @@ test('body copy never goes below 12px, kickers excepted', async () => {
 test('spacing comes only from the --space tokens', async () => {
   // "Never write a bare pixel value for spacing." A handful of non-spacing
   // pixel values are legitimate -- 1px rules, the 7px pulse dot, the 30px logo,
-  // the 2px focus offset and the 36px input height -- so those are named.
-  const ALLOWED_PX = new Set(['0', '1', '2', '6', '7', '30', '36']);
+  // the 2px focus offset, the 36px input height and the 5px gap between the
+  // hamburger's three bars, which is glyph geometry the design system gives
+  // exactly and says not to round -- so those are named.
+  const ALLOWED_PX = new Set(['0', '1', '2', '5', '6', '7', '30', '36']);
   for (const file of await styleFiles()) {
     if (file.endsWith(path.join('tokens', 'spacing.css'))) continue;
     if (file.endsWith(path.join('tokens', 'typography.css'))) continue;
@@ -319,6 +321,201 @@ test('the built pages show no dark-mode or shadow rules', {
         radius === '0' || radius === '50%' || radius.startsWith('var('),
         `${rel(file)} ships border-radius: ${radius}`,
       );
+    }
+  }
+});
+
+// ---------------------------------------------------------------------------
+// Mobile (< 768px)
+//
+// The design system's mobile rules are almost all negative -- one breakpoint,
+// no scaled type ramp, no sideways-scrolling table, no scrim, no sheet -- and a
+// negative rule has no output when it is broken. A phone-shaped viewport is
+// also the one nobody opens while editing a stylesheet, so these are the rules
+// most likely to rot quietly.
+// ---------------------------------------------------------------------------
+
+test('there is exactly one breakpoint, and it is 767px', async () => {
+  // "One breakpoint only: 768px." A second number anywhere is the beginning of
+  // a tablet tier the system does not have.
+  for (const file of await authoredFiles()) {
+    const source = stripComments(await readFile(file, 'utf8'));
+    for (const [, condition] of source.matchAll(/@media\s*([^{]+)\{/g)) {
+      const query = condition.trim().replace(/\s+/g, '');
+      if (!/width/.test(query)) continue; // prefers-reduced-motion, hover
+      assert.equal(
+        query, '(max-width:767px)',
+        `${rel(file)} has the media query ${query}; the system has one breakpoint, (max-width:767px)`,
+      );
+    }
+  }
+});
+
+test('mobile reflow is a token override, and the type ramp is not in it', async () => {
+  // The handoff: "Port this block verbatim; do not scatter `sm:` prefixes
+  // through components to reproduce it." And the type ramp is deliberately
+  // absent -- scaling it would break the tables' tabular alignment.
+  const layout = await readFile(path.join(STYLES, 'tokens', 'layout.css'), 'utf8');
+  const block = stripComments(layout).match(/@media\s*\(max-width:767px\)\s*\{([\s\S]*?)\n\}/);
+  assert.ok(block, 'tokens/layout.css has no mobile token override');
+  for (const token of [
+    '--page-pad-x', '--page-pad-y', '--nav-pad-x', '--nav-pad-y',
+    '--column-gap', '--grid-min-ledger', '--grid-min-wide',
+  ]) {
+    assert.ok(
+      block[1].includes(token),
+      `the mobile token override does not re-point ${token}`,
+    );
+  }
+  for (const [, value] of block[1].matchAll(/--(?:page-pad|nav-pad|column-gap)[a-z-]*\s*:\s*([^;]+)/g)) {
+    assert.match(
+      value.trim(), /^var\(--space-\d\)$/,
+      `mobile padding is ${value.trim()}; it must come from a --space token`,
+    );
+  }
+
+  // No media query anywhere may resize the ramp. Reading a ramp token inside a
+  // mobile block is fine and necessary -- the stacked record's label is set at
+  // --text-kicker-sm, the same size as the <th> it replaces. What is forbidden
+  // is redefining a size token per breakpoint, or inventing a size in px that
+  // exists nowhere in the ramp.
+  for (const file of await styleFiles()) {
+    const source = stripComments(await readFile(file, 'utf8'));
+    for (const [, body] of source.matchAll(/@media\s*\(max-width:767px\)\s*\{([\s\S]*?)\n {2}\}/g)) {
+      const redefined = body.match(/(--(?:text|font-size)[a-z0-9-]*)\s*:/);
+      assert.ok(
+        !redefined,
+        `a mobile media query redefines ${redefined?.[1]}; the ramp is not scaled per breakpoint`,
+      );
+      const literal = body.match(/font-size\s*:\s*([\d.]+px)/);
+      assert.ok(
+        !literal,
+        `a mobile media query sets font-size: ${literal?.[1]}; use a ramp token`,
+      );
+    }
+  }
+});
+
+test('tap targets floor at 44px, and the drawer rows clear it', async () => {
+  const layout = await readFile(path.join(STYLES, 'tokens', 'layout.css'), 'utf8');
+  const value = (name) => Number(layout.match(new RegExp(`${name}\\s*:\\s*([\\d.]+)px`))?.[1]);
+  assert.equal(value('--tap-min'), 44, '--tap-min must be 44px; it is a floor, not a target');
+  assert.ok(
+    value('--drawer-row-h') >= value('--tap-min'),
+    `--drawer-row-h is ${value('--drawer-row-h')}px, below the ${value('--tap-min')}px floor`,
+  );
+
+  // And the components must read the tokens rather than restating the numbers,
+  // so raising the floor raises every target with it.
+  const components = stripComments(await readFile(path.join(STYLES, 'components.css'), 'utf8'));
+  const rule = (selector) => components.match(
+    new RegExp(`${selector.replace(/[.\\-]/g, (c) => `\\${c}`)}\\s*\\{([^}]*)\\}`),
+  )?.[1] ?? '';
+  assert.match(rule('.ds-mnav__toggle'), /var\(--tap-min\)/, 'the hamburger does not use --tap-min');
+  assert.match(rule('.ds-mnav__row'), /var\(--drawer-row-h\)/, 'drawer rows do not use --drawer-row-h');
+  assert.match(rule('.ds-mnav__lang'), /var\(--tap-min\)/, 'the drawer language link has no 44px hit box');
+});
+
+test('the drawer is the page: no scrim, no sheet, no elevation', async () => {
+  // "No bottom tab bar, no scrim, no sheet radius, no elevation, no icon-only
+  // nav." Radius and shadow are covered site-wide; the scrim is not, because a
+  // translucent black overlay is a plausible thing for someone to add.
+  const components = stripComments(await readFile(path.join(STYLES, 'components.css'), 'utf8'));
+  const drawer = components.match(/\.ds-mnav__drawer\s*\{([^}]*)\}/)?.[1];
+  assert.ok(drawer, 'components.css has no .ds-mnav__drawer rule');
+  assert.match(drawer, /background:var\(--bg\)/, 'the drawer must be a solid page, not a translucent sheet');
+  assert.ok(!/border-radius/.test(drawer), 'the drawer has a radius');
+  assert.ok(!/position:fixed/.test(drawer), 'the drawer is positioned against the nav, not the viewport');
+
+  for (const [, selector, body] of components.matchAll(/([^{}]*ds-mnav[^{}]*)\{([^{}]*)\}/g)) {
+    assert.ok(
+      !/rgba\(\s*0\s*,\s*0\s*,\s*0/.test(body),
+      `${selector.trim()} paints a translucent black; there is no scrim in this system`,
+    );
+  }
+
+  // The hamburger keeps a visible border: an icon with no box is icon-only nav.
+  const toggle = components.match(/\.ds-mnav__toggle\s*\{([^}]*)\}/)?.[1] ?? '';
+  assert.match(toggle, /border:var\(--border-hairline\)/, 'the hamburger has no visible border');
+});
+
+test('the mobile nav opens without JavaScript, and its links are in the HTML', {
+  skip: existsSync(path.join(ROOT, 'dist')) ? false : 'run `npm run build` first',
+}, async () => {
+  // A nav that needs a script to open is a nav a crawler cannot walk -- which
+  // is the exact failure this whole rebuild exists to undo. `<details>` is the
+  // native disclosure control, so the drawer works with scripting off.
+  const source = await readFile(path.join(COMPONENTS, 'ds', 'MobileNav.astro'), 'utf8');
+  assert.match(source, /<details/, 'the drawer must be a <details>, not script state');
+  assert.match(source, /<summary/, 'the toggle must be a <summary>');
+
+  const routes = await readFile(path.join(ROOT, 'src', 'lib', 'routes.ts'), 'utf8');
+  const inNav = [...routes.matchAll(/navKey: '([a-z_]+)'[^}]*inNav: true/g)].map((m) => m[1]);
+  assert.ok(inNav.length > 1, 'could not read the nav routes');
+
+  const html = await readFile(path.join(ROOT, 'dist', 'members', 'index.html'), 'utf8');
+  const nav = html.match(/<nav class="ds-mnav"[\s\S]*?<\/nav>/)?.[0];
+  assert.ok(nav, 'the built page has no mobile nav');
+  const rows = [...nav.matchAll(/class="ds-mnav__row"/g)].length;
+  assert.equal(
+    rows, inNav.length,
+    `the drawer renders ${rows} rows for ${inNav.length} nav routes`,
+  );
+  // The ordinals are computed, not a fixed list: a tenth route must number 10.
+  const indices = [...nav.matchAll(/class="ds-mnav__index">(\d+)</g)].map((m) => m[1]);
+  assert.deepEqual(
+    indices,
+    inNav.map((_, index) => String(index + 1).padStart(2, '0')),
+    'the drawer ordinals are out of sequence',
+  );
+});
+
+test('below the breakpoint no table scrolls sideways, and every cell is labelled', {
+  skip: existsSync(path.join(ROOT, 'dist')) ? false : 'run `npm run build` first',
+}, async () => {
+  // "Tables stack to label/value records. Never horizontal scroll."
+  const components = stripComments(await readFile(path.join(STYLES, 'components.css'), 'utf8'));
+  const mobile = components.match(/@media\s*\(max-width:767px\)\s*\{[\s\S]*?\.ds-table-wrap\s*\{([^}]*)\}/);
+  assert.ok(mobile, 'no mobile rule for .ds-table-wrap');
+  assert.match(mobile[1], /overflow-x:visible/, 'the table wrapper still scrolls sideways on mobile');
+
+  // The stacked labels come from --col-N, and components.css declares a fixed
+  // number of them. A table with more columns than that would lose the last
+  // label with no error, so DataTable throws -- and this keeps the two numbers
+  // talking to each other.
+  const declared = [...components.matchAll(/--col-label:var\(--col-(\d+)\)/g)].map((m) => Number(m[1]));
+  const dataTable = await readFile(path.join(COMPONENTS, 'ds', 'DataTable.astro'), 'utf8');
+  const limit = Number(dataTable.match(/MAX_STACKED_COLUMNS = (\d+)/)?.[1]);
+  assert.equal(
+    Math.max(...declared), limit,
+    `components.css labels ${Math.max(...declared)} columns but DataTable allows ${limit}`,
+  );
+
+  for (const file of await walk(path.join(ROOT, 'dist'), ['.html'])) {
+    const html = await readFile(file, 'utf8');
+    for (const [table] of html.matchAll(/<table class="ds-table[^"]*"[^>]*>[\s\S]*?<\/table>/g)) {
+      if (!/ds-table--stack/.test(table)) continue;
+      const heads = [...table.matchAll(/<th\b/g)].length;
+      const labels = [...table.matchAll(/--col-(\d+):/g)].length;
+      assert.equal(labels, heads, `${rel(file)}: a stacked table has ${heads} heads but ${labels} labels`);
+
+      for (const [, row] of table.matchAll(/<tr>([\s\S]*?)<\/tr>/g)) {
+        const cells = [...row.matchAll(/<td\b/g)].length;
+        if (cells === 0) continue; // the head row
+        assert.equal(
+          cells, heads,
+          `${rel(file)}: a row has ${cells} cells for ${heads} columns, so one record loses its label`,
+        );
+        // A blank cell must be exactly empty, or its label shows on mobile with
+        // nothing beside it: td:empty is what drops it, and whitespace defeats.
+        for (const [, inner] of row.matchAll(/<td[^>]*>([\s\S]*?)<\/td>/g)) {
+          if (inner === '' || inner.trim() !== '') continue;
+          assert.fail(
+            `${rel(file)}: a cell renders blank but is not empty (${JSON.stringify(inner)}); `
+            + 'write the cell on one line so it emits <td></td>',
+          );
+        }
+      }
     }
   }
 });
