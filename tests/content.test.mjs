@@ -208,3 +208,50 @@ test('nobody appears twice in the member list', async () => {
     seen.set(member.name, member.role);
   }
 });
+
+test('no data file carries markup, script or anchor text from the old site', async () => {
+  // The migration scraped the legacy pages, and twice now it brought their
+  // machinery with it: publisher markup inside a fetched abstract, and -- found
+  // on the rendered Tools page -- the old page's anchor text plus a jQuery
+  // carousel init, published as a tool's description and inside its
+  // SoftwareApplication node.
+  //
+  // Nothing about that is visible in a diff of a 400-line YAML file, and the
+  // page still builds, so this is the only thing that would say so.
+  const RESIDUE = [
+    { pattern: /<\/?[a-z][a-z0-9]*[\s/>]/i, what: 'an HTML tag' },
+    { pattern: /&(?:[a-z]+|#\d+);/i, what: 'an HTML entity' },
+    { pattern: /\$\(['"]/, what: 'a jQuery call' },
+    { pattern: /\bfunction\s*\(/, what: 'a function literal' },
+    { pattern: /javascript:|onclick=/i, what: 'an inline handler' },
+    { pattern: /Link\s*>>/, what: "the old site's anchor text" },
+  ];
+
+  const files = (await readdir(path.join(ROOT, 'data'))).filter((f) => f.endsWith('.yml'));
+  for (const file of files) {
+    const source = await readFile(path.join(ROOT, 'data', file), 'utf8');
+    const walk = (node, trail) => {
+      if (typeof node === 'string') {
+        for (const { pattern, what } of RESIDUE) {
+          const hit = node.match(pattern);
+          assert.ok(
+            !hit,
+            `data/${file} at ${trail} contains ${what} (${JSON.stringify(hit?.[0])}): `
+            + `${JSON.stringify(node.slice(0, 90))}`,
+          );
+        }
+        return;
+      }
+      if (Array.isArray(node)) {
+        node.forEach((item, index) => walk(item, `${trail}[${index}]`));
+        return;
+      }
+      if (node && typeof node === 'object') {
+        for (const [key, value] of Object.entries(node)) walk(value, `${trail}.${key}`);
+      }
+    };
+    // Keys named for a URL or a file path legitimately hold neither markup nor
+    // script, so the whole tree is walked -- comments are not parsed at all.
+    walk(YAML.parse(source), file.replace(/\.yml$/, ''));
+  }
+});

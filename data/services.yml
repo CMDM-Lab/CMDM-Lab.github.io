@@ -3,57 +3,58 @@
 # Migrated from contents/service_zh.html. These are the lab's most-cited public
 # artifacts and the pages most likely to be searched for by name, so each one
 # gets its own indexable section.
+#
+# The migration carried the old page's anchor text, "Link >>", into both the
+# descriptions and the link labels; the descriptions rendered it, so a tool's
+# summary ended "...structural predictions. Link >>". Removed. The link label is
+# not read at all -- the Tools page renders the localised "open site" label --
+# so it is absent here rather than restated.
 services:
 - name: Virtual Rat web
   description: Virtual Rat provides not only predictions of important ADMET properties but also possible
-    reasons as to why the model made those structural predictions. Link >>
+    reasons as to why the model made those structural predictions.
   links:
-  - label: Link >>
-    url: https://virtualrat.cmdm.tw/
+  - url: https://virtualrat.cmdm.tw/
   image: /img/virtual_rat.png
 - name: CypRules web
   description: CypRules Server predicts the metabolizing Cytochromes P450 (CYPs) inhibition, including
-    CYP1A2, CYP2C19, CYP2C9, CYP2D6 and CYP3A4. Link >>
+    CYP1A2, CYP2C19, CYP2C9, CYP2D6 and CYP3A4.
   links:
-  - label: Link >>
-    url: http://cyprules.cmdm.tw/
+  - url: http://cyprules.cmdm.tw/
   image: /img/cyprules_2.png
 - name: PITracer package
-  description: An R package for pure ion chromatogram extraction of LC/QTOF-MS data. Link >>
+  description: An R package for pure ion chromatogram extraction of LC/QTOF-MS data.
   links:
-  - label: Link >>
-    url: http://pitracer.cmdm.tw/
+  - url: http://pitracer.cmdm.tw/
   image: /img/pitracer.png
 - name: GC2MS web
-  description: An all-inclusive GCxGC/TOF-MS-based data analysis platform. Link >>
+  description: An all-inclusive GCxGC/TOF-MS-based data analysis platform.
   links:
-  - label: Link >>
-    url: http://gc2ms.cmdm.tw/
+  - url: http://gc2ms.cmdm.tw/
   image: /img/GC2MSlogo.png
 - name: Lipidpedia web
   description: An encyclopedia of lipids providing associated biomedical information through text-mining
-    strategy in literatures. Link >>
+    strategy in literatures.
   links:
-  - label: Link >>
-    url: http://lipidpedia.cmdm.tw
+  - url: http://lipidpedia.cmdm.tw
   image: /img/LipidPedia.png
 - name: 3Omics web
   description: 3Omics is a one-click web tool for visualizing and rapidly integrating multiple inter-
-    or intra-transcriptomic, proteomic, and metabolomic human data. Link >>
+    or intra-transcriptomic, proteomic, and metabolomic human data.
   links:
-  - label: Link >>
-    url: http://3omics.cmdm.tw
+  - url: http://3omics.cmdm.tw
   image: /img/3omics.png
 - name: MetaCore portal
-  description: A web portal for NTU Metabolomics Core Laboratory. Link >>
+  description: A web portal for NTU Metabolomics Core Laboratory.
   links:
-  - label: Link >>
-    url: http://web.cmdm.tw/metacore_portal/
+  - url: http://web.cmdm.tw/metacore_portal/
   image: /img/metacore.png
 - name: Chromaligner web
-  description: 'Chromaligner is a tool for chromatogram alignment. Link >> $(''.carousel'').carousel({
-    interval: 5000 //changes the speed })'
+  # The migration swept the legacy page's carousel init script into this
+  # description, so the Tools page and the SoftwareApplication node both
+  # published "$('.carousel').carousel({ interval: 5000 ... })" as the tool's
+  # summary. The sentence is the whole description.
+  description: Chromaligner is a tool for chromatogram alignment.
   links:
-  - label: Link >>
-    url: http://chromaligner.cmdm.tw/
+  - url: http://chromaligner.cmdm.tw/
   image: /img/chromaligner.png
