@@ -349,6 +349,29 @@ test('nobody appears twice in the member list', async () => {
   }
 });
 
+test('every commissioned system states who commissioned it and when', async () => {
+  // These entries exist to hold the facts a catalogue entry cannot: the agency,
+  // the start date, and whether it still runs. An entry missing any of them
+  // would render as a lab tool with a government URL, which is the confusion the
+  // separate section exists to prevent.
+  const data = YAML.parse(await readFile(path.join(ROOT, 'data', 'services.yml'), 'utf8')) ?? {};
+  for (const [index, system] of (data.commissioned ?? []).entries()) {
+    const where = `commissioned system ${index + 1}`;
+    assert.ok(system.name, `${where} has no name`);
+    assert.match(
+      String(system.since ?? ''), /^\d{4}-\d{2}-\d{2}$/,
+      `${where} needs a full start date as YYYY-MM-DD, not "${system.since}"`,
+    );
+    assert.equal(typeof system.ongoing, 'boolean', `${where} must say whether it is ongoing`);
+    for (const locale of ['zh', 'en']) {
+      assert.ok(system.agency?.[locale]?.trim(), `${where} has no ${locale} commissioning agency`);
+      assert.ok(system.description?.[locale]?.trim(), `${where} has no ${locale} description`);
+    }
+    const url = system.links?.[0]?.url ?? '';
+    assert.match(url, /^https?:\/\//, `${where} needs an absolute URL, not "${url}"`);
+  }
+});
+
 test('every honour is written in both languages', async () => {
   // getHonors() falls back to the Chinese citation when there is no English one,
   // which is why six entries sat in the English list in Chinese for as long as

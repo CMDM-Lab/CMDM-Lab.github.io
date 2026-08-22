@@ -334,8 +334,35 @@ export interface AchievementImage { src: string; alt: string; credit?: string }
 export interface Achievement { citation: string; links?: LinkRef[]; images?: AchievementImage[] }
 export interface Service { name: string; description?: string; image?: string; links?: LinkRef[] }
 
+/**
+ * A system the lab builds and operates under commission from an agency.
+ *
+ * Kept apart from Service because every claim the Tools page makes about a
+ * service is false of one of these: it is not under cmdm.tw, it is not hosted
+ * here, and there is no original publication to cite. `since` is the day the
+ * commission began, and `ongoing` says whether it still runs.
+ */
+export interface CommissionedSystem {
+  name: string;
+  name_local?: string;
+  agency: string;
+  since: string;
+  ongoing: boolean;
+  description?: string;
+  links?: LinkRef[];
+}
+
+/**
+ * News items, newest first.
+ *
+ * Sorted here rather than trusted from the file: the home page shows the first
+ * few, so an item added at the top of news.yml with an older year -- which is
+ * exactly what happens when someone records something they had forgotten --
+ * would lead the front page. Order within a year is the file's.
+ */
 export function getNews(): NewsItem[] {
-  return loadYaml<{ news?: NewsItem[] }>('news.yml', {}).news ?? [];
+  const news = loadYaml<{ news?: NewsItem[] }>('news.yml', {}).news ?? [];
+  return [...news].sort((a, b) => (b.year ?? 0) - (a.year ?? 0));
 }
 
 interface RawAchievementImage { src?: string; alt?: Localized<string>; credit?: Localized<string> }
@@ -377,6 +404,35 @@ export function getHonors(locale: Locale): Achievement[] {
 
 export function getServices(): Service[] {
   return loadYaml<{ services?: Service[] }>('services.yml', {}).services ?? [];
+}
+
+interface RawCommissioned {
+  name?: string;
+  name_zh?: string;
+  agency?: Localized<string>;
+  since?: string;
+  ongoing?: boolean;
+  description?: Localized<string>;
+  links?: LinkRef[];
+}
+
+export function getCommissionedSystems(locale: Locale): CommissionedSystem[] {
+  const raw = loadYaml<{ commissioned?: RawCommissioned[] }>('services.yml', {}).commissioned ?? [];
+  return raw
+    .filter((entry) => entry.name && entry.since)
+    .map((entry) => ({
+      name: entry.name!,
+      // The Chinese full name is the official one and is shown in both locales:
+      // it is what the commissioning agency's own documents call the system.
+      ...(entry.name_zh ? { name_local: entry.name_zh } : {}),
+      agency: pickLocale(entry.agency, locale) ?? '',
+      since: entry.since!,
+      ongoing: entry.ongoing === true,
+      ...(entry.description
+        ? { description: pickLocale(entry.description, locale) ?? '' }
+        : {}),
+      ...(entry.links ? { links: entry.links } : {}),
+    }));
 }
 
 export function getProfessionalActivities(): Record<string, string[]> {

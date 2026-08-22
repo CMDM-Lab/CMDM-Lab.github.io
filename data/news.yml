@@ -1,5 +1,6 @@
-# Lab news, newest first. The full list is /news/; the home page shows the
-# newest few and links there.
+# Lab news. The full list is /news/; the home page shows the newest few and links
+# there. getNews() sorts by year, so an item recorded late does not have to be
+# inserted in the right place -- but keep the file readable anyway.
 #
 # Migrated from the hard-coded list in contents/index_zh.html. Hand-maintained:
 # add new items at the top.
@@ -18,6 +19,11 @@ news:
 # Verified on 2026-08-22 against the host's own announcement page. The gap
 # between this and the 2018 items below is real, not a lapse in maintenance: the
 # lab's public record for 2019-2024 is awards, which live in honors.yml.
+- text: 2021年9月起實驗室承接「高風險化學物質之安全替代化學物質搜尋、評估及篩選系統」GreenN（SAS）計畫，由環境部化學物質管理署委辦，持續進行中
+  links:
+  - label: GreenN (SAS)
+    url: https://sas.moenv.gov.tw/
+  year: 2021
 - text: 2025年曾宇鳳教授應長庚大學智慧運算學院暨人工智慧研究中心邀請演講題目「人工智慧在藥物發現與藥物開發的應用與前景」
   links:
   - label: 長庚大學

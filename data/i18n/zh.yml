@@ -94,7 +94,7 @@ members_lede: 本實驗室設於國立臺灣大學資訊工程學系，並與生
 services_title: 軟體服務
 services_description: CMDM 實驗室開發並公開提供的網頁服務與分析工具，包含 3Omics、Lipidpedia、CypRules、GC2MS、Chromaligner、PITracer 等。
 services_kicker: 工具
-services_subtitle: cmdm.tw 網域下的公開服務
+services_subtitle: cmdm.tw 網域下的公開服務 · 政府委辦系統
 services_lede: 以下工具皆開放外部研究者使用。網頁服務無須註冊；套件請由原始碼安裝。
 
 # ── Courses ──────────────────────────────────────────────────
@@ -133,6 +133,10 @@ section_program_committee: 國際會議程序委員會
 section_talks: 受邀演講與發表
 section_paper_review: 期刊審稿
 section_catalogue: 服務清單
+section_commissioned: 委辦系統
+label_commissioned_since: 計畫期間
+label_agency: 委辦單位
+label_ongoing: 持續進行中
 section_access: 使用方式
 section_papers: 代表性論文
 section_appointments: 現職

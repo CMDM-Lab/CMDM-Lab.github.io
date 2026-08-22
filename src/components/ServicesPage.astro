@@ -15,13 +15,31 @@ import Ledger from './ds/Ledger.astro';
 import LedgerItem from './ds/LedgerItem.astro';
 import ColophonTable from './ds/ColophonTable.astro';
 import Tag from './ds/Tag.astro';
-import { getServices, getStrings, type Locale } from '../lib/data';
+import { getCommissionedSystems, getServices, getStrings, type Locale } from '../lib/data';
 
 interface Props { locale: Locale }
 const { locale } = Astro.props;
 const t = getStrings(locale);
 const services = getServices();
 const isEnglish = locale === 'en';
+
+// Systems built and run for an agency. They cannot go in the catalogue above:
+// that section's subtitle says cmdm.tw, its colophon says the lab hosts
+// everything in it, and its citation line points at a paper. None of that is
+// true of a commissioned system, so it gets its own section rather than
+// quietly making three statements on this page wrong.
+const commissioned = getCommissionedSystems(locale);
+
+/** "2021-09-03" -> "2021 年 9 月" / "September 2021". */
+function since(date: string): string {
+  const [year, month] = date.split('-');
+  if (!year || !month) return date;
+  const index = Number(month) - 1;
+  if (!isEnglish) return `${year} 年 ${Number(month)} 月`;
+  const names = ['January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December'];
+  return `${names[index] ?? month} ${year}`;
+}
 
 /** Slug a service name into a stable in-page anchor. */
 const anchor = (name: string) => name
@@ -47,16 +65,37 @@ function kind(name: string): string {
 }
 
 const site = Astro.site ?? new URL('https://www.cmdm.tw');
-const structuredData = services.map((service) => ({
-  '@context': 'https://schema.org',
-  '@type': 'SoftwareApplication',
-  name: service.name,
-  applicationCategory: 'ScientificApplication',
-  ...(service.description ? { description: service.description } : {}),
-  ...(service.links?.length ? { url: service.links[0].url } : {}),
-  provider: { '@type': 'ResearchOrganization', '@id': `${site.href}#organization` },
-}));
+const structuredData = [
+  ...services.map((service) => ({
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: service.name,
+    applicationCategory: 'ScientificApplication',
+    ...(service.description ? { description: service.description } : {}),
+    ...(service.links?.length ? { url: service.links[0].url } : {}),
+    provider: { '@type': 'ResearchOrganization', '@id': `${site.href}#organization` },
+  })),
+  // A commissioned system belongs in the structured data too -- someone
+  // searching for GreenN or SAS by name is exactly the reader this rebuild is
+  // for -- but with the roles the right way round: the lab built it, the agency
+  // runs it.
+  ...commissioned.map((system) => ({
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: system.name,
+    ...(system.name_local ? { alternateName: system.name_local } : {}),
+    applicationCategory: 'ScientificApplication',
+    ...(system.description ? { description: system.description } : {}),
+    ...(system.links?.length ? { url: system.links[0].url } : {}),
+    creator: { '@type': 'ResearchOrganization', '@id': `${site.href}#organization` },
+    ...(system.agency ? { provider: { '@type': 'GovernmentOrganization', name: system.agency } } : {}),
+  })),
+];
 
+// Each of these is a statement about the catalogue, not about everything on the
+// page: the commissioned system below needs no citation, and its host is the
+// agency's. Saying "the tools above" is the difference between a colophon and a
+// claim that is wrong for one entry.
 const access = [
   {
     label: isEnglish ? 'Authentication' : '身分驗證',
@@ -64,7 +103,9 @@ const access = [
   },
   {
     label: isEnglish ? 'Citation' : '引用方式',
-    value: isEnglish ? "Cite the tool's original publication" : '請引用該工具的原始論文',
+    value: isEnglish
+      ? "Cite the tool's original publication"
+      : '請引用該工具的原始論文',
   },
   {
     label: isEnglish ? 'Support' : '技術支援',
@@ -72,7 +113,9 @@ const access = [
   },
   {
     label: isEnglish ? 'Hosting' : '主機狀態',
-    value: isEnglish ? 'Lab infrastructure at National Taiwan University' : '架設於臺大實驗室自有主機',
+    value: isEnglish
+      ? 'The tools above run on lab infrastructure at National Taiwan University'
+      : '服務清單所列工具架設於臺大實驗室自有主機',
   },
 ];
 ---
@@ -110,6 +153,39 @@ const access = [
       })}
     </Ledger>
   </section>
+
+  {commissioned.length > 0 && (
+    <section class="ds-section" aria-labelledby="commissioned">
+      <Hairline tone="ink" />
+      <Kicker size="md" as="h2" id="commissioned">{t.section_commissioned}</Kicker>
+      <Ledger width="wide">
+        {commissioned.map((system) => {
+          const primary = system.links?.[0];
+          const period = system.ongoing
+            ? `${since(system.since)} – ${t.label_ongoing}`
+            : since(system.since);
+          return (
+            <LedgerItem
+              title={system.name}
+              body={system.description}
+              meta={[host(primary?.url), period].filter(Boolean).join(' · ')}
+              href={primary?.url}
+              linkLabel={t.label_visit_site}
+              as="h3"
+            >
+              {/* The official Chinese name and the commissioning agency, as its
+                  own line: they are the two facts that make this not a lab
+                  tool, and burying them in the description would hide that. */}
+              <Fragment slot="meta">
+                {system.name_local && <div class="ds-ledger-item__meta">{system.name_local}</div>}
+                <div class="ds-ledger-item__meta">{t.label_agency} · {system.agency}</div>
+              </Fragment>
+            </LedgerItem>
+          );
+        })}
+      </Ledger>
+    </section>
+  )}
 
   <section class="ds-section" aria-labelledby="access">
     <Hairline tone="ink" />

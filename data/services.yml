@@ -58,3 +58,30 @@ services:
   links:
   - url: http://chromaligner.cmdm.tw/
   image: /img/chromaligner.png
+
+# Systems the lab builds and operates under commission, which the list above
+# cannot hold: they are not on cmdm.tw, they are not hosted here, and there is no
+# "original publication" to cite. Kept as their own list so the page can say
+# which is which instead of quietly widening what "service" means.
+#
+# On the agency name: the project began on 2021-09-03 under what was then the
+# EPA's Toxic and Chemical Substances Bureau. The Ministry of Environment and its
+# Chemicals Administration were created in the 2023 reorganisation, and the
+# entry names the agency as it is now, since that is who runs it today.
+commissioned:
+- name: GreenN (SAS)
+  name_zh: 高風險化學物質之安全替代化學物質搜尋、評估及篩選系統
+  # SAS is being renamed GreenN so it stops colliding with the statistics
+  # package; both names are given while the new one takes over.
+  agency:
+    zh: 環境部化學物質管理署
+    en: Chemicals Administration, Ministry of Environment
+  since: 2021-09-03
+  ongoing: true
+  description:
+    zh: 協助企業掌握化學品的危害與風險、法規關注程度，並找出可行的替代方案，支援研發前期評估與法規遵循。
+    en: Helps companies assess the hazard and risk of a chemical, how closely it is regulated,
+      and what it can be replaced with, supporting early-stage R&D decisions and regulatory
+      compliance.
+  links:
+  - url: https://sas.moenv.gov.tw/

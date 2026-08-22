@@ -104,7 +104,7 @@ services_title: Software and Web Services
 services_description: Web servers and analysis tools released by the CMDM Lab, including 3Omics,
   Lipidpedia, CypRules, GC2MS, Chromaligner, and PITracer.
 services_kicker: Tools
-services_subtitle: Public services under cmdm.tw
+services_subtitle: Public services under cmdm.tw · Commissioned systems
 services_lede: Every tool below is open to external researchers. Web services need no account;
   packages are installed from source.
 
@@ -149,6 +149,10 @@ section_program_committee: Technical Program Committees
 section_talks: Invited Talks and Presentations
 section_paper_review: Journal Review
 section_catalogue: Catalogue
+section_commissioned: Commissioned Systems
+label_commissioned_since: Period
+label_agency: Commissioned by
+label_ongoing: Ongoing
 section_access: Access
 section_papers: Representative Papers
 section_appointments: Appointments
