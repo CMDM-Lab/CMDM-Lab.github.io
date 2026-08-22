@@ -88,7 +88,8 @@ members_title: 實驗室成員
 members_description: 國立臺灣大學計算分子設計與代謝體學實驗室的指導教授、博士後研究員、博碩士班學生與歷屆畢業成員名單。
 members_kicker: 成員
 members_subtitle: 主持人 · 博士後 · 博碩士生 · 校友
-members_lede: 本實驗室設於國立臺灣大學資訊工程學系，並與生醫電資所、基因體所、智慧醫療學程及網媒所合聘指導學生。
+# {units} is filled in from the roster -- see labAffiliationProse().
+members_lede: 本實驗室設於國立臺灣大學資訊工程學系，並與{units}合聘指導學生。
 
 # ── Services ─────────────────────────────────────────────────
 services_title: 軟體服務

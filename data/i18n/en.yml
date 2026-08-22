@@ -96,8 +96,9 @@ members_description: Faculty, postdoctoral researchers, graduate students, and a
   Computational Molecular Design and Metabolomics Lab at National Taiwan University.
 members_kicker: People
 members_subtitle: Principal investigator · Postdocs · Graduate students · Alumni
+# {units} is filled in from the roster -- see labAffiliationProse().
 members_lede: The lab is hosted in the Department of Computer Science and Information Engineering
-  at National Taiwan University, with students co-supervised across BEBI, GSB, MHI and GINM.
+  at National Taiwan University, with students co-supervised across {units}.
 
 # ── Services ─────────────────────────────────────────────────
 services_title: Software and Web Services

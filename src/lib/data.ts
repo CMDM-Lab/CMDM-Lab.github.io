@@ -141,9 +141,11 @@ const DEPARTMENT_LABELS: Record<string, { 'zh-Hant': string; en: string; short: 
   GSB: {
     'zh-Hant': '基因體與系統生物學學位學程',
     en: 'Genome and Systems Biology Degree Program',
-    // No abbreviation: the previous line called this 基因體所, which is not the
-    // name of anything -- it is a degree program, not an institute.
-    short: { 'zh-Hant': '基因體與系統生物學學位學程', en: 'GSB' },
+    // The lab's own short form, supplied 2026-08-22. Not 基因體所, which the
+    // previous site used and which is not the name of anything -- GSB is a
+    // degree program, not an institute. The official 學位學程 stays above, for
+    // the members table.
+    short: { 'zh-Hant': '基因體與系統生物學學程', en: 'GSB' },
   },
   MHI: {
     'zh-Hant': '智慧醫療與健康資訊學程',
@@ -187,7 +189,10 @@ export function labPublicationCount(): number {
  * although a member has been in it. A department appears here the moment
  * someone from it joins, and disappears when the last of them leaves.
  */
-export function labAffiliations(locale: Locale): string {
+export function labAffiliationList(
+  locale: Locale,
+  { excludeHome = false }: { excludeHome?: boolean } = {},
+): string[] {
   const present = new Set(
     getMembers()
       .filter((member) => member.role !== 'alumni')
@@ -196,8 +201,38 @@ export function labAffiliations(locale: Locale): string {
   );
   return Object.entries(DEPARTMENT_LABELS)
     .filter(([code]) => present.has(code))
-    .map(([, labels]) => labels.short[locale])
-    .join(' · ');
+    .filter(([code]) => !(excludeHome && code === HOME_DEPARTMENT))
+    .map(([, labels]) => labels.short[locale]);
+}
+
+/** The same list as a colophon value. */
+export function labAffiliations(locale: Locale): string {
+  return labAffiliationList(locale).join(' · ');
+}
+
+/** The department the lab itself sits in, as opposed to the ones it borrows students from. */
+const HOME_DEPARTMENT = 'CSIE';
+
+/**
+ * The units students are co-supervised across, as running prose: 、 between and
+ * 及 before the last in Chinese, commas and "and" in English.
+ *
+ * The home department is left out, because the sentence this goes into has
+ * already said the lab is in it -- "設於資訊工程學系，並與臺大資工系…合聘" reads
+ * as though there were two of them.
+ *
+ * The members page had this list written out by hand, which is how it came to
+ * say 基因體所 and to omit 網媒所 -- the same two errors the home page's
+ * colophon had, in a second place. Derived in both now.
+ */
+export function labAffiliationProse(locale: Locale): string {
+  const units = labAffiliationList(locale, { excludeHome: true });
+  if (units.length < 2) return units.join('');
+  const head = units.slice(0, -1);
+  const last = units[units.length - 1];
+  return locale === 'en'
+    ? `${head.join(', ')} and ${last}`
+    : `${head.join('、')}及${last}`;
 }
 
 export function getMembers(): Member[] {

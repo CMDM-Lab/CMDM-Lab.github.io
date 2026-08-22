@@ -577,3 +577,29 @@ test('the front page defers to the news archive without losing an item', {
     );
   }
 });
+
+test('no page writes out the list of affiliated units by hand', {
+  skip: existsSync(DIST) ? false : 'run `npm run build` first',
+}, async () => {
+  // The list of units the lab draws students from was written out twice -- the
+  // home colophon and the members lede -- and both copies were wrong in the same
+  // two ways: 基因體所, which is not the name of anything, and no 網媒所 although
+  // a member is in one. Both are derived from the roster now, and the name that
+  // does not exist must not come back.
+  //
+  // This checks the rendered pages rather than the source, because the failure is
+  // a string appearing on a page, wherever it came from.
+  for (const file of await readdir(DIST, { recursive: true, withFileTypes: true })) {
+    if (!file.name.endsWith('.html')) continue;
+    const full = path.join(file.parentPath ?? file.path, file.name);
+    const html = await readFile(full, 'utf8');
+    assert.ok(
+      !html.includes('基因體所'),
+      `${path.relative(ROOT, full)} says 基因體所; the unit is 基因體與系統生物學學位學程 (GSB)`,
+    );
+  }
+
+  // And the members lede must be filled in, not printed with its placeholder.
+  const members = await readFile(path.join(DIST, 'members', 'index.html'), 'utf8');
+  assert.ok(!members.includes('{units}'), 'the members lede still shows its {units} placeholder');
+});

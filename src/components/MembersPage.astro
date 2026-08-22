@@ -36,7 +36,7 @@ import DataTable from './ds/DataTable.astro';
 import Tag from './ds/Tag.astro';
 import ColophonTable from './ds/ColophonTable.astro';
 import {
-  allAlumni, departmentLabel, getStrings, membersByRole,
+  allAlumni, departmentLabel, getStrings, labAffiliationProse, membersByRole,
   type Locale, type Member,
 } from '../lib/data';
 import { pathFor } from '../lib/routes';
@@ -93,7 +93,10 @@ const people = [...grouped.values()].flat().map((member) => ({
     <Hairline tone="ink" />
     <h1 class="ds-masthead__title">{t.members_title}</h1>
     <div class="ds-masthead__subtitle">{t.members_subtitle}</div>
-    <p class="ds-masthead__lede">{t.members_lede}</p>
+    {/* The units come from the roster, not from the sentence: written by hand
+        it said 基因體所, which is not the name of anything, and left out 網媒所
+        although a member is in it. */}
+    <p class="ds-masthead__lede">{t.members_lede.replace('{units}', labAffiliationProse(locale))}</p>
   </div>
 
   {faculty.map((member) => (
