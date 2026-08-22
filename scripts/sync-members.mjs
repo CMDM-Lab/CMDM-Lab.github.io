@@ -194,9 +194,19 @@ async function main() {
       // grade, and the graduating students are listed in a vault table whose
       // only publishable column is the name.
       ...(override.order !== undefined ? { order: override.order } : {}),
-      ...(record.graduated ? { graduated: record.graduated } : {}),
+      // A graduation year comes from the vault's alumni table. It has to be
+      // overridable too: the 即將畢業 table publishes nothing but the name, so
+      // for anyone who graduates out of it the year exists only in this file.
+      ...(override.graduated ?? record.graduated
+        ? { graduated: override.graduated ?? record.graduated }
+        : {}),
       research,
       research_en: override.research_en ?? '',
+      // The deposited thesis title, which is a public bibliographic record --
+      // unlike `research`, which is the vault's working topic and is never
+      // rendered. Curated per person, never derived: the vault's own titles moved
+      // repeatedly during the defense round.
+      ...(override.thesis ? { thesis: override.thesis } : {}),
       ...(override.area !== undefined
         ? (override.area ? { area: override.area, area_en: override.area_en ?? '' } : {})
         : (areas.length

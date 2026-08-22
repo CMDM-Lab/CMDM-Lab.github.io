@@ -63,8 +63,10 @@ const ALLOWED_MEMBER_FIELDS = new Set([
   // Identity and grouping.
   'name', 'name_en', 'role', 'title', 'title_en', 'grade', 'department', 'graduated', 'order',
   // Research description. `research` is the vault's specific topic and is NOT
-  // rendered; `area` is the coarse pillar that is.
-  'research', 'research_en', 'area', 'area_en', 'expertise', 'honors',
+  // rendered; `area` is the coarse pillar that is. `thesis` is the deposited
+  // title -- a public bibliographic record, curated in members-overrides.yml and
+  // never taken from the vault's working fields.
+  'research', 'research_en', 'thesis', 'area', 'area_en', 'expertise', 'honors',
   // Named projects: a responsibility, kept apart from `area`.
   'projects',
   // Professional contact and profile. Deliberate publications, not vault spill.

@@ -62,6 +62,15 @@ export interface Member {
   research?: string;
   research_en?: string;
   /**
+   * Deposited thesis title, shown in the alumni table.
+   *
+   * Distinct from `research`: that is the vault's working topic and is never
+   * rendered, while this is the public bibliographic record. Curated in
+   * members-overrides.yml, so an entry only has one once someone has confirmed
+   * the title that was actually deposited.
+   */
+  thesis?: string;
+  /**
    * Coarse research area, always one of the pillars in data/pages.yml.
    *
    * The page shows this instead of `research`: the specific topic is working

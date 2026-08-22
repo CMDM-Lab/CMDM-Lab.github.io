@@ -58,11 +58,15 @@ members:
   # from the lab. `order` puts them at the head of their section, being the most
   # senior in each.
   #
-  # STILL LISTED AS CURRENT, deliberately. Four of them have passed their defense
-  # and hold a certificate; the vault has not moved them out of 現役成員, and the
-  # lab said only that 廖翊婷 and 王又可 deferred and have not actually graduated.
-  # Moving the other four to the alumni table is a bigger call than this file
-  # should make on its own -- ask before doing it.
+  # Four of the six graduated in 2026 and are moved to the alumni table here, on
+  # the lab's word (2026-08-22). 廖翊婷 and 王又可 deferred and stay current, so
+  # they keep their degree-level role. The vault still lists all six under
+  # 現役成員 -- this file is ahead of it on purpose, not by accident.
+  #
+  # `thesis` is the deposited title, transcribed from the vault. Titles moved
+  # repeatedly during the defense round, so each one below records where it came
+  # from, and an unsettled title is left blank rather than guessed at: a wrong
+  # title on a public page is worse than an empty cell.
   王又可:
     name_en: Yu-Ke Wang
     # Kept as the lab's own record; withheld from the site because there is no
@@ -76,42 +80,83 @@ members:
     area_en: AI Agent Systems
 
   高振翔:
-    role: masters
-    order: 1
+    role: alumni
+    graduated: 2026
     department: MHI
     # SchizoTrain: a video-retrieval virtual-patient system for training
     # assessment of schizophrenia negative symptoms, driven by speech and text.
     area: AI Agent 系統
     area_en: AI Agent Systems
+    # THESIS TITLE UNRESOLVED -- deliberately blank.
+    #
+    # The vault holds three candidates and no record of which was deposited:
+    #   - "Developing a Virtual Patient System for Training Medical Personal in
+    #      Schizophrenia Negative Symptom Assessment" (his own, 2026-04-13)
+    #   - "Design and Validation of a High-Fidelity Virtual Patient System for
+    #      Negative Symptom Evaluation in Schizophrenia" (his own, same mail)
+    #   - "Preceptor, an AI-driven virtual patient system for training physicians
+    #      in schizophrenia negative-symptom assessment" (the PI's suggestion,
+    #      2026-07-06: "i think schizotrain is an odd phrase")
+    # The defense minutes record the topic in Chinese only, as "SchizoTrain
+    # 思覺失調症負性症狀評估訓練之虛擬病人系統", which is a description rather
+    # than a title. Fill this in from the 審定書.
 
   許漢強:
     # Supplied by the lab. My earlier "Dwayne Hsu" invented the surname.
     name_en: Dwayne Reinaldy
-    role: masters
-    order: 2
+    role: alumni
+    graduated: 2026
     department: MHI
     # Vault topic is Gait Analysis; thesis is a multimodal ML framework for
     # tardive dyskinesia from speech and facial motion.
     area: 步態分析
     area_en: Gait Analysis
+    # His own wording, 2026-07-08, two days before the defense: "Changed the
+    # title from 'via Voice and Facial Analysis' to 'via Voice and Facial
+    # *Movement* Analysis', to ensure grammatical consistency." An earlier
+    # version also carried "and Parkinson's Disease", dropped on 2026-05-16 when
+    # PD and HC became reference classes rather than comparison targets.
+    thesis: >-
+      A Multimodal Machine Learning Framework for Distinguishing Tardive
+      Dyskinesia via Voice and Facial Movement Analysis
 
   葉芷瑜:
-    role: masters
-    order: 3
+    role: alumni
+    graduated: 2026
     department: GSB
     area: 代謝體學
     area_en: Metabolomics
+    # From her own committee invitation and the vault's curated 研究主題 field.
+    # The system was renamed MetaboMAIA (Metabolomics Multi-Agent Intelligent
+    # Assistant) after the defense asked for a proper name, but the title carries
+    # no system name and so did not change with it. The defense minutes read
+    # "Literal Searching" -- a transcription slip for "Literature".
+    thesis: >-
+      A Conversational AI Assistant for Literature Searching and Data Analysis
+      in Metabolomics
 
   丁瓘茵:
-    role: masters
-    order: 4
+    role: alumni
+    graduated: 2026
     department: BEBI
     area: AI Agent 系統
     area_en: AI Agent Systems
+    # The vault carries two titles for her. This is the later one, from the
+    # defense announcement she sent on 2026-07-16: "口試題目: When Retrieval
+    # Helps and Hurts ... (因內容微調，論文題目更新，以此最新版本為準)". Her
+    # person page still shows the earlier "Development and Evaluation of a CBT
+    # Agent System Integrating Suicide Risk Detection and Retrieval-Augmented
+    # Generation", which her own mail supersedes. Worth confirming against the
+    # 審定書 signed 2026-08-18.
+    thesis: >-
+      When Retrieval Helps and Hurts: Evaluating the Safety–Coherence Trade-off
+      in Retrieval-Augmented CBT Agents
 
   廖翊婷:
     role: masters
-    order: 5
+    # Was 5 while the four graduates above shared this section; she is now the
+    # only master's student carrying an explicit position.
+    order: 1
     department: BEBI
     area: AI Agent 系統
     area_en: AI Agent Systems

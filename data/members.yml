@@ -117,47 +117,11 @@ members:
     research_en: ""
     area: 代謝體學
     area_en: Metabolomics
-  - name: 高振翔
-    name_en: ""
-    role: masters
-    department: MHI
-    order: 1
-    research: ""
-    research_en: ""
-    area: AI Agent 系統
-    area_en: AI Agent Systems
-  - name: 許漢強
-    name_en: Dwayne Reinaldy
-    role: masters
-    department: MHI
-    order: 2
-    research: ""
-    research_en: ""
-    area: 步態分析
-    area_en: Gait Analysis
-  - name: 葉芷瑜
-    name_en: ""
-    role: masters
-    department: GSB
-    order: 3
-    research: ""
-    research_en: ""
-    area: 代謝體學
-    area_en: Metabolomics
-  - name: 丁瓘茵
-    name_en: ""
-    role: masters
-    department: BEBI
-    order: 4
-    research: ""
-    research_en: ""
-    area: AI Agent 系統
-    area_en: AI Agent Systems
   - name: 廖翊婷
     name_en: ""
     role: masters
     department: BEBI
-    order: 5
+    order: 1
     research: ""
     research_en: ""
     area: AI Agent 系統
@@ -382,12 +346,53 @@ members:
     research_en: ""
     area: 計算分子設計
     area_en: Computational Molecular Design
+  - name: 丁瓘茵
+    name_en: ""
+    role: alumni
+    department: BEBI
+    graduated: 2026
+    research: ""
+    research_en: ""
+    thesis: "When Retrieval Helps and Hurts: Evaluating the Safety–Coherence Trade-off in
+      Retrieval-Augmented CBT Agents"
+    area: AI Agent 系統
+    area_en: AI Agent Systems
   - name: 古庭榮
     name_en: Ting-Jung Ku
     role: alumni
     graduated: 2026
     research: NPS GIS 全球監測
     research_en: ""
+  - name: 高振翔
+    name_en: ""
+    role: alumni
+    department: MHI
+    graduated: 2026
+    research: ""
+    research_en: ""
+    area: AI Agent 系統
+    area_en: AI Agent Systems
+  - name: 許漢強
+    name_en: Dwayne Reinaldy
+    role: alumni
+    department: MHI
+    graduated: 2026
+    research: ""
+    research_en: ""
+    thesis: A Multimodal Machine Learning Framework for Distinguishing Tardive Dyskinesia via Voice and
+      Facial Movement Analysis
+    area: 步態分析
+    area_en: Gait Analysis
+  - name: 葉芷瑜
+    name_en: ""
+    role: alumni
+    department: GSB
+    graduated: 2026
+    research: ""
+    research_en: ""
+    thesis: A Conversational AI Assistant for Literature Searching and Data Analysis in Metabolomics
+    area: 代謝體學
+    area_en: Metabolomics
   - name: 王恆
     name_en: Heng Wang
     role: alumni
