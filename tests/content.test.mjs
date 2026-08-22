@@ -8,7 +8,7 @@
 
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { readFile, readdir } from 'node:fs/promises';
+import { readFile, readdir, stat } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import path from 'node:path';
 import YAML from 'yaml';
@@ -163,6 +163,96 @@ test('no news item prints its own link labels twice', async () => {
         !item.text.includes(`[${link.label}]`),
         `a news item names its own link label in its text ("[${link.label}]"), `
         + 'which renders it twice',
+      );
+    }
+  }
+});
+
+test('every image the site serves has alternative text and a sane weight', {
+  skip: existsSync(DIST) ? false : 'run `npm run build` first',
+}, async () => {
+  // Two rules that only a test can hold.
+  //
+  // Alt text: an <img> with none is invisible to a screen reader and to a search
+  // engine, and this site exists because its content was invisible to search
+  // engines. The lab's own photographs are the likeliest to arrive without it.
+  //
+  // Weight: nothing here processes images -- public/ is copied verbatim -- so a
+  // 4 MB photograph straight off a phone ships as a 4 MB photograph. The largest
+  // image the site serves today is 332 KB, and the widest column it can land in
+  // is 1180px, so 500 KB is generous and still catches an unresized original.
+  const MAX_KB = 500;
+  const files = [];
+  const walk = async (dir) => {
+    for (const entry of await readdir(dir, { withFileTypes: true })) {
+      const full = path.join(dir, entry.name);
+      if (entry.isDirectory()) await walk(full);
+      else if (entry.name.endsWith('.html')) files.push(full);
+    }
+  };
+  await walk(DIST);
+
+  const seen = new Set();
+  for (const file of files) {
+    const html = await readFile(file, 'utf8');
+    // The whole tag, so alt is found whether it sits before or after src.
+    for (const [tag] of html.matchAll(/<img\b[^>]*>/g)) {
+      const src = tag.match(/src="(\/[^"]+)"/)?.[1];
+      if (!src) continue;
+      const alt = tag.match(/alt="([^"]*)"/);
+      assert.ok(
+        alt,
+        `${path.relative(ROOT, file)} has an <img src="${src}"> with no alt attribute`,
+      );
+      // The logo lockup is decorative and sits beside the lab's name in text, so
+      // an empty alt is correct there -- that is what an empty alt is for.
+      if (!src.endsWith('/logo.png')) {
+        assert.ok(
+          alt[1].trim(),
+          `${path.relative(ROOT, file)}: <img src="${src}"> has an empty alt; `
+          + 'describe the image, or leave it empty only if it is decorative',
+        );
+      }
+
+      if (seen.has(src)) continue;
+      seen.add(src);
+      const asset = path.join(DIST, decodeURIComponent(src));
+      if (!existsSync(asset)) continue; // the test below reports this
+      const kb = (await stat(asset)).size / 1024;
+      assert.ok(
+        kb <= MAX_KB,
+        `${src} is ${Math.round(kb)} KB, over the ${MAX_KB} KB ceiling -- resize it `
+        + 'before committing; nothing in the build will do it for you',
+      );
+    }
+  }
+});
+
+test('every honour photograph is declared with a source and alt text', async () => {
+  // getHonors() drops an image that has no src or no alt rather than rendering
+  // half of one, which would be silent. This is the loud half.
+  const honors = YAML.parse(
+    await readFile(path.join(ROOT, 'data', 'honors.yml'), 'utf8'),
+  ).achievements ?? [];
+
+  for (const [index, entry] of honors.entries()) {
+    for (const image of entry.images ?? []) {
+      assert.ok(image.src, `honour ${index + 1} has an image with no src`);
+      assert.ok(
+        String(image.src).startsWith('/img/'),
+        `honour ${index + 1} image "${image.src}" must live under /img/`,
+      );
+      const alt = image.alt;
+      assert.ok(alt, `honour ${index + 1} image "${image.src}" has no alt text`);
+      for (const locale of ['zh', 'en']) {
+        assert.ok(
+          typeof alt === 'string' || alt?.[locale]?.trim(),
+          `honour ${index + 1} image "${image.src}" has no ${locale} alt text`,
+        );
+      }
+      assert.ok(
+        existsSync(path.join(ROOT, 'public', image.src)),
+        `honour ${index + 1} image "${image.src}" is not in public/`,
       );
     }
   }

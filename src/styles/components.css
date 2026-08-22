@@ -481,6 +481,41 @@
   }
   .ds-list--bullet{list-style:disc;padding-left:var(--space-4)}
 
+  /* ── Honours list ──────────────────────────────────────────────
+     The list carries sentences, which want the prose measure, and photographs,
+     which want the column. Holding the whole list to the measure gave a pair of
+     award photographs 532px to share, so they stacked and came out small. The
+     measure moves onto the sentence instead. */
+  .ds-honors{max-width:none}
+  .ds-honors > li{display:flow-root}
+  .ds-honors__text{
+    display:block;
+    max-width:var(--prose-measure);
+  }
+
+  /* ── A row of figure plates ────────────────────────────────────
+     Several photographs of one thing, side by side on their own plates. Used by
+     the honours list, whose items are otherwise set to the prose measure -- a
+     photograph is not prose, so the row is allowed the full column and folds to
+     one photograph per row on a phone through --grid-min-ledger, like every
+     other auto-fit grid here. */
+  .ds-plate-row{
+    display:grid;
+    /* auto-FILL with a ceiling, not auto-fit with 1fr: one photograph on its own
+       would stretch to the whole 1125px column and take over the page. A plate
+       is never wider than a ledger column anywhere else in this system, so that
+       is the ceiling here too. */
+    grid-template-columns:repeat(auto-fill,minmax(0,var(--grid-min-wide)));
+    justify-content:start;
+    gap:var(--space-3);
+    margin-top:var(--space-3);
+    max-width:none;
+    /* Each plate is its own height. Stretching them to match leaves a strip of
+       empty white under whichever one has no caption -- the same reason .ds-row
+       is top-aligned. */
+    align-items:start;
+  }
+
   /* ══ Mobile (< 768px) ══════════════════════════════════════════════════
      One breakpoint, and the layout reflow is not here: it is the token
      override in tokens/layout.css, which re-points --page-pad-*, --nav-pad-*,

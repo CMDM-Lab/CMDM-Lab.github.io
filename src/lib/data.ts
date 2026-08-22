@@ -321,14 +321,29 @@ export function formatAuthors(authors: Author[] | undefined, limit = 8): string 
 
 export interface LinkRef { label: string; url: string }
 export interface NewsItem { text: string; year?: number; links?: LinkRef[] }
-export interface Achievement { citation: string; links?: LinkRef[] }
+/**
+ * A photograph attached to an award.
+ *
+ * `alt` is required, not optional: an image with no alternative text is
+ * invisible to a screen reader and to a search engine, and a photograph of an
+ * award ceremony is exactly the kind of image whose content cannot be guessed
+ * from the sentence beside it. `credit` names the photographer or the source
+ * when the lab did not take it.
+ */
+export interface AchievementImage { src: string; alt: string; credit?: string }
+export interface Achievement { citation: string; links?: LinkRef[]; images?: AchievementImage[] }
 export interface Service { name: string; description?: string; image?: string; links?: LinkRef[] }
 
 export function getNews(): NewsItem[] {
   return loadYaml<{ news?: NewsItem[] }>('news.yml', {}).news ?? [];
 }
 
-interface RawAchievement { citation?: Localized<string>; links?: LinkRef[] }
+interface RawAchievementImage { src?: string; alt?: Localized<string>; credit?: Localized<string> }
+interface RawAchievement {
+  citation?: Localized<string>;
+  links?: LinkRef[];
+  images?: RawAchievementImage[];
+}
 
 /**
  * Awards, resolved for one locale, newest first as stored.
@@ -343,6 +358,19 @@ export function getHonors(locale: Locale): Achievement[] {
     .map((entry) => ({
       citation: pickLocale(entry.citation, locale) ?? '',
       ...(entry.links ? { links: entry.links } : {}),
+      // An image with no src or no alt text is dropped rather than rendered
+      // half-formed; tests/content.test.mjs fails on one so it is not silent.
+      ...(entry.images?.length
+        ? {
+          images: entry.images
+            .filter((image) => image.src && pickLocale(image.alt, locale))
+            .map((image) => ({
+              src: image.src!,
+              alt: pickLocale(image.alt, locale)!,
+              ...(image.credit ? { credit: pickLocale(image.credit, locale)! } : {}),
+            })),
+        }
+        : {}),
     }))
     .filter((entry) => entry.citation);
 }

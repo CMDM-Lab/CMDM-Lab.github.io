@@ -45,6 +45,28 @@ achievements:
         期封面。
       en: 2025, the DeePFAS paper, published in a special issue of Environmental Science &
         Technology 59(46), was selected as the cover art of issue 59(51).
+    # The cover itself, supplied by the lab on 2026-08-22. It corroborates the
+    # entry: the masthead reads Volume 59, Number 51, December 30, 2025, and the
+    # cover carries both the special issue title and DeePFAS.
+    #
+    # The credit names ACS because the composed cover -- masthead, layout,
+    # ACS Publications footer -- is the publisher's, whatever the provenance of
+    # the artwork on it. If the lab would rather show only its own artwork
+    # without the journal's furniture, that is a different file.
+    #
+    # Resized here from the 2453x3262, 7.6 MB original to 1600px on the long
+    # edge (309 KB). Nothing in the build resizes anything.
+    images:
+      - src: /img/honors/2025-deepfas-est-cover.jpg
+        alt:
+          zh: 《Environmental Science & Technology》59 卷 51 期封面，主題為非目標式環境分析，並標示 DeePFAS。
+          en: Cover of Environmental Science & Technology 59(51), the non-targeted environmental
+            analysis special issue, featuring DeePFAS.
+        credit:
+          zh: 《Environmental Science & Technology》59 卷 51 期封面，2025 年 12 月 30 日。© American
+            Chemical Society。
+          en: Cover of Environmental Science & Technology 59(51), 30 December 2025.
+            © American Chemical Society.
     links:
       - label: ACS Publications
         url: https://pubs.acs.org/esthag/issue/59/51
@@ -64,6 +86,21 @@ achievements:
       en: 2025, Professor Yufeng Jane Tseng led a student team to the Presidential Hackathon
         2025, receiving the Team Excellence Award for an AI-assisted green chemistry
         diagnostic system.
+    # PHOTOGRAPHS GO HERE. The lab has hackathon photographs to add (2026-08-22);
+    # the shape is:
+    #
+    #   images:
+    #     - src: /img/honors/2025-hackathon-team.jpg
+    #       alt:
+    #         zh: 團隊在總統盃黑客松頒獎典禮上合影
+    #         en: The team at the Presidential Hackathon award ceremony
+    #       credit: 攝影：<誰拍的>        # omit when the lab took it
+    #
+    # `alt` is required and is not a caption: it says what is in the photograph,
+    # for a reader who cannot see it and for a search engine. `credit` is the
+    # visible caption under the plate. Files belong in public/img/honors/, long
+    # edge 1600px, under 500 KB -- nothing in the build resizes anything, and
+    # tests/content.test.mjs fails on an oversized or unlabelled image.
     links:
       - label: Presidential Hackathon
         url: https://presidential-hackathon.taiwan.gov.tw/teams

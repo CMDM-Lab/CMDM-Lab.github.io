@@ -32,13 +32,32 @@ const achievements = getHonors(locale);
 
   <section class="ds-section" aria-labelledby="achievements">
     <Kicker size="md" as="h2" id="achievements">{t.section_achievements}</Kicker>
-    <ul class="ds-list">
+    {/* The list itself is not held to the prose measure; each citation is. A
+        photograph is not prose, so the plate row beside it gets the whole
+        column -- see .ds-honors in components.css. */}
+    <ul class="ds-list ds-honors">
       {achievements.map((achievement) => (
         <li>
-          {achievement.citation}
-          {achievement.links?.map((link) => (
-            <>{' '}<a class="ds-link" href={link.url}>[{link.label}]</a></>
-          ))}
+          <span class="ds-honors__text">
+            {achievement.citation}
+            {achievement.links?.map((link) => (
+              <>{' '}<a class="ds-link" href={link.url}>[{link.label}]</a></>
+            ))}
+          </span>
+          {/* Photographs sit on the same white plate inside a hairline that the
+              paper figures use -- the design system has one figure treatment and
+              this is it. The row breaks out of the prose measure the list is set
+              to, because a photograph is not prose. */}
+          {achievement.images?.length && (
+            <div class="ds-plate-row">
+              {achievement.images.map((image) => (
+                <figure class="ds-ledger-item__plate">
+                  <img src={image.src} alt={image.alt} loading="lazy" decoding="async" />
+                  {image.credit && <figcaption>{image.credit}</figcaption>}
+                </figure>
+              ))}
+            </div>
+          )}
         </li>
       ))}
     </ul>
