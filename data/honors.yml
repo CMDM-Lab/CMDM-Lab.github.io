@@ -104,20 +104,57 @@ achievements:
       - label: NTU BEBI
         url: https://www.bebi.ntu.edu.tw/?p=3578
 
+  # The 13th cycle's winners were posted 2024-09-10. The announcement carries the
+  # names only inside an image, so both are from the lab (2026-08-22) rather than
+  # read off the page; the link is the announcement they are in.
+  - citation:
+      zh: 2024 年，曾宇鳳教授指導的學生於生醫電資所第十三屆獎勵研究創新獲獎：游子慧獲學生傑出論文獎（國際期刊論文類），楊淯元獲年度最佳碩士論文獎。
+      en: >-
+        2024, students supervised by Professor Yufeng Jane Tseng were recognised in the 13th
+        BEBI Research Innovation Awards -- Tzu-Hui Yu received the Outstanding Student Paper
+        Award (international journal category) and Yu-Yuan Yang the Best Master's Thesis of
+        the year.
+    links:
+      - label: NTU BEBI
+        url: https://www.bebi.ntu.edu.tw/?p=3505
+
   # Announced 2024-06-19. The award goes to the student, supervised by the PI --
   # written that way round because that is what the announcement says.
   #
-  # 何明洋 is not on the members page: he is on eight of the lab's papers
-  # (2020-2026, including FastEval Parkinsonism and the movement-analysis
-  # platform) but has no row in the vault roster, so the sync cannot see him.
-  # Raised with the lab on 2026-08-22.
+  # No degree level in the citation. The announcement calls him 博士班; his own
+  # page lists an NTU master's in bioinformatics and a Duke CS doctorate in
+  # progress, and the lab's alumni table has him graduating in 2021 with a
+  # master's. Those can all be true in sequence, but not from one sentence, so
+  # the sentence does not try.
   - citation:
-      zh: 2024 年，曾宇鳳教授指導的博士生何明洋榮獲 2024 鴻海科技獎。
-      en: 2024, Ming-Yang Ho, a doctoral student supervised by Professor Yufeng Jane Tseng,
-        received a 2024 Foxconn Technology Award.
+      zh: 2024 年，曾宇鳳教授指導的何明洋榮獲 2024 鴻海科技獎。
+      en: 2024, Ming-Yang Ho, supervised by Professor Yufeng Jane Tseng, received a 2024
+        Foxconn Technology Award.
     links:
       - label: NTU BEBI
         url: https://www.bebi.ntu.edu.tw/?p=3241
+
+  # Winners posted 2023-01-16; the prize was presented at the institute's
+  # colloquium on 2023-03-06. The year here is the calendar year of both.
+  - citation:
+      zh: 2023 年，曾宇鳳教授指導的王珮驊獲生醫電資所第十二屆獎勵研究創新年度最佳博士論文獎。
+      en: 2023, Pei-Hua Wang, supervised by Professor Yufeng Jane Tseng, received the Best
+        Doctoral Dissertation of the year in the 12th BEBI Research Innovation Awards.
+    links:
+      - label: NTU BEBI
+        url: https://www.bebi.ntu.edu.tw/?p=2308
+
+  # NO SOURCE LINK, deliberately. The 11th cycle's winners were announced on
+  # 2022-01-03 on the institute's previous website, which has since been retired;
+  # the announcement is not on the current site and is not in the Wayback
+  # Machine either. The lab has the notification email and supplied this on
+  # 2026-08-22. The nearest surviving page is the 11th-cycle sharing talk
+  # (bebi ?p=1637, 2022-04-19), which does not name the recipients, so linking it
+  # would imply a citation it does not carry.
+  - citation:
+      zh: 2022 年，曾宇鳳教授指導的何明洋獲生醫電資所第十一屆獎勵研究創新年度最佳碩士論文獎。
+      en: 2022, Ming-Yang Ho, supervised by Professor Yufeng Jane Tseng, received the Best
+        Master's Thesis of the year in the 11th BEBI Research Innovation Awards.
 
   - citation: 2018年：曾宇鳳教授團隊的「改善精神分裂症之負性症狀與認知功能藥物」於 2018 BioAsia and Bio SPARK
       SHOWCASE 大放異彩

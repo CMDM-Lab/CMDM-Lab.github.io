@@ -212,7 +212,12 @@ const people = [...grouped.values()].flat().map((member) => ({
       {alumni.map((person) => (
         <tr>
           <td class="ds-num">{person.graduated ?? ''}</td>
-          <td>{displayName(person)}{secondaryName(person) && <span> ({secondaryName(person)})</span>}</td>
+          {/* An alumnus who publishes their own site gets linked to it -- the
+              lab's record of where its people went is more useful pointing at
+              them than not. */}
+          <td>{person.homepage
+            ? <a href={person.homepage}>{displayName(person)}</a>
+            : displayName(person)}{secondaryName(person) && <span> ({secondaryName(person)})</span>}</td>
           {/* departmentLabel spells out the vault's codes and returns anything
               else unchanged, which is what the 2008-2022 rows carry. */}
           <td class="ds-mono-sm">{departmentLabel(person.department, locale)}</td>

@@ -1,0 +1,65 @@
+---
+// News archive, shared by both locales.
+//
+// WHY THIS PAGE EXISTS. The home page used to print all ten news items, the
+// newest of which was from 2018 -- a front page whose "latest news" was seven
+// years old. The fix is not to delete the old items: they are the lab's record
+// of its own talks and coverage, and deleting content because it is old is how
+// the previous site ended up with pages no URL pointed at. So the home page
+// shows the newest few and links here, and every item keeps a page it lives on.
+//
+// Awards are deliberately not here. They are dated declarative items too, but
+// they have their own page, and the old site's habit of keeping two overlapping
+// lists is what put the same award on screen twice.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hairline from './ds/Hairline.astro';
+import Kicker from './ds/Kicker.astro';
+import { getNews, getStrings, type Locale } from '../lib/data';
+import { pathFor } from '../lib/routes';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const t = getStrings(locale);
+const news = getNews();
+
+// Grouped by year, newest first, so a reader can see the shape of the record --
+// including the gap between 2018 and 2025, which is real.
+const byYear = [...news.reduce((groups, item) => {
+  const year = item.year ?? 0;
+  groups.set(year, [...(groups.get(year) ?? []), item]);
+  return groups;
+}, new Map<number, typeof news>())].sort((a, b) => b[0] - a[0]);
+---
+
+<BaseLayout locale={locale} slug="news">
+  <div class="ds-masthead">
+    <Kicker size="md">{t.news_kicker}</Kicker>
+    <Hairline tone="ink" />
+    <h1 class="ds-masthead__title">{t.news_title}</h1>
+    <div class="ds-masthead__subtitle">{t.news_subtitle}</div>
+    <p class="ds-masthead__lede">{t.news_lede}</p>
+  </div>
+
+  {byYear.map(([year, items]) => (
+    <section class="ds-section" aria-labelledby={`news-${year}`}>
+      <Kicker size="md" as="h2" id={`news-${year}`}>{year}</Kicker>
+      <ul class="ds-list">
+        {items.map((item) => (
+          <li>
+            {item.text}
+            {item.links?.map((link) => (
+              <>{' '}<a class="ds-link" href={link.url}>[{link.label}]</a></>
+            ))}
+          </li>
+        ))}
+      </ul>
+    </section>
+  ))}
+
+  <p class="ds-section">
+    <a class="ds-link" href={pathFor('honors', locale)}>{t.nav_honors} &rarr;</a>{' '}
+    {/* The activities page had nothing linking to it at all -- it was reachable
+        only from the sitemap. It belongs beside this record. */}
+    <a class="ds-link" href={pathFor('activities', locale)}>{t.nav_activities} &rarr;</a>
+  </p>
+</BaseLayout>

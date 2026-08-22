@@ -32,6 +32,9 @@ const t = getStrings(locale);
 
 const areas = getResearchAreas(locale);
 const news = getNews();
+
+/** How many news items the front page carries before deferring to /news/. */
+const HOME_NEWS_ITEMS = 5;
 const achievements = getHonors(locale);
 const publications = getPublications();
 const services = getServices();
@@ -132,11 +135,15 @@ const legacyMap = Object.fromEntries(
     </div>
   </section>
 
+  {/* The newest few only. This list ran to ten items, all of them from 2016-2018,
+      so the front page's "latest news" was seven years old and the rest of the
+      page was buried under it. The full record has its own page rather than
+      being trimmed away. */}
   {news.length > 0 && (
     <section class="ds-section" aria-labelledby="news">
       <Kicker size="md" as="h2" id="news">{t.section_news}</Kicker>
       <ul class="ds-list">
-        {news.map((item) => (
+        {news.slice(0, HOME_NEWS_ITEMS).map((item) => (
           <li>
             {item.text}
             {item.links?.map((link) => (
@@ -145,6 +152,11 @@ const legacyMap = Object.fromEntries(
           </li>
         ))}
       </ul>
+      {news.length > HOME_NEWS_ITEMS && (
+        <p style="margin-top:var(--space-3)">
+          <a class="ds-link" href={pathFor('news', locale)}>{t.label_all_news} &rarr;</a>
+        </p>
+      )}
     </section>
   )}
 

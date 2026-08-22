@@ -10,7 +10,7 @@
 
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { readFile } from 'node:fs/promises';
+import { readdir, readFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import path from 'node:path';
 
@@ -121,4 +121,40 @@ test('the redirect shim is excluded from the sitemap and marked noindex', {
   const shim = await readFile(path.join(ROOT, 'dist', 'index_zh.html'), 'utf8');
   assert.match(shim, /<meta name="robots" content="noindex/,
     'the shim must be noindex so it does not compete with the real pages');
+});
+
+test('no page is reachable only from the sitemap', {
+  skip: existsSync(path.join(ROOT, 'dist')) ? false : 'run `npm run build` first',
+}, async () => {
+  // The activities page was an orphan: a real route, in the sitemap, with not
+  // one link to it from anywhere on the site. A crawler could reach it; a reader
+  // could not. Nothing said so, because the page built and rendered fine.
+  //
+  // A route that is not in the navigation must therefore be linked from at least
+  // one other page's body.
+  const { slugs } = await readRoutesSource();
+  const files = [];
+  const walk = async (dir) => {
+    for (const entry of await readdir(dir, { withFileTypes: true })) {
+      const full = path.join(dir, entry.name);
+      if (entry.isDirectory()) await walk(full);
+      else if (entry.name === 'index.html') files.push(full);
+    }
+  };
+  await walk(path.join(ROOT, 'dist'));
+
+  const pages = new Map();
+  for (const file of files) pages.set(file, await readFile(file, 'utf8'));
+
+  for (const slug of slugs) {
+    if (slug === '') continue; // the home page is the brand lockup on every page
+    for (const prefix of ['/', '/en/']) {
+      const href = `${prefix}${slug}/`;
+      const self = path.join(ROOT, 'dist', prefix === '/' ? '' : 'en', slug, 'index.html');
+      const linked = [...pages].some(([file, html]) => (
+        file !== self && html.includes(`href="${href}"`)
+      ));
+      assert.ok(linked, `${href} is in the sitemap but no other page links to it`);
+    }
+  }
 });

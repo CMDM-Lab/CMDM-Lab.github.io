@@ -79,6 +79,17 @@ honors_subtitle: Awards · Journal covers · Team recognition
 honors_lede: Awards and external recognition received by the lab and its research teams, most
   recent first.
 
+# ── News ─────────────────────────────────────────────────────
+news_title: News
+news_description: Talks, media coverage and collaborations from the CMDM Lab, from 2016 to the
+  present.
+news_kicker: News
+news_subtitle: Invited talks · Media · Collaborations
+news_lede: Talks, coverage and collaborations, most recent first. Awards are listed under
+  Honors.
+nav_news: News
+label_all_news: All news
+
 # ── Members ──────────────────────────────────────────────────
 members_title: Lab Members
 members_description: Faculty, postdoctoral researchers, graduate students, and alumni of the

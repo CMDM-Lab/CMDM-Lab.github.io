@@ -28,6 +28,7 @@ export const ROUTES: Route[] = [
   { slug: 'members', navKey: 'nav_members', titleKey: 'members_title', descriptionKey: 'members_description', inNav: true },
   { slug: 'services', navKey: 'nav_services', titleKey: 'services_title', descriptionKey: 'services_description', inNav: true },
   { slug: 'courses', navKey: 'nav_courses', titleKey: 'courses_title', descriptionKey: 'courses_description', inNav: true },
+  { slug: 'news', navKey: 'nav_news', titleKey: 'news_title', descriptionKey: 'news_description', inNav: false },
   { slug: 'activities', navKey: 'nav_activities', titleKey: 'activities_title', descriptionKey: 'activities_description', inNav: false },
   { slug: 'professor', navKey: 'professor_title', titleKey: 'professor_title', descriptionKey: 'professor_description', inNav: false },
 ];

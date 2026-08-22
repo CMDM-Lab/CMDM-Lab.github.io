@@ -74,6 +74,15 @@ honors_kicker: 榮譽
 honors_subtitle: 獲獎紀錄 · 期刊封面 · 團隊表現
 honors_lede: 實驗室與研究團隊歷年獲得的獎項與外部肯定，依年份排列。
 
+# ── News ─────────────────────────────────────────────────────
+news_title: 最新消息
+news_description: CMDM 實驗室的演講、媒體報導與合作紀錄，含 2016 年至今的邀請演講與新聞報導。
+news_kicker: 消息
+news_subtitle: 邀請演講 · 媒體報導 · 合作計畫
+news_lede: 實驗室對外的演講、報導與合作紀錄，依年份排列。獲獎紀錄另見榮譽事蹟。
+nav_news: 消息
+label_all_news: 全部消息
+
 # ── Members ──────────────────────────────────────────────────
 members_title: 實驗室成員
 members_description: 國立臺灣大學計算分子設計與代謝體學實驗室的指導教授、博士後研究員、博碩士班學生與歷屆畢業成員名單。

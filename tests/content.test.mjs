@@ -325,3 +325,48 @@ test('the numbers in the About prose match the data files', async () => {
     );
   }
 });
+
+test('the front page defers to the news archive without losing an item', {
+  skip: existsSync(DIST) ? false : 'run `npm run build` first',
+}, async () => {
+  // The home page shows the newest few news items; the point of capping it was
+  // to stop a seven-year-old item leading the front page, not to drop the older
+  // ones. Every item must therefore still be on /news/, and the front page must
+  // link there whenever it is holding some back.
+  //
+  // What this does NOT check is that the cap is small or that the news is fresh.
+  // Raising HOME_NEWS_ITEMS is a deliberate edit, and a test that failed because
+  // nothing had happened lately would be a nag, not a tripwire. The rule here is
+  // only that nothing is published to no page, which is the failure that hides.
+  const news = YAML.parse(await readFile(path.join(ROOT, 'data', 'news.yml'), 'utf8')).news ?? [];
+  assert.ok(news.length, 'no news items declared');
+
+  const home = await readFile(path.join(DIST, 'index.html'), 'utf8');
+  const archive = await readFile(path.join(DIST, 'news', 'index.html'), 'utf8');
+
+  const escape = (text) => text
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/'/g, '&#39;');
+  for (const item of news) {
+    assert.ok(
+      archive.includes(escape(item.text)),
+      `a news item is on no page: ${item.text.slice(0, 40)}`,
+    );
+  }
+
+  const cap = Number(
+    (await readFile(path.join(ROOT, 'src', 'components', 'HomePage.astro'), 'utf8'))
+      .match(/HOME_NEWS_ITEMS = (\d+)/)?.[1],
+  );
+  assert.ok(cap, 'could not read HOME_NEWS_ITEMS from HomePage.astro');
+
+  const section = home.slice(home.indexOf('id="news"'));
+  const list = section.slice(0, section.indexOf('</ul>'));
+  const shown = [...list.matchAll(/<li>/g)].length;
+  assert.ok(shown <= cap, `the front page shows ${shown} news items, over the cap of ${cap}`);
+  if (news.length > cap) {
+    assert.ok(
+      section.slice(0, section.indexOf('</section>')).includes('/news/'),
+      'the front page holds news items back but does not link the archive',
+    );
+  }
+});

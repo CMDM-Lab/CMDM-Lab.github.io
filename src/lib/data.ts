@@ -101,9 +101,13 @@ export interface Member {
 
 export interface HistoricalAlumnus {
   name: string;
+  /** Romanised name, only where a publication or the person's own site gives it. */
+  name_en?: string;
   graduated?: number | null;
   department?: string;
   thesis?: string;
+  /** The alumnus's own site, where they publish one. */
+  homepage?: string;
 }
 
 /**

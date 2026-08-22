@@ -26,9 +26,14 @@ alumni:
   department: 生醫電資所 碩士
   thesis: 小鼠腦部MRI模型建構
 - name: 何明洋
+  # Published as Ho, M. Y. on eight of the lab's papers. Now a CS doctoral
+  # student at Duke; the homepage is his own, and the lab confirmed it
+  # (2026-08-22).
+  name_en: Ming-Yang Ho
   graduated: 2021
   department: 生醫電資所 碩士
   thesis: 帕金森氏症人工智慧綜合判讀系統
+  homepage: https://kaminyou.com/
 - name: 許至廷
   graduated: 2020
   department: 生醫電資所 碩士
