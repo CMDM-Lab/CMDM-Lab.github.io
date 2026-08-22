@@ -47,6 +47,48 @@
      like |log2FC| > 1 apart. */
   .ds-prose--technical{text-align:left;hyphens:manual}
 
+  /* ── ArticleFlow ──────────────────────────────────────────
+     Long-form prose set in newspaper columns with a rule between them.
+     Reads more like a journal than side-by-side flex columns, and it fills
+     the wide shell -- a single 64ch measure inside 1180px leaves the right
+     half of the page empty and reads as a broken layout.
+
+     Under a Chinese document root it collapses to one column and stops
+     justifying: the design system is explicit that long Chinese paragraphs
+     belong in a single Prose column, because justification stretches
+     inter-character spacing and column breaks fall badly in Hanzi. So this
+     does the right thing in both locales without the page choosing. */
+  .ds-article-flow{
+    columns:2;
+    column-gap:var(--column-gap);
+    column-rule:var(--border-hairline);
+    font-size:var(--text-lede);
+    line-height:var(--leading-body);
+    text-align:justify;
+    hyphens:auto;
+    color:var(--text-secondary);
+  }
+  .ds-article-flow > p{
+    margin-bottom:var(--space-4);
+    /* Avoid a one-line orphan at the foot of a column. */
+    break-inside:avoid-column;
+  }
+  .ds-article-flow > p:last-child{margin-bottom:0}
+
+  /* Opt back out of the CJK treatment when the text in the column is not
+     actually Chinese -- the About page falls back to English until the lab
+     supplies Chinese copy, and one 38em column of English wastes half the
+     page. Set by the page, not guessed here. */
+  :root:lang(zh-Hant) .ds-article-flow:not(.ds-article-flow--latin),
+  :root:lang(zh) .ds-article-flow:not(.ds-article-flow--latin){
+    columns:1;
+    max-width:var(--measure-prose-cjk);
+    font-size:var(--text-lede);
+    line-height:var(--leading-body-cjk);
+    text-align:left;
+    hyphens:manual;
+  }
+
   /* ── Kicker ────────────────────────────────────────────────── */
   .ds-kicker{
     display:block;
@@ -246,13 +288,17 @@
     line-height:var(--prose-leading);
     color:var(--text-secondary);
   }
-  .ds-ledger-item__figure{
-    display:block;
-    width:100%;
-    height:auto;
+  /* A figure sits on a white plate inside a hairline, with a mono caption --
+     never bleeding, never borderless. The caption is also where third-party
+     attribution goes, which CC-BY reuse requires. */
+  .ds-ledger-item__plate{
+    background:var(--white);
     border:var(--border-hairline);
+    padding:var(--space-2);
     margin-top:var(--space-1);
   }
+  .ds-ledger-item__plate img{display:block;width:100%;height:auto}
+  .ds-ledger-item__plate figcaption{margin-top:var(--space-2)}
   .ds-ledger-item__tags{display:flex;gap:var(--space-1);flex-wrap:wrap}
   .ds-ledger-item__meta{
     font-family:var(--font-mono);

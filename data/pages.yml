@@ -6,65 +6,105 @@
 # TRANSLATION GAP -- needs the lab's attention.
 #
 # The old site had `_zh` variants of the About and Research pages, but their
-# bodies were English prose, identical to the English pages. There is no Chinese
-# text for this material anywhere in the repository. Rather than machine
-# translate descriptions of the lab's own research -- which would put words
-# about scientific results into the lab's mouth and risk distorting them -- the
-# English text is reused in both locales and flagged here.
+# bodies were English prose, identical to the English pages.
 #
-# `zh` blocks below marked `same_as_en: true` are the ones awaiting real
-# Chinese copy. Replace the value with Chinese prose and drop the flag.
+# DRAFT, 2026-08-22, AWAITING THE LAB'S APPROVAL. The paragraphs below were
+# drafted at the lab's request from its own record -- the publication list, the
+# research pillars, the roster and the previous site's About text. Nothing is
+# invented; the provenance of each paragraph is noted beside it. But this is the
+# lab describing itself, so it is the lab's to approve and edit. Change the
+# wording freely; nothing derives from it.
+#
+# Counts are written out rather than computed because they read as prose here.
+# They were true on 2026-08-22: 117 journal articles (44 since 2020), 64
+# conference papers, 16 patents, 8 public services, 41 current members, 66
+# alumni. The home page shows the live figures in its colophon.
 
 about:
+  zh:
+    paragraphs:
+      # Scope. The five pillars from research_areas, in the lab's own terms.
+      - >-
+        本實驗室以計算方法研究分子與代謝物。創立之初的兩大主軸為計算分子設計與代謝體學生物標記偵測，近年延伸至量子計算、步態分析與 AI Agent
+        系統，共五個方向。我們開發演算法與軟體工具，並將其應用於藥物開發與臨床檢驗。
+      # Drug design track. NRPB projects, partners, patents, prediction models --
+      # all carried over from the previous site's About text.
+      - >-
+        在計算分子設計方面，本實驗室參與國家生技醫藥研究計畫的六項新藥開發專案，與中國醫藥大學、國立清華大學、臺北醫學大學等校的化學與藥學系所合作，目標為神經病理性疼痛、血栓與癌症的治療藥物，並持有多項美國專利。所建立的預測模型涵蓋
+        hERG 心臟毒性、人體口服吸收、皮膚穿透與皮膚敏感化的 QSAR 分析。
+      # Metabolomics track. Metabolomics Core Lab, MS/NMR methods, the Analytical
+      # Chemistry record (6 papers), and the clinical applications the old text
+      # lists.
+      - >-
+        在代謝體學方面，本實驗室於臺大基因體研究中心代謝體核心實驗室建立研究團隊，開發質譜與核磁共振的計算方法，成果發表於《Analytical
+        Chemistry》等期刊，並曾獲國際代謝體學會年會最佳資訊學論文獎。這些方法已應用於焊接煙塵暴露、中草藥成分鑑定與毒性預測、乳癌細胞缺氧反應，以及肺癌、白血病、慢性阻塞性肺病與加護病房死亡率的標記研究。
+      # Newer directions. The journals were dropped from the prose at the lab's
+      # request -- the reader can find them on the Publications page -- but they
+      # are recorded here so the claim stays traceable:
+      #   quantum computing  Journal of Cheminformatics, Scientific Reports
+      #   gait / movement    npj Digital Medicine, IEEE J. Biomed. Health Inform.
+      #   LLM for clinical   Schizophrenia Bulletin
+      - >-
+        近年新增的三個方向已有發表成果：量子計算應用於藥物探索與專利檢索、影像式步態與帕金森氏症動作分析，以及大型語言模型應用於臨床評估。
+      # Output and people. Numbers from the data files; tools from services.yml.
+      - >-
+        實驗室自 2003 年起發表 117 篇期刊論文，其中 44 篇在 2020 年之後，另有 64 篇會議論文與 16 項專利。我們在 cmdm.tw
+        網域下維運 8 項公開服務，包含 3Omics、Lipidpedia、CypRules、GC2MS、Chromaligner 與
+        PITracer，皆開放外部研究者使用。實驗室現有成員 41 人，畢業校友 66 人。
   en:
-    # Block scalars throughout: this prose contains colons and quotes that YAML
-    # would otherwise read as structure.
     paragraphs:
       - >-
-        Our research focuses on Computational Molecular Design and Biomarker Detection in
-        Metabolomics, which involves the development of new algorithms and tools to identify and
-        design molecular structures for the targeted use. Our research is published in
-        international journals of Molecular Structure Design, and is presently being used in the
-        development of clinical biomarkers in both Taiwan and the U.S.
+        The lab studies molecules and metabolites by computation. Its two founding
+        directions were computational molecular design and biomarker detection in
+        metabolomics; in recent years these have been joined by quantum computing, gait
+        analysis and AI agent systems, giving five research pillars. We develop algorithms and
+        software tools, and apply them to drug development and clinical assay work.
       - >-
-        Our laboratory was involved in six drug development projects in the National Research
-        Program for Biopharmaceuticals (NRPB). Our research is not only intended to be included in
-        the "Platform for lead optimization and preclinical safety screening project" for years to
-        come, but also to contribute to the National Science Technology Program for Biotechnology
-        and Pharmaceuticals in collaboration with departments of chemistry and pharmacy of various
-        domestic universities in Taiwan. Our partners include China Medical University, National
-        Taiwan University, National Yang Ming Chiao Tung University, Taipei Medical University,
-        National Tsing Hua University and National Chung Cheng University. Our primary objective is
-        to rapidly develop new drugs for the treatment of neuropathic pain, as well as
-        antithrombotic and cancer fighting agents. We currently hold several drug patents in the U.S.
+        In computational molecular design, the lab took part in six drug development projects
+        under the National Research Program for Biopharmaceuticals, working with the chemistry
+        and pharmacy departments of China Medical University, National Tsing Hua University and
+        Taipei Medical University among others. The targets were treatments for neuropathic
+        pain, thrombosis and cancer, and the work holds several U.S. patents. The predictive
+        models built here cover hERG cardiotoxicity, human oral drug absorption, and QSAR
+        analyses of skin penetration and skin sensitization.
       - >-
-        The Structure-Based Fragment Hopping For Lead Optimization and Improvement method (U.S.
-        Patent) performs a series of virtual screenings for compounds in order to uncover the
-        relationship between quantitative determinations such as physicochemical properties or
-        theoretical molecular descriptors and functions. It furthermore optimizes the compound's
-        structure to improve its activity as well as reduce its toxicity. In addition to NRPB's
-        funding, we have also received commissions to develop new drugs from the BioMedical
-        Technology and Device Research Laboratory, Industrial Technology Research Institute, and
-        the Medical and Pharmaceutical Industry Technology and Development Center. Our technology
-        includes computational prediction of toxicity — hERG prediction models, prediction and
-        mechanistic interpretation of human oral drug absorption, QSAR analysis of skin penetration
-        and skin penetration enhancers, and QSAR models for skin sensitization.
+        In metabolomics, the lab built a research group at the Metabolomics Core Laboratory of
+        the NTU Center of Genomic Medicine, developing mass-spectrometry and NMR computing
+        methods published in Analytical Chemistry and elsewhere, and received the Best
+        Informatics Paper award at an International Conference of the Metabolomics Society.
+        Those methods have been applied to welding-fume exposure, compound identification and
+        toxicity prediction in Chinese herbs, hypoxia in breast cancer cells, and markers for
+        lung cancer, leukaemia, chronic obstructive pulmonary disease and mortality among
+        intensive-care patients.
+      # See the note on the Chinese paragraph above for the journals behind each
+      # of these three, which the lab asked to keep out of the prose.
       - >-
-        In Metabolomics, we have built a research group at National Taiwan University and at the
-        Metabolomics Core Laboratory in the NTU Center of Genomic Medicine. We were awarded Best
-        Informatics Paper for the computational method developed in Metabolomics at the Seventh
-        International Conference of the Metabolomics Society.
+        The three newer directions each have published results: quantum computing for drug
+        discovery and patent search, video-based gait and Parkinsonian movement analysis, and
+        large language models for clinical assessment.
       - >-
-        The mass spectrometry and NMR computing techniques developed in the lab have been applied
-        to the study of workers' exposure to welding fumes, compound identification in Chinese
-        herbs, prediction of toxicity in Chinese herbs, and the study of hypoxia's influence on
-        breast cancer cells. They are also applied to finding molecular markers for lung cancer and
-        leukaemia, and to predicting chronic obstructive pulmonary disease, bronchiectasis, acute
-        lung injury, sepsis with multiple organ failure, and mortality among intensive-care
-        patients receiving ECMO.
-  zh:
-    same_as_en: true
+        Since 2003 the lab has published 117 journal articles, 44 of them since 2020, together
+        with 64 conference papers and 16 patents. We maintain eight public services under
+        cmdm.tw -- among them 3Omics, Lipidpedia, CypRules, GC2MS, Chromaligner and PITracer --
+        all open to external researchers. The lab currently has 41 members and 66 alumni.
 
+# The lab's research pillars, in the order they are shown.
+#
+# The first two are the lab's historic core and are its own wording, carried
+# over from the previous site. The remaining three were added on 2026-08-22 at
+# the lab's direction; their sub-items are drawn from what the record actually
+# shows rather than written from scratch:
+#
+#   Quantum computing  2 members, 5 papers (J Cheminform 2025, IEEE
+#                      Nanotechnology Magazine 2023, Scientific Reports 2022,
+#                      Structural Chemistry 2019)
+#   Gait analysis      6 master's students, 3 papers (IEEE JBHI 2026 and 2024,
+#                      npj Digital Medicine 2024)
+#   AI agent systems   8 members, 1 paper (Schizophrenia Bulletin 2025); most of
+#                      this work is still in progress, so the items describe the
+#                      subjects rather than claiming published results
+#
+# Acronyms expand on first use, per the design system's vocabulary rule.
 research_areas:
   zh:
     - group: 計算分子設計
@@ -75,6 +115,22 @@ research_areas:
       items:
         - 生物標記偵測
         - 精準醫學
+    - group: 量子計算
+      items:
+        - 量子演算法應用於藥物探索與專利檢索
+        - 變分量子特徵求解器 (VQE) 計算分子性質
+        - 量子程式開發平台評估
+    - group: 步態分析
+      items:
+        - 影像式步態分析平台
+        - 帕金森氏症動作評估
+        - 半監督式學習應用於病理步態判讀
+    - group: AI Agent 系統
+      items:
+        - 科學文獻分析與引證 Agent
+        - 法規與化學品風險評估自動化
+        - 檢索增強生成 (RAG) 知識庫建置
+        - 大型語言模型 (LLM) 應用於臨床評估
   en:
     - group: Computational Molecular Design
       items:
@@ -84,38 +140,118 @@ research_areas:
       items:
         - Biomarker detection
         - Precision medicine
+    - group: Quantum Computing
+      items:
+        - Quantum algorithms for drug discovery and patent search
+        - Variational quantum eigensolver (VQE) for molecular properties
+        - Evaluation of quantum programming platforms
+    - group: Gait Analysis
+      items:
+        - Video-based gait analysis platforms
+        - Parkinsonian movement assessment
+        - Semi-supervised learning for pathological gait
+    - group: AI Agent Systems
+      items:
+        - Scientific literature analysis and citation agents
+        - Regulatory and chemical risk assessment automation
+        - Retrieval-augmented generation (RAG) knowledge bases
+        - Large language models (LLM) for clinical assessment
 
-# Representative work, migrated from contents/research_zh.html. Each entry keeps
-# the abstract excerpt the old page showed.
+# Representative papers shown on the Research page, one per research pillar plus
+# DeePFAS at the lab's request (2026-08-22).
+#
+# EXCERPTS ARE REAL AND SOURCED. Each is the opening one or two sentences of the
+# paper's own abstract, taken from Crossref where the publisher deposits one and
+# from PubMed otherwise -- ACS and IEEE do not deposit abstracts to Crossref, so
+# DeePFAS and the quantum-platforms paper came from PubMed. They are not
+# paraphrased or written here. Structured-abstract section headers
+# ("Background and Hypothesis") were stripped.
+#
+# ENGLISH IN BOTH LOCALES, deliberately. Paper titles, journal names and
+# abstract text stay in their original language on the Chinese page -- the design
+# system states this as correct academic practice, not an omission.
+#
+# `tag` follows the design system's register for brand-tone tags: instrument and
+# assay classifications, not pillar names.
+#
+# FIGURES. `image` is the paper's own overview figure and `image_credit` is its
+# attribution, which is not optional -- these are reused under CC licences that
+# require it, and the design system puts a mono caption under every figure
+# anyway.
+#
+# Only one entry has a figure so far, and that is a deliberate stop rather than
+# an unfinished job. Of the six papers:
+#
+#   FastEval Parkinsonism   Figure 1 is a clean system schematic. Used.
+#   Breathomics Dataset     Figure 1 is a dense asthma heat map -- illegible at
+#                           the ~560px a ledger column gives it. Skipped.
+#   Quantum platforms       "Figure 1" is an inline equation graphic, not a
+#                           figure. Skipped.
+#   DeePFAS                 CC-BY, but pubs.acs.org refuses automated requests
+#                           (403). The lab are the authors and hold the file.
+#   GNN p-gp                CC-BY-NC, but academic.oup.com also returns 403.
+#   GenAI schizophrenia     OUP standard reuse terms, not a CC licence. Not used.
+#
+# The two figures the old site used (public/img/research.png and research_2.png)
+# belong to the papers these entries replaced, so they are not reused here.
 research_highlights:
-  - title: "Mutagenicity in a Molecule: Identification of Core Structural Features of Mutagenicity
-      Using a Scaffold Analysis"
-    excerpt: With advances in the development and application of Ames mutagenicity in silico
-      prediction tools, the International Conference on Harmonisation (ICH) has amended its M7
-      guideline to reflect the use of such prediction models for the detection of mutagenic activity
-      in early drug safety evaluation processes.
-    image: /img/research.png
-  - title: An efficient and robust fatty acid profiling method for plasma metabolomic studies by gas
-      chromatography-mass spectrometry
-    excerpt: Targeted metabolomic analysis of fatty acids has linked the dysregulation of fatty acids
-      to many diseases. This study selected five frequently used fatty acid derivatization methods
-      for comparison.
-  - title: A portable micro gas chromatography system for volatile compounds detection with 15 ppb of
-      sensitivity
-    excerpt: Existing non-invasive lung cancer diagnostic equipment has difficulty detecting
-      early-stage lung cancer, as abnormal tissue is smaller than 0.5 cm. Volatile organic compounds
-      from human breath gas can provide biomarkers for human disease, especially for lung cancer.
-  - title: Using the Matrix-Induced Ion Suppression Method for Concentration Normalization in
-      Cellular Metabolomics Studies
-    excerpt: Most cellular metabolomics studies control only cell numbers or protein content without
-      adjusting the total metabolite concentration, mainly because of the lack of an effective
-      concentration normalization method.
-    image: /img/research_2.png
-  - title: Synthesis and inhibitory effects of novel pyrimido-pyrrolo-quinoxalinedione analogues
-      targeting nucleoproteins of influenza A virus H1N1
-    excerpt: The influenza nucleoprotein (NP) is a single-strand RNA-binding protein and the core of
-      the influenza ribonucleoprotein particle, serving many critical functions for influenza
-      replication.
+  - title: A robust and interpretable graph neural network-based protocol for predicting p-glycoprotein substrates
+    excerpt: >-
+      P-glycoprotein (P-gp), a key member of the ATP-binding cassette (ABC) transporter family,
+      plays a significant role in drug absorption and distribution by binding to diverse
+      xenobiotics and actively transporting them out of cells. Given P-gp’s widespread expression,
+      including its critical presence at the blood–brain barrier, identifying whether a compound
+      functions as a P-gp substrate or inhibitor is essential in drug development to evaluate its
+      ability to penetrate the central nervous system.
+    tag: GNN
+    meta: Briefings in Bioinformatics 26(4) · 2025 · 10.1093/bib/bbaf392
+    doi: 10.1093/bib/bbaf392
+  - title: A Clinical Breathomics Dataset
+    excerpt: >-
+      This study entailed a comprehensive GC-MS analysis conducted on 121 patient samples to
+      generate a clinical breathomics dataset. Breath molecules, indicative of diverse conditions
+      such as psychological and pathological states and the microbiome, were of particular
+      interest due to their non-invasive nature.
+    tag: GC-MS
+    meta: Scientific Data 11(1) · 2024 · 10.1038/s41597-024-03052-2
+    doi: 10.1038/s41597-024-03052-2
+  - title: 'DeePFAS: Deep-Learning-Enabled Rapid Annotation of PFAS: Enhancing Nontargeted Screening through Spectral Encoding and Latent Space Analysis'
+    excerpt: >-
+      Detecting PFAS is challenging due to their diverse chemical structures, lack of standards,
+      complex sample matrices, and the need for sensitive equipment to measure trace levels.
+      Background contamination and the sheer number of PFAS further hinder the development of a
+      universal detection method.
+    tag: LC-HRMS
+    meta: Environmental Science & Technology 59(46) · 2025 · 10.1021/acs.est.5c09769
+    doi: 10.1021/acs.est.5c09769
+  - title: Advantages of two quantum programming platforms in quantum computing and quantum chemistry
+    excerpt: >-
+      Quantum computing is at the forefront of technological advancement and has the potential to
+      revolutionize various fields, including quantum chemistry. Choosing an appropriate quantum
+      programming language becomes critical as quantum education and research increase.
+    tag: QUANTUM
+    meta: Journal of Cheminformatics 17(1) · 2025 · 10.1186/s13321-025-01026-z
+    doi: 10.1186/s13321-025-01026-z
+  - title: 'FastEval Parkinsonism: an instant deep learning–assisted video-based online system for Parkinsonian motor symptom evaluation'
+    excerpt: >-
+      The Motor Disorder Society’s Unified Parkinson’s Disease Rating Scale (MDS-UPDRS) is
+      designed to assess bradykinesia, the cardinal symptoms of Parkinson’s disease (PD). However,
+      it cannot capture the all-day variability of bradykinesia outside the clinical environment.
+    tag: MDS-UPDRS
+    meta: npj Digital Medicine 7(1) · 2024 · 10.1038/s41746-024-01022-x
+    image: /img/papers/fasteval-parkinsonism.png
+    image_credit: Figure 1, Yang et al., npj Digital Medicine 7, 31 (2024). CC BY 4.0
+    doi: 10.1038/s41746-024-01022-x
+  - title: Analyzing Generative AI and Machine Learning in Auto-Assessing Schizophrenia’s Negative Symptoms
+    excerpt: >-
+      Traditional assessments of schizophrenia’s negative symptoms rely on subjective and time-
+      consuming psychiatric interviews. To provide more objective and efficient evaluations, this
+      study examines the efficacy of an automated system utilizing generative AI (GenAI) and
+      machine learning (ML) to assess negative symptoms of schizophrenia, including expression
+      (EXP) and motivation and pleasure (MAP) domains.
+    tag: LLM
+    meta: Schizophrenia Bulletin 52(4) · 2025 · 10.1093/schbul/sbaf102
+    doi: 10.1093/schbul/sbaf102
 
 courses:
   zh:

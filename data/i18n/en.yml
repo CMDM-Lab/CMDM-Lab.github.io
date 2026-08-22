@@ -44,16 +44,16 @@ about_description: Research directions, collaborations, and contact information 
 about_kicker: About
 about_subtitle: Research directions · Collaborations · Platforms
 about_lede: The lab is hosted in the Department of Computer Science and Information Engineering at
-  National Taiwan University, working across computational molecular design and clinical
-  metabolomics.
+  National Taiwan University, working across computational molecular design, clinical metabolomics,
+  quantum computing, gait analysis, and AI agent systems.
 
 # ── Research ─────────────────────────────────────────────────
 research_title: Research
 research_description: CMDM Lab research spans computational molecular design, predictive
   toxicology, metabolomic biomarker detection, and precision medicine.
 research_kicker: Research
-research_subtitle: Cheminformatics · Predictive toxicology · Clinical metabolomics
-research_lede: Two research pillars and representative work. The full record lives under
+research_subtitle: Cheminformatics · Clinical metabolomics · Quantum computing · Gait analysis · AI agents
+research_lede: The lab's five research pillars and representative work. The full record lives under
   Publications.
 
 # ── Publications ─────────────────────────────────────────────
@@ -123,7 +123,7 @@ professor_lede: Professor Yufeng Jane Tseng directs the lab, working on computat
 section_news: News
 section_latest_publications: Recent Publications
 section_award_highlights: Selected Awards
-section_research_areas: Two Research Pillars
+section_research_areas: Research Pillars
 section_lab_record: Lab Record
 section_journal_papers: Journal Articles
 section_conference_papers: Conference Papers
@@ -179,3 +179,5 @@ role_undergraduate: Undergraduate Researchers
 role_current: Current Members
 role_alumni: Alumni
 label_title: Title
+label_area: Research area
+label_projects: Projects

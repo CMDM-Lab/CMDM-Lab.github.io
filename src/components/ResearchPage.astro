@@ -9,8 +9,9 @@ import Hairline from './ds/Hairline.astro';
 import Kicker from './ds/Kicker.astro';
 import Ledger from './ds/Ledger.astro';
 import LedgerItem from './ds/LedgerItem.astro';
+import Tag from './ds/Tag.astro';
 import {
-  getResearchAreas, getResearchHighlights, getStrings, type Locale,
+  getResearchAreas, romanNumeral, getResearchHighlights, getStrings, type Locale,
 } from '../lib/data';
 import { pathFor } from '../lib/routes';
 
@@ -20,7 +21,6 @@ const t = getStrings(locale);
 const areas = getResearchAreas(locale);
 const highlights = getResearchHighlights();
 
-const NUMERALS = ['I', 'II', 'III', 'IV', 'V', 'VI'];
 ---
 
 <BaseLayout locale={locale} slug="research">
@@ -36,7 +36,7 @@ const NUMERALS = ['I', 'II', 'III', 'IV', 'V', 'VI'];
     <Kicker size="md" as="h2" id="areas">{t.section_research_areas}</Kicker>
     <Ledger width="wide">
       {areas.map((area, i) => (
-        <LedgerItem index={NUMERALS[i]} title={area.group} as="h3">
+        <LedgerItem index={romanNumeral(i)} title={area.group} as="h3">
           <ul class="ds-list ds-list--bullet">
             {area.items.map((item) => <li>{item}</li>)}
           </ul>
@@ -50,12 +50,21 @@ const NUMERALS = ['I', 'II', 'III', 'IV', 'V', 'VI'];
     <Ledger width="wide">
       {highlights.map((highlight, i) => (
         <LedgerItem
-          index={NUMERALS[i]}
+          index={romanNumeral(i)}
           title={highlight.title}
           body={highlight.excerpt}
           imageSrc={highlight.image}
+          imageAlt={highlight.title}
+          imageCredit={highlight.image_credit}
+          meta={highlight.meta}
+          href={highlight.doi ? `https://doi.org/${highlight.doi}` : undefined}
+          linkLabel={t.label_publisher}
           as="h3"
-        />
+        >
+          {highlight.tag && (
+            <Fragment slot="tags"><Tag tone="brand">{highlight.tag}</Tag></Fragment>
+          )}
+        </LedgerItem>
       ))}
     </Ledger>
     <p style="margin-top:var(--space-3)">

@@ -61,6 +61,22 @@ export interface Member {
   graduated?: number;
   research?: string;
   research_en?: string;
+  /**
+   * Coarse research area, always one of the pillars in data/pages.yml.
+   *
+   * The page shows this instead of `research`: the specific topic is working
+   * shorthand from the vault, while the area keeps the entry searchable without
+   * publishing what anyone is doing this month. Assigned by
+   * scripts/sync-members.mjs.
+   */
+  area?: string;
+  area_en?: string;
+  /**
+   * Named projects this person leads. Kept apart from `area` on purpose: a
+   * project is a responsibility, often for an external system, and folding it
+   * into the research area would blur what that column means.
+   */
+  projects?: Array<{ name: string; name_en?: string; short?: string; url?: string }>;
   expertise?: string;
   honors?: string[];
   email?: string;
@@ -220,17 +236,6 @@ export interface NewsItem { text: string; year?: number; links?: LinkRef[] }
 export interface Achievement { citation: string; links?: LinkRef[] }
 export interface Service { name: string; description?: string; image?: string; links?: LinkRef[] }
 
-/**
- * Display form for an email address: `yjtseng[at]csie.ntu.edu.tw`.
- *
- * The lab's own anti-scraping convention, carried over from the old site and
- * kept by the design system. The `mailto:` href still uses the real address --
- * obfuscating the visible text is the point, breaking the link is not.
- */
-export function obfuscateEmail(email: string | undefined): string {
-  return (email ?? '').replace('@', '[at]');
-}
-
 export function getNews(): NewsItem[] {
   return loadYaml<{ news?: NewsItem[] }>('news.yml', {}).news ?? [];
 }
@@ -273,7 +278,24 @@ export function getStrings(locale: Locale): Record<string, string> {
 }
 
 export interface ResearchGroup { group: string; items: string[] }
-export interface ResearchHighlight { title: string; excerpt?: string; image?: string }
+
+/**
+ * A representative paper on the Research page.
+ *
+ * `excerpt` is the opening of the paper's own abstract, not a paraphrase.
+ * `tag` is an instrument or assay classification, which is the register the
+ * design system reserves brand-tone tags for.
+ */
+export interface ResearchHighlight {
+  title: string;
+  excerpt?: string;
+  tag?: string;
+  meta?: string;
+  doi?: string;
+  image?: string;
+  /** Attribution for `image`. Required by the CC licences these are reused under. */
+  image_credit?: string;
+}
 
 interface PagesFile {
   about?: {
@@ -311,15 +333,55 @@ function pages(): PagesFile {
  * lab's account of its own work.
  */
 export function getAboutParagraphs(locale: Locale): string[] {
+  return getAbout(locale).paragraphs;
+}
+
+/**
+ * About-page prose plus whether it is a fallback.
+ *
+ * `translated` is false when the Chinese page is showing the English text, and
+ * the layout needs to know: CJK rules set one narrow column, which is right for
+ * Hanzi and wrong for five paragraphs of English -- it leaves half the page
+ * empty. The About page reads this and lays the fallback out as Latin prose, so
+ * the moment real Chinese copy lands the layout corrects itself.
+ */
+export function getAbout(locale: Locale): { paragraphs: string[]; translated: boolean } {
   const about = pages().about ?? {};
-  if (locale === 'en') return about.en?.paragraphs ?? [];
-  if (about.zh?.same_as_en || !about.zh?.paragraphs?.length) return about.en?.paragraphs ?? [];
-  return about.zh.paragraphs;
+  if (locale === 'en') return { paragraphs: about.en?.paragraphs ?? [], translated: true };
+  const hasChinese = !about.zh?.same_as_en && Boolean(about.zh?.paragraphs?.length);
+  return hasChinese
+    ? { paragraphs: about.zh!.paragraphs!, translated: true }
+    : { paragraphs: about.en?.paragraphs ?? [], translated: false };
 }
 
 export function getResearchAreas(locale: Locale): ResearchGroup[] {
   const areas = pages().research_areas ?? {};
   return (locale === 'en' ? areas.en : areas.zh) ?? [];
+}
+
+/**
+ * Roman numeral for a zero-based index, as the design system's ledgers use.
+ *
+ * Computed rather than read from a fixed array. A hardcoded list silently drops
+ * the index off any item past its end -- LedgerItem renders nothing for an
+ * undefined index -- which is exactly what happened when the research pillars
+ * grew from two to five against a four-entry array.
+ */
+export function romanNumeral(index: number): string {
+  const NUMERALS: Array<[number, string]> = [
+    [1000, 'M'], [900, 'CM'], [500, 'D'], [400, 'CD'],
+    [100, 'C'], [90, 'XC'], [50, 'L'], [40, 'XL'],
+    [10, 'X'], [9, 'IX'], [5, 'V'], [4, 'IV'], [1, 'I'],
+  ];
+  let remaining = index + 1;
+  let out = '';
+  for (const [value, symbol] of NUMERALS) {
+    while (remaining >= value) {
+      out += symbol;
+      remaining -= value;
+    }
+  }
+  return out;
 }
 
 export function getResearchHighlights(): ResearchHighlight[] {

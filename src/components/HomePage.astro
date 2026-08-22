@@ -1,7 +1,7 @@
 ---
 // Overview page, shared by both locales.
 //
-// Follows the design system's Overview screen: hero masthead, the two research
+// Follows the design system's Overview screen: hero masthead, the research
 // pillars as a Ledger, a lab-record row pairing prose with a colophon table,
 // and the page's single InkPanel.
 //
@@ -21,7 +21,7 @@ import LedgerItem from './ds/LedgerItem.astro';
 import ColophonTable from './ds/ColophonTable.astro';
 import {
   allAlumni, getHomeIntro, getHomeRecord, getHonors, getNews, getPublications,
-  getResearchAreas, getServices, getStrings, membersByRole, type Locale,
+  getResearchAreas, romanNumeral, getServices, getStrings, membersByRole, type Locale,
 } from '../lib/data';
 import { LEGACY_CONTENT_MAP, pathFor } from '../lib/routes';
 
@@ -68,8 +68,6 @@ const facts = [
   },
 ];
 
-// Roman numerals, as the design system's Overview uses for its pillars.
-const NUMERALS = ['I', 'II', 'III', 'IV'];
 
 const latestAward = achievements[0];
 
@@ -102,7 +100,7 @@ const legacyMap = Object.fromEntries(
     <Ledger width="wide">
       {areas.map((area, i) => (
         <LedgerItem
-          index={NUMERALS[i]}
+          index={romanNumeral(i)}
           title={area.group}
           href={pathFor('research', locale)}
           linkLabel={t.nav_research}

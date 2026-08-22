@@ -50,14 +50,14 @@ about_title: 關於實驗室
 about_description: 認識國立臺灣大學計算分子設計與代謝體學實驗室的研究方向、合作計畫與聯絡方式。
 about_kicker: 關於
 about_subtitle: 研究方向 · 合作計畫 · 技術平台
-about_lede: 本實驗室設於國立臺灣大學資訊工程學系，研究橫跨計算分子設計與臨床代謝體學兩大主軸。
+about_lede: 本實驗室設於國立臺灣大學資訊工程學系，研究橫跨計算分子設計、臨床代謝體學、量子計算、步態分析與 AI Agent 系統。
 
 # ── Research ─────────────────────────────────────────────────
 research_title: 研究內容
 research_description: CMDM 實驗室的研究主題涵蓋計算分子設計、藥物毒性預測、代謝體學生物標記偵測與精準醫學。
 research_kicker: 研究
-research_subtitle: 化學資訊學 · 預測毒理學 · 臨床代謝體學
-research_lede: 兩大研究主軸與代表性成果。完整發表清單請見「論文」頁。
+research_subtitle: 化學資訊學 · 臨床代謝體學 · 量子計算 · 步態分析 · AI Agent
+research_lede: 五個研究主軸與代表性成果。完整發表清單請見「論文」頁。
 
 # ── Publications ─────────────────────────────────────────────
 publications_title: 學術發表
@@ -112,7 +112,7 @@ professor_lede: 曾宇鳳教授為本實驗室主持人，研究領域涵蓋計�
 section_news: 最新消息
 section_latest_publications: 最新發表
 section_award_highlights: 獲獎紀錄
-section_research_areas: 兩大研究主軸
+section_research_areas: 研究主軸
 section_lab_record: 實驗室紀錄
 section_journal_papers: 期刊論文
 section_conference_papers: 會議論文
@@ -168,3 +168,5 @@ role_undergraduate: 專題生
 role_current: 在學成員
 role_alumni: 畢業成員
 label_title: 標題
+label_area: 研究領域
+label_projects: 負責專案

@@ -21,11 +21,18 @@ interface Props {
   linkLabel?: string;
   imageSrc?: string;
   imageAlt?: string;
+  /**
+   * Attribution for the figure. Required whenever imageSrc points at a
+   * third-party figure: the reusable ones are reusable *with attribution*, and
+   * the design system puts a mono caption under every figure regardless.
+   */
+  imageCredit?: string;
   /** Heading level, so a page keeps one h1 and a sane outline. */
   as?: 'h3' | 'h4';
 }
 const {
-  index, title, body, meta, href, linkLabel, imageSrc, imageAlt = '', as = 'h4',
+  index, title, body, meta, href, linkLabel, imageSrc, imageAlt = '',
+  imageCredit, as = 'h4',
 } = Astro.props;
 const Heading = as;
 const external = href ? /^https?:/.test(href) : false;
@@ -36,7 +43,10 @@ const external = href ? /^https?:/.test(href) : false;
   <Heading class="ds-ledger-item__title">{title}</Heading>
 
   {imageSrc && (
-    <img class="ds-ledger-item__figure" src={imageSrc} alt={imageAlt} loading="lazy" decoding="async" />
+    <figure class="ds-ledger-item__plate">
+      <img src={imageSrc} alt={imageAlt} loading="lazy" decoding="async" />
+      {imageCredit && <figcaption>{imageCredit}</figcaption>}
+    </figure>
   )}
 
   {body && <p class="ds-ledger-item__body">{body}</p>}

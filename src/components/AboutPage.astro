@@ -9,15 +9,20 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hairline from './ds/Hairline.astro';
 import Kicker from './ds/Kicker.astro';
-import { getAboutParagraphs, getStrings, type Locale } from '../lib/data';
+import { getAbout, getStrings, type Locale } from '../lib/data';
 
 interface Props { locale: Locale }
 const { locale } = Astro.props;
 const t = getStrings(locale);
-const paragraphs = getAboutParagraphs(locale);
+const { paragraphs, translated } = getAbout(locale);
 ---
 
-<BaseLayout locale={locale} slug="about">
+{/* The narrower 960px shell, not the 1180px one the data-heavy pages use.
+    This page is nothing but prose: Chinese sets one 38em column by design, and
+    in a 1180px shell that leaves half the page empty. At 960px the same column
+    reads as a centred prose page, and the English two-column flow still fills
+    the measure. */}
+<BaseLayout locale={locale} slug="about" width="default">
   <div class="ds-masthead">
     <Kicker size="md">{t.about_kicker}</Kicker>
     <Hairline tone="ink" />
@@ -26,8 +31,13 @@ const paragraphs = getAboutParagraphs(locale);
     <p class="ds-masthead__lede">{t.about_lede}</p>
   </div>
 
+  {/* ArticleFlow, not Prose: this is the one page that is nothing but long
+      prose, and a single 64ch measure left the right half of the wide shell
+      empty. Two columns with a rule between them is the design system's
+      treatment for exactly this, and it folds to one column under a Chinese
+      document root. */}
   <div class="ds-section">
-    <div class="ds-prose">
+    <div class={translated ? 'ds-article-flow' : 'ds-article-flow ds-article-flow--latin'}>
       {paragraphs.map((paragraph) => <p>{paragraph}</p>)}
     </div>
   </div>
