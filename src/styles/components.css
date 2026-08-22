@@ -500,6 +500,15 @@
     max-width:var(--prose-measure);
   }
 
+  /* A single figure that carries a page rather than sitting beside text.
+     Two ledger columns wide: at the page measure a 4:3 group photograph came out
+     705px tall and pushed the roster it belongs to below the fold, and the wide
+     shell would read as a banner, which this system does not have. */
+  .ds-plate--wide{
+    max-width:calc(var(--grid-min-wide) * 2);
+    margin-top:var(--space-6);
+  }
+
   /* ── A row of figure plates ────────────────────────────────────
      Several photographs of one thing, side by side on their own plates. Used by
      the honours list, whose items are otherwise set to the prose measure -- a

@@ -99,6 +99,23 @@ const people = [...grouped.values()].flat().map((member) => ({
     <p class="ds-masthead__lede">{t.members_lede.replace('{units}', labAffiliationProse(locale))}</p>
   </div>
 
+  {/* The one photograph of the people this page lists. Same plate treatment as
+      every other figure here, capped at the narrower page measure -- a group
+      photograph earns width, but not the whole 1180px shell. The alt text
+      describes the scene and names nobody: two dozen people in a group
+      photograph have not agreed to be identified by name on a public page. */}
+  <figure class="ds-ledger-item__plate ds-plate--wide">
+    <img
+      src="/img/2023-CMDMLab-group-photo.jpg"
+      alt={t.members_photo_alt}
+      width="1600"
+      height="1200"
+      loading="lazy"
+      decoding="async"
+    />
+    <figcaption>{t.members_photo_caption}</figcaption>
+  </figure>
+
   {faculty.map((member) => (
     <section class="ds-section" aria-labelledby="role-faculty">
       <Kicker size="md" as="h2" id="role-faculty">{t.role_faculty}</Kicker>
