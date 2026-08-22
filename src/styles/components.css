@@ -185,13 +185,18 @@
   /* The lockup is black on transparent and only ever sits on white or the
      near-white page. Never on the accent. */
   .ds-nav__logo{height:30px;width:auto;display:block}
+  /* The lockup is two lines: name over tagline. These were inline, so they sat
+     side by side and only broke onto two lines when the viewport happened to be
+     narrow enough to wrap them -- which at 1440px it never was. */
   .ds-nav__name{
+    display:block;
     font-size:20px;
     font-weight:var(--weight-medium);
     letter-spacing:var(--tracking-heading);
     line-height:1.1;
   }
   .ds-nav__tagline{
+    display:block;
     font-family:var(--kicker-font);
     font-size:var(--kicker-size);
     text-transform:var(--kicker-transform);
