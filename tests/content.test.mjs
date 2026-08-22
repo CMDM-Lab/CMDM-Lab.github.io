@@ -118,6 +118,56 @@ test('no message claims a pillar count that the data contradicts', async () => {
   }
 });
 
+test('no built page links to an internal path that was not built', async () => {
+  // The news items carried the old site's relative URLs -- ../img/x.jpg,
+  // ../SPARK, files/y.PDF -- which resolved against /news/ and every one 404'd.
+  // A broken link renders as a perfectly ordinary link, so nothing said so.
+  const files = [];
+  const walk = async (dir) => {
+    for (const entry of await readdir(dir, { withFileTypes: true })) {
+      const full = path.join(dir, entry.name);
+      if (entry.isDirectory()) await walk(full);
+      else if (entry.name.endsWith('.html')) files.push(full);
+    }
+  };
+  if (!existsSync(DIST)) return; // covered by the skip on the other build tests
+  await walk(DIST);
+
+  for (const file of files) {
+    const html = await readFile(file, 'utf8');
+    for (const [, href] of html.matchAll(/<a[^>]+href="([^"]+)"/g)) {
+      if (/^(?:https?:|mailto:|#|\/\/)/.test(href)) continue;
+      assert.ok(
+        href.startsWith('/'),
+        `${path.relative(ROOT, file)} links to "${href}", which is relative to wherever the `
+        + 'page happens to sit -- internal links are root-absolute here',
+      );
+      const target = decodeURIComponent(href.split('#')[0]);
+      const asFile = path.join(DIST, target);
+      const asPage = path.join(DIST, target, 'index.html');
+      assert.ok(
+        existsSync(asFile) || existsSync(asPage),
+        `${path.relative(ROOT, file)} links to ${href}, which was not built`,
+      );
+    }
+  }
+});
+
+test('no news item prints its own link labels twice', async () => {
+  // The migration kept the old page's bracketed anchor text inside the item and
+  // also extracted the anchors, so each label rendered twice in a row.
+  const news = YAML.parse(await readFile(path.join(ROOT, 'data', 'news.yml'), 'utf8')).news ?? [];
+  for (const item of news) {
+    for (const link of item.links ?? []) {
+      assert.ok(
+        !item.text.includes(`[${link.label}]`),
+        `a news item names its own link label in its text ("[${link.label}]"), `
+        + 'which renders it twice',
+      );
+    }
+  }
+});
+
 test('the built pages reference no image that is not shipped', {
   skip: hasBuild ? false : 'run `npm run build` first',
 }, async () => {
