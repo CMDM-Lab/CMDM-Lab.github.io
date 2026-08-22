@@ -82,15 +82,47 @@ query still earns its place: it finds 12 papers ORCID does not have. Both are
 then enriched from Crossref by DOI.
 
 Tier 2 never publishes unattended. `Tseng YJ[Author] AND National Taiwan
-University[Affiliation]` returns 127 hits, but that name collides with another
-NTU researcher, so its extra results mix real lab output with tigecycline dosing
-and retinal-ganglion-cell studies. Those land in `publications-review.yml` for a
-human to sort into the `include:` or `exclude:` list of
-`publications-overrides.yml`.
+University[Affiliation]` returns 127 hits, and the reason to distrust them is
+worse than a single name clash: **"Tseng YJ" is at least ten different
+researchers** — Yu-Ju, Yun-Ju, Yi-Ju, Yu-Jui, Yen-Ju, Yea-Jing, Yen-Jhen,
+Yu-Jou, Yu-Jung, Yong-Jhe, Yu-Jen — several of whom also publish from NTU. So
+its extras arrive as tigecycline dosing, retinal-ganglion-cell degeneration and
+soft-coral natural products mixed in with real lab output.
+
+Co-authorship does **not** separate them; some share genuine collaborators with
+this lab. The only reliable discriminator is the PI's spelled-out given name,
+which always contains "yufeng" or "jane". `scripts/triage-review-queue.mjs`
+keys on that and sorts the queue for you:
+
+```bash
+node scripts/triage-review-queue.mjs               # ranked triage
+node scripts/triage-review-queue.mjs --emit-exclude # YAML for the overrides file
+```
+
+Rulings go in `publications-overrides.yml`. `include:` is authoritative, not
+just a promotion from the review queue: a DOI listed there is fetched from
+Crossref even if no source returned it. `exclude:` accepts `pmid:12345` for
+records that have no DOI.
 
 Conference abstracts, patents and books are not registered as DOIs and no API
 can supply them. They live in `publications-legacy.yml`, migrated out of the old
 pages, and are hand-maintained.
+
+### Finding what the automated sources miss
+
+Google Scholar has the best coverage of any source and no way to export. So the
+gap check is deliberately manual: select the publication list on the profile,
+paste it into `data/google-scholar-copy.txt`, and diff it against the site.
+
+```bash
+node scripts/compare-scholar.mjs
+```
+
+It writes nothing — it reports. Resolving a gap is better done upstream: link
+the paper on <https://orcid.org/0000-0002-8461-6181> and it syncs forever,
+rather than needing an `include:` line. Two papers found this way, absent from
+ORCID, PubMed and the review queue alike, are in `include:` now — including the
+lab's most-cited missing paper at ~62 citations.
 
 ### Members
 

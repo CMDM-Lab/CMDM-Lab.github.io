@@ -29,7 +29,10 @@ except ImportError:  # pragma: no cover - developer convenience
     sys.exit("PyYAML required: pip install pyyaml")
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
-CONTENTS = ROOT / "contents"
+# The old site was moved under legacy/ once its content had been migrated; see
+# legacy/README.md. Keeping this script runnable against it is the point of
+# retaining that directory.
+CONTENTS = ROOT / "legacy" / "contents"
 DATA = ROOT / "data"
 
 # Sections of contents/honor_zh.html, keyed by the label used in the page.
@@ -60,8 +63,33 @@ def links_of(fragment: str) -> list[dict[str, str]]:
 
 
 def list_items(block: str) -> list[str]:
-    """Extract <li> contents from a block of HTML."""
-    return re.findall(r"<li>(.*?)</li>", block, re.S)
+    """Extract <li> contents from the first list in a block of HTML.
+
+    Two defects in the legacy markup have to be handled, and both of them
+    silently corrupted the first migration run.
+
+    1. List items are not reliably closed. The patent list in
+       contents/publication_zh.html has six `<li>` and no `</li>` at all, so a
+       `<li>(.*?)</li>` match ran past the end of the list. Items are therefore
+       split on the opening tag and bounded by whatever comes next.
+
+    2. A section runs to the end of the file, not to the end of its list, since
+       sections are split on their `<h5>` heading. So the block handed in here
+       still contains the page footer -- which carries a navigation `<ul>`. That
+       is how "About", "Research" and "Members" were recorded as patents.
+       Cropping to the first list closes that hole.
+    """
+    # Crop to the first list in the block, so a footer nav list further down is
+    # out of scope entirely.
+    closing = re.search(r"</ol>|</ul>", block, re.I)
+    if closing:
+        block = block[: closing.end()]
+
+    items = []
+    for chunk in re.split(r"<li[^>]*>", block)[1:]:
+        end = re.search(r"</li>|</ol>|</ul>|<h[1-6]|<hr\b", chunk, re.I)
+        items.append(chunk[: end.start()] if end else chunk)
+    return items
 
 
 def read(name: str) -> str:

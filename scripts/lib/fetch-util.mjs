@@ -111,3 +111,32 @@ export function titleKey(raw) {
     .replace(/[^\p{L}\p{N}]+/gu, ' ')
     .trim();
 }
+
+const HTML_ENTITIES = {
+  amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: ' ',
+};
+
+/**
+ * Turn a publisher-supplied string into plain text.
+ *
+ * Crossref returns titles containing real markup -- `<i>` around species names,
+ * `<sub>`/`<sup>` in chemical formulae, `<scp>` for small caps. Left alone,
+ * those tags reach the page and render as literal `&lt;i&gt;` next to the title,
+ * which is what happened to the Tetrahymena pyriformis paper.
+ *
+ * Tags are stripped rather than passed through: rendering them would mean
+ * injecting third-party HTML into the page, and losing the italics on a species
+ * name is a much smaller problem than showing angle brackets to every visitor.
+ * Entities are decoded afterwards so `&amp;` becomes a real ampersand -- the
+ * templates escape on output, so decoding here does not reintroduce markup.
+ */
+export function plainText(raw) {
+  if (!raw) return '';
+  return String(raw)
+    .replace(/<[^>]+>/g, '')
+    .replace(/&#(\d+);/g, (_, code) => String.fromCharCode(Number(code)))
+    .replace(/&#x([0-9a-f]+);/gi, (_, code) => String.fromCharCode(parseInt(code, 16)))
+    .replace(/&([a-z]+);/gi, (match, name) => HTML_ENTITIES[name.toLowerCase()] ?? match)
+    .replace(/\s+/g, ' ')
+    .trim();
+}

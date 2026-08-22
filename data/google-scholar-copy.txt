@@ -1,0 +1,570 @@
+Title	
+Cited by
+Year
+Movement Anywhere: An Open-Source Distributed 2D Video-Based Movement Analysis Platform Empowered by Active Learning
+MY Ho, YJ Tseng
+IEEE Journal of Biomedical and Health Informatics
+2026
+DeePFAS: Deep-Learning-Enabled Rapid Annotation of PFAS: Enhancing Nontargeted Screening through Spectral Encoding and Latent Space Analysis
+H Wang, TC Kuo, YJ Tseng
+Environmental Science & Technology 59 (46), 24841-24852
+4	2025
+Curated CYP450 Interaction Dataset: Covering the Majority of Phase I Drug Metabolism
+YH Ni, YW Su, SC Yang, JC Hong, PWA Du, YT Hsu, TC Kuo, YJ Tseng
+Scientific Data 12 (1), 1427
+5	2025
+Analyzing Generative AI and Machine Learning in Auto-Assessing Schizophrenia’s Negative Symptoms
+CM Liu, YH Chan, MY Ho, CC Liu, MH Lu, YA Liao, MH Hsieh, YJ Tseng
+Schizophrenia Bulletin, sbaf102
+5	2025
+A robust and interpretable graph neural network-based protocol for predicting p-glycoprotein substrates
+KC Hsu, PH Wang, BH Su, YJ Tseng
+Briefings in Bioinformatics 26 (4), bbaf392
+7	2025
+Identifying novel metabolites in children with attention-deficit hyperactivity disorder through metabolome profiling
+YA Hung, TC Kuo, YJ Tseng, CY Shang, SSF Gau
+Translational Psychiatry 15 (1), 180
+8	2025
+Advantages of two quantum programming platforms in quantum computing and quantum chemistry
+PH Wang, WY Wu, CY Lee, JC Hong, YJ Tseng
+Journal of Cheminformatics 17 (1), 77
+4	2025
+SPARK Taiwan: a decade of insights in adapting US translational medicine and commercialization methods
+TF Lo, YC Huang, NY Cho, YJ Tseng
+nature biotechnology 43 (4), 647-650
+3	2025
+Digital annealing optimization for natural product structure elucidation
+C Lee, PH Wang, YJ Tseng
+Briefings in Bioinformatics 25 (6), bbae600
+1	2024
+Mapping new psychoactive substances: Leveraging GIS technology for advanced global surveillance and policy support
+TJ Ku, TC Kuo, OA Lin, YJ Tseng
+Regulatory Toxicology and Pharmacology 153, 105713
+2024
+Every pixel has its moments: Ultra-high-resolution unpaired image-to-image translation via dense normalization
+MY Ho, CM Wu, MS Wu, YJ Tseng
+European Conference on Computer Vision, 312-328
+16	2024
+A Clinical Breathomics Dataset
+PH Kuo, YC Jhong, TC Kuo, YT Hsu, CH Kuo, YJ Tseng
+Scientific Data 11 (1), 203
+11	2024
+FastEval Parkinsonism: an instant deep learning–assisted video-based online system for Parkinsonian motor symptom evaluation
+YY Yang, MY Ho, CH Tai, RM Wu, MC Kuo, YJ Tseng
+npj Digital Medicine 7 (1), 31
+26	2024
+Characterization of markers, functional properties, and microbiome composition in human gut-derived bacterial extracellular vesicles
+CC Li, WF Hsu, PC Chiang, MC Kuo, AM Wo, YJ Tseng
+Gut Microbes 15 (2), 2288200
+38	2023
+Pathological Gait Analysis With an Open-Source Cloud-Enabled Platform Empowered by Semi-Supervised Learning-PathoOpenGait
+MY Ho, MC Kuo, CS Chen, RM Wu, CC Chuang, CS Shih, YJ Tseng
+IEEE journal of biomedical and health informatics
+11	2023
+Biopharma innovation trends during COVID-19 and beyond: an evidence from global partnerships and fundraising activities, 2011-2022
+TH Yu, YY Mei, YJ Tseng
+Globalization and Health 19 (1), 57
+13	2023
+The evolution of the spike protein and hACE2 interface of SARS-CoV-2 omicron variants determined by hydrogen bond formation
+YY Yang, YJ Tseng
+Briefings in Functional Genomics 22 (3), 291-301
+2	2023
+When Machine Learning and Deep Learning Come to the Big Data in Food Chemistry
+YJ Tseng, PJ Chuang, M Appell
+ACS omega 8 (18), 15854-15864
+79	2023
+Recent advances in quantum computing for drug discovery and development
+PH Wang, JH Chen, YY Yang, C Lee, YJ Tseng
+IEEE Nanotechnology Magazine 17 (2), 26-30
+62	2023
+MSIr: Automatic Registration Service for Mass Spectrometry Imaging and Histology
+BJ Lin, TC Kuo, HH Chung, YC Huang, MY Wang, CC Hsu, PY Yao, ...
+Analytical Chemistry 95 (6), 3317-3324
+13	2023
+Comparison of controlled drugs and new psychoactive substances (NPS) regulations in East and Southeast Asia
+OA Lin, PJ Chuang, YJ Tseng
+Regulatory Toxicology and Pharmacology 138, 105338
+11	2023
+MetaMOPE: a web service for mobile phase determination and fast chromatography peaks evaluation for metabolomics
+DM Tsai, CY Chang, SM Lin, TC Kuo, SY Wang, GY Chen, CH Kuo, ...
+Bioinformatics Advances 3 (1), vbad061
+1	2023
+Taiwan Controlled Substances Database
+YW Huang, OA Lin, BH Su, PH Hsieh, MY Ho, TC Kuo, YJ Tseng
+Journal of the Formosan Medical Association 121 (12), 2649-2652
+2022
+Comparative studies of AlphaFold, RoseTTAFold and Modeller: a case study involving the use of G-protein-coupled receptors
+C Lee, BH Su, YJ Tseng
+Briefings in Bioinformatics 23 (5), bbac308
+150	2022
+Coexisting gastrointestinal and hepatobiliary tract anomalies in omphalocele and gastroschisis: A twenty-year experience in a single tertiary medical center
+CC Wen, TC Kuo, HC Lee, CY Yeung, WT Chan, CB Jiang, JC Sheu, ...
+Pediatrics & Neonatology 63 (5), 468-473
+12	2022
+RSDB: A rare skin disease database to link drugs with potential drug targets for rare skin diseases
+TC Kuo, PH Wang, YK Wang, CI Chang, CY Chang, YJ Tseng
+Scientific Data 9 (1), 521
+15	2022
+Exploring molecular moieties on carbonized polymer dots from flavonoid glycosides with activity against enterovirus A71
+CJ Lin, B Unnikrishnan, CW Lehman, PH Wang, YJ Tseng, SG Harroun, ...
+Carbon 192, 285-294
+17	2022
+A pilot study of metabolomic pathways associated with fatigue in patients with colorectal cancer receiving chemotherapy
+YJ Chou, KM Kober, KH Yeh, BA Cooper, CH Kuo, BR Lin, TC Kuo, ...
+European Journal of Oncology Nursing 56, 102096
+8	2022
+Author Correction: Intelligent pharmaceutical patent search on a near-term gate-based quantum computer
+PH Wang, JH Chen, YJ Tseng
+Scientific Reports 12 (1), 2033
+2022
+Identification of traumatic acid as a potential plasma biomarker for sarcopenia using a metabolomics-based approach
+JS Tsai, SY Wang, CH Chang, CY Chen, CJ Wen, GY Chen, CH Kuo, ...
+Journal of Cachexia, Sarcopenia and Muscle-Open Access 13 (1), 276-286
+21	2022
+Intelligent pharmaceutical patent search on a near-term gate-based quantum computer
+PH Wang, JH Chen, YJ Tseng
+Scientific Reports 12 (1), 175
+9	2022
+Development of antiviral carbon quantum dots that target the Japanese Encephalitis Virus envelope protein
+HH Chen, CJ Lin, A Anand, HJ Lin, HY Lin, JY Mao, PH Wang, YJ Tseng, ...
+Journal of Biological Chemistry
+62	2022
+Exosomal Proteins and Lipids as Potential Biomarkers for Lung Cancer Diagnosis, Prognosis, and Treatment
+MT Hsu, YK Wang, YJ Tseng
+Cancers 14 (3), 732
+107	2022
+Ensemble modeling with machine learning and deep learning to provide interpretable generalized rules for classifying CNS drugs with high prediction power
+TH Yu, BH Su, LC Battalora, S Liu, YJ Tseng
+Briefings in Bioinformatics 23 (1), bbab377
+62	2022
+A general optimization protocol for molecular property prediction using a deep learning network
+JH Chen, YJ Tseng
+Briefings in Bioinformatics 23 (1), bbab367
+28	2022
+Lipidomics of children and adolescents exposed to multiple industrial pollutants
+CHS Chen, TC Kuo, HC Kuo, YJ Tseng, CH Kuo, TH Yuan, CC Chan
+Environmental Research 201, 111448
+18	2021
+Current development of integrated web servers for preclinical safety and pharmacokinetics assessments in drug development
+Y Hsiao, BH Su, YJ Tseng
+Briefings in Bioinformatics 22 (3), bbaa160
+59	2021
+Different molecular enumeration influences in deep learning: an example using aqueous solubility
+JH Chen, YJ Tseng
+Briefings in Bioinformatics 22 (3), bbaa092
+41	2021
+PanGPCR: predictions for multiple targets, repurposing and side effects
+LC Liu, MY Ho, BH Su, SY Wang, MT Hsu, YJ Tseng
+Bioinformatics 37 (8), 1184-1186
+4	2021
+Training strategy for unbalanced small datasets in deep learning
+H Liu, CW Lee, BH Su, YJ Tseng
+2020
+A Pilot Study of Metabolomic Pathways Associated With Fatigue in Survivors of Colorectal Cancer
+YJ Chou, KM Kober, CH Kuo, KH Yeh, TC Kuo, YJ Tseng, C Miaskowski, ...
+Biological Research For Nursing, 1099800420942586
+14	2020
+Essential Step Toward Mining Big Polymer Data: PolyName2Structure, Mapping Polymer Names to Structures
+C Lin, PH Wang, Y Hsiao, YT Chan, AC Engler, JW Pitera, DP Sanders, ...
+ACS Applied Polymer Materials 2 (8), 3107-3113
+15	2020
+Advances in the prediction of mouse liver microsomal studies: From machine learning to deep learning
+A Renn, BH Su, H Liu, J Sun, YJ Tseng
+Wiley Interdisciplinary Reviews: Computational Molecular Science, e1479
+17	2020
+Human breathomics database
+TC Kuo, CE Tan, SY Wang, OA Lin, BH Su, MT Hsu, J Lin, YY Cheng, ...
+Database 2020, baz139
+82	2020
+IntelliPatent: a web-based intelligent system for fast chemical patent claim drafting
+PH Wang, YJ Tseng
+Journal of Cheminformatics 11 (1), 78
+5	2019
+PgpRules: a decision tree based prediction server for P-glycoprotein substrates and inhibitors
+PH Wang, YS Tu, YJ Tseng
+Bioinformatics 35 (20), 4193-4195
+59	2019
+Quantum chemical investigation of the detection properties of alternariol and alternariol monomethyl ether
+YS Tu, YJ Tseng, M Appell
+Structural Chemistry 30 (5), 1749-1759
+11	2019
+Metabolomics of Children and Adolescents Exposed to Industrial Carcinogenic Pollutants
+CHS Chen, TC Kuo, HC Kuo, YJ Tseng, CH Kuo, TH Yuan, CC Chan
+Environmental science & technology 53 (9), 5454-5465
+62	2019
+Theoretical investigation of cyromazine tautomerism using density functional theory and Møller–Plesset perturbation theory methods
+YS Tu, YJ Tseng, M Appell
+Molecular Simulation 44 (16), 1344-1352
+2018
+LipidPedia: a comprehensive lipid knowledgebase
+TC Kuo, YJ Tseng
+Bioinformatics 34 (17), 2982-2987
+53	2018
+Resistance training improves muscle function and cardiometabolic risks but not quality of life in older people with type 2 diabetes mellitus: A randomized controlled trial
+PL Hsieh, CH Tseng, YJ Tseng, WS Yang
+Journal of Geriatric Physical Therapy 41 (2), 65-76
+122	2018
+LeadOp+ R: structure-based lead optimization with synthetic accessibility
+FY Lin, EX Esposito, YJ Tseng
+Frontiers in Pharmacology 9, 96
+11	2018
+NP-StructurePredictor: Prediction of Unknown Natural Products in Plant Mixtures
+YC Harn, BH Su, YL Ku, OA Lin, CF Chou, YJ Tseng
+Journal of chemical information and modeling 57 (12), 3138-3148
+8	2017
+An efficient computer-aided structural elucidation strategy for mixtures using an iterative dynamic programming algorithm
+BH Su, MY Shen, YC Harn, SY Wang, A Schurz, C Lin, OA Lin, YJ Tseng
+Journal of Cheminformatics 9 (1), 57
+5	2017
+Metabolomics-based discovery of small molecule biomarkers in serum associated with mortality in patients with Candidemia caused by Candida tropicalis
+HY Sun, SY Wang, PY Chen, A Cheng, CH Kuo, YJ Tseng, YC Chen
+INTERNATIONAL JOURNAL OF ANTIMICROBIAL AGENTS 50, S158-S159
+2017
+GAME: GPU-accelerated mixture elucidator
+A Schurz, BH Su, YS Tu, TTY Lu, OA Lin, YJ Tseng
+Journal of Cheminformatics 9 (1), 50
+1	2017
+Directly monitor protein rearrangement on a nanosecond-to-millisecond time-scale
+EHL Chen, TTY Lu, JCC Hsu, YJ Tseng, TS Lim, RPY Chen
+Scientific Reports 7 (1), 8691
+18	2017
+Trowaglerix venom polypeptides as a novel antithrombotic agent by targeting immunoglobulin-like domains of glycoprotein VI in platelet
+CH Chang, CH Chung, YS Tu, CC Tsai, CC Hsu, HC Peng, YJ Tseng, ...
+Arteriosclerosis, thrombosis, and vascular biology 37 (7), 1307-1314
+31	2017
+Using precursor ion scan of 184 with liquid chromatography-electrospray ionization-tandem mass spectrometry for concentration normalization in cellular lipidomic studies
+HC Chao, GY Chen, LC Hsu, HW Liao, SY Yang, SY Wang, YL Li, ...
+Analytica chimica acta 971, 68-77
+36	2017
+Effects of sarcosine and N, N-dimethylglycine on NMDA receptor-mediated excitatory field potentials
+MY Lee, YR Lin, YS Tu, YJ Tseng, MH Chan, HH Chen
+Journal of Biomedical Science 24 (1), 18
+35	2017
+USE OF KNOWN COMPOUNDS AS D-AMINO ACID OXIDASE INHIBITORS
+YJ TSENG, LIU Yu-Li, SUN Chung-Ming, HWU Hai-Gwo, LIU Chih-Min, ...
+2017
+Web Server for Peak Detection, Baseline Correction, and Alignment in Two-Dimensional Gas Chromatography Mass Spectrometry-Based Metabolomics Data
+TF Tian, SY Wang, TC Kuo, CE Tan, GY Chen, CH Kuo, CHS Chen, ...
+Analytical chemistry 88 (21), 10395-10403
+27	2016
+Beyond data sharing: Using real-world data for teaching real-world computational workflows and for benchmarking new methods
+J Jansen, R Amaro, YJ Tseng, W Cornell, E Esposito, P Walters
+ABSTRACTS OF PAPERS OF THE AMERICAN CHEMICAL SOCIETY 252
+2016
+Scaffold analysis of Ames mutagenicity
+YJ Tseng
+ABSTRACTS OF PAPERS OF THE AMERICAN CHEMICAL SOCIETY 251
+2016
+Mutagenicity in a molecule: Identification of core structural features of mutagenicity using a scaffold analysis
+KH Hsu, BH Su, YS Tu, OA Lin, YJ Tseng
+PloS one 11 (2), e0148900
+65	2016
+Steps Toward a Virtual Rat: Predictive Absorption, Distribution, Metabolism, and Toxicity Models
+YJ Tseng, BH Su, MT Hsu, OA Lin
+Frontiers in Molecular Design and Chemical Information Science-Herman …
+2	2016
+A novel thromboxane receptor antagonist, nstpbp5185, inhibits platelet aggregation and thrombus formation in animal models
+SW Huang, HL Kuo, MT Hsu, YJ Tseng, SW Lin, SC Kuo, HC Peng, ...
+Thrombosis and haemostasis 116 (08), 285-299
+17	2016
+Distinct metabolic changes in human lung cancer cells with differential radiation sensitivities
+CY Shen, CH Kuo, SY Wang, WQ Yang, CT Kuo, YJ Tseng, MH Tsai
+Transl. Cancer Res 5, 738-747
+1	2016
+An efficient and robust fatty acid profiling method for plasma metabolomic studies by gas chromatography–mass spectrometry
+HH Chiu, SJ Tsai, YJ Tseng, MS Wu, WC Liao, CS Huang, CH Kuo
+Clinica chimica acta 451, 183-190
+28	2015
+A portable micro gas chromatography system for lung cancer associated volatile organic compound detection
+TH Tzeng, CY Kuo, SY Wang, PK Huang, YM Huang, WC Hsieh, ...
+IEEE Journal of Solid-State Circuits 51 (1), 259-272
+104	2015
+Fasting but not changes of plasma metabolome during oral glucose tolerance tests improves the diagnosis of severe coronary arterial stenosis
+CS Hung, HY Li, CH Kuo, MS Lin, TC Kuo, SJ Tsai, PH Liu, CH Lin, ...
+Clinical endocrinology 83 (4), 483-489
+5	2015
+Exploring possible mechanisms of action for the nanotoxicity and protein binding of decorated nanotubes: interpretation of physicochemical properties from optimal QSAR models
+EX Esposito, AJ Hopfinger, CY Shao, BH Su, SZ Chen, YJ Tseng
+Toxicology and applied pharmacology 288 (1), 52-62
+12	2015
+Using the matrix-induced ion suppression method for concentration normalization in cellular metabolomics studies
+GY Chen, HW Liao, IL Tsai, YJ Tseng, CH Kuo
+Analytical chemistry 87 (19), 9731-9739
+12	2015
+Synthesis and inhibitory effects of novel pyrimido-pyrrolo-quinoxalinedione analogues targeting nucleoproteins of influenza A virus H1N1
+MI Lin, BH Su, CH Lee, ST Wang, WC Wu, P Dangate, SY Wang, ...
+European journal of medicinal chemistry 102, 477-486
+27	2015
+Mass-spectrometry-based serum metabolomics of a C57BL/6J mouse model of high-fat-diet-induced non-alcoholic fatty liver disease development
+YS Lai, WC Chen, TC Kuo, CT Ho, CH Kuo, YJ Tseng, KH Lu, SH Lin, ...
+Journal of agricultural and food chemistry 63 (35), 7873-7884
+89	2015
+PolyName2Structure, mapping polymer names to structures
+YJ Tseng, C Lin, J Cheng
+ABSTRACTS OF PAPERS OF THE AMERICAN CHEMICAL SOCIETY 250
+2015
+The metabolome profiling and pathway analysis in metabolic healthy and abnormal obesity
+HH Chen, YJ Tseng, SY Wang, YS Tsai, CS Chang, TC Kuo, WJ Yao, ...
+International journal of obesity 39 (8), 1241-1248
+166	2015
+Rule-based prediction models of cytochrome P450 inhibition
+BH Su, Y Tu, C Lin, CY Shao, OA Lin, YJ Tseng
+Journal of chemical information and modeling 55 (7), 1426-1434
+52	2015
+Tu1474 Reduced 2-Hydroxybutyric Acid and Increased Malic Acid Correlate With Diabetes Remission After Roux-en-Y Gastric Bypass
+WC Liao, CH Kuo, SY Wang, CM Tai, YJ Tseng, MS Wu
+Gastroenterology 148 (4), S-901-S-902
+2015
+A matrix-induced ion suppression method to normalize concentration in urinary metabolomics studies using flow injection analysis electrospray ionization mass spectrometry
+G Chen, H Liao, YJ Tseng, I Tsai, C Kuo
+Analytica chimica acta 864, 21-29
+18	2015
+21.5 A portable micro gas chromatography system for volatile compounds detection with 15ppb of sensitivity
+TH Tzeng, CY Kuo, SY Wang, PK Huang, PH Kuo, YM Huang, WC Hsieh, ...
+2015 IEEE International Solid-State Circuits Conference-(ISSCC) Digest of …
+14	2015
+Rule-based classification models of molecular autofluorescence
+BH Su, YS Tu, OA Lin, YC Harn, MY Shen, YJ Tseng
+Journal of chemical information and modeling 55 (2), 434-445
+16	2015
+Ion trace detection algorithm to extract pure ion chromatograms to improve untargeted peak detection quality for liquid chromatography/time-of-flight mass spectrometry-based …
+SY Wang, CH Kuo, YJ Tseng
+Analytical chemistry 87 (5), 3048-3055
+30	2015
+CypRules: a rule-based P450 inhibition prediction server
+CY Shao, BH Su, YS Tu, C Lin, OA Lin, YJ Tseng
+Bioinformatics 31 (11), 1869-1871
+48	2015
+Serum Metabolomic Profiling of C57BL/6J Mice from High-Fat Diet Induced Nonalcoholic Fatty Liver Disease Development
+YS Lai, WC Chen, TC Kuo, CT Ho, CH Kuo, YJ Tseng, KH Lu, SH Lin, ...
+The 6th International Conference on Nutrition and Physical Activity (NAPA …
+2015
+Development and application of a comparative fatty acid analysis method to investigate voriconazole-induced hepatotoxicity
+G Chen, H Chiu, S Lin, YJ Tseng, S Tsai, C Kuo
+Clinica Chimica Acta 438, 126-134
+20	2015
+Teach-Discover-Treat: From neglected to awareness to attention to action to cures
+JH Jansen, RE Amaro, YJ Tseng, W Cornell, P Walters, EX Esposito
+ABSTRACTS OF PAPERS OF THE AMERICAN CHEMICAL SOCIETY 248
+2014
+ACS Teach-Discover-Treat (TDT) initiative, an effort to establish a sustainable, collaborative drug discovery community: COMP perspective
+WP Walters, RE Amaro, W Cornell, EX Esposito, J Jansen, YJ Tseng
+ABSTRACTS OF PAPERS OF THE AMERICAN CHEMICAL SOCIETY 248
+2014
+Comparison of warfarin therapy clinical outcomes following implementation of an automated mobile phone-based critical laboratory value text alert system
+SW Lin, WY Kang, DT Lin, JCS Lee, FLL Wu, CL Chen, YJ Tseng
+BMC Medical Genomics 7 (Suppl 1), S13
+18	2014
+Metabolomics of ginger essential oil against alcoholic fatty liver in mice
+CT Liu, R Raghu, SH Lin, SY Wang, CH Kuo, YJ Tseng, LY Sheen
+Journal of agricultural and food chemistry 61 (46), 11231-11240
+74	2013
+Template-Based de Novo Design for Type II Kinase Inhibitors and Its Extended Application to Acetylcholinesterase Inhibitors
+BH Su, YS Huang, CY Chang, YS Tu, YJ Tseng
+Molecules 18 (11), 13487-13509
+5	2013
+Screening and confirmation of 62 drugs of abuse and metabolites in urine by ultra-high-performance liquid chromatography–quadrupole time-of-flight mass spectrometry
+IL Tsai, TI Weng, YJ Tseng, HKL Tan, HJ Sun, CH Kuo
+Journal of analytical toxicology 37 (9), 642-651
+63	2013
+Plasma metabolomic profiles predict near-term death among individuals with lower extremity peripheral arterial disease
+CC Huang, MM McDermott, K Liu, CH Kuo, SY Wang, H Tao, YJ Tseng
+Journal of vascular surgery 58 (4), 989-996. e1
+19	2013
+Metabolomic characterization of rhubarb species by capillary electrophoresis and ultra‐high‐pressure liquid chromatography
+YJ Tseng, CT Kuo, SY Wang, HW Liao, GY Chen, YL Ku, WC Shao, ...
+Electrophoresis 34 (19), 2918-2927
+15	2013
+GAME: Gpu accelerated mixture elucidator
+YJ Tseng, A Schurz
+ABSTRACTS OF PAPERS OF THE AMERICAN CHEMICAL SOCIETY 246
+2013
+BaselineCorrector: A distribution-based classification method for baseline correction of metabolomic 1D proton nuclear magnetic resonance spectra
+YJ Tseng, KC Wang
+ABSTRACTS OF PAPERS OF THE AMERICAN CHEMICAL SOCIETY 246
+2013
+Drug discovery through Teach-Discover-Treat initiative
+RE Amaro, YJ Tseng, JM Jansen, W Cornell
+ABSTRACTS OF PAPERS OF THE AMERICAN CHEMICAL SOCIETY 246
+2013
+3Omics: a web-based systems biology tool for analysis, integration and visualization of human transcriptomic, proteomic and metabolomic data
+TC Kuo, TF Tian, YJ Tseng
+BMC systems biology 7 (1), 64
+240	2013
+Metabolomic dynamic analysis of hypoxia in MDA-MB-231 and the comparison with inferred metabolites from transcriptomics data
+IL Tsai, TC Kuo, TJ Ho, YC Harn, SY Wang, WM Fu, CH Kuo, YJ Tseng
+Cancers 5 (2), 491-510
+26	2013
+Cheminformatics aspects of high throughput screening: from robots to models: symposium summary.
+Y Jane Tseng, E Martin, C Bologa, A Shelat
+Journal of computer-aided molecular design 27 (5)
+4	2013
+Classification tree and random forest based prediction models on molecular autofluorescence
+YS Tu, TH Lin, YJ Tseng
+ABSTRACTS OF PAPERS OF THE AMERICAN CHEMICAL SOCIETY 245
+1	2013
+Oversampling to overcome overfitting: exploring the relationship between data set composition, molecular descriptors, and predictive modeling methods
+CY Chang, MT Hsu, EX Esposito, YJ Tseng
+Journal of chemical information and modeling 53 (4), 958-971
+92	2013
+Bicyclic heteroaryl compounds
+CM Sun, ML Kuo, YJ Tseng
+US Patent 8,383,662
+3	2013
+Correction to Metabolomic Characterization of Laborers Exposed to Welding Fumes
+KC Wang, CH Kuo, TF Tian, MH Tsai, YM Chiung, CM Hsiech, SJ Tsai, ...
+Chemical Research in Toxicology 26 (2), 301-301
+2013
+True ion pick (TIPick): a denoising and peak picking algorithm to extract ion signals from liquid chromatography/mass spectrometry data
+TJ Ho, CH Kuo, SY Wang, GY Chen, YJ Tseng
+Journal of Mass Spectrometry 48 (2), 234-242
+33	2013
+Distribution-based classification method for baseline correction of metabolomic 1D proton nuclear magnetic resonance spectra
+KC Wang, SY Wang, C Kuo, YJ Tseng
+Analytical chemistry 85 (2), 1231-1239
+36	2013
+Batch Normalizer: a fast total abundance regression calibration method to simultaneously adjust batch and injection order effects in liquid chromatography/time-of-flight mass …
+SY Wang, CH Kuo, YJ Tseng
+Analytical chemistry 85 (2), 1037-1046
+138	2013
+Dependence of QSAR models on the selection of trial descriptor sets: a demonstration using nanotoxicity endpoints of decorated nanotubes
+CY Shao, SZ Chen, BH Su, YJ Tseng, EX Esposito, AJ Hopfinger
+Journal of chemical information and modeling 53 (1), 142-158
+54	2013
+Research Article Metabolomic Analysis of Complex Chinese Remedies: Examples of Induced Nephrotoxicity in the Mouse from a Series of Remedies Containing Aristolochic Acid
+DM Tsai, JJ Kang, SS Lee, SY Wang, IL Tsai, GY Chen, HW Liao, ...
+2013
+A Mini-Series on the Cheminformatics Aspects of High Throughput Screening: from Robots to Models-Summary
+E Martin, YJ Tseng, A Shelat
+Journal of Computer-aided Molecular Design
+2013
+Metabolomic analysis of complex Chinese remedies: examples of induced nephrotoxicity in the mouse from a series of remedies containing aristolochic acid
+DM Tsai, JJ Kang, SS Lee, SY Wang, IL Tsai, GY Chen, HW Liao, ...
+Evidence-Based Complementary and Alternative Medicine 2013
+28	2013
+Computational chemistry and drug discovery: a call to action
+JM Jansen, RE Amaro, W Cornell, YJ Tseng, WP Walters
+Future medicinal chemistry 4 (15), 1893-1896
+4	2012
+Teach–Discover–Treat (TDT): Collaborative computational drug discovery for neglected diseases
+JM Jansen, W Cornell, YJ Tseng, RE Amaro
+Journal of Molecular Graphics and Modelling 38, 360-362
+26	2012
+Predictive toxicity protocol for cell-viability high throughput data
+S Chen, BH Su, YJ Tseng
+ABSTRACTS OF PAPERS OF THE AMERICAN CHEMICAL SOCIETY 244
+2012
+LeadOp: Structure-based fragment hopping for lead optimization using pre-docked fragment database
+YJ Tseng
+ABSTRACTS OF PAPERS OF THE AMERICAN CHEMICAL SOCIETY 244
+2012
+Predictive Toxicology Modeling: Protocols for Exploring hERG Classification and Tetrahymena pyriformis End Point Predictions
+BH Su, Y Tu, EX Esposito, YJ Tseng
+Journal of chemical information and modeling 52 (6), 1660-1673
+27	2012
+Combining multiple classes and types of descriptors to optimize QSAR models
+AJ Hopfinger, EX Esposito, J Liu, YJ Tseng
+ABSTRACTS OF PAPERS OF THE AMERICAN CHEMICAL SOCIETY 243
+2012
+Natural product acreening for FKBP12 inhibitors
+C Chang, YJ Tseng
+ABSTRACTS OF PAPERS OF THE AMERICAN CHEMICAL SOCIETY 243
+2012
+Teach-Discover-Treat: A COMP initiative to provide high quality computational chemistry tutorials that impact education and drug discovery for neglected diseases
+JM Jansen, YJ Tseng, RE Amaro
+ABSTRACTS OF PAPERS OF THE AMERICAN CHEMICAL SOCIETY 243
+2012
+Efficient dynamic programming algorithm to predict novel chemical structures in a mixture
+B Su, YC Harn, YJ Tseng
+ABSTRACTS OF PAPERS OF THE AMERICAN CHEMICAL SOCIETY 243
+2012
+Thriving with contemporary QSAR methodologies: Exploring endpoint prediction of Tetrahymena pyriformis aqueous toxicity
+Y Tu, EX Esposito, YJ Tseng
+ABSTRACTS OF PAPERS OF THE AMERICAN CHEMICAL SOCIETY 243
+2012
+Metabolomic characterization of laborers exposed to welding fumes
+CH Kuo, KC Wang, TF Tian, MH Tsai, YM Chiung, CM Hsiech, SJ Tsai, ...
+Chemical research in toxicology 25 (3), 676-686
+58	2012
+The great descriptor melting pot: mixing descriptors for the common good of QSAR models
+YJ Tseng, AJ Hopfinger, EX Esposito
+Journal of computer-aided molecular design 26 (1), 39-43
+53	2012
+Natural products screening for a-glucosidase inhibitors
+YJ Tseng, B Su
+ABSTRACTS OF PAPERS OF THE AMERICAN CHEMICAL SOCIETY 242
+2011
+Structure-based fragment hopping for lead optimization using predocked fragment database
+FY Lin, YJ Tseng
+Journal of chemical information and modeling 51 (7), 1703-1715
+17	2011
+A comprehensive support vector machine binary hERG classification model based on extensive but biased end point hERG data sets
+M Shen, BH Su, EX Esposito, AJ Hopfinger, YJ Tseng
+Chemical research in toxicology 24 (6), 934-949
+52	2011
+Fragment-based de-novo design for VEGFR2/3 inhibitors
+YS Huang, BH Su, YJ Tseng
+ABSTRACTS OF PAPERS OF THE AMERICAN CHEMICAL SOCIETY 240
+2010
+4D-Fingerprints clustering based scaffold hopping
+YS Tu, BH Su, YJ Tseng
+ABSTRACTS OF PAPERS OF THE AMERICAN CHEMICAL SOCIETY 240
+2010
+Chromaligner: a web server for chromatogram alignment
+SY Wang, TJ Ho, CH Kuo, YJ Tseng
+Bioinformatics 26 (18), 2338-2339
+23	2010
+In silico binary classification QSAR models based on 4D-fingerprints and MOE descriptors for prediction of hERG blockage
+BH Su, M Shen, EX Esposito, AJ Hopfinger, YJ Tseng
+Journal of chemical information and modeling 50 (7), 1304-1318
+87	2010
+Scaffold-hopping with 4D-fingerprint
+YJ Tseng, B Su, Y Tu, CC Tsai
+ABSTRACTS OF PAPERS OF THE AMERICAN CHEMICAL SOCIETY 239
+2010
+Rapid determination of aristolochic acids I and II in herbal products and biological samples by ultra-high-pressure liquid chromatography–tandem mass spectrometry
+CH Kuo, CW Lee, SC Lin, IL Tsai, SS Lee, YJ Tseng, JJ Kang, FC Peng, ...
+Talanta 80 (5), 1672-1680
+67	2010
+A docking model for convulxin and convulxin-like proteins with human glycoprotein VI
+YJ Tseng, C Tsai
+ABSTRACTS OF PAPERS OF THE AMERICAN CHEMICAL SOCIETY 238
+2009
+Support vector machine classification model of Pubchem hERG bioassay data with 4D-fingerprint and MOE descriptors
+YJ Tseng, M Shen, BH Su
+ABSTRACTS OF PAPERS OF THE AMERICAN CHEMICAL SOCIETY 238
+2009
+In silico binary QSAR model based on 4D-fingerprints and MOE descriptors for hERG blockage evaluation
+YJ Tseng, BH Su, M Shen
+ABSTRACTS OF PAPERS OF THE AMERICAN CHEMICAL SOCIETY 238
+2009
+Categorical QSAR models for skin sensitization based on local lymph node assay measures and both ground and excited state 4D-fingerprint descriptors
+J Liu, PS Kern, GF Gerberick, OA Santos-Filho, EX Esposito, AJ Hopfinger, ...
+Journal of Computer-Aided Molecular Design 22 (6), 345-366
+17	2008
+Membrane-Interaction Quantitative Structure− Activity Relationship (MI-QSAR) Analyses of Skin Penetration Enhancers
+T Zheng, AJ Hopfinger, EX Esposito, J Liu, YJ Tseng
+Journal of chemical information and modeling 48 (6), 1238-1256
+20	2008
+Categorical QSAR models for skin sensitization based upon local lymph node assay classification measures Part 2: 4D-Fingerprint three-state and two-2-state logistic regression …
+Y Li, D Pan, J Liu, PS Kern, GF Gerberick, AJ Hopfinger, YJ Tseng
+Toxicological sciences 99 (2), 532-544
+33	2007
+QSAR analyses of skin penetration enhancers
+M Iyer, T Zheng, AJ Hopfinger, YJ Tseng
+Journal of chemical information and modeling 47 (3), 1130-1149
+29	2007
+Prediction and mechanistic interpretation of human oral drug absorption using MI-QSAR analysis
+M Iyer, YJ Tseng, CL Senese, J Liu, AJ Hopfinger
+Molecular pharmaceutics 4 (2), 218-231
+45	2007
+4D-fingerprint categorical QSAR models for skin sensitization based on the classification of local lymph node assay measures
+Y Li, YJ Tseng, D Pan, J Liu, PS Kern, GF Gerberick, AJ Hopfinger
+Chemical research in toxicology 20 (1), 114-128
+38	2007
+4D-fingerprints, universal QSAR and QSPR descriptors
+CL Senese, J Duca, D Pan, AJ Hopfinger, YJ Tseng
+Journal of chemical information and computer sciences 44 (5), 1526-1539
+86	2004
+Metabolomic Dynamic Analysis of Hypoxia in MDA-MB-231 and the Comparison with Inferred Metabolites from Transcriptomics Data
+IL Tsai, TC Kuo, TJ Ho, YC Harn, SY Wang, WM Fu, CH Kuo, YJ Tseng

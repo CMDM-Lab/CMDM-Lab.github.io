@@ -19,26 +19,36 @@
  * ORCID -- so tier 1 is the union of the two, and both are trusted enough to
  * publish unattended.
  *
- * The affiliation query is deliberately NOT trusted. "Tseng YJ" at NTU matches
- * a second researcher on the clinical-pharmacology side, so its 46 extra hits
- * arrive as tigecycline dosing and retinal-ganglion-cell studies mixed in with
- * real lab output. Those go to `data/publications-review.yml` for a human to
- * confirm; confirmed DOIs get pasted into the `include` list of
- * `data/publications-overrides.yml` and are picked up on the next run.
+ * The affiliation query is deliberately NOT trusted, and the reason is worse
+ * than a single name clash. "Tseng YJ" is not one other researcher, it is at
+ * least ten -- Yu-Ju, Yun-Ju, Yi-Ju, Yu-Jui, Yen-Ju, Yea-Jing, Yen-Jhen,
+ * Yu-Jou, Yu-Jung, Yong-Jhe, Yu-Jen -- all of whom abbreviate identically and
+ * several of whom also publish from NTU. Its extra hits arrive as tigecycline
+ * dosing, retinal-ganglion-cell degeneration and soft-coral natural products
+ * mixed in with real lab output.
+ *
+ * Nor does co-authorship separate them: some share genuine collaborators with
+ * this lab. The only reliable discriminator is the PI's spelled-out given name,
+ * which always contains "yufeng" or "jane" and never matches the others. That
+ * is what scripts/triage-review-queue.mjs keys on.
+ *
+ * So tier 2 goes to `data/publications-review.yml` for a human to rule on, and
+ * the ruling is recorded in `data/publications-overrides.yml`.
  */
 
 import { readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import YAML from 'yaml';
 import {
-  CONTACT_EMAIL, chunk, fetchJson, normalizeDoi, titleKey,
+  CONTACT_EMAIL, chunk, fetchJson, normalizeDoi, plainText, titleKey,
 } from './lib/fetch-util.mjs';
+import { listed, normalizePatch, splitIdentifiers } from './lib/overrides.mjs';
 
 const ORCID_ID = '0000-0002-8461-6181'; // Yufeng Jane Tseng, National Taiwan University
 
 /** Trusted sources: merged and published without human review. */
 const TIER1_PUBMED_QUERY = 'Tseng Yufeng Jane[Author]';
-/** Untrusted source: name-collides with another NTU researcher, so review-only. */
+/** Untrusted source: "Tseng YJ" collides with ~10 researchers, so review-only. */
 const TIER2_PUBMED_QUERY = 'Tseng YJ[Author] AND National Taiwan University[Affiliation]';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
@@ -62,11 +72,11 @@ async function fetchOrcidWorks() {
       if (entry['external-id-type']) ids[entry['external-id-type']] = entry['external-id-value'];
     }
     records.push({
-      title: summary.title?.title?.value ?? '',
+      title: plainText(summary.title?.title?.value),
       doi: normalizeDoi(ids.doi),
       pmid: ids.pmid ? String(ids.pmid) : '',
       year: Number(summary['publication-date']?.year?.value) || null,
-      journal: summary['journal-title']?.value ?? '',
+      journal: plainText(summary['journal-title']?.value),
       type: summary.type ?? '',
       source: 'orcid',
     });
@@ -93,11 +103,11 @@ async function fetchPubmedQuery(term) {
       const item = summary.result[pmid];
       const doi = item.articleids?.find((a) => a.idtype === 'doi')?.value ?? '';
       records.push({
-        title: item.title ?? '',
+        title: plainText(item.title),
         doi: normalizeDoi(doi),
         pmid: String(pmid),
         year: Number((item.pubdate ?? '').slice(0, 4)) || null,
-        journal: item.fulljournalname || item.source || '',
+        journal: plainText(item.fulljournalname || item.source),
         type: 'journal-article',
         source: 'pubmed',
       });
@@ -127,8 +137,10 @@ async function enrichFromCrossref(dois) {
       if (!doi) continue;
       const issued = item.issued?.['date-parts']?.[0] ?? [];
       enriched.set(doi, {
-        title: item.title?.[0] ?? '',
-        journal: item['container-title']?.[0] ?? '',
+        // Publisher markup is stripped here, at the boundary, so nothing
+        // downstream has to remember that these strings can contain HTML.
+        title: plainText(item.title?.[0]),
+        journal: plainText(item['container-title']?.[0]),
         year: issued[0] ?? null,
         month: issued[1] ?? null,
         volume: item.volume ?? '',
@@ -137,8 +149,8 @@ async function enrichFromCrossref(dois) {
         type: item.type ?? '',
         publisher: item.publisher ?? '',
         authors: (item.author ?? []).map((a) => ({
-          family: a.family ?? '',
-          given: a.given ?? '',
+          family: plainText(a.family),
+          given: plainText(a.given),
           orcid: a.ORCID ? normalizeDoi(a.ORCID).replace(/^https?:\/\/orcid\.org\//, '') : '',
         })).filter((a) => a.family || a.given),
       });
@@ -199,17 +211,23 @@ function mergeRecords(groups) {
 }
 
 async function readOverrides() {
+  const empty = {
+    exclude: { dois: new Set(), pmids: new Set() },
+    include: { dois: new Set(), pmids: new Set() },
+    manual: [],
+    patch: {},
+  };
   try {
     const parsed = YAML.parse(await readFile(OVERRIDES, 'utf8')) ?? {};
     return {
-      exclude: new Set((parsed.exclude ?? []).map(normalizeDoi).filter(Boolean)),
-      include: new Set((parsed.include ?? []).map(normalizeDoi).filter(Boolean)),
+      exclude: splitIdentifiers(parsed.exclude),
+      include: splitIdentifiers(parsed.include),
       manual: parsed.manual ?? [],
-      patch: parsed.patch ?? {},
+      patch: normalizePatch(parsed.patch),
     };
   } catch (error) {
     if (error.code !== 'ENOENT') throw error;
-    return { exclude: new Set(), include: new Set(), manual: [], patch: {} };
+    return empty;
   }
 }
 
@@ -219,6 +237,14 @@ async function readOverrides() {
 
 async function main() {
   const overrides = await readOverrides();
+
+  // A malformed identifier is a rule that silently matches nothing, so say so
+  // loudly rather than letting it look like it worked.
+  for (const [section, list] of [['include', overrides.include], ['exclude', overrides.exclude]]) {
+    for (const bad of list.invalid ?? []) {
+      console.warn(`WARNING: ${section}: "${bad}" is not a valid DOI or pmid: entry -- ignored`);
+    }
+  }
 
   console.log('fetching sources…');
   const [orcid, pubmedTier1, pubmedTier2] = await Promise.all([
@@ -237,18 +263,34 @@ async function main() {
   for (const record of pubmedTier2) {
     const key = dedupeKey(record);
     if (trusted.has(key)) continue;
-    if (record.doi && overrides.exclude.has(record.doi)) continue;
-    if (record.doi && overrides.include.has(record.doi)) {
+    if (listed(overrides.exclude, record)) continue;
+    if (listed(overrides.include, record)) {
       trusted.set(key, { ...record, sources: ['pubmed-affiliation'], confirmed: true });
       continue;
     }
     review.push(record);
   }
 
-  // Drop anything a human marked as belonging to the other Tseng YJ.
+  // Drop anything a human ruled out, including from the trusted sources: an
+  // ORCID profile can carry a mistaken claim too.
   for (const [key, record] of trusted) {
-    if (record.doi && overrides.exclude.has(record.doi)) trusted.delete(key);
+    if (listed(overrides.exclude, record)) trusted.delete(key);
   }
+
+  // `include:` is authoritative, not merely a promotion from tier 2. Some of
+  // the lab's papers are in none of the three sources at all -- the author
+  // metadata is too mangled for PubMed, and they were never linked on ORCID --
+  // so a DOI listed here is fetched from Crossref regardless of whether any
+  // query found it. Comparing against the Google Scholar profile
+  // (scripts/compare-scholar.mjs) is how those gaps get noticed.
+  const presentDois = new Set([...trusted.values()].map((r) => r.doi).filter(Boolean));
+  let adopted = 0;
+  for (const doi of overrides.include.dois) {
+    if (presentDois.has(doi)) continue;
+    trusted.set(`doi:${doi}`, { title: '', doi, pmid: '', year: null, journal: '', type: '', sources: ['manual-include'] });
+    adopted += 1;
+  }
+  if (adopted > 0) console.log(`  adopted from include: ${adopted} (absent from every source)`);
 
   console.log('enriching from crossref…');
   const dois = [...trusted.values()].map((r) => r.doi).filter(Boolean);

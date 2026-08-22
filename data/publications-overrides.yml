@@ -1,0 +1,170 @@
+# Human decisions layered over the automated publication sync.
+#
+# scripts/fetch-publications.mjs reads this file on every run. It is the only
+# place to correct the generated data/publications.yml, which is overwritten
+# wholesale each time and must never be hand-edited.
+#
+# Four sections:
+#
+#   include:  DOIs from data/publications-review.yml that are confirmed to be
+#             this lab's work. The review queue exists because the PubMed
+#             affiliation query name-collides with another NTU researcher, so
+#             every entry here represents a decision someone made.
+#
+#   exclude:  DOIs that are NOT this lab's work, or that should not appear for
+#             any other reason. Applied to trusted sources too, so this also
+#             suppresses a bad ORCID record.
+#
+#   patch:    Per-DOI field overrides, for when Crossref metadata is wrong.
+#
+#   manual:   Entries no API carries at all. Note that conference abstracts,
+#             patents and books live in publications-legacy.yml instead -- use
+#             this only for a journal article that is genuinely unreachable.
+
+include:
+  # Confirmed by cot on 2026-08-22. All three were verified against Crossref
+  # before being added: each lists Tseng as an author alongside known lab
+  # members, which is the check that matters here -- a DOI alone does not
+  # distinguish this lab from the other Tseng YJ at NTU.
+  #
+  # Note why the automated sources missed all three: Crossref records the
+  # author as "Y. Jane Tseng" or "Yufeng J. Tseng", not "Yufeng Jane Tseng",
+  # and none of them carry an ORCID for her. So neither the ORCID profile nor
+  # the PubMed full-name query could find them. See the note at the end of this
+  # file.
+
+  # Y. Jane Tseng, with San-Yuan Wang and Guan-Yuan Chen.
+  # "Identification of traumatic acid as a potential plasma biomarker for
+  #  sarcopenia using a metabolomics-based approach",
+  # Journal of Cachexia, Sarcopenia and Muscle, 2021.
+  - 10.1002/jcsm.12895
+
+  # Yufeng J. Tseng, with Tien-Chueh Kuo and Ching-Hua Kuo.
+  # "Lipidomics of children and adolescents exposed to multiple industrial
+  #  pollutants", Environmental Research, 2021.
+  - 10.1016/j.envres.2021.111448
+
+  # Y. Jane Tseng, with Olivia A. Lin (林盈安) and Pei-Jiun Chuang (莊珮君).
+  # "Comparison of controlled drugs and new psychoactive substances (NPS)
+  #  regulations in East and Southeast Asia",
+  # Regulatory Toxicology and Pharmacology, 2023.
+  - 10.1016/j.yrtph.2023.105338
+
+  # Found on 2026-08-22 by diffing the Google Scholar profile against this data
+  # (scripts/compare-scholar.mjs). Neither is in ORCID, PubMed or the review
+  # queue -- they are simply absent from every automated source, which is why
+  # `include:` fetches listed DOIs from Crossref outright rather than only
+  # promoting review-queue entries.
+
+  # Pei-Hua Wang, Jen-Hao Chen, Yu-Yuan Yang, Chien Lee, Yufeng Jane Tseng.
+  # "Recent Advances in Quantum Computing for Drug Discovery and Development",
+  # IEEE Nanotechnology Magazine 17(2), 26-30, 2023. The lab's most-cited
+  # missing paper at ~62 citations.
+  #
+  # Careful when re-checking this one: a different 2024 IEEE Access paper by
+  # Kumar et al. has an almost identical title and is what a plain Crossref
+  # title search returns first.
+  - 10.1109/mnano.2023.3249499
+
+  # Chin-Jung Lin, Binesh Unnikrishnan, ..., Pei-Hua Wang, Yufeng Jane Tseng.
+  # "Exploring molecular moieties on carbonized polymer dots from flavonoid
+  #  glycosides with activity against enterovirus A71", Carbon 192, 285-294, 2022.
+  # This is the journal version; Crossref also carries an SSRN preprint of it
+  # (10.2139/ssrn.4019249), which is deliberately not used.
+  - 10.1016/j.carbon.2022.03.009
+
+exclude:
+  # Ruled out on 2026-08-22 after triaging the full review queue.
+  #
+  # `Tseng YJ[Author]` does not collide with one other researcher, it collides
+  # with at least ten. Every DOI below has a Tseng whose given name is spelled
+  # out in Crossref and is demonstrably not the PI's:
+  #
+  #     Yu-Ju · Yun-Ju · Yi-Ju · Yu-Jui · Yen-Ju · Yea-Jing · Yen-Jhen
+  #     Yu-Jou · Yu-Jung · Yong-Jhe · Yu-Jen · Wei-Hsuan
+  #
+  # Note that co-authorship does NOT separate these groups: several share real
+  # collaborators with this lab (Ching-Hua Kuo, Guan-Yuan Chen). The given name
+  # is the only reliable discriminator, which is what
+  # scripts/triage-review-queue.mjs now keys on.
+  #
+  # Regenerate this list with:
+  #     node scripts/triage-review-queue.mjs --emit-exclude
+  #
+  # The two below were the queue's leftovers, resolved by looking up the author
+  # affiliation in PubMed rather than by guessing from the title:
+  #
+  #   bjd.18425     Tseng Y-J, Department of Dermatology, Kaohsiung Chang Gung
+  #                 Memorial Hospital -- a different institution entirely.
+  #   pmid:23542986 Tseng Yi-Ju, NTU (f97945017@ntu.edu.tw), the health
+  #                 informatics researcher who accounts for eight other entries
+  #                 in this list. No DOI, hence the pmid: form.
+  - 10.1111/bjd.18425  # 2020 Y-J Tseng, Chang Gung dermatology
+  - pmid:23542986  # 2013 Yi-Ju Tseng, NTU health informatics
+  - 10.1126/sciadv.adx7815  # 2026 Yun-Ju Tseng
+  - 10.3389/jpps.2026.16123  # 2026 Yu-Ju Tseng
+  - 10.1080/14787210.2026.2703097  # 2026 Yu-Ju Tseng
+  - 10.2147/dddt.s602835  # 2026 Yu-Ju Tseng
+  - 10.2147/dddt.s574548  # 2026 Yu-Ju Tseng
+  - 10.2147/idr.s607775  # 2026 Yu-Ju Tseng
+  - 10.1096/fj.202501013rr  # 2025 Yen‐Jhen Tseng
+  - 10.1177/20420986251320414  # 2025 Yu-Ju Tseng
+  - 10.1167/iovs.66.12.20  # 2025 Yun-Ju Tseng
+  - 10.1016/j.ijbiomac.2025.144045  # 2025 Yu-Jou Tseng
+  - 10.1080/07420528.2024.2324023  # 2024 Yen-Ju Tseng
+  - 10.1038/s41387-024-00306-1  # 2024 Yea-Jing Tseng
+  - 10.1038/s41538-023-00196-0  # 2023 Yea-Jing Tseng
+  - 10.7717/peerj-cs.1528  # 2023 Yi-Ju Tseng
+  - 10.3390/brainsci13010033  # 2022 Yu-Ju Tseng
+  - 10.3389/fnins.2021.728905  # 2021 Yun-Ju Tseng
+  - 10.7717/peerj-cs.520  # 2021 Yi-Ju Tseng
+  - 10.1016/j.jfma.2020.09.004  # 2021 Yu-Ju Tseng
+  - 10.1038/s41598-021-96782-x  # 2021 Yi-Ju Tseng
+  - 10.1021/acs.jpclett.0c02321  # 2020 Yu-Jui Tseng
+  - 10.1039/c9em00470j  # 2020 Yu-Jung Tseng
+  - 10.1371/journal.pone.0238201  # 2020 Yu-Ju Tseng
+  - 10.1038/s41598-019-52054-3  # 2019 Yong-Jhe Tseng
+  - 10.1002/mrm.27749  # 2019 Yu‐Jui Tseng
+  - 10.3390/md16060210  # 2018 Yen-Ju Tseng
+  - 10.1038/s41598-017-05809-9  # 2017 Yu-Ju Tseng
+  - 10.1021/acsnano.5b08130  # 2016 Yu-Jui Tseng
+  - 10.1021/acs.jnatprod.5b01142  # 2016 Yen-Ju Tseng
+  - 10.3390/md14100180  # 2016 Yen-Ju Tseng
+  - 10.2196/medinform.4171  # 2015 Yi-Ju Tseng
+  - 10.1039/c4nr05825a  # 2015 Yu-Jui Tseng
+  - 10.1002/smll.201303868  # 2014 Wei‐Hsuan Tseng, Yu‐Jui Tseng
+  - 10.1016/j.cmpb.2014.09.001  # 2014 Yi-Ju Tseng
+  - 10.2196/medinform.2519  # 2013 Yi-Ju Tseng
+  - 10.1021/ja409490q  # 2013 Wei-Hsuan Tseng, Yu-Jui Tseng
+  - 10.1089/tmj.2012.0241  # 2013 Yi-Ju Tseng
+  - 10.2196/jmir.2495  # 2013 Yi-Ju Tseng
+  - 10.1007/s10916-011-9727-9  # 2012 Yi-Ju Tseng
+  - 10.2196/jmir.2056  # 2012 Yi-Ju Tseng
+  - 10.3390/md10071572  # 2012 Yen-Ju Tseng
+  - 10.1103/physreve.80.036301  # 2009 Yu-Jen Tseng
+
+patch: {}
+
+manual: []
+
+# KNOWN GAP -- author name variants.
+#
+# The three DOIs above surfaced a systematic hole rather than three one-offs.
+# Publisher metadata records the PI's name in at least three forms:
+#
+#     "Yufeng Jane Tseng"   <- the only form the tier-1 PubMed query matches
+#     "Yufeng J. Tseng"
+#     "Y. Jane Tseng"
+#
+# A paper indexed under one of the latter two, and lacking an ORCID link, is
+# invisible to both trusted sources and can only arrive through the untrusted
+# affiliation query -- which is exactly where these three were sitting.
+#
+# Broadening the PubMed query is not a safe fix on its own: "Tseng Y Jane" and
+# "Tseng Yufeng J" return 58 and 87 hits because PubMed matches author initials
+# as prefixes, so they pull in unrelated people rather than just the variants.
+#
+# The durable fix is upstream: link the missing papers to the ORCID record at
+# https://orcid.org/0000-0002-8461-6181. ORCID is already the most complete
+# source at 101 works, and anything added there is picked up automatically on
+# the next sync with no entry needed in this file.
