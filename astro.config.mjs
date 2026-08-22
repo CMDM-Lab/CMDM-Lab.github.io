@@ -23,6 +23,23 @@ export default defineConfig({
     locales: ['zh-Hant', 'en'],
     routing: { prefixDefaultLocale: false },
   },
+  vite: {
+    server: {
+      // Dev server only -- this has no effect on the static build.
+      //
+      // Vite rejects a request whose Host header it does not recognise, as a
+      // DNS-rebinding guard, so reviewing the site over the lab's Tailscale
+      // network needs the tailnet names listed here.
+      //
+      // Note what is NOT here: `host: true`. This machine has a public address
+      // on enp129s0 as well as its tailnet address, and binding the dev server
+      // to 0.0.0.0 would put an unauthenticated server with source maps on the
+      // public internet. Bind it to the tailnet address instead:
+      //
+      //     npm run dev -- --host 100.64.0.2
+      allowedHosts: ['.ts.cmdm.tw', 'cmdm-5090', 'localhost'],
+    },
+  },
   integrations: [
     sitemap({
       // Legacy jQuery entry points are redirect shims, not content.
