@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>計算分子設計與代謝體實驗室</title>
+
+  <!--
+    Redirect shim for the retired jQuery entry point.
+
+    Every page of the old site was addressed as `index_zh.html?content=<key>`,
+    so inbound links, bookmarks and citations all point here. GitHub Pages
+    serves static files and cannot redirect on a query string, so the mapping
+    has to run in the browser.
+
+    `noindex` plus a canonical pointing at the real home page keeps this URL from
+    competing with the new pages in search results -- the whole reason for the
+    rebuild was that this URL was the only one a crawler ever saw.
+
+    Keep the map below in sync with LEGACY_CONTENT_MAP in src/lib/routes.ts.
+  -->
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="https://www.cmdm.tw/">
+
+  <script>
+    (function () {
+      var map = {
+        home: '/',
+        about: '/about/',
+        research: '/research/',
+        honor: '/honors/',
+        member: '/members/',
+        course: '/courses/',
+        service: '/services/',
+        janetseng: '/professor/',
+        publication: '/publications/',
+        prof_acts: '/activities/'
+      };
+      var match = /[?&]content=([a-z_]+)/.exec(window.location.search);
+      window.location.replace((match && map[match[1]]) || '/');
+    })();
+  </script>
+</head>
+<body>
+  <!-- Shown only if scripting is unavailable. -->
+  <p>本頁已移至新網址。<a href="/">前往計算分子設計與代謝體實驗室首頁</a>。</p>
+  <p>This page has moved. <a href="/">Go to the CMDM Lab home page</a>.</p>
+  <ul>
+    <li><a href="/members/">成員 / Members</a></li>
+    <li><a href="/publications/">學術發表 / Publications</a></li>
+    <li><a href="/research/">研究內容 / Research</a></li>
+    <li><a href="/honors/">榮譽事蹟 / Honors</a></li>
+    <li><a href="/services/">軟體服務 / Software</a></li>
+  </ul>
+</body>
+</html>

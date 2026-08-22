@@ -1,0 +1,17 @@
+---
+// Courses page body, shared by both locales.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCourses, getStrings, type Locale } from '../lib/data';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const t = getStrings(locale);
+const courses = getCourses(locale);
+---
+
+<BaseLayout locale={locale} slug="courses">
+  <h1>{t.courses_title}</h1>
+  <ul class="course-list">
+    {courses.map((course) => <li>{course}</li>)}
+  </ul>
+</BaseLayout>

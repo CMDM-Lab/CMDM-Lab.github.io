@@ -1,0 +1,102 @@
+---
+// Principal investigator page, shared by both locales.
+//
+// A dedicated Person page with its own URL and a Person JSON-LD node, linked to
+// the ORCID record. Searches for the professor by name are among the most likely
+// ways anyone reaches this site, and previously they landed on a URL that served
+// no content.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getMembers, getProfessorProfile, getStrings, type Locale } from '../lib/data';
+import { pathFor } from '../lib/routes';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const t = getStrings(locale);
+const isEnglish = locale === 'en';
+
+const professor = getMembers().find((member) => member.role === 'faculty');
+const profile = getProfessorProfile(locale);
+
+const site = Astro.site ?? new URL('https://www.cmdm.tw');
+const name = (isEnglish ? professor?.name_en : professor?.name) || professor?.name || '';
+const education = (isEnglish ? professor?.education_en : professor?.education)
+  ?? professor?.education ?? [];
+
+const person = professor
+  ? [{
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name,
+    ...(professor.name_en && !isEnglish ? { alternateName: professor.name_en } : {}),
+    ...(professor.title ? { jobTitle: isEnglish ? professor.title_en : professor.title } : {}),
+    ...(professor.email ? { email: professor.email } : {}),
+    ...(professor.phone ? { telephone: professor.phone } : {}),
+    ...(professor.orcid
+      ? {
+        identifier: `https://orcid.org/${professor.orcid}`,
+        sameAs: [`https://orcid.org/${professor.orcid}`],
+      }
+      : {}),
+    ...(professor.research ? { knowsAbout: isEnglish ? professor.research_en : professor.research } : {}),
+    worksFor: { '@type': 'ResearchOrganization', '@id': `${site.href}#organization` },
+    url: new URL(pathFor('professor', locale), site).href,
+  }]
+  : [];
+---
+
+<BaseLayout locale={locale} slug="professor" structuredData={person}>
+  <p><a href={pathFor('members', locale)}>&larr; {t.nav_members}</a></p>
+
+  <h1>
+    {name}
+    {!isEnglish && professor?.name_en && <span class="member-alt"> ({professor.name_en})</span>}
+  </h1>
+  {professor?.title && <p class="page-lede">{isEnglish ? professor.title_en : professor.title}</p>}
+
+  {professor && (
+    <section class="professor-contact" aria-labelledby="contact">
+      <h2 id="contact">{t.label_email}</h2>
+      {professor.photo && (
+        <img class="member-photo" src={professor.photo} alt={name} width="180" height="180" />
+      )}
+      <ul>
+        {professor.email && (
+          <li>{t.label_email}: <a href={`mailto:${professor.email}`}>{professor.email}</a></li>
+        )}
+        {professor.phone && <li>{t.label_phone}: {professor.phone}</li>}
+        {(isEnglish ? professor.office_en : professor.office) && (
+          <li>{t.label_office}: {isEnglish ? professor.office_en : professor.office}</li>
+        )}
+        {professor.orcid && (
+          <li>ORCID: <a href={`https://orcid.org/${professor.orcid}`}>{professor.orcid}</a></li>
+        )}
+      </ul>
+    </section>
+  )}
+
+  {profile.appointments.length > 0 && (
+    <section aria-labelledby="appointments">
+      <h2 id="appointments">{isEnglish ? 'Appointments' : '現職'}</h2>
+      <ul>{profile.appointments.map((line) => <li>{line}</li>)}</ul>
+    </section>
+  )}
+
+  {(profile.background.length > 0 || education.length > 0) && (
+    <section aria-labelledby="background">
+      <h2 id="background">{t.label_education}</h2>
+      <ul>
+        {profile.background.map((line) => <li>{line}</li>)}
+        {profile.background.length === 0 && education.map((line) => <li>{line}</li>)}
+      </ul>
+    </section>
+  )}
+
+  {profile.biography.length > 0 && (
+    <section aria-labelledby="biography">
+      <h2 id="biography">{isEnglish ? 'Biography' : '履歷'}</h2>
+      <div class="prose">
+        {profile.biography.map((paragraph) => <p>{paragraph}</p>)}
+      </div>
+    </section>
+  )}
+</BaseLayout>

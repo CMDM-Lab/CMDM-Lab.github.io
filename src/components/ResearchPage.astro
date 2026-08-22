@@ -1,0 +1,40 @@
+---
+// Research page body, shared by both locales.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import {
+  getResearchAreas, getResearchHighlights, getStrings, type Locale,
+} from '../lib/data';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const t = getStrings(locale);
+const areas = getResearchAreas(locale);
+const highlights = getResearchHighlights();
+---
+
+<BaseLayout locale={locale} slug="research">
+  <h1>{t.research_title}</h1>
+
+  <section aria-labelledby="areas">
+    <h2 id="areas">{t.section_research_areas}</h2>
+    {areas.map((area) => (
+      <div class="research-area">
+        <h3>{area.group}</h3>
+        <ul>{area.items.map((item) => <li>{item}</li>)}</ul>
+      </div>
+    ))}
+  </section>
+
+  <section aria-labelledby="highlights">
+    <h2 id="highlights">{t.section_journal_papers}</h2>
+    {highlights.map((highlight) => (
+      <article class="research-highlight">
+        <h3>{highlight.title}</h3>
+        {highlight.excerpt && <p>{highlight.excerpt}</p>}
+        {highlight.image && (
+          <img src={highlight.image} alt={highlight.title} loading="lazy" />
+        )}
+      </article>
+    ))}
+  </section>
+</BaseLayout>

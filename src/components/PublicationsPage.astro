@@ -1,0 +1,122 @@
+---
+// Publications page body, shared by both locales.
+//
+// Journal articles come from data/publications.yml, which the nightly sync
+// rebuilds from ORCID and Crossref. Conference papers, patents and books come
+// from data/publications-legacy.yml, because none of them are registered as
+// DOIs the way journal articles are -- no API can supply them.
+//
+// The old site split this content across two pages, one of which
+// (contents/publication_zh.html) no route ever reached, so half of it was
+// invisible. It is one page now.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import {
+  formatAuthors, getLegacyPublications, getStrings, publicationsByYear,
+  type Locale, type Publication,
+} from '../lib/data';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const t = getStrings(locale);
+
+const byYear = publicationsByYear();
+const legacy = getLegacyPublications();
+const total = byYear.reduce((sum, [, list]) => sum + list.length, 0);
+
+/** Journal, volume(issue), pages -- omitting whatever is missing. */
+function venue(publication: Publication): string {
+  const parts = [publication.journal].filter(Boolean) as string[];
+  if (publication.volume) {
+    parts.push(publication.issue
+      ? `${publication.volume}(${publication.issue})`
+      : String(publication.volume));
+  }
+  if (publication.pages) parts.push(publication.pages);
+  return parts.join(', ');
+}
+
+// One ScholarlyArticle node per paper. This is what lets a search engine tie
+// the lab to its literature rather than treating the page as a wall of text.
+const articles = byYear.flatMap(([, list]) => list).map((publication) => ({
+  '@context': 'https://schema.org',
+  '@type': 'ScholarlyArticle',
+  headline: publication.title,
+  ...(publication.year ? { datePublished: String(publication.year) } : {}),
+  ...(publication.authors?.length
+    ? {
+      author: publication.authors.map((author) => ({
+        '@type': 'Person',
+        name: [author.given, author.family].filter(Boolean).join(' '),
+        ...(author.orcid ? { identifier: `https://orcid.org/${author.orcid}` } : {}),
+      })),
+    }
+    : {}),
+  ...(publication.journal
+    ? { isPartOf: { '@type': 'Periodical', name: publication.journal } }
+    : {}),
+  ...(publication.doi
+    ? { identifier: `https://doi.org/${publication.doi}`, sameAs: `https://doi.org/${publication.doi}` }
+    : {}),
+}));
+---
+
+<BaseLayout locale={locale} slug="publications" structuredData={articles}>
+  <h1>{t.publications_title}</h1>
+  <p class="page-lede">{total} {t.label_publication_count}</p>
+
+  <section aria-labelledby="journal-papers">
+    <h2 id="journal-papers">{t.section_journal_papers}</h2>
+    {byYear.map(([year, list]) => (
+      <section class="pub-year" aria-labelledby={`year-${year}`}>
+        <h3 id={`year-${year}`}>{year || t.label_updated}</h3>
+        <ol class="publication-list">
+          {list.map((publication) => (
+            <li>
+              {publication.authors?.length ? (
+                <span class="pub-authors">{formatAuthors(publication.authors)}</span>
+              ) : null}
+              <span class="pub-title">
+                {publication.doi
+                  ? <a href={`https://doi.org/${publication.doi}`}>{publication.title}</a>
+                  : publication.title}
+              </span>
+              {venue(publication) && <span class="pub-venue">{venue(publication)}</span>}
+              {publication.pmid && (
+                <a class="pub-ref"
+                  href={`https://pubmed.ncbi.nlm.nih.gov/${publication.pmid}/`}
+                >PubMed</a>
+              )}
+            </li>
+          ))}
+        </ol>
+      </section>
+    ))}
+  </section>
+
+  {legacy.conference_papers?.length ? (
+    <section aria-labelledby="conference-papers">
+      <h2 id="conference-papers">{t.section_conference_papers}</h2>
+      <ol class="publication-list">
+        {legacy.conference_papers.map((citation) => <li>{citation}</li>)}
+      </ol>
+    </section>
+  ) : null}
+
+  {legacy.patents?.length ? (
+    <section aria-labelledby="patents">
+      <h2 id="patents">{t.section_patents}</h2>
+      <ol class="publication-list">
+        {legacy.patents.map((citation) => <li>{citation}</li>)}
+      </ol>
+    </section>
+  ) : null}
+
+  {legacy.books?.length ? (
+    <section aria-labelledby="books">
+      <h2 id="books">{t.section_books}</h2>
+      <ol class="publication-list">
+        {legacy.books.map((citation) => <li>{citation}</li>)}
+      </ol>
+    </section>
+  ) : null}
+</BaseLayout>

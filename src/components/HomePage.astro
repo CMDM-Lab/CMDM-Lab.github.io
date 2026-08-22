@@ -1,0 +1,117 @@
+---
+// Home page body, shared by both locales.
+//
+// This page also carries the legacy-URL shim. Old inbound links and bookmarks
+// use `?content=<key>`, which no longer means anything, so a visitor arriving
+// with one is forwarded to the real page. GitHub Pages cannot redirect on a
+// query string, so this has to happen in the browser -- but only for those
+// stale URLs. A normal visit runs no script at all.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import {
+  formatAuthors, getHomeIntro, getHomeVideo, getHonors, getNews,
+  getPublications, getResearchAreas, getStrings, type Locale,
+} from '../lib/data';
+import { LEGACY_CONTENT_MAP, pathFor } from '../lib/routes';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const t = getStrings(locale);
+
+const news = getNews();
+const honors = getHonors();
+const areas = getResearchAreas(locale);
+const recent = getPublications().slice(0, 5);
+const intro = getHomeIntro(locale);
+const video = getHomeVideo();
+
+// Serialised for the shim below so the mapping lives in one place.
+const legacyMap = Object.fromEntries(
+  Object.entries(LEGACY_CONTENT_MAP).map(([key, slug]) => [key, pathFor(slug, locale)]),
+);
+---
+
+<BaseLayout locale={locale} slug="">
+  <script is:inline set:html={`
+    (function () {
+      var map = ${JSON.stringify(legacyMap)};
+      var match = /[?&]content=([a-z_]+)/.exec(window.location.search);
+      if (match && map[match[1]] && map[match[1]] !== window.location.pathname) {
+        window.location.replace(map[match[1]]);
+      }
+    })();
+  `} />
+
+  <h1>{t.lab_name}</h1>
+  <p class="page-lede">{t.university}</p>
+
+  <section class="home-intro" aria-labelledby="intro">
+    <div class="home-intro-text">
+      <h2 id="intro">{t.section_intro}</h2>
+      <p>{intro}</p>
+
+      <h2>{t.section_research_areas}</h2>
+      {areas.map((area) => (
+        <div class="research-area">
+          <h3>{area.group}</h3>
+          <ul>{area.items.map((item) => <li>{item}</li>)}</ul>
+        </div>
+      ))}
+      <p><a href={pathFor('research', locale)}>{t.label_more} &rarr;</a></p>
+    </div>
+
+    {video && (
+      <div class="home-video">
+        <iframe src={video} title={t.lab_name} loading="lazy"
+          allow="encrypted-media" allowfullscreen></iframe>
+      </div>
+    )}
+  </section>
+
+  {news.length > 0 && (
+    <section aria-labelledby="news">
+      <h2 id="news">{t.section_news}</h2>
+      <ul class="news-list">
+        {news.map((item) => (
+          <li>
+            {item.text}
+            {item.links?.map((link) => (
+              <>{' '}<a href={link.url}>[{link.label}]</a></>
+            ))}
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  {recent.length > 0 && (
+    <section aria-labelledby="recent-publications">
+      <h2 id="recent-publications">{t.section_latest_publications}</h2>
+      <ol class="publication-list">
+        {recent.map((publication) => (
+          <li>
+            {publication.authors?.length ? (
+              <span class="pub-authors">{formatAuthors(publication.authors, 4)}</span>
+            ) : null}
+            <span class="pub-title">
+              {publication.doi
+                ? <a href={`https://doi.org/${publication.doi}`}>{publication.title}</a>
+                : publication.title}
+            </span>
+            {publication.journal && (
+              <span class="pub-venue">{publication.journal}{publication.year ? `, ${publication.year}` : ''}</span>
+            )}
+          </li>
+        ))}
+      </ol>
+      <p><a href={pathFor('publications', locale)}>{t.label_more} &rarr;</a></p>
+    </section>
+  )}
+
+  {honors.award_highlights.length > 0 && (
+    <section aria-labelledby="awards">
+      <h2 id="awards">{t.section_award_highlights}</h2>
+      <ul>{honors.award_highlights.map((item) => <li>{item}</li>)}</ul>
+      <p><a href={pathFor('honors', locale)}>{t.label_more} &rarr;</a></p>
+    </section>
+  )}
+</BaseLayout>

@@ -1,0 +1,174 @@
+---
+// The single page shell. Everything a crawler needs is emitted here, statically.
+//
+// What the previous site got wrong, and what this fixes:
+//
+//   * All eight pages shared one <title> and an empty description, because all
+//     eight were the same URL with a different query string. Each page now has
+//     its own URL, title and description.
+//   * Chinese pages declared `lang="en"`. The lang attribute now follows the
+//     locale, and the two locales point at each other with hreflang so they are
+//     treated as translations rather than duplicates.
+//   * There was no canonical link, no Open Graph data and no structured data at
+//     all. All three are emitted below.
+//
+// No client-side JavaScript is required to render any content. The only script
+// on the page is the legacy-URL shim on the home page, which is inert for
+// visitors arriving at a normal URL.
+import { getStrings, type Locale } from '../lib/data';
+import { ROUTES, langTag, otherLocale, pathFor } from '../lib/routes';
+
+interface Props {
+  locale: Locale;
+  slug: string;
+  /** Overrides the i18n title for this route; used by detail pages. */
+  title?: string;
+  description?: string;
+  /** JSON-LD objects to emit in addition to the site-wide Organization node. */
+  structuredData?: Record<string, unknown>[];
+}
+
+const { locale, slug, title, description, structuredData = [] } = Astro.props;
+
+const t = getStrings(locale);
+const route = ROUTES.find((entry) => entry.slug === slug);
+
+const pageTitle = title ?? t[route?.titleKey ?? 'home_title'] ?? t.lab_name;
+const pageDescription = description ?? t[route?.descriptionKey ?? 'home_description'] ?? '';
+
+// A distinct <title> per page, with the lab name appended everywhere except the
+// home page (where it would read as a duplicate).
+const documentTitle = slug === ''
+  ? `${pageTitle} | ${t.university}`
+  : `${pageTitle} | ${t.lab_name_short} · ${t.university}`;
+
+const site = Astro.site ?? new URL('https://www.cmdm.tw');
+const canonical = new URL(pathFor(slug, locale), site).href;
+const alternates: Array<{ hreflang: string; href: string }> = [
+  { hreflang: langTag('zh-Hant'), href: new URL(pathFor(slug, 'zh-Hant'), site).href },
+  { hreflang: langTag('en'), href: new URL(pathFor(slug, 'en'), site).href },
+  // Chinese is the primary language, so it is also the fallback for locales
+  // that match neither tag.
+  { hreflang: 'x-default', href: new URL(pathFor(slug, 'zh-Hant'), site).href },
+];
+
+const ogImage = new URL('/img/logo_big2.png', site).href;
+
+// Site-wide identity. `ResearchOrganization` is the specific type for a lab, and
+// naming the parent university plus the ORCID of the PI gives search engines
+// something to reconcile against ORCID and Crossref records.
+const organization = {
+  '@type': 'ResearchOrganization',
+  '@id': `${site.href}#organization`,
+  name: t.lab_name,
+  alternateName: ['CMDM Lab', 'Computational Molecular Design and Metabolomics Lab'],
+  url: site.href,
+  logo: ogImage,
+  parentOrganization: {
+    '@type': 'CollegeOrUniversity',
+    name: t.university,
+    url: 'https://www.ntu.edu.tw/',
+  },
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: t.footer_address,
+    addressCountry: 'TW',
+  },
+  telephone: t.footer_phone,
+  founder: {
+    '@type': 'Person',
+    name: locale === 'en' ? 'Yufeng Jane Tseng' : '曾宇鳳',
+    identifier: 'https://orcid.org/0000-0002-8461-6181',
+  },
+};
+
+const navRoutes = ROUTES.filter((entry) => entry.inNav);
+const other = otherLocale(locale);
+
+// One `@graph` rather than one script tag per node. The publications page emits
+// 112 ScholarlyArticle nodes; repeating `@context` in each would have made
+// structured data half the weight of the page for no semantic gain.
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    organization,
+    ...structuredData.map(({ '@context': _context, ...node }) => node),
+  ],
+};
+---
+
+<html lang={langTag(locale)}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>{documentTitle}</title>
+    <meta name="description" content={pageDescription} />
+    <link rel="canonical" href={canonical} />
+    {alternates.map((alt) => (
+      <link rel="alternate" hreflang={alt.hreflang} href={alt.href} />
+    ))}
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={t.lab_name} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content={locale === 'en' ? 'en_US' : 'zh_TW'} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDescription} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+    <link rel="stylesheet" href="/styles/site.css" />
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">{t.label_skip_to_content}</a>
+
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="brand" href={pathFor('', locale)}>
+          <img src="/img/banner.png" alt={t.lab_name} height="48" />
+        </a>
+        <nav class="site-nav" aria-label={t.nav_home}>
+          <ul>
+            {navRoutes.map((entry) => (
+              <li>
+                <a
+                  href={pathFor(entry.slug, locale)}
+                  aria-current={entry.slug === slug ? 'page' : undefined}
+                >{t[entry.navKey]}</a>
+              </li>
+            ))}
+            <li class="nav-lang">
+              {/* A real link, not a JS handler: the old site swapped languages
+                  with an onclick that rewrote location.href, which left the
+                  translated page uncrawlable. */}
+              <a href={pathFor(slug, other)} hreflang={langTag(other)} rel="alternate">
+                {t.nav_language}
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="wrap">
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <p>{t.footer_address} &nbsp; {t.footer_phone}</p>
+        <p>&copy; 2006&ndash;{new Date().getFullYear()} {t.footer_copyright}</p>
+      </div>
+    </footer>
+  </body>
+</html>

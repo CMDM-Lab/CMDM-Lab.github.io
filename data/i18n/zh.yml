@@ -1,0 +1,90 @@
+# Traditional Chinese UI strings and per-page SEO metadata.
+#
+# `*_title` and `*_description` feed the <title> and <meta name="description">
+# of each page. They are not decoration: the old site gave every one of its
+# eight pages the same title and an empty description, so a search engine had
+# nothing to tell them apart. Keep each title distinct and each description a
+# self-contained sentence naming the lab.
+
+lab_name: 計算分子設計與代謝體實驗室
+lab_name_short: CMDM 實驗室
+university: 國立臺灣大學
+site_tagline: 國立臺灣大學計算分子設計與代謝體實驗室
+
+nav_home: 首頁
+nav_about: 關於實驗室
+nav_research: 研究內容
+nav_publications: 學術發表
+nav_honors: 榮譽事蹟
+nav_members: 成員
+nav_courses: 課程
+nav_services: 軟體服務
+nav_activities: 學術活動
+nav_language: English
+
+home_title: 計算分子設計與代謝體實驗室
+home_description: 國立臺灣大學計算分子設計與代謝體實驗室（CMDM Lab），由曾宇鳳教授主持，研究電腦輔助藥物設計、代謝體學生物標記偵測，以及人工智慧應用於新藥開發。
+about_title: 關於實驗室
+about_description: 認識國立臺灣大學計算分子設計與代謝體實驗室的研究方向、實驗室沿革與聯絡方式。
+research_title: 研究內容
+research_description: CMDM 實驗室的研究主題涵蓋計算分子設計、藥物毒性預測、代謝體學生物標記偵測與精準醫學。
+publications_title: 學術發表
+publications_description: 國立臺灣大學計算分子設計與代謝體實驗室的期刊論文、會議論文、專利與專書著作完整清單。
+honors_title: 榮譽事蹟
+honors_description: CMDM 實驗室與曾宇鳳教授獲獎紀錄，包含國家新創獎、IBM Faculty Award 與未來科技突破獎等。
+members_title: 實驗室成員
+members_description: 國立臺灣大學計算分子設計與代謝體實驗室的指導教授、博士後研究員、博碩士班學生與歷屆畢業成員名單。
+courses_title: 課程
+courses_description: 曾宇鳳教授於國立臺灣大學開設之課程資訊。
+services_title: 軟體服務
+services_description: CMDM 實驗室開發並公開提供的網頁服務與分析工具，包含 3Omics、LipidPedia、CypRules、GC2MS、Chromaligner 等。
+activities_title: 學術活動
+activities_description: 曾宇鳳教授參與之國際會議程序委員會、受邀演講與期刊審稿紀錄。
+professor_title: 曾宇鳳教授
+professor_description: 國立臺灣大學資訊工程學系教授曾宇鳳的學經歷、現職、研究方向與聯絡資訊。
+
+section_news: 最新消息
+section_latest_publications: 最新發表
+section_award_highlights: 獲獎紀錄
+section_intro: 簡介
+section_research_areas: 實驗室專注研究領域
+section_journal_papers: 期刊論文
+section_conference_papers: 會議論文
+section_patents: 專利
+section_books: 專書著作
+section_achievements: 摘錄成就
+section_program_committee: 國際會議程序委員會
+section_talks: 受邀演講與發表
+section_paper_review: 期刊審稿
+
+role_faculty: 指導教授
+role_staff: 行政與研究助理
+role_postdoc: 博士後研究員
+role_phd: 博士班學生
+role_masters: 碩士班學生
+role_undergraduate: 專題生
+role_current: 在學成員
+role_alumni: 畢業成員
+
+label_email: 電子郵件
+label_phone: 電話
+label_office: 辦公室
+label_education: 學經歷
+label_expertise: 專長及研究領域
+label_honors: 榮譽成就及獲獎紀錄
+label_research: 研究主題
+label_department: 所屬
+label_grade: 年級
+label_thesis: 論文題目
+label_graduated: 畢業年份
+label_more: 瞭解更多
+label_read_more: 更多資訊
+label_corresponding_author: 通訊作者
+label_publication_count: 篇論文
+label_updated: 資料更新日期
+label_visit_site: 前往服務網站
+label_skip_to_content: 跳至主要內容
+
+footer_address: 10617 臺北市羅斯福路四段一號德田館 403 室
+footer_phone: "+886-2-33664888 #403"
+footer_copyright: 本網站著作權屬於國立臺灣大學計算分子設計與代謝體實驗室

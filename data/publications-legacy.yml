@@ -1,0 +1,228 @@
+# Publications that the automated ORCID + Crossref sync cannot reach.
+#
+# Conference abstracts, patents and books are not registered as DOIs the way
+# journal articles are, so scripts/fetch-publications.mjs will never find them.
+# This file is their only record: it was migrated out of contents/honor_zh.html
+# and the never-routed contents/publication_zh.html, and is now hand-maintained.
+#
+# Entries are free-text citations, matching how the old site rendered them. The
+# trailing asterisk on an author marks the corresponding author.
+conference_papers:
+- Wang, S. Y., Tseng, Y. J.*, Tseng, T. H., Kuo, C. Y., Huang, P. K., Huang, Y. M., Hsieh, W. C., Huang,
+  Y. J., Kuo, P. H., Yu, S. A., Tian, W. C., Lee, S. C., and Lu, S.-S., “Lung Cancer Associated Volatile
+  Organic Compounds Detection Using a Novel Portable Gas Chromatographic Device Integrated MEMS and CMOS
+  Technology,” 12th International Conference of the Metabolomics Society, Dublin, Ireland, June 27-30.
+  2016.
+- Tseng, Y. J. , Scaffold analysis of Ames mutagenicity, 251th ACS National Meeting & Exposition, San
+  Francisco, San Diego, March. 13-17. 2016.
+- Su, B. H.; Tu, Y. S.; Lin, O. A.; Harn, Y. C.; Shen, M. Y.; Tseng, Y. J.* , In-silico Rule-based Models
+  for Design of Fluorophores Area, Pacifichem, December 15-20, 2015.
+- Tzeng, T. H., Kuo, C. Y., Wang, S. Y., Huang, P. K., Kuo, P. H., Huang, Y. M., Tseng, Y. J.* , Tian,
+  W. C., Lee, S. C., & Lu, S. S.. 21.5 A portable micro gas chromatography system for volatile compounds
+  detection with 15ppb of sensitivity, IEEE International Solid-State Circuits Conference, San Francisco,
+  California, Feb. 22-26. 2015.
+- 'Shao, C. Y., Su, B. H., Tu, Y.S., Lin, C., Lin, O. A., Tseng, Y. J.* , CypRules: A rule-based P450
+  inhibition prediction server, 248th ACS National Meeting & Exposition, San Francisco, California, Aug.
+  10-14. 2014.'
+- Wang, S. Y., Kuo, C. H., Tseng, Y. J.* , An ion trace detection algorithm to extract pure ion chromatogram
+  to improve untargeted peak detection quality for LC/TOF-MS-based metabolomics data, 10th International
+  conference of the Metabolomics Society, Tsuruoka, Japan, June 26-29, 2014.
+- Tsai, D. M., Kuo, C. H., Tseng, Y. J.* , Strategy of UPLC/MS-based Targeted Metabolomics, 10th International
+  conference of the Metabolomics Society, Tsuruoka, Japan, June 26-29, 2014.
+- 'Tan, C. E., Chung, Y. Y., Tseng, Y. J.* , IDMass: GC/MS Data Management and Analyzes Software for Metabolomics
+  Studies, 10th International conference of the Metabolomics Society, Tsuruoka, Japan, June 26-29, 2014.'
+- Lin, S. W., Kang, W. Y., Lin, D. T., Lee, J., Wu, F. L., Chen, C. L. Tseng, Y. J.* , Comparison of warfarin
+  therapy clinical outcomes following implementation of an automated mobile phone-based critical laboratory
+  value text alert system, Translational Bioinformatics Conference, Seoul, Korea, October 2-4, 2013.
+- 'Tseng, Y. J.* , BaselineCorrector: A distribution-based classification method for baseline correction
+  of metabolomic 1D proton nuclear magnetic resonance spectra, 246th ACS National Meeting & Exposition,
+  Indianapolis, Indiana, September 8-12, 2013.'
+- 'Tseng, Y. J.* , GAME: Gpu accelerated mixture elucidator 246th ACS National Meeting & Exposition, Indianapolis,
+  Indiana, September 8-12, 2013.'
+- Tseng, Y. J.* , “Drug discovery through Teach-Discover-Treat initiative, 246th ACS National Meeting
+  & Exposition, Indianapolis, Indiana, September 8-12, 2013.
+- Wang, S. Y., Wu, M. S., Kuo, C. H., Liao, W. C., Tseng, Y. J.* , Metabolomics study of metabolite changes
+  in the serum of morbidly obese patients after the gastric bypass surgery, 4th AOMSC & 10th TSMS Annual
+  Conference, TICC, Taipei, Taiwan, July 10-12, 2013.
+- Tsai, D. M., Chen, G. Y., Kuo, C. H., Tseng, Y. J.* , Development of a hydrophilic interaction chromatography
+  coupled with mass spectrometry method for metabolomic analysis, 4th AOMSC & 10th TSMS Annual Conference,
+  TICC, Taipei, Taiwan, July 10-12, 2013.
+- Kuo, P. H., Chang, N. W., Kuo, C. H., Tseng, Y. J.* , Metabolomic analysis of exhaled breath condensates
+  (EBC) in healthy volunteers and patients with chronic obstructive pulmonary disease (COPD) and bronchiectasis,
+  4th AOMSC & 10th TSMS Annual Conference, TICC, Taipei, Taiwan, July 10-12, 2013.
+- 'Wang, S. Y., Tseng, Y. J.* , BN server: a web-based service for LC/TOFMS-based metabolomics data normalization
+  and statistical analysis, 9th International conference of the Metabolomics Society, Glasgow, SECC, Glasgow,
+  Scotland, July 1-4, 2013.'
+- Chung, Y. Y, Kuo, C. H., Tseng, Y. J.* , Noise reduction of GC/TOF-MS using spectrum domain baseline
+  removal and chromatogram segment filtering, 9th Annual Conference of the Metabolomics Society, SECC,
+  Glasgow, Scotland, July 1- 4, 2013.
+- Kuo, T. C., Tsai, D. M., Kuo, H. C., Kuo, C. H., Tseng, Y. J. , Establish Targeted Lipidomics Workflow
+  Using TIPick, 9th International Conference of the Metabolomics Society, SECC, Glasgow, Scotland, July
+  1-4, 2013.
+- Chang, N. W., Kuo, C. H., Tseng, Y. J. , Metabolomics characterisation of Angelica species by comprehensive
+  two-dimensional gas chromatography coupled with time-of-flight mass spectrometry (GCxGC-TOFMS), 9th
+  International conference of the Metabolomics Society, SECC, Glasgow, Scotland, July 1-4, 2013.
+- Liu, J. W., Kuo, C. H., Tseng, Y. J.* , The Retention Time Alignment for non-targeted LC/MS analysis
+  Using Kernel Density Estimation with a Novel Bandwidth Estimator, 9th International conference of the
+  Metabolomics Society, SECC, Glasgow, Scotland, July 1-4, 2013.
+- 'Hsu, K. H., Tseng, Y. J.* , A new approach of traditional Chinese medicine taxonomy: using marker ingredients
+  as bases, 245th ACS National Meeting & Exposition, New Orleans, Louisiana, April 7-11, 2013.'
+- 'Shao, C. Y., Tseng, Y. J.* , Exploration of mechanism between nanotoxicity and protein targets: QSAR
+  models using nanotoxicity endpoints of decorated nanotubes, 245th ACS National Meeting & Exposition,
+  New Orleans, Louisiana, April 7-11, 2013.'
+- Tu, Y. S., Harn, Y. C., Shen, M. Y., Tseng, Y. J.* , Classification tree and random forest based prediction
+  models on molecular autofluorescence, 245th ACS National Meeting & Exposition, New Orleans, Louisiana,
+  April 7-11, 2013.
+- 'Tseng, Y. J.* , LeadOp: Structure-based fragment hopping for lead optimization using pre-docked fragment
+  database, 244th ACS National Meeting & Exposition, Philadelphia, Pennsylvania, August 19-23, 2012. (Invited
+  talk, Drug Discovery Symposium).'
+- Chen, S. Z., Tseng, Y. J.* , Predictive toxicity protocol for cell-viability high throughput data, 244th
+  ACS National Meeting & Exposition, Philadelphia, Pennsylvania, August 19-23, 2012.
+- Tseng, Y. J.* , Kuo, C. H., Yang, W. Q., Wang, S. Y., Metabolic Signatures Associated with the Progression
+  of Breast Cancer by Ultra High Pressure Liquid Chromatography Time-of-Flight Mass Spectrometry, 8th
+  International conference of the Metabolomics Society, Washington D.C., June 25-28, 2012.
+- Yang, W. Q., Ho, C. C., Tseng, Y. J. , Kuo, C. H., Development of a Solid-Phase Microextraction Gas
+  Chromatography Time-of-Flight Mass Spectrometry Method for Profiling Volatile Metabolic Patterns of
+  Exhaled Breath Condensate, the 60th ASMS Conference on Mass Spectrometry and Allied Topics, Vancouver,
+  Canada, May 20–24, 2012.
+- Tseng, Y. J.* , Kuo, C. H., Tian, T. F., An Alignment Algorithm for Comprehensive Two-dimensional Gas
+  Chromatography-Mass Spectrometry, 60th ASMS Conference on Mass Spectrometry and Allied Topics, Vancouver,
+  Canada, May 20–24, 2012.
+- Chang, C. Y., Tseng, Y. J.* , Virtual screening the natural products for FKBP12 inhibition, 243rd ACS
+  National Meeting & Exposition, San Diego, California, March 25 - 29, 2012.
+- 'Tu, Y. S., Esposito, E. X., Tseng, Y. J.* , Predictive Toxicology Modeling: Protocols for Exploring
+  Tetrahymena Pyriformis Endpoint Predictions, 243rd ACS National Meeting & Exposition, San Diego, California,
+  March 25 - 29, 2012.'
+- Su, B. H., Harn, Y. C., Tseng, Y. J.* , An efficient dynamic programming algorithm to predict natural
+  product structures, 243rd ACS National Meeting & Exposition, San Diego, California, March 25 - 29, 2012.
+- 'Jansen, J. M., Tseng, Y. J.* , Rommie E Amaro, Teach - Discover - Treat: A COMP initiative to provide
+  high quality computational chemistry tutorials that impact education and drug discovery for neglected
+  diseases, 242nd ACS National Meeting & Exposition, Denver, USA, August 28 - Sept. 1, 2011. (invited
+  talk, Collaborative Drug Discovery for Neglected Diseases session in COMP).'
+- Su, B. H., Chen, S. Z., Tu, Y. S., Tseng, Y. J.* , Natural products screening for alpha-glucosidase
+  inhibitors, 242nd ACS National Meeting & Exposition, Denver, USA, August 28 - Sept. 1, 2011.
+- 'Tseng, Y. J.* , The symposium of "Cheminformatics aspects of high throughput screening: from robots
+  to models”, 242nd ACS National Meeting & Exposition, Denver, USA, August 28 - Sept. 1, 2011. (Invited
+  Talk for special symposium).'
+- Wang SY, Kuo CH, and Tseng YJ*, An ion trace detection algorithm to extract pure ion chromatogram to
+  improve untargeted peak detection quality for LC/TOF-MS-based metabolomics data, 10th International
+  conference of the Metabolomics Society, Tsuruoka, Japan, June 26-29, 2014
+- Tsai DM, Kuo CH, and Tseng YJ*, Strategy of UPLC/MS-based Targeted Metabolomics, 10th International
+  conference of the Metabolomics Society, Tsuruoka, Japan, June 26-29, 2014
+- 'Tan CE, Chung YY, and Tseng YJ*, IDMass: GC/MS Data Management and Analyzes Software for Metabolomics
+  Studies, 10th International conference of the Metabolomics Society, Tsuruoka, Japan, June 26-29, 2014'
+- Lin SW, Kang WY, Lin DT, Lee J, Wu FL, Chen CL and Tseng YJ*, Comparison of warfarin therapy clinical
+  outcomes following implementation of an automated mobile phone-based critical laboratory value text
+  alert system, Translational Bioinformatics Conference, Seoul, Korea, October 2-4, 2013
+- 'Tseng YJ*, GAME: Gpu accelerated mixture elucidator 246th ACS National Meeting, Indianapolis, Indiana,
+  September 8-12, 2013'
+- Tseng YJ*, “Drug discovery through Teach-Discover-Treat initiative, 246th ACS National Meeting, Indianapolis,
+  Indiana, September 8-12, 2013
+- 'Johanna M Jansen, Tseng YJ*, Rommie E Amaro, Teach - Discover - Treat: A COMP initiative to provide
+  high quality computational chemistry tutorials that impact education and drug discovery for neglected
+  diseases, 242nd ACS National Meeting & Exposition, Denver, USA, August 28 - Sept. 1, 2011. (invited
+  talk, Collaborative Drug Discovery for Neglected Diseases session in COMP)'
+- 'Tseng YJ*, “The symposium of "Cheminformatics aspects of high throughput screening: from robots to
+  models”, (Invited Talk for special symposium), 242nd ACS National Meeting & Exposition, Denver, USA,
+  August 28 - Sept. 1, 2011'
+- Ho TJ, Tseng YJ*, MetaPick, a denoising and peak picking algorithm for extracting single compound from
+  complex mixtures in liquid chromatography/mass spectrometry (LC/MS) metabolomics data, 7th International
+  Conference of the Metabolomics Society, Cairns, Australia, June 27 - 30, 2011. (Best presentation award)
+- 'Harn YC, Tseng YJ*, Structure Hunter: Prediction of novel chemical structures in a mixture, 7th International
+  Conference of the Metabolomics Society, Cairns, Australia, June 27 - 30, 2011. (Invited Talk for Technology
+  Innovation Section)'
+- 'Tian TF, Kuo TC, Tseng YJ*, 3Omics: a web based systems biology visualization tool by integrating transcriptomics,
+  proteomics and metabolomics data in human, 7th International Conference of the Metabolomics Society,
+  Cairns, Australia, June 27 - 30, 2011. (Invited Talk for Systems Biology Section)'
+- 'Kuo TC, Tian TF, Tseng YJ*, HMO: Human Metabolome Ontology, 7th International Conference of the Metabolomics
+  Society, Cairns, Australia, June 27 - 30, 2011'
+- Wang SY, Tseng YJ*, A fast robust total abundance regression calibration to adjust sever batch effect,
+  7th International Conference of the Metabolomics Society, Cairns, Australia, June 27 - 30, 2011
+- Liao HW, Kuo CH, Tseng YJ*, Determination of posaconazole in patient plasma by field amplified sample
+  stacking in capillary electrophoresis, Joint Congress 2011,Berlin, May 1-5, 2011
+- Lin FY, Tseng YJ*, Lead Optimization with Synthetic Accessibility, 241st ACS National Meeting & Exposition,
+  Anaheim, CA, March 27-31, 2011
+- Lin SW, Kan WY, Wu FL, Lin DT, Tseng YJ*, A comparison of the clinical outcome toward switching from
+  manual reminders to a cell phone alert system on warfarin therapy (abstract HPS-P-044), World Congress
+  of Pharmacy & Pharmaceutical Sciences 2010, Portugal, August 28-September 2, 2010
+- Tseng YJ*, Computational hERG Toxicity Classiﬁcation Model Based on QSAR and Support Vector Machines
+  (Invited talk, Skolnik Award Symposium)”, 240th American Chemical Society National Meeting, Boston,
+  USA, August 24, 2010
+- Huang YS, Su BH, Tseng YJ*, A fragment-based de-novo design for VEGFR2/3 inhibitors, 240th ACS National
+  Meeting & Exposition, Boston, USA, August 22-26, 2010
+- Lin FY, Tseng YJ*, Structure-based fragment hopping for lead optimization using pre-docked fragment
+  database, 240th ACS National Meeting & Exposition, Boston, USA, August 22-26, 2010
+- Tu YS, Su BH, Tseng YJ*, Clustering Based Scaffold Hopping with 4D-Fingerprints, 240th ACS National
+  Meeting & Exposition, Boston, USA, August 22-26, 2010
+- 'Wang KC, Wang SY, Tseng YJ*, NMR Deconvolutor: A Robust Deconvolution Algorithm for Quantitative Metabolomics,
+  6th International Conference of the Metabolomics Society, Amsterdam, June 27 - July 1, 2010'
+- 'Kuo TC, Tian TF, Tseng YJ*, MetPath: Metabolomics pathway visualization, 5th International Conference
+  of the Metabolomics Society, Alberta, Canada, August 30 - September 2, 2009'
+- 'Kuo CH, Wang SY, Ho TJ, Tseng YJ*, Chromaligner: a web server for chromatogram alignment, 5th International
+  Conference of the Metabolomics Society, Alberta, Canada, August 30 - September 2, 2009'
+- Kuo CH, Tsai DM, Tseng YJ*, Metabolomics analysis on complex Chinese remedies - Examples from a series
+  of Aristolochic Acid containing remedy induced Nephrotoxicity in Rodents, 5th International Conference
+  of the Metabolomics Society, Alberta, Canada, August 30 - September 2, 2009
+- Wang KC, Kuo CH, Tseng YJ*, Distribution-based Reconstruction Model for Baseline Correction in Metabolomic
+  NMR Spectrum, 5th International Conference of the Metabolomics Society, Alberta, Canada, August 30 -September
+  2, 2009
+- Su BH, Shen MY, Esposito EX, Tseng YJ*, In silico binary QSAR model based on 4D-fingerprints and MOE
+  descriptors for hERG blockage evaluation, 238th ACS National Meeting & Exposition, Washington D.C.,
+  August 16-20, 2009
+- 'Tsai CC, Chung CH, Chang CH, Huang TF, Tseng YJ*, Structural basis of agonists and antagonists derived
+  from snake venom C-type lectins: Interaction with platelet Glycoprotein VI, 238th ACS National Meeting
+  & Exposition, Washington D.C., August 16-20, 2009'
+- Shen MY, Su BH, Esposito EX, Tseng YJ*, Support vector machine classification model of PubChem hERG
+  Bioassay data with 4D-fingerprint and MOE descriptors, 238th ACS National Meeting & Exposition, Washington
+  D.C., August 16-20, 2009
+- Kuo CH, Tsai IL, Wang SY, Tseng YJ*, Hypoxia and normoxia metabolomics profiling on MDA 231 Breast Cancer
+  Cells, 4th Metabolomics Society Annual Conference, Boston, USA, September 2-6, 2008
+- Tseng YJ*, Wang SY, Tsai LL, Kuo CH, Metabolic profiling on breast cancer cell lines in hypoxia, 4th
+  Metabolomics Society Conference, Boston, USA, September 2-6, 2008
+patents:
+- Tseng, Y. J., Lin, F. Y., Structure-Based Fragment Hopping For Lead Optimization And Improvement In
+  Synthetic Accessibility, U.S. Patent No. 13778858, February 27, 2013.
+- Fu, W. M., Kang, K. H., Liou, H. H., Liou, H. C., Tseng, Y. J., Quinazolinone and quinazoline compounds
+  and their pharmaceutical uses, U.S. Provisional Patent No. 61/649425, May 21, 2012.
+- 'Tseng, Y. J., Ho, T. J., Kuo, C. H., True ion pick (TIPick): a denoising and peak picking algorithm
+  to extract ion signals from liquid chromatography/mass spectrometry data, U.S. Provisional Patent No.
+  61/861544, August, 2013.'
+- Tseng, Y. J., Wang, K. C., A Distribution-based Classification Method for Baseline Correction of Metabolomic
+  1D Proton Nuclear Magnetic Resonance Spectra, U.S. Provisional Patent No. 16/137,048, June, 2013.
+- Tseng, Y. J., Liu, Y.L., Sun, C.M., Lai, W.S., Liu, C.M., Hwu, H.G., use of known compounds as d-amino
+  acid oxidase inhibitors, U.S. Provisional Patent No. 61/986480, April, 2014.
+- Tseng, Y. J., Liu, Y.L., Sun, C.M., Lai, W.S., Liu, C.M., Hwu, H.G., compounds for use as d-amino acid
+  oxidase inhibitors, U.S. Provisional Patent No. 62/056917, September, 2014.
+- Tseng, Y. J., Liu, Y.L., Sun, C.M., Lai, W.S., Liu, C.M., Hwu, H.G., use of known compounds as d-amino
+  acid oxidase inhibitors, U.S. PCT Patent No. PCT/US2015/028385, April, 2015.
+- Tseng, Y. J., Liu, Y.L., Sun, C.M., Lai, W.S., Liu, C.M., Hwu, H.G., use of known compounds as d-amino
+  acid oxidase inhibitors, TW Patent No. 104114104, April, 2015.
+- Tseng, Y. J., Liu, Y.L., Sun, C.M., Lai, W.S., Liu, C.M., Hwu, H.G., new formulation for stabilize acid
+  unstable compound, U.S. Provisional Patent No. 62/312279, March, 2016.
+- Tseng, Y. J., Liu, Y.L., Sun, C.M., Lai, W.S., Liu, C.M., Hwu, H.G., new formulation for neuropsychiatric
+  disorders, U.S. Provisional Patent No. 62/3401135, May, 2016.
+- 'Chen, Huei-Wen; Lee, Jen-Yi; Yang, Pan-Chyr; Yu, Sung-Liang; Chen, Jian-Wei; Yang, Chih-Hsin; Ho, Chao-Chi;
+  Lee, Kuo-Hsiung; Tseng, Yufeng Jane; Chang, Gee-Chen; Use of curcumin or its analogues in cancer therapy
+  utilizing epidermal growth factor receptor tyrosine kinase inhibitor, U.S. Patent 20110224205A1, February
+  11,2011 Sun, Chung-ming; Kuo, Ming-liang; Tseng, Yufeng, "Bicyclic Heteroaryl Compounds", U.S. Patent
+  20110082143, October 1, 2010 Fu, Wen-Mei; Kang, Kai-Hsiang; Liou, Horng Huei; Liou, Horng Chi; Tseng,
+  Yufeng; Quinazolinone and quinazoline compounds and their pharmaceutical uses, U.S. Provisional Patent
+  No. 61/649425, May 21, 2012 Tseng, Yufeng; Lin, Fang-yu; Structure-Based Fragment Hopping For Lead Optimization
+  And Improvement In Synthetic Accessibility, U.S. Provisional Patent No. 61/603,501, February 27, 2012
+  Tseng, Yufeng; Ho, Tsung-Jung; Kuo, Ching-hua; True ion pick (TIPick): a denoising and peak picking
+  algorithm to extract ion signals from liquid chromatography/mass spectrometry data, February, 2013,
+  Patent Pending Tseng, Yufeng; Wang Kuo-Ching, A Distribution-based Classification Method for Baseline
+  Correction of Metabolomic 1D Proton Nuclear Magnetic Resonance Spectra, February, 2013, Patent Pending
+  --> Home'
+- About
+- Research
+- Publications & Paterns
+- Professional Activities
+- Members
+- Courses
+books:
+- 'YJ Tseng*, BH Su, MT Hsu, OA Lin. Steps Toward a Virtual Rat: Predictive Absorption, Distribution,
+  Metabolism, and Toxicity Models. Frontiers in Molecular Design and Chemical Information Science - Herman
+  Skolnik Award Symposium 2015: Jürgen Bajorath (ISBN: 9780841231412). Oct, 2016: ACS Symposium Series,
+  Vol. 1222. Chapter 14, pp 283–329.'
+- 'YJ Tseng*, Essential Algorithms in Cheminformatics. In: Molecular Conceptor. Israel. 2008: 13.1-13.10.'

@@ -1,0 +1,33 @@
+_generated: Rows that parsed cleanly but need a human decision before they read well in public.
+  Resolve by adding a curated entry to members-overrides.yml.
+private_sections_skipped:
+  - 里程碑說明
+  - 投稿追蹤中
+  - 休學
+withheld_by_override: []
+count: 12
+items:
+  - name: 高振翔
+    reason: graduating soon; assign degree level in members-overrides.yml
+  - name: 許漢強
+    reason: graduating soon; assign degree level in members-overrides.yml
+  - name: 葉芷瑜
+    reason: graduating soon; assign degree level in members-overrides.yml
+  - name: 丁瓘茵
+    reason: graduating soon; assign degree level in members-overrides.yml
+  - name: 廖翊婷
+    reason: graduating soon; assign degree level in members-overrides.yml
+  - name: 王又可
+    reason: graduating soon; assign degree level in members-overrides.yml
+  - name: 嚴正翰
+    reason: research topic is a placeholder in the vault
+  - name: 吳宗鴻
+    reason: research topic is a placeholder in the vault
+  - name: 宋和峻
+    reason: research topic is a placeholder in the vault
+  - name: 杜博文
+    reason: research topic internal shorthand for parallel projects
+  - name: 許郁廷
+    reason: research topic references another member’s manuscript
+  - name: 蔡哲維
+    reason: research topic mentions an in-flux research direction

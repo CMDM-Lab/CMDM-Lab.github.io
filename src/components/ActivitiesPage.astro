@@ -1,0 +1,33 @@
+---
+// Professional activities page body, shared by both locales.
+//
+// This content existed in the old repository as contents/prof_acts_zh.html but
+// no route and no navigation link ever pointed at it, so it was unreachable on
+// the live site. It has a real URL now.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getProfessionalActivities, getStrings, type Locale } from '../lib/data';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const t = getStrings(locale);
+const activities = getProfessionalActivities();
+
+const SECTION_LABELS: Record<string, string> = {
+  program_committee: t.section_program_committee,
+  talks: t.section_talks,
+  paper_review: t.section_paper_review,
+};
+---
+
+<BaseLayout locale={locale} slug="activities">
+  <h1>{t.activities_title}</h1>
+
+  {Object.entries(activities).map(([key, entries]) => (
+    <section aria-labelledby={`act-${key}`}>
+      <h2 id={`act-${key}`}>{SECTION_LABELS[key] ?? key}</h2>
+      <ul class="activity-list">
+        {entries.map((entry) => <li>{entry}</li>)}
+      </ul>
+    </section>
+  ))}
+</BaseLayout>

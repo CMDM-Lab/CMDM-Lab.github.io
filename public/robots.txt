@@ -1,0 +1,14 @@
+# www.cmdm.tw -- Computational Molecular Design and Metabolomics Lab, NTU
+#
+# The site previously had no robots.txt and no sitemap: both returned 404. The
+# sitemap line below is the one that matters, because it is how a crawler
+# discovers the per-page URLs that replaced the old `?content=` query strings.
+
+User-agent: *
+Allow: /
+
+# The retired jQuery entry point. It only redirects, and it also carries a
+# noindex meta tag; listed here so crawl budget is not spent on it.
+Disallow: /index_zh.html
+
+Sitemap: https://www.cmdm.tw/sitemap-index.xml

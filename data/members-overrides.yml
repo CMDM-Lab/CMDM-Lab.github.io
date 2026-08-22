@@ -1,0 +1,128 @@
+# Public-facing member details that the CMDM-Lobe vault does not carry.
+#
+# scripts/sync-members.mjs merges this file over the vault-derived roster. The
+# vault owns WHO is in the lab; this file owns HOW they are presented publicly.
+#
+# Two sections:
+#
+#   members:    keyed by the Chinese name exactly as it appears in the vault
+#               roster. Any field here wins over the vault. `publish: false`
+#               keeps someone off the site entirely -- this is the mechanism for
+#               anyone who asks not to be listed.
+#
+#   additional: people who are not in the vault roster table at all (faculty,
+#               administrative and research staff, postdocs). Written in the
+#               same shape the site consumes.
+#
+# EMAIL POLICY. Personal addresses are not published. Faculty, staff and
+# postdocs list a professional contact because being reachable is the point of
+# their entry. Current students list an institutional address only. Alumni list
+# none: their personal mailboxes were on the old site, but they have left, and a
+# lab page is not the place to keep publishing them. Removing an address here is
+# always safe; adding a personal one needs that person's say-so.
+
+members:
+  # ---------------------------------------------------------------------------
+  # Romanised names recovered from the previous site. These matter for search:
+  # people look for "Ying-An Lin", not only for the Chinese name.
+  # ---------------------------------------------------------------------------
+  王又可:
+    name_en: Yu-Ke Wang
+    email: cragger1027@gmail.com # student-supplied contact, kept from the old site
+  林盈安:
+    name_en: Ying-An Lin
+  楊淯元:
+    name_en: Yu-Yuan Yang
+  徐銘聰:
+    name_en: Ming-Tsung Hsu
+  張景曜:
+    name_en: Ching-Yao Chang
+  許洸誠:
+    name_en: Kuang-Cheng Hsu
+  田傑睿:
+    name_en: Jie-Rui Tien
+  鍾岳辰:
+    name_en: Yueh-Chen Chung
+  李哲宇:
+    name_en: Che-Yu Lee
+  張家瑜:
+    name_en: Chia-Yu Chang
+  姚柏仰:
+    name_en: Po-Yang Yao
+  林首志:
+    name_en: Shou-Chih Lin
+  林詩敏:
+    name_en: Shih-Min Lin
+  黎芷琪:
+    name_en: Chih-Chi Li
+  游子慧:
+    name_en: Tzu-Hui Yu
+  陳韻淇:
+    name_en: Yun-Chi Chen
+  王恆:
+    name_en: Heng Wang
+  古庭榮:
+    name_en: Ting-Jung Ku
+
+additional:
+  # ---------------------------------------------------------------------------
+  # Not present in the vault roster table, which only tracks students.
+  # ---------------------------------------------------------------------------
+  - name: 曾宇鳳
+    name_en: Yufeng Jane Tseng
+    role: faculty
+    # The legacy site says 教授 / Professor. Do not promote this without a source.
+    title: 教授
+    title_en: Professor
+    email: yjtseng@csie.ntu.edu.tw
+    phone: "+886-2-33664888 #529"
+    office: 臺灣大學資訊工程系德田館 R529
+    office_en: Room 529, Der-Tian Hall, Department of Computer Science and Information
+      Engineering, National Taiwan University
+    orcid: 0000-0002-8461-6181
+    photo: /img/professor.png
+    research: 計算分子設計、代謝體學生物標記偵測、人工智慧應用於藥物開發
+    research_en: Computational molecular design, biomarker detection in metabolomics,
+      AI for drug discovery
+    education:
+      - 伊利諾大學芝加哥分校 藥物化學與生藥學 博士
+      - 國立臺灣大學 藥學系 學士
+    education_en:
+      - PhD in Medicinal Chemistry and Pharmacognosy, University of Illinois at Chicago
+      - BS in Pharmacy, National Taiwan University
+
+  - name: 黃立緯
+    name_en: Li-Wei Huang
+    role: staff
+    title: 行政助理
+    title_en: Administrative Assistant
+    email: wei03090719@gmail.com
+
+  - name: 莊珮君
+    name_en: Pei-Chun Chuang
+    role: staff
+    title: 研究助理
+    title_en: Research Assistant
+
+  # Current postdocs per the 2026-08-21 roster review. Bo-Han Su appears as a
+  # postdoc on the old site but has left the lab, so he is not listed here.
+  - name: 郭天爵
+    name_en: Tien-Chueh Kuo
+    role: postdoc
+    title: 博士後研究員
+    title_en: Postdoctoral Researcher
+    email: cotcage@gmail.com
+    research: 代謝體學生物判讀、脂質體學分析流程設計
+    research_en: Biological interpretation of metabolomics, lipidomics analysis pipeline design
+    honors:
+      - 臺大生醫電資所第三屆獎勵研究創新學生傑出研究獎
+
+  - name: 王珮驊
+    name_en: Pei-Hwa Wang
+    role: postdoc
+    title: 博士後研究員
+    title_en: Postdoctoral Researcher
+    email: kitty50221@gmail.com
+    research: 馬庫什結構生成與比較、P-醣蛋白抑制劑預測、量子演算法應用於醫藥領域
+    research_en: Markush structure generation and comparison, P-glycoprotein inhibitor
+      prediction, quantum algorithms for pharmaceutical applications

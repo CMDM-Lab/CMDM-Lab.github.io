@@ -1,0 +1,171 @@
+---
+// Members page body, shared by both locales.
+//
+// This is the page the rebuild was aimed at: it is the URL people were sent
+// (`index_zh.html?content=member`) and the one that returned no content at all
+// to a crawler. Every name, role and research topic below is now in the initial
+// HTML response.
+//
+// Each person also becomes a `Person` node in JSON-LD, affiliated with the lab,
+// so a search for an individual member can resolve to this page.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import {
+  allAlumni, departmentLabel, getStrings, membersByRole,
+  type HistoricalAlumnus, type Locale, type Member,
+} from '../lib/data';
+import { pathFor } from '../lib/routes';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const t = getStrings(locale);
+const isEnglish = locale === 'en';
+
+const grouped = membersByRole();
+const alumni = allAlumni();
+
+/** Prefer the locale's own field, falling back to whatever is recorded. */
+const displayName = (member: { name: string; name_en?: string }) => (
+  isEnglish && member.name_en ? member.name_en : member.name
+);
+const secondaryName = (member: { name: string; name_en?: string }) => (
+  isEnglish ? (member.name_en ? member.name : '') : (member.name_en ?? '')
+);
+const research = (member: Member) => (
+  (isEnglish ? member.research_en : member.research) || member.research || ''
+);
+const title = (member: Member) => (
+  (isEnglish ? member.title_en : member.title) || member.title || ''
+);
+
+const site = Astro.site ?? new URL('https://www.cmdm.tw');
+const membersUrl = new URL(pathFor('members', locale), site).href;
+
+// Only current members get a Person node. Alumni are listed for the record, but
+// asserting a current affiliation for them would be wrong.
+const people = [...grouped.values()].flat().map((member) => ({
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: displayName(member),
+  ...(secondaryName(member) ? { alternateName: secondaryName(member) } : {}),
+  ...(title(member) ? { jobTitle: title(member) } : {}),
+  ...(member.email ? { email: member.email } : {}),
+  ...(member.orcid ? { identifier: `https://orcid.org/${member.orcid}` } : {}),
+  ...(research(member) ? { knowsAbout: research(member) } : {}),
+  affiliation: { '@type': 'ResearchOrganization', '@id': `${site.href}#organization` },
+  url: membersUrl,
+}));
+
+const isHistorical = (person: Member | HistoricalAlumnus): person is HistoricalAlumnus => (
+  'thesis' in person
+);
+---
+
+<BaseLayout locale={locale} slug="members" structuredData={people}>
+  <h1>{t.members_title}</h1>
+
+  {[...grouped.entries()].map(([role, list]) => (
+    <section class="member-group" aria-labelledby={`role-${role}`}>
+      <h2 id={`role-${role}`}>{t[`role_${role}`] ?? role}</h2>
+      <ul class="member-list">
+        {list.map((member) => (
+          <li class="member">
+            {member.photo && (
+              <img class="member-photo" src={member.photo} alt={displayName(member)}
+                width="140" height="140" loading="lazy" />
+            )}
+            <div class="member-body">
+              <h3>
+                {displayName(member)}
+                {secondaryName(member) && <span class="member-alt"> ({secondaryName(member)})</span>}
+              </h3>
+
+              {title(member) && <p class="member-title">{title(member)}</p>}
+
+              {(member.grade || member.department) && (
+                <p class="member-meta">
+                  {member.grade && <span>{member.grade}</span>}
+                  {member.department && <span>{departmentLabel(member.department, locale)}</span>}
+                </p>
+              )}
+
+              {member.email && (
+                <p class="member-contact">
+                  {t.label_email}: <a href={`mailto:${member.email}`}>{member.email}</a>
+                </p>
+              )}
+              {member.phone && <p class="member-contact">{t.label_phone}: {member.phone}</p>}
+              {(isEnglish ? member.office_en : member.office) && (
+                <p class="member-contact">
+                  {t.label_office}: {isEnglish ? member.office_en : member.office}
+                </p>
+              )}
+              {member.orcid && (
+                <p class="member-contact">
+                  ORCID: <a href={`https://orcid.org/${member.orcid}`}>{member.orcid}</a>
+                </p>
+              )}
+
+              {research(member) && (
+                <div class="member-field">
+                  <h4>{t.label_expertise}</h4>
+                  <p>{research(member)}</p>
+                </div>
+              )}
+
+              {(isEnglish ? member.education_en : member.education)?.length ? (
+                <div class="member-field">
+                  <h4>{t.label_education}</h4>
+                  <ul>
+                    {(isEnglish ? member.education_en : member.education)!.map((line) => (
+                      <li>{line}</li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null}
+
+              {member.honors?.length ? (
+                <div class="member-field">
+                  <h4>{t.label_honors}</h4>
+                  <ul>{member.honors.map((line) => <li>{line}</li>)}</ul>
+                </div>
+              ) : null}
+
+              {member.role === 'faculty' && (
+                <p><a href={pathFor('professor', locale)}>{t.label_read_more} &rarr;</a></p>
+              )}
+            </div>
+          </li>
+        ))}
+      </ul>
+    </section>
+  ))}
+
+  <section class="member-group" aria-labelledby="role-alumni">
+    <h2 id="role-alumni">{t.role_alumni}</h2>
+    <table class="alumni-table">
+      <thead>
+        <tr>
+          <th scope="col">{t.label_graduated}</th>
+          <th scope="col">{t.nav_members}</th>
+          <th scope="col">{t.label_department}</th>
+          <th scope="col">{t.label_thesis}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {alumni.map((person) => (
+          <tr>
+            <td>{person.graduated ?? ''}</td>
+            <td>
+              {displayName(person)}
+              {secondaryName(person) && <span class="member-alt"> ({secondaryName(person)})</span>}
+            </td>
+            <td>{isHistorical(person)
+              ? (person.department ?? '')
+              : departmentLabel(person.department, locale)}</td>
+            <td>{isHistorical(person) ? (person.thesis ?? '') : (research(person as Member) || '')}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+</BaseLayout>

@@ -1,0 +1,96 @@
+# English UI strings and per-page SEO metadata.
+#
+# See data/i18n/zh.yml for why each page needs its own title and description.
+# Keys must stay in sync between the two files.
+
+lab_name: Computational Molecular Design and Metabolomics Lab
+lab_name_short: CMDM Lab
+university: National Taiwan University
+site_tagline: Computational Molecular Design and Metabolomics Lab, National Taiwan University
+
+nav_home: Home
+nav_about: About
+nav_research: Research
+nav_publications: Publications
+nav_honors: Honors
+nav_members: Members
+nav_courses: Courses
+nav_services: Software
+nav_activities: Activities
+nav_language: 中文
+
+home_title: Computational Molecular Design and Metabolomics Lab
+home_description: The CMDM Lab at National Taiwan University, led by Prof. Yufeng Jane Tseng, works on
+  computer-aided drug design, biomarker detection in metabolomics, and AI for drug discovery.
+about_title: About the Lab
+about_description: Research directions, history, and contact information for the Computational
+  Molecular Design and Metabolomics Lab at National Taiwan University.
+research_title: Research
+research_description: CMDM Lab research spans computational molecular design, predictive toxicology,
+  metabolomic biomarker detection, and precision medicine.
+publications_title: Publications
+publications_description: Complete list of journal articles, conference papers, patents, and books
+  from the Computational Molecular Design and Metabolomics Lab at National Taiwan University.
+honors_title: Honors and Awards
+honors_description: Awards received by the CMDM Lab and Prof. Yufeng Jane Tseng, including the
+  National Innovation Award, an IBM Faculty Award, and the Future Tech Breakthrough Award.
+members_title: Lab Members
+members_description: Faculty, postdoctoral researchers, graduate students, and alumni of the
+  Computational Molecular Design and Metabolomics Lab at National Taiwan University.
+courses_title: Courses
+courses_description: Courses taught by Prof. Yufeng Jane Tseng at National Taiwan University.
+services_title: Software and Web Services
+services_description: Web servers and analysis tools released by the CMDM Lab, including 3Omics,
+  LipidPedia, CypRules, GC2MS, and Chromaligner.
+activities_title: Professional Activities
+activities_description: Program committee service, invited talks, and journal review activity of
+  Prof. Yufeng Jane Tseng.
+professor_title: Prof. Yufeng Jane Tseng
+professor_description: Background, appointments, research interests, and contact details for Yufeng
+  Jane Tseng, Professor of Computer Science and Information Engineering at National Taiwan University.
+
+section_news: News
+section_latest_publications: Recent Publications
+section_award_highlights: Selected Awards
+section_intro: Overview
+section_research_areas: Research Areas
+section_journal_papers: Journal Articles
+section_conference_papers: Conference Papers
+section_patents: Patents
+section_books: Books
+section_achievements: Selected Achievements
+section_program_committee: Technical Program Committees
+section_talks: Invited Talks and Presentations
+section_paper_review: Journal Review
+
+role_faculty: Principal Investigator
+role_staff: Administrative and Research Staff
+role_postdoc: Postdoctoral Researchers
+role_phd: PhD Students
+role_masters: Master's Students
+role_undergraduate: Undergraduate Researchers
+role_current: Current Members
+role_alumni: Alumni
+
+label_email: Email
+label_phone: Phone
+label_office: Office
+label_education: Education
+label_expertise: Research Interests
+label_honors: Honors and Awards
+label_research: Research Topic
+label_department: Program
+label_grade: Year
+label_thesis: Thesis
+label_graduated: Graduated
+label_more: Learn more
+label_read_more: Read more
+label_corresponding_author: corresponding author
+label_publication_count: publications
+label_updated: Last updated
+label_visit_site: Visit service
+label_skip_to_content: Skip to main content
+
+footer_address: Room 403, Der-Tian Hall, No. 1, Sec. 4, Roosevelt Rd., Taipei 10617, Taiwan
+footer_phone: "+886-2-33664888 #403"
+footer_copyright: Computational Molecular Design and Metabolomics Lab, National Taiwan University

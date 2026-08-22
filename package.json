@@ -1,23 +1,26 @@
 {
-  "name": "cmdm-lab.github.io",
-  "version": "1.0.0",
-  "description": "## Run on local",
-  "main": "index.js",
+  "name": "cmdm-lab-website",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "description": "CMDM Lab website (NTU Computational Molecular Design & Metabolomics Lab)",
   "scripts": {
-    "start": "http-server",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "fetch:publications": "node scripts/fetch-publications.mjs",
+    "sync:members": "node scripts/sync-members.mjs",
+    "test": "node --test tests/"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/CMDM-Lab/CMDM-Lab.github.io.git"
   },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/CMDM-Lab/CMDM-Lab.github.io/issues"
-  },
-  "homepage": "https://github.com/CMDM-Lab/CMDM-Lab.github.io#readme",
-  "devDependencies": {
-    "http-server": "^0.11.1"
+  "license": "MIT",
+  "dependencies": {
+    "@astrojs/sitemap": "^3.2.1",
+    "astro": "^5.2.5",
+    "yaml": "^2.7.0"
   }
 }

@@ -1,0 +1,126 @@
+# Refresh the generated data files and open a pull request with the changes.
+#
+# Two independent syncs run here:
+#
+#   * Publications, from the ORCID public API enriched via Crossref. No
+#     credentials needed -- both are open APIs.
+#   * Members, from the CMDM-Lobe vault. This one needs read access to a PRIVATE
+#     repository, which the default GITHUB_TOKEN does not have.
+#
+# SETUP REQUIRED for the member sync:
+#   Create a fine-grained personal access token with `Contents: read` on
+#   CMDM-Lab/CMDM-Lobe only, and add it as the repository secret
+#   `CMDM_LOBE_TOKEN`. Without it, the member step is skipped and only
+#   publications are refreshed -- the workflow still succeeds, so a missing or
+#   expired token shows up as a smaller PR rather than a red run. The step
+#   summary says which syncs actually ran.
+#
+# WHY A PULL REQUEST AND NOT A DIRECT COMMIT. The member data is derived from a
+# private vault that also tracks oral-defense outcomes, thesis drafts and
+# leave-of-absence status. The allowlist in scripts/lib/vault-members.mjs is
+# meant to keep all of that out, and tests/members-privacy.test.mjs proves it on
+# every run -- but a human reading the diff is the last line of defence, and it
+# is cheap. Publication changes ride along in the same PR.
+
+name: Sync data
+
+on:
+  schedule:
+    # 03:20 UTC Monday = 11:20 Monday in Taipei. Off-peak for the NCBI and
+    # Crossref APIs, and lands in the inbox at the start of the work week.
+    - cron: '20 3 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    env:
+      # The `secrets` context is not dependably available in a step-level `if`,
+      # so the presence check is hoisted to a job-level boolean.
+      HAS_VAULT_TOKEN: ${{ secrets.CMDM_LOBE_TOKEN != '' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Check out the CMDM-Lobe vault
+        id: vault
+        if: env.HAS_VAULT_TOKEN == 'true'
+        uses: actions/checkout@v4
+        with:
+          repository: CMDM-Lab/CMDM-Lobe
+          token: ${{ secrets.CMDM_LOBE_TOKEN }}
+          path: .vault
+          # Only the roster file is read; a shallow clone is plenty.
+          fetch-depth: 1
+
+      - name: Sync members from the vault
+        if: ${{ steps.vault.outcome == 'success' }}
+        env:
+          CMDM_LOBE_PATH: ${{ github.workspace }}/.vault
+        run: node scripts/sync-members.mjs | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - name: Fetch publications from ORCID and Crossref
+        run: node scripts/fetch-publications.mjs | tee -a "$GITHUB_STEP_SUMMARY"
+
+      # Remove the vault before anything else can read it, so a later step or a
+      # stray glob cannot pull private content into the commit.
+      - name: Remove the vault checkout
+        if: always()
+        run: rm -rf .vault
+
+      - name: Verify the privacy boundary held
+        run: npm test
+
+      - name: Confirm the site still builds with the new data
+        run: npm run build
+
+      - name: Open a pull request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          # Only generated data may change here. Anything else in the diff means
+          # a script wrote somewhere it should not have.
+          add-paths: |
+            data/members.yml
+            data/members-review.yml
+            data/publications.yml
+            data/publications-review.yml
+          branch: chore/data-sync
+          # Reuse one branch so repeated runs update a single open PR rather
+          # than piling up near-identical ones.
+          delete-branch: true
+          commit-message: 'chore(data): refresh members and publications from upstream sources'
+          title: 'chore(data): weekly member and publication sync'
+          body: |
+            Automated refresh of the generated data files.
+
+            - `data/members.yml` — projected from the CMDM-Lobe roster through the
+              allowlist in `scripts/lib/vault-members.mjs`.
+            - `data/publications.yml` — ORCID works enriched via Crossref.
+            - `data/*-review.yml` — items the scripts could not decide on.
+
+            **Before merging, check the review queues.**
+
+            `data/publications-review.yml` holds PubMed hits from the
+            affiliation query, which name-collides with another NTU researcher.
+            Real lab papers belong in the `include:` list of
+            `publications-overrides.yml`; the rest belong in `exclude:`.
+
+            `data/members-review.yml` holds people whose degree level or research
+            topic needs a human decision. Curated text goes in
+            `members-overrides.yml`.
+
+            The privacy tests and a full build passed before this PR was opened.
+            Still read the member diff: it is derived from a private vault.
+          labels: |
+            data-sync
+            automated

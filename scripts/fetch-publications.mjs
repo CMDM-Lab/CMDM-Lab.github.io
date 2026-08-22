@@ -1,0 +1,314 @@
+#!/usr/bin/env node
+/**
+ * Rebuild `data/publications.yml` from public scholarly APIs.
+ *
+ * Source strategy -- measured against the real record on 2026-08-22, not
+ * assumed. Counts are logged on every run so drift shows up in the sync PR:
+ *
+ *   ORCID profile (0000-0002-8461-6181) .......... 101 works, 100 with a DOI
+ *   PubMed "Tseng Yufeng Jane[Author]" ...........  48 works
+ *   PubMed "Tseng YJ[Author] AND NTU[Affiliation]" 127 works
+ *
+ * ORCID is the primary source because it is the only one that is both complete
+ * back to 2003 and curated by the author. PubMed's full-name query looks like
+ * the obvious source but retrieves barely half: PubMed only stores a full
+ * author name when the publisher supplied one, so pre-2015 papers are indexed
+ * as "Tseng YJ" alone and the full-name query silently drops 65 of them.
+ *
+ * The full-name query still earns its place -- it finds 12 papers absent from
+ * ORCID -- so tier 1 is the union of the two, and both are trusted enough to
+ * publish unattended.
+ *
+ * The affiliation query is deliberately NOT trusted. "Tseng YJ" at NTU matches
+ * a second researcher on the clinical-pharmacology side, so its 46 extra hits
+ * arrive as tigecycline dosing and retinal-ganglion-cell studies mixed in with
+ * real lab output. Those go to `data/publications-review.yml` for a human to
+ * confirm; confirmed DOIs get pasted into the `include` list of
+ * `data/publications-overrides.yml` and are picked up on the next run.
+ */
+
+import { readFile, writeFile } from 'node:fs/promises';
+import path from 'node:path';
+import YAML from 'yaml';
+import {
+  CONTACT_EMAIL, chunk, fetchJson, normalizeDoi, titleKey,
+} from './lib/fetch-util.mjs';
+
+const ORCID_ID = '0000-0002-8461-6181'; // Yufeng Jane Tseng, National Taiwan University
+
+/** Trusted sources: merged and published without human review. */
+const TIER1_PUBMED_QUERY = 'Tseng Yufeng Jane[Author]';
+/** Untrusted source: name-collides with another NTU researcher, so review-only. */
+const TIER2_PUBMED_QUERY = 'Tseng YJ[Author] AND National Taiwan University[Affiliation]';
+
+const ROOT = path.resolve(import.meta.dirname, '..');
+const DATA_DIR = path.join(ROOT, 'data');
+const OUT_PUBLICATIONS = path.join(DATA_DIR, 'publications.yml');
+const OUT_REVIEW = path.join(DATA_DIR, 'publications-review.yml');
+const OVERRIDES = path.join(DATA_DIR, 'publications-overrides.yml');
+
+// ---------------------------------------------------------------------------
+// Sources
+// ---------------------------------------------------------------------------
+
+async function fetchOrcidWorks() {
+  const payload = await fetchJson(`https://pub.orcid.org/v3.0/${ORCID_ID}/works`);
+  const records = [];
+  for (const group of payload.group ?? []) {
+    const summary = group['work-summary']?.[0];
+    if (!summary) continue;
+    const ids = {};
+    for (const entry of group['external-ids']?.['external-id'] ?? []) {
+      if (entry['external-id-type']) ids[entry['external-id-type']] = entry['external-id-value'];
+    }
+    records.push({
+      title: summary.title?.title?.value ?? '',
+      doi: normalizeDoi(ids.doi),
+      pmid: ids.pmid ? String(ids.pmid) : '',
+      year: Number(summary['publication-date']?.year?.value) || null,
+      journal: summary['journal-title']?.value ?? '',
+      type: summary.type ?? '',
+      source: 'orcid',
+    });
+  }
+  return records;
+}
+
+async function fetchPubmedQuery(term) {
+  const search = await fetchJson(
+    'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi'
+      + `?db=pubmed&retmode=json&retmax=500&email=${encodeURIComponent(CONTACT_EMAIL)}`
+      + `&term=${encodeURIComponent(term)}`,
+  );
+  const pmids = search.esearchresult?.idlist ?? [];
+  const records = [];
+
+  for (const batch of chunk(pmids, 200)) {
+    const summary = await fetchJson(
+      'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi'
+        + `?db=pubmed&retmode=json&id=${batch.join(',')}`
+        + `&email=${encodeURIComponent(CONTACT_EMAIL)}`,
+    );
+    for (const pmid of summary.result?.uids ?? []) {
+      const item = summary.result[pmid];
+      const doi = item.articleids?.find((a) => a.idtype === 'doi')?.value ?? '';
+      records.push({
+        title: item.title ?? '',
+        doi: normalizeDoi(doi),
+        pmid: String(pmid),
+        year: Number((item.pubdate ?? '').slice(0, 4)) || null,
+        journal: item.fulljournalname || item.source || '',
+        type: 'journal-article',
+        source: 'pubmed',
+      });
+    }
+  }
+  return records;
+}
+
+/**
+ * Fill in authoritative bibliographic metadata for the DOIs we have.
+ *
+ * ORCID summaries carry a title and year but often no author list, and PubMed
+ * abbreviates journal names inconsistently. Crossref is the registration
+ * authority for these DOIs, so its record is what we render.
+ */
+async function enrichFromCrossref(dois) {
+  const enriched = new Map();
+  for (const batch of chunk(dois, 20)) {
+    const filter = batch.map((doi) => `doi:${doi}`).join(',');
+    const payload = await fetchJson(
+      `https://api.crossref.org/works?rows=${batch.length}`
+        + `&mailto=${encodeURIComponent(CONTACT_EMAIL)}`
+        + `&filter=${encodeURIComponent(filter)}`,
+    );
+    for (const item of payload.message?.items ?? []) {
+      const doi = normalizeDoi(item.DOI);
+      if (!doi) continue;
+      const issued = item.issued?.['date-parts']?.[0] ?? [];
+      enriched.set(doi, {
+        title: item.title?.[0] ?? '',
+        journal: item['container-title']?.[0] ?? '',
+        year: issued[0] ?? null,
+        month: issued[1] ?? null,
+        volume: item.volume ?? '',
+        issue: item.issue ?? '',
+        pages: item.page ?? '',
+        type: item.type ?? '',
+        publisher: item.publisher ?? '',
+        authors: (item.author ?? []).map((a) => ({
+          family: a.family ?? '',
+          given: a.given ?? '',
+          orcid: a.ORCID ? normalizeDoi(a.ORCID).replace(/^https?:\/\/orcid\.org\//, '') : '',
+        })).filter((a) => a.family || a.given),
+      });
+    }
+  }
+  return enriched;
+}
+
+// ---------------------------------------------------------------------------
+// Merge
+// ---------------------------------------------------------------------------
+
+/**
+ * Key a record for deduplication.
+ *
+ * DOI is the identity when present. Records without one -- one ORCID entry, and
+ * a handful of PubMed records for older papers -- fall back to a normalised
+ * title so they still collapse across sources instead of appearing twice.
+ */
+function dedupeKey(record) {
+  if (record.doi) return `doi:${record.doi}`;
+  if (record.pmid) return `pmid:${record.pmid}`;
+  return `title:${titleKey(record.title)}`;
+}
+
+/** Merge records from several sources, remembering which sources saw each one. */
+function mergeRecords(groups) {
+  const merged = new Map();
+  const titleIndex = new Map();
+
+  for (const records of groups) {
+    for (const record of records) {
+      // A DOI-bearing record and a DOI-less record for the same paper key
+      // differently, so also reconcile on title before inserting.
+      const tk = titleKey(record.title);
+      const existingKey = merged.has(dedupeKey(record))
+        ? dedupeKey(record)
+        : (tk && titleIndex.get(tk)) || dedupeKey(record);
+
+      const existing = merged.get(existingKey);
+      if (!existing) {
+        const entry = { ...record, sources: [record.source] };
+        delete entry.source;
+        merged.set(existingKey, entry);
+        if (tk) titleIndex.set(tk, existingKey);
+        continue;
+      }
+
+      if (!existing.sources.includes(record.source)) existing.sources.push(record.source);
+      // Prefer any non-empty value; sources are complementary, not ranked.
+      for (const field of ['doi', 'pmid', 'journal', 'title']) {
+        if (!existing[field] && record[field]) existing[field] = record[field];
+      }
+      existing.year ??= record.year;
+    }
+  }
+  return merged;
+}
+
+async function readOverrides() {
+  try {
+    const parsed = YAML.parse(await readFile(OVERRIDES, 'utf8')) ?? {};
+    return {
+      exclude: new Set((parsed.exclude ?? []).map(normalizeDoi).filter(Boolean)),
+      include: new Set((parsed.include ?? []).map(normalizeDoi).filter(Boolean)),
+      manual: parsed.manual ?? [],
+      patch: parsed.patch ?? {},
+    };
+  } catch (error) {
+    if (error.code !== 'ENOENT') throw error;
+    return { exclude: new Set(), include: new Set(), manual: [], patch: {} };
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Main
+// ---------------------------------------------------------------------------
+
+async function main() {
+  const overrides = await readOverrides();
+
+  console.log('fetching sources…');
+  const [orcid, pubmedTier1, pubmedTier2] = await Promise.all([
+    fetchOrcidWorks(),
+    fetchPubmedQuery(TIER1_PUBMED_QUERY),
+    fetchPubmedQuery(TIER2_PUBMED_QUERY),
+  ]);
+  console.log(`  orcid            ${orcid.length}`);
+  console.log(`  pubmed tier1     ${pubmedTier1.length}  (${TIER1_PUBMED_QUERY})`);
+  console.log(`  pubmed tier2     ${pubmedTier2.length}  (review only)`);
+
+  const trusted = mergeRecords([orcid, pubmedTier1]);
+
+  // Tier 2 records are candidates unless a human already ruled on them.
+  const review = [];
+  for (const record of pubmedTier2) {
+    const key = dedupeKey(record);
+    if (trusted.has(key)) continue;
+    if (record.doi && overrides.exclude.has(record.doi)) continue;
+    if (record.doi && overrides.include.has(record.doi)) {
+      trusted.set(key, { ...record, sources: ['pubmed-affiliation'], confirmed: true });
+      continue;
+    }
+    review.push(record);
+  }
+
+  // Drop anything a human marked as belonging to the other Tseng YJ.
+  for (const [key, record] of trusted) {
+    if (record.doi && overrides.exclude.has(record.doi)) trusted.delete(key);
+  }
+
+  console.log('enriching from crossref…');
+  const dois = [...trusted.values()].map((r) => r.doi).filter(Boolean);
+  const crossref = await enrichFromCrossref(dois);
+  console.log(`  crossref hits    ${crossref.size} / ${dois.length}`);
+
+  const publications = [...trusted.values()].map((record) => {
+    const extra = record.doi ? crossref.get(record.doi) ?? {} : {};
+    const entry = {
+      title: extra.title || record.title,
+      authors: extra.authors ?? [],
+      journal: extra.journal || record.journal,
+      year: extra.year ?? record.year,
+      month: extra.month ?? null,
+      volume: extra.volume ?? '',
+      issue: extra.issue ?? '',
+      pages: extra.pages ?? '',
+      type: extra.type || record.type || 'journal-article',
+      doi: record.doi,
+      pmid: record.pmid,
+      url: record.doi ? `https://doi.org/${record.doi}` : '',
+      sources: [...record.sources].sort(),
+    };
+    return { ...entry, ...(overrides.patch[record.doi] ?? {}) };
+  });
+
+  for (const entry of overrides.manual) {
+    publications.push({ type: 'journal-article', sources: ['manual'], ...entry });
+  }
+
+  // Deterministic ordering keeps the sync PR's diff readable: newest first, and
+  // a stable tiebreak so equal-year entries never shuffle between runs.
+  publications.sort((a, b) => (b.year ?? 0) - (a.year ?? 0)
+    || (a.title ?? '').localeCompare(b.title ?? ''));
+
+  const byYear = {};
+  for (const p of publications) byYear[p.year ?? 'unknown'] = (byYear[p.year ?? 'unknown'] ?? 0) + 1;
+
+  await writeFile(OUT_PUBLICATIONS, YAML.stringify({
+    // eslint-disable-next-line max-len
+    _generated: 'Generated by scripts/fetch-publications.mjs -- do not hand-edit. Corrections belong in publications-overrides.yml.',
+    orcid: ORCID_ID,
+    count: publications.length,
+    publications,
+  }, { lineWidth: 100 }), 'utf8');
+
+  review.sort((a, b) => (b.year ?? 0) - (a.year ?? 0)
+    || (a.title ?? '').localeCompare(b.title ?? ''));
+  await writeFile(OUT_REVIEW, YAML.stringify({
+    _generated: `Candidates from "${TIER2_PUBMED_QUERY}" that are NOT in a trusted source.`,
+    _instructions: 'This query name-collides with another NTU researcher. Move real lab papers'
+      + " into publications-overrides.yml `include:`, and the rest into `exclude:`.",
+    count: review.length,
+    candidates: review,
+  }, { lineWidth: 100 }), 'utf8');
+
+  console.log(`\nwrote ${path.relative(ROOT, OUT_PUBLICATIONS)}: ${publications.length} publications`);
+  console.log(`wrote ${path.relative(ROOT, OUT_REVIEW)}: ${review.length} awaiting review`);
+  console.log('by year:', Object.entries(byYear).sort((a, b) => b[0].localeCompare(a[0]))
+    .slice(0, 6).map(([y, n]) => `${y}:${n}`).join(' '));
+}
+
+await main();

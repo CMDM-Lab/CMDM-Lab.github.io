@@ -1,0 +1,186 @@
+# Editorial prose for the pages that are not driven by a synced dataset.
+#
+# Migrated from contents/about_zh.html, contents/research_zh.html and
+# contents/course_zh.html.
+#
+# TRANSLATION GAP -- needs the lab's attention.
+#
+# The old site had `_zh` variants of the About and Research pages, but their
+# bodies were English prose, identical to the English pages. There is no Chinese
+# text for this material anywhere in the repository. Rather than machine
+# translate descriptions of the lab's own research -- which would put words
+# about scientific results into the lab's mouth and risk distorting them -- the
+# English text is reused in both locales and flagged here.
+#
+# `zh` blocks below marked `same_as_en: true` are the ones awaiting real
+# Chinese copy. Replace the value with Chinese prose and drop the flag.
+
+about:
+  en:
+    # Block scalars throughout: this prose contains colons and quotes that YAML
+    # would otherwise read as structure.
+    paragraphs:
+      - >-
+        Our research focuses on Computational Molecular Design and Biomarker Detection in
+        Metabolomics, which involves the development of new algorithms and tools to identify and
+        design molecular structures for the targeted use. Our research is published in
+        international journals of Molecular Structure Design, and is presently being used in the
+        development of clinical biomarkers in both Taiwan and the U.S.
+      - >-
+        Our laboratory was involved in six drug development projects in the National Research
+        Program for Biopharmaceuticals (NRPB). Our research is not only intended to be included in
+        the "Platform for lead optimization and preclinical safety screening project" for years to
+        come, but also to contribute to the National Science Technology Program for Biotechnology
+        and Pharmaceuticals in collaboration with departments of chemistry and pharmacy of various
+        domestic universities in Taiwan. Our partners include China Medical University, National
+        Taiwan University, National Yang Ming Chiao Tung University, Taipei Medical University,
+        National Tsing Hua University and National Chung Cheng University. Our primary objective is
+        to rapidly develop new drugs for the treatment of neuropathic pain, as well as
+        antithrombotic and cancer fighting agents. We currently hold several drug patents in the U.S.
+      - >-
+        The Structure-Based Fragment Hopping For Lead Optimization and Improvement method (U.S.
+        Patent) performs a series of virtual screenings for compounds in order to uncover the
+        relationship between quantitative determinations such as physicochemical properties or
+        theoretical molecular descriptors and functions. It furthermore optimizes the compound's
+        structure to improve its activity as well as reduce its toxicity. In addition to NRPB's
+        funding, we have also received commissions to develop new drugs from the BioMedical
+        Technology and Device Research Laboratory, Industrial Technology Research Institute, and
+        the Medical and Pharmaceutical Industry Technology and Development Center. Our technology
+        includes computational prediction of toxicity — hERG prediction models, prediction and
+        mechanistic interpretation of human oral drug absorption, QSAR analysis of skin penetration
+        and skin penetration enhancers, and QSAR models for skin sensitization.
+      - >-
+        In Metabolomics, we have built a research group at National Taiwan University and at the
+        Metabolomics Core Laboratory in the NTU Center of Genomic Medicine. We were awarded Best
+        Informatics Paper for the computational method developed in Metabolomics at the Seventh
+        International Conference of the Metabolomics Society.
+      - >-
+        The mass spectrometry and NMR computing techniques developed in the lab have been applied
+        to the study of workers' exposure to welding fumes, compound identification in Chinese
+        herbs, prediction of toxicity in Chinese herbs, and the study of hypoxia's influence on
+        breast cancer cells. They are also applied to finding molecular markers for lung cancer and
+        leukaemia, and to predicting chronic obstructive pulmonary disease, bronchiectasis, acute
+        lung injury, sepsis with multiple organ failure, and mortality among intensive-care
+        patients receiving ECMO.
+  zh:
+    same_as_en: true
+
+research_areas:
+  zh:
+    - group: 計算分子設計
+      items:
+        - 電腦輔助藥物設計
+        - 人工智慧應用於藥物開發
+    - group: 代謝體學
+      items:
+        - 生物標記偵測
+        - 精準醫學
+  en:
+    - group: Computational Molecular Design
+      items:
+        - Computer-aided drug design
+        - AI for drug development
+    - group: Metabolomics
+      items:
+        - Biomarker detection
+        - Precision medicine
+
+# Representative work, migrated from contents/research_zh.html. Each entry keeps
+# the abstract excerpt the old page showed.
+research_highlights:
+  - title: "Mutagenicity in a Molecule: Identification of Core Structural Features of Mutagenicity
+      Using a Scaffold Analysis"
+    excerpt: With advances in the development and application of Ames mutagenicity in silico
+      prediction tools, the International Conference on Harmonisation (ICH) has amended its M7
+      guideline to reflect the use of such prediction models for the detection of mutagenic activity
+      in early drug safety evaluation processes.
+    image: /img/research.png
+  - title: An efficient and robust fatty acid profiling method for plasma metabolomic studies by gas
+      chromatography-mass spectrometry
+    excerpt: Targeted metabolomic analysis of fatty acids has linked the dysregulation of fatty acids
+      to many diseases. This study selected five frequently used fatty acid derivatization methods
+      for comparison.
+  - title: A portable micro gas chromatography system for volatile compounds detection with 15 ppb of
+      sensitivity
+    excerpt: Existing non-invasive lung cancer diagnostic equipment has difficulty detecting
+      early-stage lung cancer, as abnormal tissue is smaller than 0.5 cm. Volatile organic compounds
+      from human breath gas can provide biomarkers for human disease, especially for lung cancer.
+  - title: Using the Matrix-Induced Ion Suppression Method for Concentration Normalization in
+      Cellular Metabolomics Studies
+    excerpt: Most cellular metabolomics studies control only cell numbers or protein content without
+      adjusting the total metabolite concentration, mainly because of the lack of an effective
+      concentration normalization method.
+    image: /img/research_2.png
+  - title: Synthesis and inhibitory effects of novel pyrimido-pyrrolo-quinoxalinedione analogues
+      targeting nucleoproteins of influenza A virus H1N1
+    excerpt: The influenza nucleoprotein (NP) is a single-strand RNA-binding protein and the core of
+      the influenza ribonucleoprotein particle, serving many critical functions for influenza
+      replication.
+
+courses:
+  zh:
+    - 生物資訊導論
+    - 生醫資訊學導論
+    - 生物資訊學
+    - 系統代謝學
+    - 高等電腦模擬藥物輔助設計
+    - 新藥探索 (I)
+    - 代謝體學
+    - 化學資訊學
+  en:
+    - Introduction to Bioinformatics
+    - Introduction to Biomedical Informatics
+    - Bioinformatics
+    - Systems Metabolism
+    - Advanced Computer-Aided Drug Design
+    - Drug Discovery (I)
+    - Metabolomics
+    - Cheminformatics
+
+home_intro:
+  zh: 本實驗室主要研究內容為計算分子設計 (Computational Molecular Design) 與代謝體中的生物標記偵測 (Biomarker
+    Detection in Metabolomics)，包含新演算法開發與軟體工具開發，使其能夠應用於生化檢驗與分子結構設計。
+  en: The lab works on Computational Molecular Design and Biomarker Detection in Metabolomics,
+    developing new algorithms and software tools for biochemical assays and molecular structure
+    design.
+
+home_video: https://www.youtube.com/embed/LUdHlIMiyFY?rel=0
+
+# Principal investigator detail page, migrated from contents/janetseng_zh.html.
+#
+# NEEDS VERIFICATION. The appointments below are copied verbatim from a page
+# last touched in 2022 and describe roles as of roughly 2018 -- several are
+# almost certainly out of date, and the vice-chair and centre-director terms in
+# particular are fixed-length. Confirm each line before the site goes live
+# rather than republishing stale titles.
+professor:
+  appointments_zh:
+    - 國立臺灣大學醫學院藥學專業學院藥物研究中心 主任
+    - 神經生物與認知研究中心 副主任
+    - 資訊工程系 副系主任
+    - 資訊工程系／藥學系／生醫電子與資訊學研究所 教授
+    - 基因體研究中心代謝體核心實驗室 主持人
+    - 科技部科學園區審議委員會 委員
+    - 亞洲 SPARK 區域委員會 主席
+    - 台灣生醫與醫材轉譯加值人才培訓計畫 主持人
+    - 美國化學學會藥物化學研討會程序委員會 主席
+  background_zh:
+    - 工業技術研究院生醫與醫材研究所 研究顧問
+    - 教學-發現-治療指導委員會 委員
+    - 國立臺灣大學藥物研究中心藥物資訊組 組長
+    - 美國國家衛生研究院國家生物技術資訊中心 (NCBI) 研究員
+    - 分子模擬軟體首席開發者 (The Chem21 Group, Inc., Lake Forest, USA)
+    - 伊利諾大學芝加哥分校 藥物化學與生藥學 博士
+    - 國立臺灣大學 藥學系 學士
+  biography_zh:
+    - 曾宇鳳教授 1997 年於國立臺灣大學藥學系畢業，並於 2002 年取得伊利諾大學芝加哥分校 (UIC) 藥物化學和生藥學博士學位。先後在 2003
+      年、2005 年分別於伊利諾大學芝加哥分校、美國國家衛生研究院生物技術資訊中心 (NCBI) 擔任博士後研究員。
+    - 曾教授於 2006 年返回臺灣擔任國立臺灣大學資訊工程系助理教授及生醫電子與資訊學研究所合聘教授，並同時擔任國立臺灣大學基因體研究中心代謝體核心實驗室主持人，以及國立臺灣大學藥物研究中心分子模擬小組負責人。2015
+      年起擔任國立臺灣大學藥物研發中心主任。
+    - 曾教授曾擔任《組合化學和高通量篩選雜誌》特刊的特邀主編，並擔任《分子圖形與模擬雜誌》與《組合化學與高通量篩選雜誌》的編輯顧問，亦曾為美國化學學會化學資訊專業程序委員會成員，並擔任其藥物開發研討會主席。
+  # English copy for these lists does not exist in the repository. Until the lab
+  # supplies it, the English page shows the Chinese text with the education
+  # entries it does have in English.
+  appointments_en: []
+  background_en: []
+  biography_en: []

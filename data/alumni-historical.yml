@@ -1,0 +1,175 @@
+# Graduates recorded on the pre-2026 website, recovered from the old
+# contents/member_zh.html table. The CMDM-Lobe vault has no pages for these
+# 47 people -- this file is the only record of that stretch of lab history, so
+# it is hand-maintained here rather than generated. Recent graduates come from
+# the vault via scripts/sync-members.mjs instead.
+count: 42
+alumni:
+- name: 王珮驊
+  graduated: 2022
+  department: 生醫電資所 博士
+  thesis: QSAR模型建構、量子演算法應用於藥物專利搜尋
+- name: 陳人豪
+  graduated: 2022
+  department: 資工所 博士
+  thesis: 計算化學與毒理學、化學資訊學、藥物設計、量子演算法應用於藥物專利搜尋
+- name: 高紀威
+  graduated: 2022
+  department: 生醫電資所 碩士
+  thesis: ''
+- name: 倪宇澔
+  graduated: 2022
+  department: 生醫電資所 碩士
+  thesis: QSAR模型最佳化
+- name: 林柏璋
+  graduated: 2021
+  department: 生醫電資所 碩士
+  thesis: 小鼠腦部MRI模型建構
+- name: 何明洋
+  graduated: 2021
+  department: 生醫電資所 碩士
+  thesis: 帕金森氏症人工智慧綜合判讀系統
+- name: 許至廷
+  graduated: 2020
+  department: 生醫電資所 碩士
+  thesis: ''
+- name: 張家瑜
+  graduated: 2019
+  department: 生醫電資所 碩士
+  thesis: 系統生物學、細胞計算模型
+- name: 田耘政
+  graduated: 2019
+  department: 生醫電資所 碩士
+  thesis: 系統生物學、細胞計算模型
+- name: 陳巧欣
+  graduated: 2019
+  department: 研究助理
+  thesis: 系統生物學、細胞計算模型
+- name: 卓東昇
+  graduated: 2019
+  department: 生醫電資所 碩士
+  thesis: 系統生物學、細胞計算模型
+- name: 謝秉翰
+  graduated: 2018
+  department: 生醫電資所 碩士
+  thesis: 肝臟微粒體穩定性
+- name: 蕭毅
+  graduated: 2018
+  department: 生醫電資所 碩士
+  thesis: 虛擬老鼠:系統性電腦預測臨床前ADMET參數
+- name: 蔡東銘
+  graduated: 2017
+  department: 生醫電資所 博士
+  thesis: 基於親水作用液相層析質譜儀的代謝體研究- 化學計算方法開發與腹膜透析引流液分析
+- name: 鄭羽嫣
+  graduated: 2017
+  department: 生醫電資所 碩士
+  thesis: 脂質辨識加速工具：自動處理和辨識液相層析串聯質譜脂體學資料
+- name: 林宜儒
+  graduated: 2017
+  department: 生醫電資所 碩士
+  thesis: 一維質子核磁共振代謝體圖譜之線上自動分析服務
+- name: 劉律琪
+  graduated: 2017
+  department: 資工所 碩士
+  thesis: G蛋白偶聯受體之多標靶、老藥新用與副作用預測
+- name: 杜羿樞
+  graduated: 2015
+  department: 生醫電資所 博士
+  thesis: 電腦設計胜肽抑制劑、次世代定序軟體及建構定量構效模型
+- name: 郭天爵
+  graduated: 2015
+  department: 生醫電資所 博士
+  thesis: 代謝體系統生物學分析與工具及脂質知識庫
+- name: 劉家瑋
+  graduated: 2015
+  department: 網媒所 碩士
+  thesis: 搭配頻寬估測方法在核密度估測液相層析質譜儀資料之滯留時間校正與一維質子核磁共振代謝體圖譜之相位校正
+- name: 王三源
+  graduated: 2014
+  department: 資工所 博士
+  thesis: 離子軌跡偵測與訊號校正於高解析液相層析串聯飛行時間質譜儀平台之代謝體學應用
+- name: 林潔
+  graduated: 2014
+  department: 資工所 碩士
+  thesis: PolyName2Structure 系統 - 利用預測聚合物單體結構的反應途徑，來達成從聚合物名稱轉成結構的目標
+- name: 譚承恩
+  graduated: 2014
+  department: 資工所 碩士
+  thesis: 成份分離、辨識及統計分析於氣相層析質譜儀之圖型化工具套件
+- name: 王國清
+  graduated: 2013
+  department: 生醫電資所 博士
+  thesis: 壹維核磁共振代謝體圖譜之基線校正、圖譜還原與在電焊暴露代謝體特徵上的應用
+- name: 張嘉芸
+  graduated: 2013
+  department: 藥學所 博士
+  thesis: 老藥新用及細胞毒性分析與選擇性偏優化
+- name: 鍾宇彥
+  graduated: 2013
+  department: 生醫電資所 碩士
+  thesis: 去噪、成分分離及辨識於氣相層析串聯飛行時間質譜儀之工具套件
+- name: 舒艾琉
+  graduated: 2013
+  department: 網媒所 碩士
+  thesis: GPU在結構計算上的應用
+- name: 徐國翔
+  graduated: 2013
+  department: 生醫電資所 碩士
+  thesis: 艾美氏致突變性試驗的化學結構之骨架分析
+- name: 蘇柏翰
+  graduated: 2012
+  department: 資工所 博士
+  thesis: 新藥設計及化學結構組合最佳化與心毒性模擬
+- name: 林澤豪
+  graduated: 2012
+  department: 生醫電資所 碩士
+  thesis: 分子螢光分類模型
+- name: 陳星佐
+  graduated: 2012
+  department: 生醫電資所 碩士
+  thesis: 在奈米碳管回歸模型以及細胞毒性分類模型在支持向量機上的應用
+- name: 邵祈諭
+  graduated: 2012
+  department: 生醫電資所 碩士
+  thesis: 肝臟與經修飾奈米碳管毒性模型
+- name: 林芳宇
+  graduated: 2011
+  department: 生醫電資所 碩士
+  thesis: 以蛋白質結構為基礎之合成可行性先導藥物最適化電腦輔助藥物設計
+- name: 何宗融
+  graduated: 2011
+  department: 資工所 碩士
+  thesis: 滯留時間校準、去噪與化合物辨識在代謝體學上之應用
+- name: 田士鋒
+  graduated: 2011
+  department: 資工所 碩士
+  thesis: 二維氣相層析質譜圖之滯留時間校準演算法
+- name: 韓羽晨
+  graduated: 2011
+  department: 網媒所 碩士
+  thesis: 結構獵人：預測混合物中新的化學結構
+- name: 黃薏璇
+  graduated: 2010
+  department: 生醫電資所 碩士
+  thesis: 分子片段組合之新穎結構設計於抗血管內皮生長因子受體藥物開發
+- name: 蔡政倢
+  graduated: 2010
+  department: 生醫電資所 碩士
+  thesis: 蛇毒 C 型凝集素衍生之拮抗劑與血小板醣蛋白陸交互作用的結構探討
+- name: 沈孟俞
+  graduated: 2010
+  department: 資工所 碩士
+  thesis: 支持向量機在hERG毒性分類模型及蛋白質定位突變法的應用
+- name: 康文譯
+  graduated: 2009
+  department: 生醫電資所 碩士
+  thesis: 不同PT/INR危急值警示系統與warfarin使用安全性之評估
+- name: 蔡東銘
+  graduated: 2009
+  department: 生醫電資所 碩士
+  thesis: 馬兜鈴酸腎毒性在囓齒類動物的代謝體學研究
+- name: 吳東潤
+  graduated: 2008
+  department: 資工所 碩士
+  thesis: 4D-QSAR分析TW01系列類似物之定量構效關係
