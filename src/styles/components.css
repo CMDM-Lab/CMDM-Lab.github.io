@@ -303,7 +303,14 @@
     margin-top:var(--space-1);
   }
   .ds-ledger-item__plate img{display:block;width:100%;height:auto}
-  .ds-ledger-item__plate figcaption{margin-top:var(--space-2)}
+  .ds-ledger-item__plate figcaption{
+    margin-top:var(--space-2);
+    /* The resolved kicker font, not mono outright. Every caption here used to be
+       an English journal citation, where mono is right; the first Chinese one
+       showed why the design system switches CJK kickers to sans -- mono pulls
+       Hanzi apart. The :lang() layer already decides this. */
+    font-family:var(--kicker-font);
+  }
   .ds-ledger-item__tags{display:flex;gap:var(--space-1);flex-wrap:wrap}
   .ds-ledger-item__meta{
     font-family:var(--font-mono);

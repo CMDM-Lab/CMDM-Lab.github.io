@@ -81,26 +81,46 @@ achievements:
   # teams" index is linked instead, which still lists the team under 2025, and
   # the two NTU announcements carry the award tier. All three were checked on
   # 2026-08-22.
+  # The English name is the project's own, read off the ceremony backdrop and the
+  # official project card, both in the photographs below: "AI-Powered Green
+  # Chemistry Diagnostic Advisor". My earlier "an AI-assisted green chemistry
+  # diagnostic system" was a description standing in for a name I did not have.
   - citation:
       zh: 2025 年，曾宇鳳教授帶領學生團隊參與 2025 總統盃黑客松，以「AI 綠色化學智匯診斷家」獲卓越團隊獎。
       en: 2025, Professor Yufeng Jane Tseng led a student team to the Presidential Hackathon
-        2025, receiving the Team Excellence Award for an AI-assisted green chemistry
-        diagnostic system.
-    # PHOTOGRAPHS GO HERE. The lab has hackathon photographs to add (2026-08-22);
-    # the shape is:
+        2025, receiving the Team Excellence Award for "AI-Powered Green Chemistry Diagnostic
+        Advisor".
+    # Supplied by the lab on 2026-08-22, from the 2025-12-14 ceremony.
     #
-    #   images:
-    #     - src: /img/honors/2025-hackathon-team.jpg
-    #       alt:
-    #         zh: 團隊在總統盃黑客松頒獎典禮上合影
-    #         en: The team at the Presidential Hackathon award ceremony
-    #       credit: 攝影：<誰拍的>        # omit when the lab took it
+    # The alt text describes the scene without naming anyone. The people in a
+    # group photograph have not agreed to be identified by name on this site,
+    # and a caption naming them would be published far more widely than the
+    # photograph itself -- alt text is read out, indexed and translated.
     #
-    # `alt` is required and is not a caption: it says what is in the photograph,
-    # for a reader who cannot see it and for a search engine. `credit` is the
-    # visible caption under the plate. Files belong in public/img/honors/, long
-    # edge 1600px, under 500 KB -- nothing in the build resizes anything, and
-    # tests/content.test.mjs fails on an oversized or unlabelled image.
+    # Both were resized here: the ceremony photograph from 4743x3162 / 1.4 MB to
+    # 1600px on the long edge, and both renamed off the camera's and the
+    # messaging app's own filenames.
+    images:
+      - src: /img/honors/2025-hackathon-ceremony.jpg
+        alt:
+          zh: 2025 總統盃黑客松頒獎典禮，得獎團隊與總統在「AI 綠色化學智匯診斷家」的看板前合影。
+          en: The winning team with the President at the 2025 Presidential Hackathon awards
+            ceremony, in front of a screen reading "AI-Powered Green Chemistry Diagnostic
+            Advisor".
+        credit:
+          zh: 2025 總統盃黑客松頒獎典禮，2025 年 12 月 14 日。
+          en: 2025 Presidential Hackathon awards ceremony, 14 December 2025.
+      - src: /img/honors/2025-hackathon-project-card.jpg
+        alt:
+          zh: 「AI 綠色化學智匯診斷家」專案介紹卡，說明本工具由環境部化學物質管理署與臺大合作，以 AI 代理人技術在既有 SAS
+            架構上開發自主綠色化學替代診斷工具。
+          en: Project card for "AI-Powered Green Chemistry Diagnostic Advisor", describing an
+            autonomous green-chemistry substitution tool built with AI agent technologies on
+            the existing SAS framework, in collaboration between the Ministry of Environment's
+            Chemicals Administration and National Taiwan University.
+        credit:
+          zh: 2025 總統盃黑客松國內松專案介紹卡。
+          en: Project card, 2025 Presidential Hackathon domestic track.
     links:
       - label: Presidential Hackathon
         url: https://presidential-hackathon.taiwan.gov.tw/teams
