@@ -366,6 +366,14 @@ test('every commissioned system states who commissioned it and when', async () =
     for (const locale of ['zh', 'en']) {
       assert.ok(system.agency?.[locale]?.trim(), `${where} has no ${locale} commissioning agency`);
       assert.ok(system.description?.[locale]?.trim(), `${where} has no ${locale} description`);
+      // Optional, but never half-written: an agency note in one language only
+      // would show as Chinese on the English page, the way six honours did.
+      if (system.agency_note) {
+        assert.ok(
+          system.agency_note?.[locale]?.trim(),
+          `${where} has an agency note with no ${locale} text`,
+        );
+      }
     }
     const url = system.links?.[0]?.url ?? '';
     assert.match(url, /^https?:\/\//, `${where} needs an absolute URL, not "${url}"`);

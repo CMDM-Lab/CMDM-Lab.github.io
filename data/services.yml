@@ -65,17 +65,28 @@ services:
 # which is which instead of quietly widening what "service" means.
 #
 # On the agency name: the project began on 2021-09-03 under what was then the
-# EPA's Toxic and Chemical Substances Bureau. The Ministry of Environment and its
-# Chemicals Administration were created in the 2023 reorganisation, and the
-# entry names the agency as it is now, since that is who runs it today.
+# EPA's Toxic and Chemical Substances Bureau. The entry names the agency as it is
+# now, since that is who runs it today, and `agency_note` carries the succession
+# on the page rather than only in this comment -- a five-year project outlives
+# the department that commissioned it, and a reader who looks the old bureau up
+# should not conclude the record is wrong.
+#
+# Dates checked 2026-08-22: the bureau was established 2016-12-28; the Ministry
+# of Environment and its Chemicals Administration date from 2023-08-22, the
+# organisation act having been promulgated on 2023-05-24.
 commissioned:
 - name: GreenN (SAS)
   name_zh: 高風險化學物質之安全替代化學物質搜尋、評估及篩選系統
   # SAS is being renamed GreenN so it stops colliding with the statistics
   # package; both names are given while the new one takes over.
   agency:
-    zh: 環境部化學物質管理署
+    zh: 環境部化學物質管理署（化學署）
     en: Chemicals Administration, Ministry of Environment
+  agency_note:
+    zh: 計畫始於行政院環境保護署毒物及化學物質局，2023 年 8 月 22 日隨環境部成立升格為化學物質管理署。
+    en: The project began under the Toxic and Chemical Substances Bureau of the Environmental
+      Protection Administration, which became the Chemicals Administration on 22 August 2023
+      when the Ministry of Environment was established.
   since: 2021-09-03
   ongoing: true
   description:

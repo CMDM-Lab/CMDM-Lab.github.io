@@ -346,6 +346,14 @@ export interface CommissionedSystem {
   name: string;
   name_local?: string;
   agency: string;
+  /**
+   * How the commissioning agency came to be called that.
+   *
+   * A project that runs for years outlives the department that started it, and a
+   * reader who looks up the agency named in a 2021 contract finds one that no
+   * longer exists. The succession belongs on the page, not only in a comment.
+   */
+  agency_note?: string;
   since: string;
   ongoing: boolean;
   description?: string;
@@ -410,6 +418,7 @@ interface RawCommissioned {
   name?: string;
   name_zh?: string;
   agency?: Localized<string>;
+  agency_note?: Localized<string>;
   since?: string;
   ongoing?: boolean;
   description?: Localized<string>;
@@ -426,6 +435,9 @@ export function getCommissionedSystems(locale: Locale): CommissionedSystem[] {
       // it is what the commissioning agency's own documents call the system.
       ...(entry.name_zh ? { name_local: entry.name_zh } : {}),
       agency: pickLocale(entry.agency, locale) ?? '',
+      ...(entry.agency_note
+        ? { agency_note: pickLocale(entry.agency_note, locale) ?? '' }
+        : {}),
       since: entry.since!,
       ongoing: entry.ongoing === true,
       ...(entry.description

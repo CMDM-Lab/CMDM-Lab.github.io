@@ -179,6 +179,9 @@ const access = [
               <Fragment slot="meta">
                 {system.name_local && <div class="ds-ledger-item__meta">{system.name_local}</div>}
                 <div class="ds-ledger-item__meta">{t.label_agency} · {system.agency}</div>
+                {system.agency_note && (
+                  <div class="ds-ledger-item__meta">{system.agency_note}</div>
+                )}
               </Fragment>
             </LedgerItem>
           );
