@@ -1,10 +1,12 @@
 ---
-// Professional activities page body, shared by both locales.
+// Professional activities page, shared by both locales.
 //
 // This content existed in the old repository as contents/prof_acts_zh.html but
 // no route and no navigation link ever pointed at it, so it was unreachable on
 // the live site. It has a real URL now.
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Hairline from './ds/Hairline.astro';
+import Kicker from './ds/Kicker.astro';
 import { getProfessionalActivities, getStrings, type Locale } from '../lib/data';
 
 interface Props { locale: Locale }
@@ -20,12 +22,18 @@ const SECTION_LABELS: Record<string, string> = {
 ---
 
 <BaseLayout locale={locale} slug="activities">
-  <h1>{t.activities_title}</h1>
+  <div class="ds-masthead">
+    <Kicker size="md">{t.activities_kicker}</Kicker>
+    <Hairline tone="ink" />
+    <h1 class="ds-masthead__title">{t.activities_title}</h1>
+    <div class="ds-masthead__subtitle">{t.activities_subtitle}</div>
+    <p class="ds-masthead__lede">{t.activities_lede}</p>
+  </div>
 
   {Object.entries(activities).map(([key, entries]) => (
-    <section aria-labelledby={`act-${key}`}>
-      <h2 id={`act-${key}`}>{SECTION_LABELS[key] ?? key}</h2>
-      <ul class="activity-list">
+    <section class="ds-section" aria-labelledby={`act-${key}`}>
+      <Kicker size="md" as="h2" id={`act-${key}`}>{SECTION_LABELS[key] ?? key}</Kicker>
+      <ul class="ds-list">
         {entries.map((entry) => <li>{entry}</li>)}
       </ul>
     </section>

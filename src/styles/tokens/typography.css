@@ -1,0 +1,86 @@
+/* Type scale, verbatim from the design system's tokens/typography.css, plus a
+   resolution layer at the bottom that the components actually read.
+
+   WHY THE EXTRA LAYER. The design system threads a `cjk` boolean through six
+   components so Chinese gets its own measure, size, leading, alignment and
+   kicker treatment. The handoff says a lang-scoped CSS block is the cleaner
+   production form, and it is: the branch lives in one place here, the
+   components reference resolved variables and never ask which locale they are
+   in, and there is no prop to forget to pass. */
+
+:root{
+  /* ── Scale ───────────────────────────────────────────────── */
+  --text-kicker-sm:9.5px;   /* mono uppercase only */
+  --text-kicker:11px;
+  --text-kicker-cjk:12px;   /* CJK kickers never go below 12px */
+  --text-small:12px;        /* absolute floor for anything not a kicker */
+  --font-size-body:13px;
+  --font-size-body-lg:13.5px;
+  --text-table:12.5px;
+  --text-lede:14px;
+  --text-h4:16px;
+  --text-h3:19px;
+  --text-h2:24px;
+  --text-h2-hero:28px;
+  --text-h1:30px;
+  --text-h1-hero:clamp(30px,3.4vw,40px);
+
+  --weight-regular:400;
+  --weight-medium:500;      /* all headings */
+  --weight-semibold:600;    /* small caps-y sub-labels */
+
+  --leading-body:1.55;
+  --leading-tight:1.2;
+  --tracking-heading:-0.02em;
+  --tracking-kicker:0.14em;
+  --tracking-kicker-wide:0.2em;
+  --tracking-kicker-cjk:0.08em;   /* 0.14em pulls Chinese glyphs apart */
+  --tracking-table-head:0.12em;
+
+  --measure-prose:64ch;
+  --measure-prose-cjk:38em;   /* ~38 Chinese characters per line */
+  --leading-body-cjk:1.8;     /* CJK needs more leading than 1.55 */
+
+  /* ── Resolved values: Latin defaults ─────────────────────── */
+  --prose-measure:var(--measure-prose);
+  --prose-size:var(--font-size-body-lg);
+  --prose-size-lede:var(--text-lede);
+  --prose-leading:var(--leading-body);
+  --prose-align:justify;
+  --prose-hyphens:auto;
+  --prose-gap:var(--space-3);
+
+  --kicker-font:var(--font-mono);
+  --kicker-size:var(--text-kicker-sm);
+  --kicker-size-md:var(--text-kicker);
+  --kicker-tracking:var(--tracking-kicker);
+  --kicker-transform:uppercase;
+
+  --heading-leading:1.1;
+  --heading-leading-item:1.3;
+}
+
+/* ── Resolved values: 中文 ──────────────────────────────────
+   Chinese is a first-class case, not a fallback. Larger, looser, ragged
+   right, and kickers switch to sans with no case change because Chinese has
+   no case for uppercase to act on while 0.14em tracking only pulls the
+   glyphs apart. Numbers, identifiers and filenames stay mono in both
+   locales -- that is handled per-element, not here. */
+:root:lang(zh-Hant),
+:root:lang(zh){
+  --prose-measure:var(--measure-prose-cjk);
+  --prose-size:var(--text-lede);
+  --prose-leading:var(--leading-body-cjk);
+  --prose-align:left;
+  --prose-hyphens:manual;
+  --prose-gap:var(--space-4);
+
+  --kicker-font:var(--font-sans);
+  --kicker-size:var(--text-kicker-cjk);
+  --kicker-size-md:var(--text-kicker-cjk);
+  --kicker-tracking:var(--tracking-kicker-cjk);
+  --kicker-transform:none;
+
+  --heading-leading:1.3;
+  --heading-leading-item:1.5;
+}

@@ -1,0 +1,8 @@
+---
+// Square mono tag. Never a pill; radius is 0 everywhere in this system.
+// `brand` is the retained lab blue, whitelisted for instrument and assay
+// classifications only.
+interface Props { tone?: 'neutral' | 'accent' | 'outline' | 'brand' }
+const { tone = 'neutral' } = Astro.props;
+---
+<span class={['ds-tag', tone !== 'neutral' && `ds-tag--${tone}`].filter(Boolean).join(' ')}><slot /></span>

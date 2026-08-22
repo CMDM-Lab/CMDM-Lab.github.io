@@ -146,6 +146,34 @@ home_intro:
 
 home_video: https://www.youtube.com/embed/LUdHlIMiyFY?rel=0
 
+# The "Lab record" section of the home page.
+#
+# PROVENANCE. Both locales come from the design bundle's own message dictionary
+# (ui_kits/lab_site/messages.js), where the designer condensed the lab's English
+# About text into two paragraphs per locale. That is delivered design content,
+# not a machine translation, which is why it is used here while the full About
+# page still shows English on both locales -- no Chinese exists for that longer
+# text, and inventing it is not this repository's call.
+#
+# If the lab rewrites these, replace them; nothing derives from them.
+home_record:
+  zh:
+    - >-
+      本實驗室參與國家生技醫藥研究計畫中六項新藥開發專案，並與中國醫藥大學、國立清華大學、臺北醫學大學等校化學系與藥學系合作。主要目標為開發神經病理性疼痛、血栓與癌症的治療藥物。
+    - >-
+      在代謝體學方面，我們開發的質譜與核磁共振計算方法已發表於《Analytical
+      Chemistry》，並應用於中草藥成分鑑定、乳癌細胞缺氧反應，以及肺癌與白血病的分子標記研究。
+  en:
+    - >-
+      The lab was involved in six drug development projects in the National Research Program for
+      Biopharmaceuticals, in collaboration with the chemistry and pharmacy departments of China
+      Medical University, National Tsing Hua University, Taipei Medical University and others. Our
+      primary objective is to develop treatments for neuropathic pain, thrombosis and cancer.
+    - >-
+      In metabolomics, the mass spectrometry and NMR computing methods we developed have been
+      published in Analytical Chemistry and applied to compound identification in Chinese herbs,
+      hypoxia in breast cancer cells, and molecular markers for lung cancer and leukaemia.
+
 # Principal investigator detail page, migrated from contents/janetseng_zh.html.
 #
 # NEEDS VERIFICATION. The appointments below are copied verbatim from a page

@@ -1,0 +1,14 @@
+:root{
+  /* 1.15× density scale. Use only these — no bare pixel spacing.
+     5 and 7 are deliberately skipped; the source system has no use for them. */
+  --space-1:4.6px;
+  --space-2:9.2px;
+  --space-3:13.8px;
+  --space-4:18.4px;
+  --space-6:27.6px;
+  --space-8:36.8px;
+
+  --column-gap:36.8px;   /* two-column article flow */
+  --btn-pad-y:9.2px;
+  --btn-pad-x:16.56px;   /* space-3 × 1.2 */
+}

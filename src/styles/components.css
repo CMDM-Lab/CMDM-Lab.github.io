@@ -1,0 +1,432 @@
+/* Component layer for the "Clinical Instrument" system.
+ *
+ * The design bundle ships these as React components with inline style objects,
+ * which its own handoff says not to ship: "Do not ship them as production
+ * code... recreate these designs in the target codebase's own environment."
+ * So the same specs live here as classes, and Astro components in
+ * src/components/ds/ apply them.
+ *
+ * Values are transcribed exactly. Spacing is 1.15x-scaled and non-round on
+ * purpose (4.6 / 9.2 / 13.8 / 18.4 / 27.6 / 36.8px) and type sizes include
+ * 9.5, 12.5 and 13.5px -- the handoff is explicit that these must not be
+ * snapped to a 4/8px grid or rounded.
+ *
+ * Everything is inside @layer. See tokens/base.css for why that is structural.
+ *
+ * CJK differences are not branched here: they come from the resolved variables
+ * in tokens/typography.css, which the :lang() block swaps. */
+
+@layer ds-components{
+
+  /* ── PageShell ─────────────────────────────────────────────── */
+  .ds-shell{
+    margin:0 auto;
+    width:100%;
+    max-width:var(--page-max);
+    padding:var(--page-pad-y) var(--page-pad-x);
+  }
+  .ds-shell--wide{max-width:var(--page-max-wide)}
+
+  /* ── Prose ─────────────────────────────────────────────────
+     Latin justifies at 64ch; Chinese sets ragged-right at 38em / 1.8.
+     Justification is deliberately dropped for CJK: it stretches
+     inter-character spacing and breaks technical tokens. */
+  .ds-prose{
+    max-width:var(--prose-measure);
+    font-size:var(--prose-size);
+    line-height:var(--prose-leading);
+    text-align:var(--prose-align);
+    hyphens:var(--prose-hyphens);
+    color:var(--text-secondary);
+    display:flex;
+    flex-direction:column;
+    gap:var(--prose-gap);
+  }
+  .ds-prose--lede{font-size:var(--prose-size-lede)}
+  /* Technical prose in a narrow column is never justified: it pulls tokens
+     like |log2FC| > 1 apart. */
+  .ds-prose--technical{text-align:left;hyphens:manual}
+
+  /* ── Kicker ────────────────────────────────────────────────── */
+  .ds-kicker{
+    display:block;
+    font-family:var(--kicker-font);
+    font-size:var(--kicker-size);
+    letter-spacing:var(--kicker-tracking);
+    text-transform:var(--kicker-transform);
+    font-weight:var(--weight-medium);
+    color:var(--accent-700);
+  }
+  .ds-kicker--md{font-size:var(--kicker-size-md)}
+  .ds-kicker--neutral{color:var(--neutral-600)}
+  .ds-kicker--faint{color:var(--text-faint)}
+
+  /* ── Hairline: the system's only elevation device ──────────── */
+  .ds-rule{
+    height:1px;
+    border:0;
+    margin:var(--space-4) 0;
+    background:var(--rule-hairline);
+  }
+  .ds-rule--ink{background:var(--rule-ink);opacity:.85}
+  .ds-rule--row{background:var(--rule-row)}
+
+  /* ── Tag: square, mono, tiny. Never a pill. ────────────────── */
+  .ds-tag{
+    display:inline-block;
+    border-radius:0;
+    font-family:var(--font-mono);
+    font-size:var(--text-kicker-sm);
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    padding:2px 6px;
+    border:1px solid transparent;
+    background:var(--neutral-200);
+    color:var(--neutral-700);
+  }
+  .ds-tag--accent{background:var(--accent-100);color:var(--accent-800)}
+  .ds-tag--outline{background:transparent;color:var(--accent-600);border-color:var(--accent-600)}
+  /* brand is the retained lab blue, whitelisted for instrument and assay
+     classifications. */
+  .ds-tag--brand{background:var(--brand-200);color:var(--brand-800)}
+
+  /* ── InkPanel: the loudest element available. One per page. ── */
+  .ds-ink-panel{
+    border:var(--border-plate);
+    background:var(--white);
+    padding:var(--space-6);
+  }
+  .ds-ink-panel > .ds-kicker{margin-bottom:var(--space-3)}
+
+  /* ── PulseDot: the only motion besides hover colour ────────── */
+  .ds-pulse{display:inline-flex;align-items:center;gap:var(--space-2)}
+  .ds-pulse__dot{
+    width:7px;
+    height:7px;
+    border-radius:var(--radius-circle);
+    background:var(--accent-600);
+    animation:ds-pulse 1.4s ease-in-out infinite;
+    flex:none;
+  }
+  .ds-pulse__label{
+    font-family:var(--font-mono);
+    font-size:var(--text-kicker-sm);
+    letter-spacing:var(--tracking-kicker);
+    text-transform:uppercase;
+    color:var(--neutral-600);
+  }
+  @media (prefers-reduced-motion:reduce){
+    .ds-pulse__dot{animation:none;opacity:1}
+  }
+
+  /* ── SiteNav ───────────────────────────────────────────────── */
+  .ds-nav{
+    position:sticky;
+    top:0;
+    z-index:10;
+    background:color-mix(in srgb, var(--bg) 92%, transparent);
+    backdrop-filter:blur(var(--nav-blur));
+    border-bottom:var(--border-ink);
+    padding:var(--nav-pad-y) var(--nav-pad-x);
+    display:flex;
+    align-items:center;
+    gap:var(--space-6);
+  }
+  .ds-nav__brand{
+    display:flex;
+    align-items:center;
+    gap:var(--space-3);
+    flex:none;
+    color:var(--text);
+  }
+  .ds-nav__brand:hover{color:var(--text)}
+  /* The lockup is black on transparent and only ever sits on white or the
+     near-white page. Never on the accent. */
+  .ds-nav__logo{height:30px;width:auto;display:block}
+  .ds-nav__name{
+    font-size:20px;
+    font-weight:var(--weight-medium);
+    letter-spacing:var(--tracking-heading);
+    line-height:1.1;
+  }
+  .ds-nav__tagline{
+    font-family:var(--kicker-font);
+    font-size:var(--kicker-size);
+    text-transform:var(--kicker-transform);
+    letter-spacing:.18em;
+    color:var(--neutral-600);
+    margin-top:2px;
+  }
+  :root:lang(zh-Hant) .ds-nav__tagline,
+  :root:lang(zh) .ds-nav__tagline{letter-spacing:var(--tracking-kicker-cjk)}
+  .ds-nav__links{
+    display:flex;
+    gap:var(--space-4);
+    margin-left:auto;
+    align-items:center;
+    flex-wrap:wrap;
+  }
+  .ds-nav__link{
+    font-size:var(--font-size-body-lg);
+    color:var(--text-secondary);
+    padding-bottom:2px;
+    border-bottom:1px solid transparent;
+  }
+  .ds-nav__link:hover{color:var(--text-secondary);border-bottom-color:var(--accent-600)}
+  /* Active nav item is one of the six permitted uses of the accent. */
+  .ds-nav__link[aria-current="page"]{color:var(--accent-600);border-bottom-color:var(--accent-600)}
+
+  /* ── Masthead: opens every page ────────────────────────────── */
+  .ds-masthead__title{line-height:var(--heading-leading)}
+  .ds-masthead__title--hero{font-size:var(--text-h1-hero)}
+  .ds-masthead__subtitle{
+    font-family:var(--kicker-font);
+    font-size:var(--kicker-size-md);
+    text-transform:var(--kicker-transform);
+    letter-spacing:var(--kicker-tracking);
+    color:var(--neutral-600);
+    margin-top:var(--space-2);
+  }
+  .ds-masthead__lede{
+    margin-top:var(--space-4);
+    max-width:var(--prose-measure);
+    font-size:var(--text-lede);
+    line-height:var(--prose-leading);
+    text-align:var(--prose-align);
+    hyphens:var(--prose-hyphens);
+    color:var(--text-secondary);
+  }
+  .ds-masthead .ds-rule{margin:var(--space-2) 0 var(--space-4)}
+
+  /* ── Footer: a colophon, not columns of links ──────────────── */
+  .ds-footer{
+    border-top:var(--border-ink);
+    padding:var(--space-6) var(--nav-pad-x);
+  }
+  .ds-footer__lines{
+    margin-top:var(--space-3);
+    display:flex;
+    flex-direction:column;
+    gap:var(--space-1);
+  }
+  .ds-footer__line{
+    font-family:var(--font-mono);
+    font-size:var(--text-small);
+    color:var(--text-meta);
+    font-variant-numeric:tabular-nums;
+  }
+  .ds-footer__note{
+    margin-top:var(--space-3);
+    font-size:var(--text-small);
+    color:var(--text-faint);
+  }
+
+  /* ── Ledger: the replacement for cards. No fill, ever. ─────── */
+  .ds-ledger{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(var(--grid-min-ledger),1fr));
+    border-top:var(--border-hairline);
+  }
+  .ds-ledger--wide{
+    grid-template-columns:repeat(auto-fit,minmax(var(--grid-min-wide),1fr));
+  }
+  .ds-ledger-item{
+    border-bottom:var(--border-hairline);
+    padding:var(--space-4) var(--space-6) var(--space-4) 0;
+    display:flex;
+    flex-direction:column;
+    gap:var(--space-2);
+  }
+  .ds-ledger-item__title{
+    font-size:var(--text-h4);
+    line-height:var(--heading-leading-item);
+  }
+  .ds-ledger-item__body{
+    font-size:var(--prose-size);
+    line-height:var(--prose-leading);
+    color:var(--text-secondary);
+  }
+  .ds-ledger-item__figure{
+    display:block;
+    width:100%;
+    height:auto;
+    border:var(--border-hairline);
+    margin-top:var(--space-1);
+  }
+  .ds-ledger-item__tags{display:flex;gap:var(--space-1);flex-wrap:wrap}
+  .ds-ledger-item__meta{
+    font-family:var(--font-mono);
+    font-size:var(--text-kicker);
+    color:var(--text-meta);
+    font-variant-numeric:tabular-nums;
+    overflow-wrap:anywhere;
+  }
+  .ds-ledger-item__link{
+    font-size:var(--text-small);
+    color:var(--accent-600);
+    margin-top:auto;
+    padding-top:var(--space-2);
+  }
+  .ds-ledger-item__link:hover{color:var(--accent-800)}
+
+  /* ── DataTable ─────────────────────────────────────────────
+     A wide table scrolls inside its own box; the page never scrolls
+     sideways. The handoff flags wide tables as unresolved below 768px, and
+     this is the minimum honest answer. */
+  .ds-table-wrap{overflow-x:auto}
+  .ds-table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:var(--text-lede);
+    font-variant-numeric:tabular-nums;
+  }
+  .ds-table th{
+    font-family:var(--font-mono);
+    font-size:var(--text-kicker-sm);
+    letter-spacing:var(--tracking-table-head);
+    text-transform:uppercase;
+    text-align:left;
+    padding:var(--space-2);
+    /* An ink rule under the head marks a section boundary. */
+    border-bottom:var(--border-ink);
+    color:var(--text);
+    font-weight:var(--weight-medium);
+    white-space:nowrap;
+  }
+  .ds-table td{
+    font-size:var(--text-table);
+    padding:var(--space-2);
+    border-bottom:var(--border-row);
+    vertical-align:top;
+    color:var(--text-secondary);
+  }
+  /* Row hover is the entire interaction. */
+  .ds-table tbody tr:hover{background:var(--neutral-100)}
+  .ds-table .ds-num{font-family:var(--font-mono);font-variant-numeric:tabular-nums}
+  .ds-table .ds-mono-sm{font-family:var(--font-mono);font-size:var(--text-small)}
+
+  /* ── ColophonTable ─────────────────────────────────────────── */
+  .ds-colophon{
+    width:100%;
+    border-collapse:collapse;
+    font-variant-numeric:tabular-nums;
+  }
+  .ds-colophon th{
+    width:34%;
+    vertical-align:top;
+    text-align:left;
+    font-family:var(--font-mono);
+    font-size:var(--text-kicker-sm);
+    letter-spacing:var(--tracking-table-head);
+    text-transform:uppercase;
+    padding:var(--space-2);
+    border-bottom:var(--border-row);
+    color:var(--neutral-600);
+    font-weight:var(--weight-medium);
+  }
+  .ds-colophon td{
+    font-size:var(--text-table);
+    padding:var(--space-2);
+    border-bottom:var(--border-row);
+    color:var(--text-secondary);
+    vertical-align:top;
+  }
+
+  /* ── Figure plate ─────────────────────────────────────────
+     Scientific figures always sit on a white plate inside a 1px hairline,
+     with a mono caption. Nothing bleeds off the page. */
+  .ds-plate{
+    background:var(--white);
+    border:var(--border-hairline);
+    padding:var(--space-2);
+  }
+  .ds-plate img{display:block;width:100%;height:auto}
+  .ds-plate__caption{margin-top:var(--space-2)}
+
+  /* ── Button ────────────────────────────────────────────────── */
+  .ds-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    border-radius:0;
+    border:1px solid transparent;
+    font-size:var(--text-small);
+    font-weight:var(--weight-medium);
+    line-height:var(--leading-tight);
+    padding:var(--btn-pad-y) var(--btn-pad-x);
+    white-space:nowrap;
+    cursor:pointer;
+  }
+  /* Primary fill is a permitted use of the accent. */
+  .ds-btn--primary{background:var(--accent-600);color:var(--text-on-accent)}
+  .ds-btn--primary:hover{background:var(--accent-700);color:var(--text-on-accent)}
+  .ds-btn--primary:active{background:var(--accent-800)}
+  .ds-btn--secondary{background:var(--surface);border-color:var(--divider);color:var(--text)}
+  .ds-btn--secondary:hover{background:color-mix(in srgb, var(--text) 7%, transparent);color:var(--text)}
+  .ds-btn--ghost{background:transparent;border-color:transparent;color:var(--accent-600);padding:var(--btn-pad-y) var(--space-1)}
+  .ds-btn--ghost:hover{background:color-mix(in srgb, var(--accent) 10%, transparent)}
+
+  /* ── Input ─────────────────────────────────────────────────
+     Never larger than its own label, per the design system. */
+  .ds-field{display:flex;flex-direction:column;gap:var(--space-2)}
+  .ds-field__label{font-size:var(--text-small);color:var(--neutral-700)}
+  .ds-input{
+    width:100%;
+    min-height:36px;
+    border-radius:0;
+    border:1px solid var(--divider);
+    background:var(--white);
+    padding:0 var(--space-2);
+    font-size:var(--font-size-body);
+    color:var(--text);
+    caret-color:var(--accent-600);
+  }
+  .ds-input:hover{border-color:color-mix(in srgb, var(--text) 45%, transparent)}
+  .ds-input:focus{border-color:var(--accent-600)}
+  .ds-filter{display:flex;gap:var(--space-2);align-items:flex-end;flex-wrap:wrap}
+  .ds-empty{font-size:var(--text-small);color:var(--text-faint)}
+
+  /* ── Shared utilities ──────────────────────────────────────── */
+  /* Numbers, identifiers and filenames stay mono in both locales. */
+  .ds-mono{font-family:var(--font-mono);font-variant-numeric:tabular-nums}
+  .ds-meta{
+    font-family:var(--font-mono);
+    font-size:var(--text-kicker);
+    color:var(--text-meta);
+    font-variant-numeric:tabular-nums;
+  }
+  /* Every "read on" affordance is a text link ending in an arrow. */
+  .ds-link{font-size:var(--text-small);color:var(--accent-600)}
+  .ds-link:hover{color:var(--accent-800)}
+
+  .ds-section{margin-top:var(--space-8)}
+  .ds-section > .ds-kicker{margin-bottom:var(--space-3)}
+  /* Top-aligned: a figure plate beside a text column must not stretch to the
+     column's height, or the plate fills with empty white below the image. */
+  .ds-row{display:flex;gap:var(--space-6);flex-wrap:wrap;align-items:flex-start}
+  .ds-col{flex:1 1 var(--grid-min-wide);min-width:min(100%,var(--grid-min-wide))}
+  .ds-col--narrow{flex:1 1 320px;min-width:min(100%,320px)}
+
+  .ds-skip{position:absolute;left:-9999px}
+  .ds-skip:focus{
+    left:var(--space-3);
+    top:var(--space-3);
+    z-index:20;
+    background:var(--white);
+    padding:var(--space-2) var(--space-3);
+    border:var(--border-ink);
+  }
+
+  .ds-list{
+    list-style:none;
+    padding:0;
+    display:flex;
+    flex-direction:column;
+    gap:var(--space-2);
+    font-size:var(--prose-size);
+    line-height:var(--prose-leading);
+    color:var(--text-secondary);
+    max-width:var(--prose-measure);
+  }
+  .ds-list--bullet{list-style:disc;padding-left:var(--space-4)}
+}

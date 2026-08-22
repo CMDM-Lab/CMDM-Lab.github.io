@@ -1,0 +1,64 @@
+/* Base layer, from the design system's tokens/base.css.
+ *
+ * Every rule is inside @layer. That is structural, not stylistic: CSS cascade
+ * layers make an unlayered declaration beat every layered one regardless of
+ * specificity, and the design system records a bare unlayered `a { color }`
+ * once overriding .btn-primary and making a button's text match its own fill.
+ * tests/design-adherence.test.mjs fails on any unlayered rule in this
+ * stylesheet. */
+
+@layer ds-base{
+  :root{color-scheme:light}
+
+  *{box-sizing:border-box}
+
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--font-sans);
+    font-size:var(--font-size-body);
+    line-height:var(--leading-body);
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3,h4{
+    font-weight:var(--weight-medium);
+    letter-spacing:var(--tracking-heading);
+    margin:0;
+  }
+  h1{font-size:var(--text-h1)}
+  h2{font-size:var(--text-h2)}
+  h3{font-size:var(--text-h3)}
+  h4{font-size:var(--text-h4)}
+
+  p{margin:0}
+  ul,ol{margin:0}
+
+  a{color:var(--text-link);text-decoration:none}
+  a:hover{color:var(--text-link-hover)}
+
+  figure{margin:0}
+  figcaption{
+    font-family:var(--font-mono);
+    font-size:var(--text-kicker);
+    color:var(--neutral-600);
+  }
+
+  img{max-width:100%;height:auto}
+
+  button,input,select,textarea{font-family:inherit}
+
+  :focus{outline:none}
+  :focus-visible{outline:var(--focus-outline);outline-offset:var(--focus-offset)}
+
+  ::selection{background:color-mix(in srgb, var(--accent) 30%, transparent)}
+
+  table{border-collapse:collapse}
+
+  /* The only animation in the system. */
+  @keyframes ds-pulse{
+    0%,100%{opacity:.25;transform:scale(.8)}
+    50%{opacity:1;transform:scale(1.25)}
+  }
+}

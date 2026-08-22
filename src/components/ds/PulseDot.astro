@@ -1,0 +1,10 @@
+---
+// The one piece of motion in the system, besides hover colour changes.
+// Honours prefers-reduced-motion via CSS.
+interface Props { label?: string }
+const { label } = Astro.props;
+---
+<span class="ds-pulse">
+  <span class="ds-pulse__dot" aria-hidden="true"></span>
+  {label && <span class="ds-pulse__label">{label}</span>}
+</span>

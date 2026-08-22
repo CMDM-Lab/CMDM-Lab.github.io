@@ -1,0 +1,19 @@
+:root{
+  /* Flat by design. Every radius is 0; the only circles are real circles
+     (score dots, pulse dots) which set border-radius:50% locally. */
+  --radius-sm:0;
+  --radius-md:0;
+  --radius-lg:0;
+  --radius-circle:50%;
+
+  --border-hairline:1px solid var(--rule-hairline);
+  --border-ink:1px solid var(--rule-ink);
+  --border-row:1px solid var(--rule-row);
+  --border-plate:2px solid var(--rule-ink);   /* the ink-framed emphasis block */
+
+  /* No elevation. Layering is done with 1px rules, full stop. */
+  --shadow-none:none;
+
+  --focus-outline:2px solid var(--focus-ring);
+  --focus-offset:2px;
+}

@@ -1,40 +1,65 @@
 ---
-// Research page body, shared by both locales.
+// Research page, shared by both locales.
+//
+// Two sections: the research pillars as a Ledger, then representative papers as
+// a wide Ledger. Figures sit on a hairline plate, per the design system's rule
+// that scientific figures never bleed and always carry a mono caption.
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Hairline from './ds/Hairline.astro';
+import Kicker from './ds/Kicker.astro';
+import Ledger from './ds/Ledger.astro';
+import LedgerItem from './ds/LedgerItem.astro';
 import {
   getResearchAreas, getResearchHighlights, getStrings, type Locale,
 } from '../lib/data';
+import { pathFor } from '../lib/routes';
 
 interface Props { locale: Locale }
 const { locale } = Astro.props;
 const t = getStrings(locale);
 const areas = getResearchAreas(locale);
 const highlights = getResearchHighlights();
+
+const NUMERALS = ['I', 'II', 'III', 'IV', 'V', 'VI'];
 ---
 
 <BaseLayout locale={locale} slug="research">
-  <h1>{t.research_title}</h1>
+  <div class="ds-masthead">
+    <Kicker size="md">{t.research_kicker}</Kicker>
+    <Hairline tone="ink" />
+    <h1 class="ds-masthead__title">{t.research_title}</h1>
+    <div class="ds-masthead__subtitle">{t.research_subtitle}</div>
+    <p class="ds-masthead__lede">{t.research_lede}</p>
+  </div>
 
-  <section aria-labelledby="areas">
-    <h2 id="areas">{t.section_research_areas}</h2>
-    {areas.map((area) => (
-      <div class="research-area">
-        <h3>{area.group}</h3>
-        <ul>{area.items.map((item) => <li>{item}</li>)}</ul>
-      </div>
-    ))}
+  <section class="ds-section" aria-labelledby="areas">
+    <Kicker size="md" as="h2" id="areas">{t.section_research_areas}</Kicker>
+    <Ledger width="wide">
+      {areas.map((area, i) => (
+        <LedgerItem index={NUMERALS[i]} title={area.group} as="h3">
+          <ul class="ds-list ds-list--bullet">
+            {area.items.map((item) => <li>{item}</li>)}
+          </ul>
+        </LedgerItem>
+      ))}
+    </Ledger>
   </section>
 
-  <section aria-labelledby="highlights">
-    <h2 id="highlights">{t.section_journal_papers}</h2>
-    {highlights.map((highlight) => (
-      <article class="research-highlight">
-        <h3>{highlight.title}</h3>
-        {highlight.excerpt && <p>{highlight.excerpt}</p>}
-        {highlight.image && (
-          <img src={highlight.image} alt={highlight.title} loading="lazy" />
-        )}
-      </article>
-    ))}
+  <section class="ds-section" aria-labelledby="papers">
+    <Kicker size="md" as="h2" id="papers">{t.section_papers}</Kicker>
+    <Ledger width="wide">
+      {highlights.map((highlight, i) => (
+        <LedgerItem
+          index={NUMERALS[i]}
+          title={highlight.title}
+          body={highlight.excerpt}
+          imageSrc={highlight.image}
+          as="h3"
+        />
+      ))}
+    </Ledger>
+    <p style="margin-top:var(--space-3)">
+      <a class="ds-link" href={pathFor('publications', locale)}>{t.nav_publications} &rarr;</a>
+    </p>
   </section>
 </BaseLayout>

@@ -1,0 +1,59 @@
+---
+// One row of a Ledger. Element order is fixed by the design system:
+// mono index → title → figure → body → tags → mono meta → link.
+//
+// The link always ends in an arrow. That is the system's only "read on"
+// affordance -- no buttons in a list, no verb phrases, nothing that says
+// "click here". Keeping the arrow inside this component is why it is a
+// component: the rule cannot drift entry by entry.
+import Kicker from './Kicker.astro';
+
+interface Props {
+  /** Mono accent index, e.g. a roman numeral. */
+  index?: string;
+  title: string;
+  /** Rendered as a paragraph; use the default slot for richer bodies. */
+  body?: string;
+  /** Mono meta line: journal, year, identifier, host. */
+  meta?: string;
+  href?: string;
+  /** Label before the arrow, e.g. "Publisher", "Open". */
+  linkLabel?: string;
+  imageSrc?: string;
+  imageAlt?: string;
+  /** Heading level, so a page keeps one h1 and a sane outline. */
+  as?: 'h3' | 'h4';
+}
+const {
+  index, title, body, meta, href, linkLabel, imageSrc, imageAlt = '', as = 'h4',
+} = Astro.props;
+const Heading = as;
+const external = href ? /^https?:/.test(href) : false;
+---
+
+<article class="ds-ledger-item">
+  {index && <Kicker>{index}</Kicker>}
+  <Heading class="ds-ledger-item__title">{title}</Heading>
+
+  {imageSrc && (
+    <img class="ds-ledger-item__figure" src={imageSrc} alt={imageAlt} loading="lazy" decoding="async" />
+  )}
+
+  {body && <p class="ds-ledger-item__body">{body}</p>}
+  <slot />
+
+  {Astro.slots.has('tags') && (
+    <div class="ds-ledger-item__tags"><slot name="tags" /></div>
+  )}
+
+  {meta && <div class="ds-ledger-item__meta">{meta}</div>}
+  <slot name="meta" />
+
+  {href && (
+    <a
+      class="ds-ledger-item__link"
+      href={href}
+      {...external ? { target: '_blank', rel: 'noreferrer' } : {}}
+    >{linkLabel} &rarr;</a>
+  )}
+</article>

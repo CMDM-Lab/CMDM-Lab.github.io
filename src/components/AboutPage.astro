@@ -1,10 +1,14 @@
 ---
-// About page body, shared by both locales.
+// About page, shared by both locales.
 //
-// The Chinese locale currently renders the English prose -- see the translation
-// gap note in data/pages.yml. That is a content gap for the lab to fill, not
-// something to paper over with a machine translation.
+// The Chinese locale currently renders the English prose: the old site had a
+// `_zh` variant whose body was English, and no Chinese version exists anywhere
+// in the repository. See the translation-gap note in data/pages.yml. Machine
+// translating the lab's own account of its research would put words in its
+// mouth, so the gap is left visible instead.
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Hairline from './ds/Hairline.astro';
+import Kicker from './ds/Kicker.astro';
 import { getAboutParagraphs, getStrings, type Locale } from '../lib/data';
 
 interface Props { locale: Locale }
@@ -14,8 +18,17 @@ const paragraphs = getAboutParagraphs(locale);
 ---
 
 <BaseLayout locale={locale} slug="about">
-  <h1>{t.about_title}</h1>
-  <div class="prose">
-    {paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+  <div class="ds-masthead">
+    <Kicker size="md">{t.about_kicker}</Kicker>
+    <Hairline tone="ink" />
+    <h1 class="ds-masthead__title">{t.about_title}</h1>
+    <div class="ds-masthead__subtitle">{t.about_subtitle}</div>
+    <p class="ds-masthead__lede">{t.about_lede}</p>
+  </div>
+
+  <div class="ds-section">
+    <div class="ds-prose">
+      {paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+    </div>
   </div>
 </BaseLayout>

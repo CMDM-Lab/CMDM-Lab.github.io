@@ -1,0 +1,65 @@
+:root{
+  /* ── Semantic surfaces & ink ─────────────────────────────── */
+  --bg:#f7f7f5;         /* page */
+  --surface:#eeeeec;    /* secondary button fill, embedded panels */
+  --text:#16181a;       /* body ink and hard rules */
+  --accent:#8c1d2f;     /* the single signal colour — see whitelist in readme */
+  --divider:#d8dad6;    /* hairlines, input borders */
+  --white:#ffffff;
+
+  /* ── Accent ramp (dark red) ──────────────────────────────── */
+  --accent-100:#f6e8ea;
+  --accent-200:#eccfd3;
+  --accent-300:#dba7ae;
+  --accent-400:#c47c86;
+  --accent-500:#a8404f;
+  --accent-600:#8c1d2f;
+  --accent-700:#7a1926;
+  --accent-800:#5e1420;
+  --accent-900:#3f0d16;
+
+  /* ── Neutral ramp (warm grey) ────────────────────────────── */
+  --neutral-100:#f2f2f0;
+  --neutral-200:#e6e7e4;
+  --neutral-300:#d8dad6;
+  --neutral-400:#b9bdb8;
+  --neutral-500:#8b9199;
+  --neutral-600:#6b7280;
+  --neutral-700:#3f4a56;
+  --neutral-800:#2a3038;
+  --neutral-900:#16181a;
+
+  /* ── Brand ramp (the lab's retained logo blue, #B4D6E0) ──── */
+  /* Narrow whitelist: the logo lockup itself, data-viz series fills,
+     the masthead brand rule, and figure/spectrum plates. Never a
+     large page wash, never a button fill, never body text. */
+  --brand:#B4D6E0;
+  --brand-100:#f1f8fa;
+  --brand-200:#ddedf2;
+  --brand-300:#B4D6E0;
+  --brand-400:#8ab9c8;
+  --brand-500:#5e94a6;
+  --brand-600:#3d6f80;
+  --brand-700:#2b5361;
+  --brand-800:#1e3d47;
+
+  /* ── Semantic aliases ────────────────────────────────────── */
+  --surface-page:var(--bg);
+  --surface-panel:var(--surface);
+  --surface-plate:var(--white);
+  --surface-notice:var(--accent-100);   /* the only tinted surface allowed */
+
+  --text-body:var(--text);
+  --text-secondary:color-mix(in srgb, var(--text) 78%, transparent);
+  --text-meta:color-mix(in srgb, var(--text) 54%, transparent);
+  --text-faint:color-mix(in srgb, var(--text) 50%, transparent);
+  --text-idle:color-mix(in srgb, var(--text) 35%, transparent);
+  --text-on-accent:var(--white);
+  --text-link:var(--accent-600);
+  --text-link-hover:var(--accent-800);
+
+  --rule-hairline:var(--divider);
+  --rule-ink:var(--text);
+  --rule-row:var(--neutral-200);
+  --focus-ring:var(--accent-600);
+}

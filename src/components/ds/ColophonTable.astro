@@ -1,0 +1,20 @@
+---
+// Label/value spec table: 34% mono label column, value column.
+// Right for facts, contact details, provenance -- anything that reads as a
+// specification rather than a dataset.
+interface Props {
+  entries: Array<{ label: string; value: string; href?: string }>;
+  class?: string;
+}
+const { entries, class: klass = '' } = Astro.props;
+---
+<table class={['ds-colophon', klass].filter(Boolean).join(' ')}>
+  <tbody>
+    {entries.filter((e) => e.value).map((entry) => (
+      <tr>
+        <th scope="row">{entry.label}</th>
+        <td>{entry.href ? <a href={entry.href}>{entry.value}</a> : entry.value}</td>
+      </tr>
+    ))}
+  </tbody>
+</table>

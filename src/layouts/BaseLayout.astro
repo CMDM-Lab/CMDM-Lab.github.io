@@ -1,20 +1,24 @@
 ---
-// The single page shell. Everything a crawler needs is emitted here, statically.
+// The single page shell, in the lab's "Clinical Instrument" design system.
 //
-// What the previous site got wrong, and what this fixes:
+// Two jobs, kept apart deliberately:
 //
-//   * All eight pages shared one <title> and an empty description, because all
-//     eight were the same URL with a different query string. Each page now has
-//     its own URL, title and description.
-//   * Chinese pages declared `lang="en"`. The lang attribute now follows the
-//     locale, and the two locales point at each other with hreflang so they are
-//     treated as translations rather than duplicates.
-//   * There was no canonical link, no Open Graph data and no structured data at
-//     all. All three are emitted below.
+// 1. SEO. Everything a crawler needs is emitted statically. The site this
+//    replaced served all eight of its pages from one URL behind jQuery
+//    `.load()` calls, so a crawler fetching any of them received 2.6 KB of
+//    routing script and no content, under one shared title with an empty
+//    description. Each page now has its own URL, title, description, canonical
+//    link, hreflang pair and structured data.
 //
-// No client-side JavaScript is required to render any content. The only script
-// on the page is the legacy-URL shim on the home page, which is inert for
-// visitors arriving at a normal URL.
+// 2. Chrome. A sticky nav with the lab's logo lockup and a colophon footer,
+//    both per the design system. No client-side JavaScript is needed to render
+//    any of it; the only script on the site is the legacy-URL shim on the home
+//    page, inert for anyone arriving at a current URL.
+//
+// CJK typography is not branched here. The `lang` attribute drives it: the
+// :lang() block in styles/tokens/typography.css swaps the resolved measure,
+// size, leading, alignment and kicker treatment for Chinese.
+import '../styles/site.css';
 import { getStrings, type Locale } from '../lib/data';
 import { ROUTES, langTag, otherLocale, pathFor } from '../lib/routes';
 
@@ -24,11 +28,15 @@ interface Props {
   /** Overrides the i18n title for this route; used by detail pages. */
   title?: string;
   description?: string;
-  /** JSON-LD objects to emit in addition to the site-wide Organization node. */
+  /** JSON-LD nodes to add to the site-wide Organization node. */
   structuredData?: Record<string, unknown>[];
+  /** Page container width. The design system's screens all run wide. */
+  width?: 'default' | 'wide';
 }
 
-const { locale, slug, title, description, structuredData = [] } = Astro.props;
+const {
+  locale, slug, title, description, structuredData = [], width = 'wide',
+} = Astro.props;
 
 const t = getStrings(locale);
 const route = ROUTES.find((entry) => entry.slug === slug);
@@ -37,7 +45,7 @@ const pageTitle = title ?? t[route?.titleKey ?? 'home_title'] ?? t.lab_name;
 const pageDescription = description ?? t[route?.descriptionKey ?? 'home_description'] ?? '';
 
 // A distinct <title> per page, with the lab name appended everywhere except the
-// home page (where it would read as a duplicate).
+// home page, where it would read as a duplicate.
 const documentTitle = slug === ''
   ? `${pageTitle} | ${t.university}`
   : `${pageTitle} | ${t.lab_name_short} · ${t.university}`;
@@ -48,14 +56,14 @@ const alternates: Array<{ hreflang: string; href: string }> = [
   { hreflang: langTag('zh-Hant'), href: new URL(pathFor(slug, 'zh-Hant'), site).href },
   { hreflang: langTag('en'), href: new URL(pathFor(slug, 'en'), site).href },
   // Chinese is the primary language, so it is also the fallback for locales
-  // that match neither tag.
+  // matching neither tag.
   { hreflang: 'x-default', href: new URL(pathFor(slug, 'zh-Hant'), site).href },
 ];
 
 const ogImage = new URL('/img/logo_big2.png', site).href;
 
-// Site-wide identity. `ResearchOrganization` is the specific type for a lab, and
-// naming the parent university plus the ORCID of the PI gives search engines
+// Site-wide identity. `ResearchOrganization` is the specific type for a lab;
+// naming the parent university and the PI's ORCID gives search engines
 // something to reconcile against ORCID and Crossref records.
 const organization = {
   '@type': 'ResearchOrganization',
@@ -82,12 +90,9 @@ const organization = {
   },
 };
 
-const navRoutes = ROUTES.filter((entry) => entry.inNav);
-const other = otherLocale(locale);
-
-// One `@graph` rather than one script tag per node. The publications page emits
-// 112 ScholarlyArticle nodes; repeating `@context` in each would have made
-// structured data half the weight of the page for no semantic gain.
+// One `@graph` rather than a script tag per node. The publications page emits
+// 117 ScholarlyArticle nodes; repeating `@context` in each made structured data
+// half the weight of the page for no semantic gain.
 const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -95,6 +100,10 @@ const jsonLd = {
     ...structuredData.map(({ '@context': _context, ...node }) => node),
   ],
 };
+
+const navRoutes = ROUTES.filter((entry) => entry.inNav);
+const other = otherLocale(locale);
+const year = new Date().getFullYear();
 ---
 
 <html lang={langTag(locale)}>
@@ -125,49 +134,52 @@ const jsonLd = {
     <link rel="sitemap" href="/sitemap-index.xml" />
 
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
-
-    <link rel="stylesheet" href="/styles/site.css" />
   </head>
 
   <body>
-    <a class="skip-link" href="#main">{t.label_skip_to_content}</a>
+    <a class="ds-skip" href="#main">{t.label_skip_to_content}</a>
 
-    <header class="site-header">
-      <div class="wrap header-inner">
-        <a class="brand" href={pathFor('', locale)}>
-          <img src="/img/banner.png" alt={t.lab_name} height="48" />
-        </a>
-        <nav class="site-nav" aria-label={t.nav_home}>
-          <ul>
-            {navRoutes.map((entry) => (
-              <li>
-                <a
-                  href={pathFor(entry.slug, locale)}
-                  aria-current={entry.slug === slug ? 'page' : undefined}
-                >{t[entry.navKey]}</a>
-              </li>
-            ))}
-            <li class="nav-lang">
-              {/* A real link, not a JS handler: the old site swapped languages
-                  with an onclick that rewrote location.href, which left the
-                  translated page uncrawlable. */}
-              <a href={pathFor(slug, other)} hreflang={langTag(other)} rel="alternate">
-                {t.nav_language}
-              </a>
-            </li>
-          </ul>
-        </nav>
+    <nav class="ds-nav" aria-label={t.nav_label}>
+      <a class="ds-nav__brand" href={pathFor('', locale)}>
+        {/* The lockup is black on transparent and only ever sits on the
+            near-white page -- never on the accent red. */}
+        <img class="ds-nav__logo" src="/img/logo.png" alt="" width="75" height="30" />
+        <span>
+          <span class="ds-nav__name">{t.lab_name_short}</span>
+          <span class="ds-nav__tagline">{t.tagline}</span>
+        </span>
+      </a>
+
+      <div class="ds-nav__links">
+        {navRoutes.map((entry) => (
+          <a
+            class="ds-nav__link"
+            href={pathFor(entry.slug, locale)}
+            aria-current={entry.slug === slug ? 'page' : undefined}
+          >{t[entry.navKey]}</a>
+        ))}
+        {/* A real link, not a JS handler. The old site swapped languages with
+            an onclick that rewrote location.href, which left every translated
+            page uncrawlable. */}
+        <a
+          class="ds-nav__link"
+          href={pathFor(slug, other)}
+          hreflang={langTag(other)}
+          rel="alternate"
+        >{t.nav_language}</a>
       </div>
-    </header>
+    </nav>
 
-    <main id="main" class="wrap">
+    <main id="main" class={width === 'wide' ? 'ds-shell ds-shell--wide' : 'ds-shell'}>
       <slot />
     </main>
 
-    <footer class="site-footer">
-      <div class="wrap">
-        <p>{t.footer_address} &nbsp; {t.footer_phone}</p>
-        <p>&copy; 2006&ndash;{new Date().getFullYear()} {t.footer_copyright}</p>
+    <footer class="ds-footer">
+      <div class="ds-kicker ds-kicker--neutral">{t.footer_label}</div>
+      <div class="ds-footer__lines">
+        <div class="ds-footer__line">{t.footer_address}</div>
+        <div class="ds-footer__line">{t.footer_phone} · {t.footer_office}</div>
+        <div class="ds-footer__line">&copy; 2006&ndash;{year} {t.footer_copyright}</div>
       </div>
     </footer>
   </body>

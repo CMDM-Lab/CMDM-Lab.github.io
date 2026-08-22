@@ -1,0 +1,23 @@
+/* Stylesheet entry point for the "Clinical Instrument" design system.
+ *
+ * The design bundle's own styles.css @imports seven token files and says to
+ * link that one file. Here the imports are resolved at build time instead:
+ * BaseLayout imports this file, Astro bundles and hashes it, and the page gets
+ * one request. Seven runtime @imports would be a render-blocking chain.
+ *
+ * File order matters. Tokens define the custom properties that the component
+ * layer reads, and base.css establishes the ds-base cascade layer that
+ * ds-components must be able to override. */
+
+@import './tokens/fonts.css';
+@import './tokens/colors.css';
+@import './tokens/typography.css';
+@import './tokens/spacing.css';
+@import './tokens/borders.css';
+@import './tokens/layout.css';
+@import './tokens/base.css';
+@import './components.css';
+
+/* Layer order, declared explicitly rather than left to source order. Component
+ * styles must win over base element defaults. */
+@layer ds-base, ds-components;

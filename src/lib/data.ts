@@ -23,6 +23,29 @@ function loadYaml<T>(file: string, fallback: T): T {
 
 export type Locale = 'zh-Hant' | 'en';
 
+/**
+ * A value that may be written once for both locales, or split per locale.
+ *
+ * Content migrated from the old site is Chinese-only, so a plain string has to
+ * keep working; new entries are written as `{zh, en}` pairs. This mirrors the
+ * design system's own `L(value, locale)` helper.
+ */
+export type Localized<T> = T | { zh?: T; en?: T };
+
+/**
+ * Resolve a possibly-localized value.
+ *
+ * Chinese is the fallback rather than English, because the untranslated content
+ * on this site is Chinese: falling back the other way would render empty.
+ */
+export function pickLocale<T>(value: Localized<T> | undefined, locale: Locale): T | undefined {
+  if (value === null || value === undefined) return undefined;
+  if (typeof value !== 'object' || Array.isArray(value)) return value as T;
+  const pair = value as { zh?: T; en?: T };
+  if (!('zh' in pair) && !('en' in pair)) return value as T;
+  return (locale === 'en' ? pair.en ?? pair.zh : pair.zh ?? pair.en);
+}
+
 // ---------------------------------------------------------------------------
 // Members
 // ---------------------------------------------------------------------------
@@ -197,19 +220,38 @@ export interface NewsItem { text: string; year?: number; links?: LinkRef[] }
 export interface Achievement { citation: string; links?: LinkRef[] }
 export interface Service { name: string; description?: string; image?: string; links?: LinkRef[] }
 
+/**
+ * Display form for an email address: `yjtseng[at]csie.ntu.edu.tw`.
+ *
+ * The lab's own anti-scraping convention, carried over from the old site and
+ * kept by the design system. The `mailto:` href still uses the real address --
+ * obfuscating the visible text is the point, breaking the link is not.
+ */
+export function obfuscateEmail(email: string | undefined): string {
+  return (email ?? '').replace('@', '[at]');
+}
+
 export function getNews(): NewsItem[] {
   return loadYaml<{ news?: NewsItem[] }>('news.yml', {}).news ?? [];
 }
 
-export function getHonors(): { achievements: Achievement[]; award_highlights: string[] } {
-  const parsed = loadYaml<{ achievements?: Achievement[]; award_highlights?: string[] }>(
-    'honors.yml',
-    {},
-  );
-  return {
-    achievements: parsed.achievements ?? [],
-    award_highlights: parsed.award_highlights ?? [],
-  };
+interface RawAchievement { citation?: Localized<string>; links?: LinkRef[] }
+
+/**
+ * Awards, resolved for one locale, newest first as stored.
+ *
+ * One list. The old site kept a second, overlapping "highlights" list for its
+ * home page, and carrying both over printed the same award twice on the
+ * honours page. Callers that want a teaser take a slice.
+ */
+export function getHonors(locale: Locale): Achievement[] {
+  const parsed = loadYaml<{ achievements?: RawAchievement[] }>('honors.yml', {});
+  return (parsed.achievements ?? [])
+    .map((entry) => ({
+      citation: pickLocale(entry.citation, locale) ?? '',
+      ...(entry.links ? { links: entry.links } : {}),
+    }))
+    .filter((entry) => entry.citation);
 }
 
 export function getServices(): Service[] {
@@ -242,6 +284,7 @@ interface PagesFile {
   research_highlights?: ResearchHighlight[];
   courses?: { zh?: string[]; en?: string[] };
   home_intro?: { zh?: string; en?: string };
+  home_record?: { zh?: string[]; en?: string[] };
   home_video?: string;
   professor?: ProfessorProfile;
 }
@@ -295,6 +338,18 @@ export function getHomeIntro(locale: Locale): string {
 
 export function getHomeVideo(): string {
   return pages().home_video ?? '';
+}
+
+/**
+ * The home page's lab-record paragraphs.
+ *
+ * These exist in both locales because the design bundle supplied both. The
+ * longer About text does not, which is why that page still falls back to
+ * English -- see getAboutParagraphs.
+ */
+export function getHomeRecord(locale: Locale): string[] {
+  const record = pages().home_record ?? {};
+  return (locale === 'en' ? record.en : record.zh) ?? record.en ?? [];
 }
 
 /**

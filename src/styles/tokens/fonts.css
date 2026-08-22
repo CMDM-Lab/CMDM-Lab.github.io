@@ -1,0 +1,9 @@
+/* IBM Plex Sans / IBM Plex Mono / Noto Sans TC — the Clinical Instrument stack.
+   Loaded from Google Fonts. If the lab needs self-hosted or intranet delivery,
+   swap these for local files but keep the three family names unchanged. */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Noto+Sans+TC:wght@400;500&display=swap');
+
+:root{
+  --font-sans:'IBM Plex Sans','Noto Sans TC',sans-serif;
+  --font-mono:'IBM Plex Mono','Noto Sans TC',monospace;
+}

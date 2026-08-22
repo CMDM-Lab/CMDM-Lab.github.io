@@ -1,0 +1,22 @@
+---
+// Mono uppercase micro-label. The system's only decorative type device.
+// Under a zh-Hant document root the CSS switches it to 12px sans with no case
+// change -- uppercase does nothing to Chinese and 0.14em tracking only pulls
+// the glyphs apart.
+interface Props {
+  size?: 'sm' | 'md';
+  tone?: 'accent' | 'neutral' | 'faint';
+  as?: 'span' | 'div' | 'p' | 'h2';
+  class?: string;
+  id?: string;
+}
+const { size = 'sm', tone = 'accent', as = 'div', class: klass = '', id } = Astro.props;
+const Tag = as;
+const classes = [
+  'ds-kicker',
+  size === 'md' && 'ds-kicker--md',
+  tone !== 'accent' && `ds-kicker--${tone}`,
+  klass,
+].filter(Boolean).join(' ');
+---
+<Tag class={classes} id={id}><slot /></Tag>

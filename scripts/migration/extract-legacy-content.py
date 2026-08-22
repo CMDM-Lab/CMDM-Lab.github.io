@@ -13,7 +13,8 @@ pages, so migrating them by hand risks losing entries. Hence a script with
 counts rather than copy-paste.
 
 Usage:
-    python3 scripts/migration/extract-legacy-content.py
+    python3 scripts/migration/extract-legacy-content.py            # skips existing files
+    python3 scripts/migration/extract-legacy-content.py --force    # overwrites them
 """
 
 from __future__ import annotations
@@ -27,6 +28,8 @@ try:
     import yaml
 except ImportError:  # pragma: no cover - developer convenience
     sys.exit("PyYAML required: pip install pyyaml")
+
+FORCE = "--force" in sys.argv
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 # The old site was moved under legacy/ once its content had been migrated; see
@@ -97,6 +100,18 @@ def read(name: str) -> str:
 
 
 def dump(path: pathlib.Path, header: str, payload: dict) -> None:
+    """Write a migrated file, refusing to clobber one that already exists.
+
+    These files are migrated once and hand-maintained afterwards -- new awards,
+    news items and tool descriptions are added by people, not by this script.
+    A re-run would silently discard all of that, so existing files are skipped
+    unless --force is passed. That happened in practice: the patent extraction
+    had to be re-run to fix a parsing bug, and without this guard it would have
+    taken the hand-edited honours list with it.
+    """
+    if path.exists() and not FORCE:
+        print(f"  SKIP  {path.relative_to(ROOT)} already exists (--force to overwrite)")
+        return
     with path.open("w", encoding="utf-8") as handle:
         handle.write(header.rstrip() + "\n")
         yaml.safe_dump(payload, handle, allow_unicode=True, sort_keys=False, width=100)

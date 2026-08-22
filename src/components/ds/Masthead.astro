@@ -1,0 +1,25 @@
+---
+// Journal-style page masthead: kicker → ink rule → title → subtitle → lede.
+// Opens every page. The order is fixed by the design system, which is why this
+// is a component rather than a set of classes to reassemble by hand.
+import Hairline from './Hairline.astro';
+import Kicker from './Kicker.astro';
+
+interface Props {
+  kicker?: string;
+  title: string;
+  subtitle?: string;
+  lede?: string;
+  /** Larger title for the landing page only. */
+  hero?: boolean;
+}
+const { kicker, title, subtitle, lede, hero = false } = Astro.props;
+---
+
+<header class="ds-masthead">
+  {kicker && <Kicker size="md">{kicker}</Kicker>}
+  <Hairline tone="ink" />
+  <h1 class={hero ? 'ds-masthead__title ds-masthead__title--hero' : 'ds-masthead__title'}>{title}</h1>
+  {subtitle && <div class="ds-masthead__subtitle">{subtitle}</div>}
+  {lede && <p class="ds-masthead__lede">{lede}</p>}
+</header>

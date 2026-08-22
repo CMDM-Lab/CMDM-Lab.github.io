@@ -1,15 +1,27 @@
 ---
-// Home page body, shared by both locales.
+// Overview page, shared by both locales.
 //
-// This page also carries the legacy-URL shim. Old inbound links and bookmarks
-// use `?content=<key>`, which no longer means anything, so a visitor arriving
-// with one is forwarded to the real page. GitHub Pages cannot redirect on a
-// query string, so this has to happen in the browser -- but only for those
-// stale URLs. A normal visit runs no script at all.
+// Follows the design system's Overview screen: hero masthead, the two research
+// pillars as a Ledger, a lab-record row pairing prose with a colophon table,
+// and the page's single InkPanel.
+//
+// The colophon numbers are counted from the real data rather than written in,
+// so they cannot go stale the way the old site's did.
+//
+// This page also carries the legacy-URL shim. Old inbound links use
+// `?content=<key>`, which no longer means anything; GitHub Pages cannot
+// redirect on a query string, so a visitor arriving with one is forwarded in
+// the browser. A normal visit runs no script at all.
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Hairline from './ds/Hairline.astro';
+import InkPanel from './ds/InkPanel.astro';
+import Kicker from './ds/Kicker.astro';
+import Ledger from './ds/Ledger.astro';
+import LedgerItem from './ds/LedgerItem.astro';
+import ColophonTable from './ds/ColophonTable.astro';
 import {
-  formatAuthors, getHomeIntro, getHomeVideo, getHonors, getNews,
-  getPublications, getResearchAreas, getStrings, type Locale,
+  allAlumni, getHomeIntro, getHomeRecord, getHonors, getNews, getPublications,
+  getResearchAreas, getServices, getStrings, membersByRole, type Locale,
 } from '../lib/data';
 import { LEGACY_CONTENT_MAP, pathFor } from '../lib/routes';
 
@@ -17,14 +29,50 @@ interface Props { locale: Locale }
 const { locale } = Astro.props;
 const t = getStrings(locale);
 
-const news = getNews();
-const honors = getHonors();
 const areas = getResearchAreas(locale);
-const recent = getPublications().slice(0, 5);
+const news = getNews();
+const achievements = getHonors(locale);
+const publications = getPublications();
+const services = getServices();
+const alumni = allAlumni();
+const current = [...membersByRole().values()].flat();
 const intro = getHomeIntro(locale);
-const video = getHomeVideo();
+const record = getHomeRecord(locale);
 
-// Serialised for the shim below so the mapping lives in one place.
+const facts = [
+  { label: t.label_director, value: locale === 'en' ? 'Prof. Yufeng Jane Tseng' : '曾宇鳳 教授' },
+  {
+    label: t.label_affiliation,
+    value: locale === 'en' ? 'NTU CSIE · BEBI · GSB · MHI' : '臺大資工系 · 生醫電資所 · 基因體所 · 智慧醫療學程',
+  },
+  { label: t.label_platforms, value: 'LC-QTOF-MS · GCxGC/TOF-MS · 1D ¹H-NMR' },
+  {
+    label: t.label_public_tools,
+    value: locale === 'en'
+      ? `${services.length} services under cmdm.tw`
+      : `cmdm.tw 網域下共 ${services.length} 項服務`,
+  },
+  {
+    label: t.nav_publications,
+    value: locale === 'en'
+      ? `${publications.length} journal articles`
+      : `期刊論文 ${publications.length} 篇`,
+  },
+  {
+    label: t.label_alumni_count,
+    value: locale === 'en' ? `${alumni.length} since 2008` : `2008 年起共 ${alumni.length} 人`,
+  },
+  {
+    label: t.nav_members,
+    value: locale === 'en' ? `${current.length} current members` : `現役成員 ${current.length} 人`,
+  },
+];
+
+// Roman numerals, as the design system's Overview uses for its pillars.
+const NUMERALS = ['I', 'II', 'III', 'IV'];
+
+const latestAward = achievements[0];
+
 const legacyMap = Object.fromEntries(
   Object.entries(LEGACY_CONTENT_MAP).map(([key, slug]) => [key, pathFor(slug, locale)]),
 );
@@ -41,41 +89,57 @@ const legacyMap = Object.fromEntries(
     })();
   `} />
 
-  <h1>{t.lab_name}</h1>
-  <p class="page-lede">{t.university}</p>
+  <div class="ds-masthead">
+    <Kicker size="md">{t.home_kicker}</Kicker>
+    <Hairline tone="ink" />
+    <h1 class="ds-masthead__title ds-masthead__title--hero">{t.lab_name}</h1>
+    <div class="ds-masthead__subtitle">{t.home_subtitle}</div>
+    <p class="ds-masthead__lede">{t.home_lede}</p>
+  </div>
 
-  <section class="home-intro" aria-labelledby="intro">
-    <div class="home-intro-text">
-      <h2 id="intro">{t.section_intro}</h2>
-      <p>{intro}</p>
-
-      <h2>{t.section_research_areas}</h2>
-      {areas.map((area) => (
-        <div class="research-area">
-          <h3>{area.group}</h3>
-          <ul>{area.items.map((item) => <li>{item}</li>)}</ul>
-        </div>
+  <section class="ds-section" aria-labelledby="pillars">
+    <Kicker size="md" as="h2" id="pillars">{t.section_research_areas}</Kicker>
+    <Ledger width="wide">
+      {areas.map((area, i) => (
+        <LedgerItem
+          index={NUMERALS[i]}
+          title={area.group}
+          href={pathFor('research', locale)}
+          linkLabel={t.nav_research}
+          as="h3"
+        >
+          <ul class="ds-list ds-list--bullet">
+            {area.items.map((item) => <li>{item}</li>)}
+          </ul>
+        </LedgerItem>
       ))}
-      <p><a href={pathFor('research', locale)}>{t.label_more} &rarr;</a></p>
-    </div>
+    </Ledger>
+  </section>
 
-    {video && (
-      <div class="home-video">
-        <iframe src={video} title={t.lab_name} loading="lazy"
-          allow="encrypted-media" allowfullscreen></iframe>
+  <section class="ds-section" aria-labelledby="record">
+    <Kicker size="md" as="h2" id="record">{t.section_lab_record}</Kicker>
+    <div class="ds-row">
+      <div class="ds-col">
+        <div class="ds-prose ds-prose--lede">
+          <p>{intro}</p>
+          {record.map((paragraph) => <p>{paragraph}</p>)}
+        </div>
       </div>
-    )}
+      <div class="ds-col--narrow">
+        <ColophonTable entries={facts} />
+      </div>
+    </div>
   </section>
 
   {news.length > 0 && (
-    <section aria-labelledby="news">
-      <h2 id="news">{t.section_news}</h2>
-      <ul class="news-list">
+    <section class="ds-section" aria-labelledby="news">
+      <Kicker size="md" as="h2" id="news">{t.section_news}</Kicker>
+      <ul class="ds-list">
         {news.map((item) => (
           <li>
             {item.text}
             {item.links?.map((link) => (
-              <>{' '}<a href={link.url}>[{link.label}]</a></>
+              <>{' '}<a class="ds-link" href={link.url}>[{link.label}]</a></>
             ))}
           </li>
         ))}
@@ -83,35 +147,43 @@ const legacyMap = Object.fromEntries(
     </section>
   )}
 
-  {recent.length > 0 && (
-    <section aria-labelledby="recent-publications">
-      <h2 id="recent-publications">{t.section_latest_publications}</h2>
-      <ol class="publication-list">
-        {recent.map((publication) => (
-          <li>
-            {publication.authors?.length ? (
-              <span class="pub-authors">{formatAuthors(publication.authors, 4)}</span>
-            ) : null}
-            <span class="pub-title">
-              {publication.doi
-                ? <a href={`https://doi.org/${publication.doi}`}>{publication.title}</a>
-                : publication.title}
-            </span>
-            {publication.journal && (
-              <span class="pub-venue">{publication.journal}{publication.year ? `, ${publication.year}` : ''}</span>
-            )}
-          </li>
+  {publications.length > 0 && (
+    <section class="ds-section" aria-labelledby="recent">
+      <Kicker size="md" as="h2" id="recent">{t.section_latest_publications}</Kicker>
+      <Ledger width="wide">
+        {publications.slice(0, 4).map((publication) => (
+          <LedgerItem
+            title={publication.title}
+            meta={[publication.journal, publication.year].filter(Boolean).join(' · ')}
+            href={publication.doi ? `https://doi.org/${publication.doi}` : undefined}
+            linkLabel={t.label_publisher}
+            as="h3"
+          />
         ))}
-      </ol>
-      <p><a href={pathFor('publications', locale)}>{t.label_more} &rarr;</a></p>
+      </Ledger>
+      <p style="margin-top:var(--space-3)">
+        <a class="ds-link" href={pathFor('publications', locale)}>{t.nav_publications} &rarr;</a>
+      </p>
     </section>
   )}
 
-  {honors.award_highlights.length > 0 && (
-    <section aria-labelledby="awards">
-      <h2 id="awards">{t.section_award_highlights}</h2>
-      <ul>{honors.award_highlights.map((item) => <li>{item}</li>)}</ul>
-      <p><a href={pathFor('honors', locale)}>{t.label_more} &rarr;</a></p>
-    </section>
+  {/* The page's single InkPanel. Two on one page would mean neither reads as
+      emphasis, so this is the only one. */}
+  {latestAward && (
+    <div class="ds-section">
+      <InkPanel kicker={t.section_award_highlights}>
+        <p class="ds-prose ds-prose--lede">{latestAward.citation}</p>
+        {latestAward.links && (
+          <p style="margin-top:var(--space-3)">
+            {latestAward.links.map((link) => (
+              <>
+                <a class="ds-link" href={link.url}>[{link.label}]</a>{' '}
+              </>
+            ))}
+            <a class="ds-link" href={pathFor('honors', locale)}>{t.nav_honors} &rarr;</a>
+          </p>
+        )}
+      </InkPanel>
+    </div>
   )}
 </BaseLayout>

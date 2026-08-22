@@ -1,0 +1,32 @@
+---
+// Data table: mono uppercase heads over an ink rule, hairlines between rows,
+// tabular numerals throughout. Row hover is the entire interaction.
+//
+// The head is rendered from `columns`; rows go in the default slot as plain
+// `<tr><td>` markup, so a cell can carry a Tag, a link or a mono span without
+// this component needing to know about any of them.
+//
+// The wrapper scrolls horizontally. The design handoff lists wide tables below
+// 768px as unresolved; containing the overflow here at least keeps the page
+// itself from scrolling sideways.
+interface Props {
+  columns: Array<{ label: string; width?: string }>;
+  class?: string;
+}
+const { columns, class: klass = '' } = Astro.props;
+---
+
+<div class="ds-table-wrap">
+  <table class={['ds-table', klass].filter(Boolean).join(' ')}>
+    <thead>
+      <tr>
+        {columns.map((column) => (
+          <th scope="col" style={column.width ? `width:${column.width}` : undefined}>{column.label}</th>
+        ))}
+      </tr>
+    </thead>
+    <tbody>
+      <slot />
+    </tbody>
+  </table>
+</div>

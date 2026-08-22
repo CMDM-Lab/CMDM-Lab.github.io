@@ -1,0 +1,14 @@
+---
+// The replacement for cards. An auto-fit grid with a hairline on top and one
+// per item -- no fills, no borders around items, no elevation. Reflow comes
+// from the auto-fit minimum, not a media query.
+interface Props {
+  /** 'wide' uses the 380px floor, giving two columns at desktop. */
+  width?: 'default' | 'wide';
+  class?: string;
+}
+const { width = 'default', class: klass = '' } = Astro.props;
+---
+<div class={['ds-ledger', width === 'wide' && 'ds-ledger--wide', klass].filter(Boolean).join(' ')}>
+  <slot />
+</div>

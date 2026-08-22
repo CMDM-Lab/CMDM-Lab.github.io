@@ -1,6 +1,8 @@
 ---
-// Courses page body, shared by both locales.
+// Courses page, shared by both locales.
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Hairline from './ds/Hairline.astro';
+import Kicker from './ds/Kicker.astro';
 import { getCourses, getStrings, type Locale } from '../lib/data';
 
 interface Props { locale: Locale }
@@ -10,8 +12,18 @@ const courses = getCourses(locale);
 ---
 
 <BaseLayout locale={locale} slug="courses">
-  <h1>{t.courses_title}</h1>
-  <ul class="course-list">
-    {courses.map((course) => <li>{course}</li>)}
-  </ul>
+  <div class="ds-masthead">
+    <Kicker size="md">{t.courses_kicker}</Kicker>
+    <Hairline tone="ink" />
+    <h1 class="ds-masthead__title">{t.courses_title}</h1>
+    <div class="ds-masthead__subtitle">{t.courses_subtitle}</div>
+    <p class="ds-masthead__lede">{t.courses_lede}</p>
+  </div>
+
+  <section class="ds-section" aria-labelledby="courses">
+    <Kicker size="md" as="h2" id="courses">{t.section_courses}</Kicker>
+    <ul class="ds-list">
+      {courses.map((course) => <li>{course}</li>)}
+    </ul>
+  </section>
 </BaseLayout>

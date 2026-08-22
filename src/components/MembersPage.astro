@@ -1,16 +1,27 @@
 ---
-// Members page body, shared by both locales.
+// Members page, shared by both locales.
 //
 // This is the page the rebuild was aimed at: it is the URL people were sent
 // (`index_zh.html?content=member`) and the one that returned no content at all
-// to a crawler. Every name, role and research topic below is now in the initial
+// to a crawler. Every name, role and research topic below is in the initial
 // HTML response.
 //
-// Each person also becomes a `Person` node in JSON-LD, affiliated with the lab,
-// so a search for an individual member can resolve to this page.
+// Structure follows the design system's People screen. Roles that read as
+// individuals get a Ledger; roles that read as a roster get a DataTable, because
+// a table of twenty names is easier to scan than twenty ledger entries.
+//
+// Emails display with `[at]` -- the lab's own scraping convention, kept from the
+// old site -- while the mailto href keeps the real address. Members with no
+// photo get no placeholder: blanks stay blank.
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Hairline from './ds/Hairline.astro';
+import Kicker from './ds/Kicker.astro';
+import Ledger from './ds/Ledger.astro';
+import LedgerItem from './ds/LedgerItem.astro';
+import DataTable from './ds/DataTable.astro';
+import ColophonTable from './ds/ColophonTable.astro';
 import {
-  allAlumni, departmentLabel, getStrings, membersByRole,
+  allAlumni, departmentLabel, getStrings, membersByRole, obfuscateEmail,
   type HistoricalAlumnus, type Locale, type Member,
 } from '../lib/data';
 import { pathFor } from '../lib/routes';
@@ -23,31 +34,36 @@ const isEnglish = locale === 'en';
 const grouped = membersByRole();
 const alumni = allAlumni();
 
-/** Prefer the locale's own field, falling back to whatever is recorded. */
-const displayName = (member: { name: string; name_en?: string }) => (
-  isEnglish && member.name_en ? member.name_en : member.name
+const displayName = (person: { name: string; name_en?: string }) => (
+  isEnglish && person.name_en ? person.name_en : person.name
 );
-const secondaryName = (member: { name: string; name_en?: string }) => (
-  isEnglish ? (member.name_en ? member.name : '') : (member.name_en ?? '')
+const secondaryName = (person: { name: string; name_en?: string }) => (
+  isEnglish ? (person.name_en ? person.name : '') : (person.name_en ?? '')
 );
 const research = (member: Member) => (
   (isEnglish ? member.research_en : member.research) || member.research || ''
 );
-const title = (member: Member) => (
+const roleTitle = (member: Member) => (
   (isEnglish ? member.title_en : member.title) || member.title || ''
 );
+
+const faculty = grouped.get('faculty') ?? [];
+// Individuals: a ledger entry each.
+const LEDGER_ROLES = ['staff', 'postdoc', 'phd'];
+// Rosters: a table each, since a long list of names scans better as rows.
+const TABLE_ROLES = ['masters', 'undergraduate', 'current'];
 
 const site = Astro.site ?? new URL('https://www.cmdm.tw');
 const membersUrl = new URL(pathFor('members', locale), site).href;
 
-// Only current members get a Person node. Alumni are listed for the record, but
+// Only current members get a Person node. Alumni are listed for the record;
 // asserting a current affiliation for them would be wrong.
 const people = [...grouped.values()].flat().map((member) => ({
   '@context': 'https://schema.org',
   '@type': 'Person',
   name: displayName(member),
   ...(secondaryName(member) ? { alternateName: secondaryName(member) } : {}),
-  ...(title(member) ? { jobTitle: title(member) } : {}),
+  ...(roleTitle(member) ? { jobTitle: roleTitle(member) } : {}),
   ...(member.email ? { email: member.email } : {}),
   ...(member.orcid ? { identifier: `https://orcid.org/${member.orcid}` } : {}),
   ...(research(member) ? { knowsAbout: research(member) } : {}),
@@ -61,111 +77,122 @@ const isHistorical = (person: Member | HistoricalAlumnus): person is HistoricalA
 ---
 
 <BaseLayout locale={locale} slug="members" structuredData={people}>
-  <h1>{t.members_title}</h1>
+  <div class="ds-masthead">
+    <Kicker size="md">{t.members_kicker}</Kicker>
+    <Hairline tone="ink" />
+    <h1 class="ds-masthead__title">{t.members_title}</h1>
+    <div class="ds-masthead__subtitle">{t.members_subtitle}</div>
+    <p class="ds-masthead__lede">{t.members_lede}</p>
+  </div>
 
-  {[...grouped.entries()].map(([role, list]) => (
-    <section class="member-group" aria-labelledby={`role-${role}`}>
-      <h2 id={`role-${role}`}>{t[`role_${role}`] ?? role}</h2>
-      <ul class="member-list">
-        {list.map((member) => (
-          <li class="member">
-            {member.photo && (
-              <img class="member-photo" src={member.photo} alt={displayName(member)}
-                width="140" height="140" loading="lazy" />
-            )}
-            <div class="member-body">
-              <h3>
-                {displayName(member)}
-                {secondaryName(member) && <span class="member-alt"> ({secondaryName(member)})</span>}
-              </h3>
-
-              {title(member) && <p class="member-title">{title(member)}</p>}
-
-              {(member.grade || member.department) && (
-                <p class="member-meta">
-                  {member.grade && <span>{member.grade}</span>}
-                  {member.department && <span>{departmentLabel(member.department, locale)}</span>}
-                </p>
-              )}
-
-              {member.email && (
-                <p class="member-contact">
-                  {t.label_email}: <a href={`mailto:${member.email}`}>{member.email}</a>
-                </p>
-              )}
-              {member.phone && <p class="member-contact">{t.label_phone}: {member.phone}</p>}
-              {(isEnglish ? member.office_en : member.office) && (
-                <p class="member-contact">
-                  {t.label_office}: {isEnglish ? member.office_en : member.office}
-                </p>
-              )}
-              {member.orcid && (
-                <p class="member-contact">
-                  ORCID: <a href={`https://orcid.org/${member.orcid}`}>{member.orcid}</a>
-                </p>
-              )}
-
-              {research(member) && (
-                <div class="member-field">
-                  <h4>{t.label_expertise}</h4>
-                  <p>{research(member)}</p>
-                </div>
-              )}
-
-              {(isEnglish ? member.education_en : member.education)?.length ? (
-                <div class="member-field">
-                  <h4>{t.label_education}</h4>
-                  <ul>
-                    {(isEnglish ? member.education_en : member.education)!.map((line) => (
-                      <li>{line}</li>
-                    ))}
-                  </ul>
-                </div>
-              ) : null}
-
-              {member.honors?.length ? (
-                <div class="member-field">
-                  <h4>{t.label_honors}</h4>
-                  <ul>{member.honors.map((line) => <li>{line}</li>)}</ul>
-                </div>
-              ) : null}
-
-              {member.role === 'faculty' && (
-                <p><a href={pathFor('professor', locale)}>{t.label_read_more} &rarr;</a></p>
-              )}
-            </div>
-          </li>
-        ))}
-      </ul>
+  {faculty.map((member) => (
+    <section class="ds-section" aria-labelledby="role-faculty">
+      <Kicker size="md" as="h2" id="role-faculty">{t.role_faculty}</Kicker>
+      <div class="ds-row">
+        {member.photo && (
+          <figure class="ds-plate" style="flex:0 0 200px">
+            <img src={member.photo} alt={displayName(member)} width="194" height="130" />
+          </figure>
+        )}
+        <div class="ds-col">
+          <h3>
+            {displayName(member)}
+            {secondaryName(member) && <span> ({secondaryName(member)})</span>}
+          </h3>
+          {roleTitle(member) && <div class="ds-masthead__subtitle">{roleTitle(member)}</div>}
+          {research(member) && (
+            <p class="ds-prose" style="margin-top:var(--space-3)">{research(member)}</p>
+          )}
+          <div style="margin-top:var(--space-3)">
+            <ColophonTable entries={[
+              ...(member.email
+                ? [{ label: t.label_email, value: obfuscateEmail(member.email), href: `mailto:${member.email}` }]
+                : []),
+              ...(member.phone ? [{ label: t.label_phone, value: member.phone }] : []),
+              ...((isEnglish ? member.office_en : member.office)
+                ? [{ label: t.label_office, value: (isEnglish ? member.office_en : member.office)! }]
+                : []),
+              ...(member.orcid
+                ? [{ label: 'ORCID', value: member.orcid, href: `https://orcid.org/${member.orcid}` }]
+                : []),
+            ]} />
+          </div>
+          <p style="margin-top:var(--space-3)">
+            <a class="ds-link" href={pathFor('professor', locale)}>{t.label_read_more} &rarr;</a>
+          </p>
+        </div>
+      </div>
     </section>
   ))}
 
-  <section class="member-group" aria-labelledby="role-alumni">
-    <h2 id="role-alumni">{t.role_alumni}</h2>
-    <table class="alumni-table">
-      <thead>
-        <tr>
-          <th scope="col">{t.label_graduated}</th>
-          <th scope="col">{t.nav_members}</th>
-          <th scope="col">{t.label_department}</th>
-          <th scope="col">{t.label_thesis}</th>
-        </tr>
-      </thead>
-      <tbody>
-        {alumni.map((person) => (
+  {LEDGER_ROLES.filter((role) => grouped.has(role)).map((role) => (
+    <section class="ds-section" aria-labelledby={`role-${role}`}>
+      <Kicker size="md" as="h2" id={`role-${role}`}>{t[`role_${role}`] ?? role}</Kicker>
+      <Ledger>
+        {grouped.get(role)!.map((member) => (
+          <LedgerItem
+            title={[displayName(member), secondaryName(member) && `(${secondaryName(member)})`]
+              .filter(Boolean).join(' ')}
+            body={research(member)}
+            meta={[
+              roleTitle(member),
+              member.grade,
+              departmentLabel(member.department, locale),
+              obfuscateEmail(member.email),
+            ].filter(Boolean).join(' · ')}
+            as="h3"
+          />
+        ))}
+      </Ledger>
+    </section>
+  ))}
+
+  {TABLE_ROLES.filter((role) => grouped.has(role)).map((role) => (
+    <section class="ds-section" aria-labelledby={`role-${role}`}>
+      <Kicker size="md" as="h2" id={`role-${role}`}>{t[`role_${role}`] ?? role}</Kicker>
+      <DataTable columns={[
+        { label: t.label_name, width: '22%' },
+        { label: t.label_grade, width: '8%' },
+        { label: t.label_department, width: '24%' },
+        { label: t.label_research },
+      ]}>
+        {grouped.get(role)!.map((member) => (
           <tr>
-            <td>{person.graduated ?? ''}</td>
             <td>
-              {displayName(person)}
-              {secondaryName(person) && <span class="member-alt"> ({secondaryName(person)})</span>}
+              {displayName(member)}
+              {secondaryName(member) && <span> ({secondaryName(member)})</span>}
             </td>
-            <td>{isHistorical(person)
-              ? (person.department ?? '')
-              : departmentLabel(person.department, locale)}</td>
-            <td>{isHistorical(person) ? (person.thesis ?? '') : (research(person as Member) || '')}</td>
+            <td class="ds-num">{member.grade ?? ''}</td>
+            <td>{departmentLabel(member.department, locale)}</td>
+            <td>{research(member)}</td>
           </tr>
         ))}
-      </tbody>
-    </table>
+      </DataTable>
+    </section>
+  ))}
+
+  <section class="ds-section" aria-labelledby="role-alumni">
+    <Hairline tone="ink" />
+    <Kicker size="md" as="h2" id="role-alumni">{t.role_alumni}</Kicker>
+    <DataTable columns={[
+      { label: t.label_year, width: '8%' },
+      { label: t.label_name, width: '20%' },
+      { label: t.label_department, width: '20%' },
+      { label: t.label_thesis },
+    ]}>
+      {alumni.map((person) => (
+        <tr>
+          <td class="ds-num">{person.graduated ?? ''}</td>
+          <td>
+            {displayName(person)}
+            {secondaryName(person) && <span> ({secondaryName(person)})</span>}
+          </td>
+          <td class="ds-mono-sm">{isHistorical(person)
+            ? (person.department ?? '')
+            : departmentLabel(person.department, locale)}</td>
+          <td>{isHistorical(person) ? (person.thesis ?? '') : (research(person as Member) || '')}</td>
+        </tr>
+      ))}
+    </DataTable>
   </section>
 </BaseLayout>

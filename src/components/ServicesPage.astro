@@ -1,17 +1,27 @@
 ---
-// Software and web services page body, shared by both locales.
+// Tools page, shared by both locales.
 //
-// These tools -- 3Omics, LipidPedia, CypRules, GC2MS, Chromaligner and the rest
-// -- are the lab's most cited public output and the things most likely to be
-// searched for by name. Each gets its own heading, its own anchor and a
+// These services -- 3Omics, Lipidpedia, CypRules, GC2MS, Chromaligner and the
+// rest -- are the lab's most cited public output and the things most likely to
+// be searched for by name. Each gets a ledger entry, its own anchor, and a
 // SoftwareApplication node so a search for the tool name can reach this page.
+//
+// Tool names keep their own capitalisation exactly, per the design system's
+// content rules. They are not title-cased or normalised.
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { getServices, getStrings, type Locale } from '../lib/data';
+import Hairline from './ds/Hairline.astro';
+import Kicker from './ds/Kicker.astro';
+import Ledger from './ds/Ledger.astro';
+import LedgerItem from './ds/LedgerItem.astro';
+import ColophonTable from './ds/ColophonTable.astro';
+import Tag from './ds/Tag.astro';
+import { getServices, getStrings, obfuscateEmail, type Locale } from '../lib/data';
 
 interface Props { locale: Locale }
 const { locale } = Astro.props;
 const t = getStrings(locale);
 const services = getServices();
+const isEnglish = locale === 'en';
 
 /** Slug a service name into a stable in-page anchor. */
 const anchor = (name: string) => name
@@ -19,6 +29,24 @@ const anchor = (name: string) => name
   .replace(/[^a-z0-9]+/g, '-')
   .replace(/^-|-$/g, '');
 
+/** The host is the useful mono meta line: it is what people type. */
+function host(url: string | undefined): string {
+  if (!url) return '';
+  try {
+    return new URL(url).host;
+  } catch {
+    return '';
+  }
+}
+
+/** A package is installed, a web service is opened -- label them apart. */
+function kind(name: string): string {
+  if (/package/i.test(name)) return isEnglish ? 'R package' : 'R 套件';
+  if (/portal/i.test(name)) return isEnglish ? 'Portal' : '入口網站';
+  return isEnglish ? 'Web service' : '網頁服務';
+}
+
+const site = Astro.site ?? new URL('https://www.cmdm.tw');
 const structuredData = services.map((service) => ({
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
@@ -26,26 +54,66 @@ const structuredData = services.map((service) => ({
   applicationCategory: 'ScientificApplication',
   ...(service.description ? { description: service.description } : {}),
   ...(service.links?.length ? { url: service.links[0].url } : {}),
-  provider: {
-    '@type': 'ResearchOrganization',
-    '@id': `${(Astro.site ?? new URL('https://www.cmdm.tw')).href}#organization`,
-  },
+  provider: { '@type': 'ResearchOrganization', '@id': `${site.href}#organization` },
 }));
+
+const access = [
+  {
+    label: isEnglish ? 'Authentication' : '身分驗證',
+    value: isEnglish ? 'None required for web services' : '網頁服務無須帳號',
+  },
+  {
+    label: isEnglish ? 'Citation' : '引用方式',
+    value: isEnglish ? "Cite the tool's original publication" : '請引用該工具的原始論文',
+  },
+  {
+    label: isEnglish ? 'Support' : '技術支援',
+    value: obfuscateEmail('yjtseng@csie.ntu.edu.tw'),
+  },
+  {
+    label: isEnglish ? 'Hosting' : '主機狀態',
+    value: isEnglish ? 'Lab infrastructure at National Taiwan University' : '架設於臺大實驗室自有主機',
+  },
+];
 ---
 
 <BaseLayout locale={locale} slug="services" structuredData={structuredData}>
-  <h1>{t.services_title}</h1>
+  <div class="ds-masthead">
+    <Kicker size="md">{t.services_kicker}</Kicker>
+    <Hairline tone="ink" />
+    <h1 class="ds-masthead__title">{t.services_title}</h1>
+    <div class="ds-masthead__subtitle">{t.services_subtitle}</div>
+    <p class="ds-masthead__lede">{t.services_lede}</p>
+  </div>
 
-  {services.map((service) => (
-    <section class="service" id={anchor(service.name)} aria-labelledby={`svc-${anchor(service.name)}`}>
-      <h2 id={`svc-${anchor(service.name)}`}>{service.name}</h2>
-      {service.image && (
-        <img src={service.image} alt={service.name} loading="lazy" />
-      )}
-      {service.description && <p>{service.description}</p>}
-      {service.links?.map((link) => (
-        <p><a href={link.url}>{link.label || t.label_visit_site} &rarr;</a></p>
-      ))}
-    </section>
-  ))}
+  <section class="ds-section" aria-labelledby="catalogue">
+    <Kicker size="md" as="h2" id="catalogue">{t.section_catalogue}</Kicker>
+    <Ledger>
+      {services.map((service) => {
+        const primary = service.links?.[0];
+        return (
+          <LedgerItem
+            title={service.name}
+            body={service.description}
+            imageSrc={service.image}
+            imageAlt={service.name}
+            meta={[host(primary?.url), kind(service.name)].filter(Boolean).join(' · ')}
+            href={primary?.url}
+            linkLabel={t.label_visit_site}
+            as="h3"
+          >
+            <Fragment slot="tags">
+              <Tag tone="brand">{kind(service.name)}</Tag>
+            </Fragment>
+          </LedgerItem>
+        );
+      })}
+    </Ledger>
+  </section>
+
+  <section class="ds-section" aria-labelledby="access">
+    <Hairline tone="ink" />
+    <Kicker size="md" as="h2" id="access">{t.section_access}</Kicker>
+    <ColophonTable entries={access} class="ds-access" />
+  </section>
 </BaseLayout>

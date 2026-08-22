@@ -1,15 +1,25 @@
 ---
-// Publications page body, shared by both locales.
+// Publications page, shared by both locales.
 //
-// Journal articles come from data/publications.yml, which the nightly sync
+// Journal articles come from data/publications.yml, which the weekly sync
 // rebuilds from ORCID and Crossref. Conference papers, patents and books come
 // from data/publications-legacy.yml, because none of them are registered as
-// DOIs the way journal articles are -- no API can supply them.
+// DOIs and no API can supply them.
 //
-// The old site split this content across two pages, one of which
-// (contents/publication_zh.html) no route ever reached, so half of it was
-// invisible. It is one page now.
+// The old site split this across two pages, one of which no route ever reached,
+// so half of it was invisible. It is one page now.
+//
+// Journal articles render as the design system's DataTable rather than a
+// citation list: at 117 entries a table is the only form that stays scannable,
+// and the mono tabular-nums columns are what the system is built for.
+//
+// The filter is progressive enhancement. Every row is in the static HTML -- a
+// crawler and a reader without JavaScript get the complete record -- so the
+// filter row starts hidden and the inline script reveals it.
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Hairline from './ds/Hairline.astro';
+import Kicker from './ds/Kicker.astro';
+import DataTable from './ds/DataTable.astro';
 import {
   formatAuthors, getLegacyPublications, getStrings, publicationsByYear,
   type Locale, type Publication,
@@ -21,7 +31,7 @@ const t = getStrings(locale);
 
 const byYear = publicationsByYear();
 const legacy = getLegacyPublications();
-const total = byYear.reduce((sum, [, list]) => sum + list.length, 0);
+const journalArticles = byYear.flatMap(([, list]) => list);
 
 /** Journal, volume(issue), pages -- omitting whatever is missing. */
 function venue(publication: Publication): string {
@@ -37,7 +47,7 @@ function venue(publication: Publication): string {
 
 // One ScholarlyArticle node per paper. This is what lets a search engine tie
 // the lab to its literature rather than treating the page as a wall of text.
-const articles = byYear.flatMap(([, list]) => list).map((publication) => ({
+const articles = journalArticles.map((publication) => ({
   '@context': 'https://schema.org',
   '@type': 'ScholarlyArticle',
   headline: publication.title,
@@ -55,68 +65,148 @@ const articles = byYear.flatMap(([, list]) => list).map((publication) => ({
     ? { isPartOf: { '@type': 'Periodical', name: publication.journal } }
     : {}),
   ...(publication.doi
-    ? { identifier: `https://doi.org/${publication.doi}`, sameAs: `https://doi.org/${publication.doi}` }
+    ? {
+      identifier: `https://doi.org/${publication.doi}`,
+      sameAs: `https://doi.org/${publication.doi}`,
+    }
     : {}),
 }));
+
+const filterHint = locale === 'en'
+  ? 'e.g. metabolomics, Tseng, 2025'
+  : '例如：metabolomics、Tseng、2025';
+const filterLabel = locale === 'en' ? 'Filter' : '篩選';
+const clearLabel = locale === 'en' ? 'Clear' : '清除';
+const emptyLabel = locale === 'en'
+  ? 'No entry matches that filter.'
+  : '沒有符合的項目。';
+const countLabel = (n: number) => (locale === 'en'
+  ? `${n} of ${journalArticles.length} entries`
+  : `${journalArticles.length} 篇中的 ${n} 篇`);
 ---
 
 <BaseLayout locale={locale} slug="publications" structuredData={articles}>
-  <h1>{t.publications_title}</h1>
-  <p class="page-lede">{total} {t.label_publication_count}</p>
+  <div class="ds-masthead">
+    <Kicker size="md">{t.publications_kicker}</Kicker>
+    <Hairline tone="ink" />
+    <h1 class="ds-masthead__title">{t.publications_title}</h1>
+    <div class="ds-masthead__subtitle">{t.publications_subtitle}</div>
+    <p class="ds-masthead__lede">{t.publications_lede}</p>
+  </div>
 
-  <section aria-labelledby="journal-papers">
-    <h2 id="journal-papers">{t.section_journal_papers}</h2>
-    {byYear.map(([year, list]) => (
-      <section class="pub-year" aria-labelledby={`year-${year}`}>
-        <h3 id={`year-${year}`}>{year || t.label_updated}</h3>
-        <ol class="publication-list">
-          {list.map((publication) => (
-            <li>
-              {publication.authors?.length ? (
-                <span class="pub-authors">{formatAuthors(publication.authors)}</span>
-              ) : null}
-              <span class="pub-title">
-                {publication.doi
-                  ? <a href={`https://doi.org/${publication.doi}`}>{publication.title}</a>
-                  : publication.title}
-              </span>
-              {venue(publication) && <span class="pub-venue">{venue(publication)}</span>}
-              {publication.pmid && (
-                <a class="pub-ref"
-                  href={`https://pubmed.ncbi.nlm.nih.gov/${publication.pmid}/`}
-                >PubMed</a>
-              )}
-            </li>
-          ))}
-        </ol>
-      </section>
-    ))}
+  <section class="ds-section" aria-labelledby="journal-papers">
+    <Kicker size="md" as="h2" id="journal-papers">{t.section_journal_papers}</Kicker>
+
+    <div class="ds-filter" id="pub-filter" hidden>
+      <div class="ds-field" style="flex:1 1 320px">
+        <label class="ds-field__label" for="pub-q">{filterLabel}</label>
+        <input class="ds-input" id="pub-q" type="search" placeholder={filterHint} autocomplete="off" />
+      </div>
+      <button class="ds-btn ds-btn--secondary" type="button" id="pub-clear">{clearLabel}</button>
+    </div>
+
+    <p class="ds-kicker ds-kicker--neutral" id="pub-count" style="margin-top:var(--space-4)">
+      {countLabel(journalArticles.length)}
+    </p>
+    <p class="ds-empty" id="pub-empty" hidden>{emptyLabel}</p>
+
+    <DataTable class="ds-pub-table" columns={[
+      { label: t.label_year, width: '7%' },
+      { label: t.label_title },
+      { label: t.label_venue, width: '22%' },
+      { label: t.label_authors, width: '18%' },
+    ]}>
+      {journalArticles.map((publication) => (
+        <tr data-pub={[
+          publication.title,
+          publication.journal,
+          formatAuthors(publication.authors, 30),
+          publication.year,
+          publication.doi,
+        ].filter(Boolean).join(' ').toLowerCase()}>
+          <td class="ds-num">{publication.year ?? ''}</td>
+          <td>
+            {publication.doi
+              ? <a href={`https://doi.org/${publication.doi}`}>{publication.title}</a>
+              : publication.title}
+          </td>
+          <td class="ds-mono-sm">{venue(publication)}</td>
+          <td class="ds-mono-sm">{formatAuthors(publication.authors, 4)}</td>
+        </tr>
+      ))}
+    </DataTable>
   </section>
 
   {legacy.conference_papers?.length ? (
-    <section aria-labelledby="conference-papers">
-      <h2 id="conference-papers">{t.section_conference_papers}</h2>
-      <ol class="publication-list">
+    <section class="ds-section" aria-labelledby="conference-papers">
+      <Hairline tone="ink" />
+      <Kicker size="md" as="h2" id="conference-papers">{t.section_conference_papers}</Kicker>
+      <ol class="ds-list">
         {legacy.conference_papers.map((citation) => <li>{citation}</li>)}
       </ol>
     </section>
   ) : null}
 
   {legacy.patents?.length ? (
-    <section aria-labelledby="patents">
-      <h2 id="patents">{t.section_patents}</h2>
-      <ol class="publication-list">
+    <section class="ds-section" aria-labelledby="patents">
+      <Hairline tone="ink" />
+      <Kicker size="md" as="h2" id="patents">{t.section_patents}</Kicker>
+      <ol class="ds-list">
         {legacy.patents.map((citation) => <li>{citation}</li>)}
       </ol>
     </section>
   ) : null}
 
   {legacy.books?.length ? (
-    <section aria-labelledby="books">
-      <h2 id="books">{t.section_books}</h2>
-      <ol class="publication-list">
+    <section class="ds-section" aria-labelledby="books">
+      <Hairline tone="ink" />
+      <Kicker size="md" as="h2" id="books">{t.section_books}</Kicker>
+      <ol class="ds-list">
         {legacy.books.map((citation) => <li>{citation}</li>)}
       </ol>
     </section>
   ) : null}
+
+  <script is:inline define:vars={{ total: journalArticles.length, locale }}>
+    // Progressive enhancement only. Without this the full table is already
+    // rendered, which is what a crawler and a no-JS reader see.
+    (function () {
+      var filter = document.getElementById('pub-filter');
+      var input = document.getElementById('pub-q');
+      var clear = document.getElementById('pub-clear');
+      var count = document.getElementById('pub-count');
+      var empty = document.getElementById('pub-empty');
+      var rows = Array.prototype.slice.call(
+        document.querySelectorAll('.ds-pub-table tbody tr')
+      );
+      if (!filter || !input || !rows.length) return;
+      filter.hidden = false;
+
+      function label(n) {
+        return locale === 'en' ? n + ' of ' + total + ' entries' : total + ' 篇中的 ' + n + ' 篇';
+      }
+
+      function apply() {
+        var q = input.value.trim().toLowerCase();
+        var shown = 0;
+        for (var i = 0; i < rows.length; i += 1) {
+          var match = !q || (rows[i].getAttribute('data-pub') || '').indexOf(q) !== -1;
+          rows[i].hidden = !match;
+          if (match) shown += 1;
+        }
+        count.textContent = label(shown);
+        empty.hidden = shown !== 0;
+        // Keep the filtered view shareable and survivable across a reload.
+        var url = new URL(window.location.href);
+        if (q) url.searchParams.set('q', q); else url.searchParams.delete('q');
+        window.history.replaceState(null, '', url);
+      }
+
+      input.addEventListener('input', apply);
+      clear.addEventListener('click', function () { input.value = ''; apply(); input.focus(); });
+
+      var initial = new URL(window.location.href).searchParams.get('q');
+      if (initial) { input.value = initial; apply(); }
+    })();
+  </script>
 </BaseLayout>

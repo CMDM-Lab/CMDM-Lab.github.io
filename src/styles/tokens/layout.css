@@ -1,0 +1,17 @@
+:root{
+  --page-max:960px;
+  --page-max-wide:1180px;
+  --page-pad-x:var(--space-6);
+  --page-pad-y:var(--space-8);
+
+  /* Reflow without media queries: auto-fit grids and flex-basis floors. */
+  --grid-min-ledger:260px;
+  --grid-min-wide:380px;
+
+  --nav-pad-y:13.8px;
+  --nav-pad-x:27.6px;
+  --nav-blur:6px;
+
+  --target-desktop:1440px;
+  --target-tablet:1024px;
+}

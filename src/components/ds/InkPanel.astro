@@ -1,0 +1,12 @@
+---
+// The loudest element available: a 2px ink frame on white.
+// At most one per page -- the design system's rule is that a page with two has
+// none, because the emphasis stops meaning anything.
+import Kicker from './Kicker.astro';
+interface Props { kicker?: string }
+const { kicker } = Astro.props;
+---
+<div class="ds-ink-panel">
+  {kicker && <Kicker size="md">{kicker}</Kicker>}
+  <slot />
+</div>

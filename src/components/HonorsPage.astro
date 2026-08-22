@@ -1,44 +1,51 @@
 ---
-// Honors page body, shared by both locales.
+// Honors page, shared by both locales.
 //
-// The old honor page mixed three unrelated things: a short list of awards, and
-// then full journal-paper and patent listings that duplicated the publications
-// page. The awards live here; the literature lives on the publications page.
+// The old honor page mixed three unrelated things: a short list of awards, then
+// full journal-paper and patent listings that duplicated the publications page.
+// The awards live here; the literature lives under Publications.
+//
+// Awards render as sentences with bracketed sources at the end, which is the
+// design system's stated form for dated declarative items -- not as ledger
+// entries, because an award is one sentence and has no title to head a card
+// with.
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Hairline from './ds/Hairline.astro';
+import Kicker from './ds/Kicker.astro';
 import { getHonors, getStrings, type Locale } from '../lib/data';
 import { pathFor } from '../lib/routes';
 
 interface Props { locale: Locale }
 const { locale } = Astro.props;
 const t = getStrings(locale);
-const honors = getHonors();
+const achievements = getHonors(locale);
 ---
 
 <BaseLayout locale={locale} slug="honors">
-  <h1>{t.honors_title}</h1>
+  <div class="ds-masthead">
+    <Kicker size="md">{t.honors_kicker}</Kicker>
+    <Hairline tone="ink" />
+    <h1 class="ds-masthead__title">{t.honors_title}</h1>
+    <div class="ds-masthead__subtitle">{t.honors_subtitle}</div>
+    <p class="ds-masthead__lede">{t.honors_lede}</p>
+  </div>
 
-  <section aria-labelledby="achievements">
-    <h2 id="achievements">{t.section_achievements}</h2>
-    <ul class="honor-list">
-      {honors.achievements.map((achievement) => (
+  <section class="ds-section" aria-labelledby="achievements">
+    <Kicker size="md" as="h2" id="achievements">{t.section_achievements}</Kicker>
+    <ul class="ds-list">
+      {achievements.map((achievement) => (
         <li>
           {achievement.citation}
           {achievement.links?.map((link) => (
-            <>{' '}<a href={link.url}>[{link.label}]</a></>
+            <>{' '}<a class="ds-link" href={link.url}>[{link.label}]</a></>
           ))}
         </li>
       ))}
     </ul>
   </section>
 
-  {honors.award_highlights.length > 0 && (
-    <section aria-labelledby="award-highlights">
-      <h2 id="award-highlights">{t.section_award_highlights}</h2>
-      <ul class="honor-list">
-        {honors.award_highlights.map((item) => <li>{item}</li>)}
-      </ul>
-    </section>
-  )}
 
-  <p><a href={pathFor('publications', locale)}>{t.nav_publications} &rarr;</a></p>
+  <p class="ds-section">
+    <a class="ds-link" href={pathFor('publications', locale)}>{t.nav_publications} &rarr;</a>
+  </p>
 </BaseLayout>

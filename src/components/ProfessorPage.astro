@@ -1,12 +1,17 @@
 ---
 // Principal investigator page, shared by both locales.
 //
-// A dedicated Person page with its own URL and a Person JSON-LD node, linked to
-// the ORCID record. Searches for the professor by name are among the most likely
-// ways anyone reaches this site, and previously they landed on a URL that served
-// no content.
+// A dedicated Person page with its own URL and a Person node linked to the
+// ORCID record. Searching for the professor by name is one of the most likely
+// ways anyone reaches this site, and previously that search landed on a URL
+// that served no content.
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { getMembers, getProfessorProfile, getStrings, type Locale } from '../lib/data';
+import Hairline from './ds/Hairline.astro';
+import Kicker from './ds/Kicker.astro';
+import ColophonTable from './ds/ColophonTable.astro';
+import {
+  getMembers, getProfessorProfile, getStrings, obfuscateEmail, type Locale,
+} from '../lib/data';
 import { pathFor } from '../lib/routes';
 
 interface Props { locale: Locale }
@@ -37,66 +42,90 @@ const person = professor
         sameAs: [`https://orcid.org/${professor.orcid}`],
       }
       : {}),
-    ...(professor.research ? { knowsAbout: isEnglish ? professor.research_en : professor.research } : {}),
+    ...(professor.research
+      ? { knowsAbout: isEnglish ? professor.research_en : professor.research }
+      : {}),
     worksFor: { '@type': 'ResearchOrganization', '@id': `${site.href}#organization` },
     url: new URL(pathFor('professor', locale), site).href,
   }]
   : [];
+
+const contact = professor
+  ? [
+    ...(professor.email
+      ? [{ label: t.label_email, value: obfuscateEmail(professor.email), href: `mailto:${professor.email}` }]
+      : []),
+    ...(professor.phone ? [{ label: t.label_phone, value: professor.phone }] : []),
+    ...((isEnglish ? professor.office_en : professor.office)
+      ? [{ label: t.label_office, value: (isEnglish ? professor.office_en : professor.office)! }]
+      : []),
+    ...(professor.orcid
+      ? [{ label: 'ORCID', value: professor.orcid, href: `https://orcid.org/${professor.orcid}` }]
+      : []),
+  ]
+  : [];
 ---
 
 <BaseLayout locale={locale} slug="professor" structuredData={person}>
-  <p><a href={pathFor('members', locale)}>&larr; {t.nav_members}</a></p>
-
-  <h1>
-    {name}
-    {!isEnglish && professor?.name_en && <span class="member-alt"> ({professor.name_en})</span>}
-  </h1>
-  {professor?.title && <p class="page-lede">{isEnglish ? professor.title_en : professor.title}</p>}
+  <div class="ds-masthead">
+    <Kicker size="md">{t.professor_kicker}</Kicker>
+    <Hairline tone="ink" />
+    <h1 class="ds-masthead__title">
+      {name}{!isEnglish && professor?.name_en && ` (${professor.name_en})`}
+    </h1>
+    <div class="ds-masthead__subtitle">{t.professor_subtitle}</div>
+    <p class="ds-masthead__lede">{t.professor_lede}</p>
+  </div>
 
   {professor && (
-    <section class="professor-contact" aria-labelledby="contact">
-      <h2 id="contact">{t.label_email}</h2>
-      {professor.photo && (
-        <img class="member-photo" src={professor.photo} alt={name} width="180" height="180" />
-      )}
-      <ul>
-        {professor.email && (
-          <li>{t.label_email}: <a href={`mailto:${professor.email}`}>{professor.email}</a></li>
+    <div class="ds-section">
+      <div class="ds-row">
+        {professor.photo && (
+          <figure class="ds-plate" style="flex:0 0 200px">
+            <img src={professor.photo} alt={name} width="194" height="130" />
+          </figure>
         )}
-        {professor.phone && <li>{t.label_phone}: {professor.phone}</li>}
-        {(isEnglish ? professor.office_en : professor.office) && (
-          <li>{t.label_office}: {isEnglish ? professor.office_en : professor.office}</li>
-        )}
-        {professor.orcid && (
-          <li>ORCID: <a href={`https://orcid.org/${professor.orcid}`}>{professor.orcid}</a></li>
-        )}
-      </ul>
-    </section>
+        <div class="ds-col">
+          <ColophonTable entries={contact} />
+          {(isEnglish ? professor.research_en : professor.research) && (
+            <p class="ds-prose" style="margin-top:var(--space-3)">
+              {isEnglish ? professor.research_en : professor.research}
+            </p>
+          )}
+        </div>
+      </div>
+    </div>
   )}
 
   {profile.appointments.length > 0 && (
-    <section aria-labelledby="appointments">
-      <h2 id="appointments">{isEnglish ? 'Appointments' : '現職'}</h2>
-      <ul>{profile.appointments.map((line) => <li>{line}</li>)}</ul>
+    <section class="ds-section" aria-labelledby="appointments">
+      <Hairline tone="ink" />
+      <Kicker size="md" as="h2" id="appointments">{t.section_appointments}</Kicker>
+      <ul class="ds-list">{profile.appointments.map((line) => <li>{line}</li>)}</ul>
     </section>
   )}
 
   {(profile.background.length > 0 || education.length > 0) && (
-    <section aria-labelledby="background">
-      <h2 id="background">{t.label_education}</h2>
-      <ul>
-        {profile.background.map((line) => <li>{line}</li>)}
-        {profile.background.length === 0 && education.map((line) => <li>{line}</li>)}
+    <section class="ds-section" aria-labelledby="background">
+      <Kicker size="md" as="h2" id="background">{t.label_education}</Kicker>
+      <ul class="ds-list">
+        {(profile.background.length > 0 ? profile.background : education).map((line) => (
+          <li>{line}</li>
+        ))}
       </ul>
     </section>
   )}
 
   {profile.biography.length > 0 && (
-    <section aria-labelledby="biography">
-      <h2 id="biography">{isEnglish ? 'Biography' : '履歷'}</h2>
-      <div class="prose">
+    <section class="ds-section" aria-labelledby="biography">
+      <Kicker size="md" as="h2" id="biography">{t.section_biography}</Kicker>
+      <div class="ds-prose">
         {profile.biography.map((paragraph) => <p>{paragraph}</p>)}
       </div>
     </section>
   )}
+
+  <p class="ds-section">
+    <a class="ds-link" href={pathFor('members', locale)}>{t.nav_members} &rarr;</a>
+  </p>
 </BaseLayout>

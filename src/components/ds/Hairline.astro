@@ -1,0 +1,7 @@
+---
+// The system's only elevation device: a 1px rule. `ink` closes a section.
+// There is no shadow anywhere in this design, by decision.
+interface Props { tone?: 'divider' | 'ink' | 'row'; class?: string }
+const { tone = 'divider', class: klass = '' } = Astro.props;
+---
+<hr class={['ds-rule', tone !== 'divider' && `ds-rule--${tone}`, klass].filter(Boolean).join(' ')} />
