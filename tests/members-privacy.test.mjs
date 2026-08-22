@@ -61,9 +61,12 @@ const FORBIDDEN_IN_PUBLIC = [
  */
 const ALLOWED_MEMBER_FIELDS = new Set([
   // Identity and grouping.
-  'name', 'name_en', 'role', 'title', 'title_en', 'grade', 'department', 'graduated',
-  // Research description.
-  'research', 'research_en', 'expertise', 'honors',
+  'name', 'name_en', 'role', 'title', 'title_en', 'grade', 'department', 'graduated', 'order',
+  // Research description. `research` is the vault's specific topic and is NOT
+  // rendered; `area` is the coarse pillar that is.
+  'research', 'research_en', 'area', 'area_en', 'expertise', 'honors',
+  // Named projects: a responsibility, kept apart from `area`.
+  'projects',
   // Professional contact and profile. Deliberate publications, not vault spill.
   'email', 'phone', 'office', 'office_en', 'orcid', 'photo', 'homepage',
   'education', 'education_en',
@@ -208,5 +211,122 @@ test('parsed records carry no private field values', {
   // Milestone glyphs are the visible shape of the private progress columns.
   for (const glyph of ['✅', '🔄', '⬜', '📄', '📝', '📊']) {
     assert.ok(!serialized.includes(glyph), `parsed roster contains milestone glyph "${glyph}"`);
+  }
+});
+
+// ---------------------------------------------------------------------------
+// Email publication is opt-in
+// ---------------------------------------------------------------------------
+
+test('only members who opted in carry an email in the public data', async () => {
+  // The failure this guards is silent and irreversible: an address that reaches
+  // data/members.yml gets built into the page, crawled, and archived. Most of
+  // these are personal accounts that exist nowhere but this site, so the site's
+  // choice is the whole of the exposure.
+  const overrides = YAML.parse(
+    await readFile(path.join(ROOT, 'data', 'members-overrides.yml'), 'utf8'),
+  ) ?? {};
+
+  const optedIn = new Set();
+  for (const [name, entry] of Object.entries(overrides.members ?? {})) {
+    if (entry?.publish_email === true) optedIn.add(name);
+  }
+  for (const entry of overrides.additional ?? []) {
+    if (entry?.publish_email === true) optedIn.add(entry.name);
+  }
+
+  const published = YAML.parse(await readFile(MEMBERS_YML, 'utf8')).members ?? [];
+  for (const member of published) {
+    if (!member.email) continue;
+    assert.ok(
+      optedIn.has(member.name),
+      `"${member.name}" has an email in data/members.yml but no publish_email: true `
+      + 'in members-overrides.yml',
+    );
+  }
+});
+
+test('no member email that was withheld appears in the built pages', {
+  skip: existsSync(path.join(ROOT, 'dist')) ? false : 'run `npm run build` first',
+}, async () => {
+  // Checks the shipped HTML, not the data: a template could reintroduce an
+  // address from the overrides file directly and bypass the sync entirely.
+  const overrides = YAML.parse(
+    await readFile(path.join(ROOT, 'data', 'members-overrides.yml'), 'utf8'),
+  ) ?? {};
+
+  const withheld = [];
+  for (const entry of Object.values(overrides.members ?? {})) {
+    if (entry?.email && entry.publish_email !== true) withheld.push(entry.email);
+  }
+  for (const entry of overrides.additional ?? []) {
+    if (entry?.email && entry.publish_email !== true) withheld.push(entry.email);
+  }
+  assert.ok(withheld.length > 0, 'expected at least one withheld address to check');
+
+  const pages = [];
+  const walk = async (dir) => {
+    const { readdir } = await import('node:fs/promises');
+    for (const entry of await readdir(dir, { withFileTypes: true })) {
+      const full = path.join(dir, entry.name);
+      if (entry.isDirectory()) await walk(full);
+      else if (entry.name.endsWith('.html')) pages.push(full);
+    }
+  };
+  await walk(path.join(ROOT, 'dist'));
+
+  for (const page of pages) {
+    const html = await readFile(page, 'utf8');
+    for (const address of withheld) {
+      assert.ok(
+        !html.includes(address),
+        `${path.relative(ROOT, page)} contains withheld address ${address}`,
+      );
+    }
+  }
+});
+
+test('member research topics are not rendered on the page', {
+  skip: existsSync(path.join(ROOT, 'dist')) ? false : 'run `npm run build` first',
+}, async () => {
+  // Structural, not substring. An earlier version of this test searched the HTML
+  // for each topic string and false-positived on "Metabolomics" -- a one-word
+  // topic that also appears inside the lab's own English name in the structured
+  // data. Whether a topic is rendered is a question about the markup, so ask the
+  // markup.
+  const html = await readFile(path.join(ROOT, 'dist', 'members', 'index.html'), 'utf8');
+
+  // Research was the only thing that filled a ledger item's body on this page.
+  const bodies = html.match(/class="ds-ledger-item__body"/g) ?? [];
+  assert.deepEqual(bodies, [], 'a ledger item on the members page still renders a body');
+
+  // The roster tables carried a research column; they are name + programme now.
+  for (const table of html.match(/<table class="ds-table"[\s\S]*?<\/thead>/g) ?? []) {
+    const headers = (table.match(/<th /g) ?? []).length;
+    assert.ok(
+      headers <= 4,
+      `a roster table has ${headers} columns; research and year of study were removed`,
+    );
+  }
+
+  // And the Person nodes must not claim a topic the page does not show.
+  assert.ok(!html.includes('knowsAbout'), 'Person nodes still claim knowsAbout');
+});
+
+test('year of study is not rendered on the members page', {
+  skip: existsSync(path.join(ROOT, 'dist')) ? false : 'run `npm run build` first',
+}, async () => {
+  // Grades are distinctive enough to match directly: D4, M2 and so on appear
+  // nowhere else on this page. They stay in the data because the sort uses them.
+  const published = YAML.parse(await readFile(MEMBERS_YML, 'utf8')).members ?? [];
+  const html = await readFile(path.join(ROOT, 'dist', 'members', 'index.html'), 'utf8');
+  const grades = [...new Set(published.map((m) => m.grade).filter(Boolean))];
+  assert.ok(grades.length > 0, 'expected the data to carry grades to check against');
+
+  for (const grade of grades) {
+    assert.ok(
+      !new RegExp(`>\\s*${grade}\\s*<`).test(html),
+      `members page renders the year of study "${grade}"`,
+    );
   }
 });

@@ -52,7 +52,16 @@ the target codebase's own environment using its established patterns."* So:
    language. The bundle explicitly left the Honors page as a decision for the
    lab; it is its own page here.
 
-5. **Real numbers instead of written-in ones.** The Overview colophon in the
+5. **Emails are written out in full.** The bundle specifies the lab's old
+   `name[at]host` convention and says to keep it. It is not kept, because as
+   implemented it protected nothing: the `mailto:` href on the same element
+   carries the real address, so a harvester reading hrefs — the easy path — was
+   never slowed, while a reader trying to copy the address was. Publishing the
+   address plainly is the normal choice for a lab page; the alternatives that
+   actually work either need JavaScript (breaking no-JS readers and crawlers) or
+   a form with a backend, and neither is worth it here.
+
+6. **Real numbers instead of written-in ones.** The Overview colophon in the
    bundle lists figures like "40+ alumni". Those are counted from `data/` here,
    so they cannot go stale the way the old site's did.
 

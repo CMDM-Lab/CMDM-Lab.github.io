@@ -10,7 +10,7 @@ import Hairline from './ds/Hairline.astro';
 import Kicker from './ds/Kicker.astro';
 import ColophonTable from './ds/ColophonTable.astro';
 import {
-  getMembers, getProfessorProfile, getStrings, obfuscateEmail, type Locale,
+  getMembers, getProfessorProfile, getStrings, type Locale,
 } from '../lib/data';
 import { pathFor } from '../lib/routes';
 
@@ -53,7 +53,7 @@ const person = professor
 const contact = professor
   ? [
     ...(professor.email
-      ? [{ label: t.label_email, value: obfuscateEmail(professor.email), href: `mailto:${professor.email}` }]
+      ? [{ label: t.label_email, value: professor.email, href: `mailto:${professor.email}` }]
       : []),
     ...(professor.phone ? [{ label: t.label_phone, value: professor.phone }] : []),
     ...((isEnglish ? professor.office_en : professor.office)
@@ -82,7 +82,7 @@ const contact = professor
       <div class="ds-row">
         {professor.photo && (
           <figure class="ds-plate" style="flex:0 0 200px">
-            <img src={professor.photo} alt={name} width="194" height="130" />
+            <img src={professor.photo} alt={name} width="600" height="902" />
           </figure>
         )}
         <div class="ds-col">

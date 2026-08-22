@@ -22,37 +22,136 @@
 # always safe; adding a personal one needs that person's say-so.
 
 members:
+  # ── Romanised names ────────────────────────────────────────────────────
+  # These matter for search: people look for "Ying-An Lin", not only for the
+  # Chinese characters. But a guessed romanisation is worse than none -- it is
+  # confidently wrong, and it makes the person harder to find rather than easier.
+  #
+  # So each one below carries its source, and a name that has no source other
+  # than my reading of the characters is simply absent. Five were removed on
+  # 2026-08-22 for exactly that reason after one of them (張家瑜) turned out to
+  # be wrong.
+  #
+  # The best source is the publication record: Crossref carries the form the
+  # person actually publishes under, which is also the form anyone searching for
+  # them will type.
   # ---------------------------------------------------------------------------
-  # Romanised names recovered from the previous site. These matter for search:
-  # people look for "Ying-An Lin", not only for the Chinese name.
-  # ---------------------------------------------------------------------------
-  王又可:
-    name_en: Yu-Ke Wang
-    email: cragger1027@gmail.com # student-supplied contact, kept from the old site
   林盈安:
-    name_en: Ying-An Lin
+    name_en: Ying-An Lin # from the previous site
   楊淯元:
     name_en: Yu-Yuan Yang
   徐銘聰:
     name_en: Ming-Tsung Hsu
   張景曜:
-    name_en: Ching-Yao Chang
+    name_en: Ching-Yao Chang # published
   許洸誠:
-    name_en: Kuang-Cheng Hsu
-  田傑睿:
-    name_en: Jie-Rui Tien
+    name_en: Kuang-Cheng Hsu # published
   鍾岳辰:
-    name_en: Yueh-Chen Chung
+    # Published as Yue-Chen Jhong on A Clinical Breathomics Dataset (Scientific
+    # Data 11, 203, 2024). My earlier "Yueh-Chen Chung" was wrong on both parts.
+    name_en: Yue-Chen Jhong
   李哲宇:
     name_en: Che-Yu Lee
+  # ── Graduating cohort ──────────────────────────────────────────────────
+  # The vault lists these six under 現役成員 › 即將畢業, whose only publishable
+  # column is the name. Degree level, department and research area therefore come
+  # from the lab. `order` puts them at the head of their section, being the most
+  # senior in each.
+  #
+  # STILL LISTED AS CURRENT, deliberately. Four of them have passed their defense
+  # and hold a certificate; the vault has not moved them out of 現役成員, and the
+  # lab said only that 廖翊婷 and 王又可 deferred and have not actually graduated.
+  # Moving the other four to the alumni table is a bigger call than this file
+  # should make on its own -- ask before doing it.
+  王又可:
+    name_en: Yu-Ke Wang
+    # Kept as the lab's own record; withheld from the site because there is no
+    # publish_email flag.
+    email: cragger1027@gmail.com
+    role: phd
+    order: 1
+    department: BEBI
+    # Briefly in metabolomics, then LLM work; counted as the latter.
+    area: AI Agent 系統
+    area_en: AI Agent Systems
+
+  高振翔:
+    role: masters
+    order: 1
+    department: MHI
+    # SchizoTrain: a video-retrieval virtual-patient system for training
+    # assessment of schizophrenia negative symptoms, driven by speech and text.
+    area: AI Agent 系統
+    area_en: AI Agent Systems
+
+  許漢強:
+    # Supplied by the lab. My earlier "Dwayne Hsu" invented the surname.
+    name_en: Dwayne Reinaldy
+    role: masters
+    order: 2
+    department: MHI
+    # Vault topic is Gait Analysis; thesis is a multimodal ML framework for
+    # tardive dyskinesia from speech and facial motion.
+    area: 步態分析
+    area_en: Gait Analysis
+
+  葉芷瑜:
+    role: masters
+    order: 3
+    department: GSB
+    area: 代謝體學
+    area_en: Metabolomics
+
+  丁瓘茵:
+    role: masters
+    order: 4
+    department: BEBI
+    area: AI Agent 系統
+    area_en: AI Agent Systems
+
+  廖翊婷:
+    role: masters
+    order: 5
+    department: BEBI
+    area: AI Agent 系統
+    area_en: AI Agent Systems
+
+  陳筱蓁:
+    # HBDB is the lab's Human Breathomics Database, so the classifier now reads
+    # this correctly on its own; kept explicit because the lab stated it.
+    area: 代謝體學
+    area_en: Metabolomics
+
+  吳宗鴻:
+    # Vault topic is "TBD", which the parser drops as a placeholder. Stated by
+    # the lab on 2026-08-22.
+    area: 計算分子設計
+    area_en: Computational Molecular Design
+
+  嚴正翰:
+    # The vault topic reads "Digital Twins for Anesthesia (方向待定案)", which the
+    # parser treats as a placeholder, so nothing reached the classifier. Area
+    # stated by the lab on 2026-08-22.
+    area: AI Agent 系統
+    area_en: AI Agent Systems
+
   張家瑜:
-    name_en: Chia-Yu Chang
+    # Corrected by the lab on 2026-08-22; "Chia-Yu" was my inference from the
+    # characters and was wrong. The period belongs: Crossref carries her as
+    # "Chia-I. Chang" on 10.1021/acs.est.5c09769 and elsewhere, which is how the
+    # name appears in the literature.
+    name_en: Chia-I. Chang
+    # Graduated, then stayed on as the lab's research assistant (2026-08-22).
+    # The vault still has her under alumni; the current role wins, which also
+    # keeps her from appearing in both the staff list and the alumni table.
+    role: staff
+    title: 研究助理
+    title_en: Research Assistant
+    # Deliberately blank at her request -- `area: ''` survives the classifier,
+    # which would otherwise read "ExoCSC LLM pipeline" as AI Agent Systems.
+    area: ''
   姚柏仰:
     name_en: Po-Yang Yao
-  林首志:
-    name_en: Shou-Chih Lin
-  林詩敏:
-    name_en: Shih-Min Lin
   黎芷琪:
     name_en: Chih-Chi Li
   游子慧:
@@ -80,7 +179,17 @@ additional:
     office_en: Room 529, Der-Tian Hall, Department of Computer Science and Information
       Engineering, National Taiwan University
     orcid: 0000-0002-8461-6181
-    photo: /img/professor.png
+    publish_email: true
+    # Faculty portrait taken by the Department of Computer Science and
+    # Information Engineering for its own staff directory, supplied by the lab
+    # on 2026-08-22 as cleared for use here. Downsized from the department's
+    # 2794x4200 original to 600px wide (47 KB) and stripped of EXIF; the
+    # original is at
+    # csie.ntu.edu.tw/uploads/member_profile/avatar/63bd158008911a59987ce05e/8371.jpg
+    #
+    # The previous img/professor.png is left in place: the retained legacy pages
+    # reference it and the design bundle lists it as an asset.
+    photo: /img/professor-csie.jpg
     research: 計算分子設計、代謝體學生物標記偵測、人工智慧應用於藥物開發
     research_en: Computational molecular design, biomarker detection in metabolomics,
       AI for drug discovery
@@ -91,35 +200,62 @@ additional:
       - PhD in Medicinal Chemistry and Pharmacognosy, University of Illinois at Chicago
       - BS in Pharmacy, National Taiwan University
 
-  - name: 黃立緯
-    name_en: Li-Wei Huang
+  # Administrative assistant. Replaced 黃立緯 (Li-Wei Huang), who left the lab;
+  # the previous research assistant 莊珮君 (Pei-Chun Chuang) has also left, and
+  # that post is now held by 張家瑜, entered in the `members` map above because
+  # the vault already knows her as a graduate.
+  #
+  # Both departures were reported by the lab on 2026-08-22. Staff leave no alumni
+  # record -- that table is for graduates -- so their entries are simply removed.
+  - name: 朱于君
     role: staff
     title: 行政助理
     title_en: Administrative Assistant
-    email: wei03090719@gmail.com
-
-  - name: 莊珮君
-    name_en: Pei-Chun Chuang
-    role: staff
-    title: 研究助理
-    title_en: Research Assistant
 
   # Current postdocs per the 2026-08-21 roster review. Bo-Han Su appears as a
   # postdoc on the old site but has left the lab, so he is not listed here.
   - name: 郭天爵
     name_en: Tien-Chueh Kuo
     role: postdoc
+    # Joined before 王珮驊, and neither has a grade for the sort to work from.
+    order: 1
     title: 博士後研究員
     title_en: Postdoctoral Researcher
-    email: cotcage@gmail.com
+    # Was cotcage@gmail.com, which he no longer uses -- an external group trying
+    # to reach him found that dead address on the old site. Replaced with the
+    # lab-domain address on 2026-08-22 and opted in at his request.
+    email: cot@cmdm.csie.ntu.edu.tw
+    publish_email: true
     research: 代謝體學生物判讀、脂質體學分析流程設計
     research_en: Biological interpretation of metabolomics, lipidomics analysis pipeline design
+    # Stated by him rather than derived from the topic above. 深度學習 is not one
+    # of the lab's pillars and should not become one -- it is a method used
+    # across several -- so it is declared in EXTRA_AREAS in the sync script.
+    area: 代謝體學 · 深度學習 · AI Agent 系統
+    area_en: Metabolomics · Deep Learning · AI Agent Systems
+    # A project, not a research area. He leads the lab's work on this system for
+    # the Chemicals Administration, Ministry of Environment. Official name
+    # supplied by the lab on 2026-08-22; the site's own <title> is only "SAS".
+    #
+    # Being renamed GreenN to stop it colliding with SAS Institute's statistical
+    # software. Shown as "GreenN (SAS)" while the old name is still what the host
+    # and the existing literature use; drop the parenthetical once the rename has
+    # landed everywhere.
+    projects:
+      - name: 高風險化學物質之安全替代化學物質搜尋、評估及篩選系統
+        name_en: Searching, Assessment and Screening System for Safer Alternative Chemicals
+        short: GreenN (SAS)
+        url: https://sas.moenv.gov.tw/
     honors:
       - 臺大生醫電資所第三屆獎勵研究創新學生傑出研究獎
 
   - name: 王珮驊
-    name_en: Pei-Hwa Wang
+    # Confirmed by the lab on 2026-08-22. The previous site said Pei-Hwa, which
+    # no publication uses; twelve of her own papers carry Pei-Hua, including
+    # Briefings in Bioinformatics 2025 and Journal of Cheminformatics 2025.
+    name_en: Pei-Hua Wang # published, confirmed
     role: postdoc
+    order: 2
     title: 博士後研究員
     title_en: Postdoctoral Researcher
     email: kitty50221@gmail.com

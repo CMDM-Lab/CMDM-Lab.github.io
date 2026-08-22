@@ -10,18 +10,33 @@
 // individuals get a Ledger; roles that read as a roster get a DataTable, because
 // a table of twenty names is easier to scan than twenty ledger entries.
 //
-// Emails display with `[at]` -- the lab's own scraping convention, kept from the
-// old site -- while the mailto href keeps the real address. Members with no
-// photo get no placeholder: blanks stay blank.
+// WHAT THIS PAGE DELIBERATELY DOES NOT SHOW, at the lab's direction:
+//
+//   Specific research topics. They come from the vault as working shorthand,
+//   not as public summaries. What shows instead is the coarse area -- one of the
+//   research pillars -- which keeps each entry searchable without publishing
+//   what anyone is working on this month. The raw topic stays in the data and is
+//   not claimed in the Person structured data.
+//
+//   Year of study. The lab asked for it off; the ordering already conveys
+//   seniority. It stays in the data because the sort depends on it.
+//
+//   Email addresses, unless that person opted in. Anyone who did not is an
+//   address existing nowhere but this site, so publishing here is the entire
+//   exposure. Those are stripped in scripts/sync-members.mjs, so they are absent
+//   from data/members.yml rather than merely unrendered.
+//
+// Members with no photo get no placeholder: blanks stay blank.
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hairline from './ds/Hairline.astro';
 import Kicker from './ds/Kicker.astro';
 import Ledger from './ds/Ledger.astro';
 import LedgerItem from './ds/LedgerItem.astro';
 import DataTable from './ds/DataTable.astro';
+import Tag from './ds/Tag.astro';
 import ColophonTable from './ds/ColophonTable.astro';
 import {
-  allAlumni, departmentLabel, getStrings, membersByRole, obfuscateEmail,
+  allAlumni, departmentLabel, getStrings, membersByRole,
   type HistoricalAlumnus, type Locale, type Member,
 } from '../lib/data';
 import { pathFor } from '../lib/routes';
@@ -40,11 +55,11 @@ const displayName = (person: { name: string; name_en?: string }) => (
 const secondaryName = (person: { name: string; name_en?: string }) => (
   isEnglish ? (person.name_en ? person.name : '') : (person.name_en ?? '')
 );
-const research = (member: Member) => (
-  (isEnglish ? member.research_en : member.research) || member.research || ''
-);
 const roleTitle = (member: Member) => (
   (isEnglish ? member.title_en : member.title) || member.title || ''
+);
+const area = (member: Member) => (
+  (isEnglish ? member.area_en : member.area) || member.area || ''
 );
 
 const faculty = grouped.get('faculty') ?? [];
@@ -66,7 +81,6 @@ const people = [...grouped.values()].flat().map((member) => ({
   ...(roleTitle(member) ? { jobTitle: roleTitle(member) } : {}),
   ...(member.email ? { email: member.email } : {}),
   ...(member.orcid ? { identifier: `https://orcid.org/${member.orcid}` } : {}),
-  ...(research(member) ? { knowsAbout: research(member) } : {}),
   affiliation: { '@type': 'ResearchOrganization', '@id': `${site.href}#organization` },
   url: membersUrl,
 }));
@@ -91,7 +105,7 @@ const isHistorical = (person: Member | HistoricalAlumnus): person is HistoricalA
       <div class="ds-row">
         {member.photo && (
           <figure class="ds-plate" style="flex:0 0 200px">
-            <img src={member.photo} alt={displayName(member)} width="194" height="130" />
+            <img src={member.photo} alt={displayName(member)} width="600" height="902" />
           </figure>
         )}
         <div class="ds-col">
@@ -100,13 +114,10 @@ const isHistorical = (person: Member | HistoricalAlumnus): person is HistoricalA
             {secondaryName(member) && <span> ({secondaryName(member)})</span>}
           </h3>
           {roleTitle(member) && <div class="ds-masthead__subtitle">{roleTitle(member)}</div>}
-          {research(member) && (
-            <p class="ds-prose" style="margin-top:var(--space-3)">{research(member)}</p>
-          )}
           <div style="margin-top:var(--space-3)">
             <ColophonTable entries={[
               ...(member.email
-                ? [{ label: t.label_email, value: obfuscateEmail(member.email), href: `mailto:${member.email}` }]
+                ? [{ label: t.label_email, value: member.email, href: `mailto:${member.email}` }]
                 : []),
               ...(member.phone ? [{ label: t.label_phone, value: member.phone }] : []),
               ...((isEnglish ? member.office_en : member.office)
@@ -133,15 +144,37 @@ const isHistorical = (person: Member | HistoricalAlumnus): person is HistoricalA
           <LedgerItem
             title={[displayName(member), secondaryName(member) && `(${secondaryName(member)})`]
               .filter(Boolean).join(' ')}
-            body={research(member)}
             meta={[
               roleTitle(member),
-              member.grade,
               departmentLabel(member.department, locale),
-              obfuscateEmail(member.email),
+              member.email,
             ].filter(Boolean).join(' · ')}
             as="h3"
-          />
+          >
+            {area(member) && (
+              <Fragment slot="tags">
+                {area(member).split(' · ').map((one) => <Tag tone="brand">{one}</Tag>)}
+              </Fragment>
+            )}
+            {member.projects?.length ? (
+              <div class="ds-meta" slot="meta">
+                {t.label_projects}:{' '}
+                {member.projects.map((project, i) => (
+                  <>
+                    {i > 0 && ' · '}
+                    {project.url
+                      ? (
+                        <a href={project.url}>
+                          {project.short ? `${project.short} — ` : ''}
+                          {(isEnglish && project.name_en) || project.name}
+                        </a>
+                      )
+                      : `${project.short ? `${project.short} — ` : ''}${(isEnglish && project.name_en) || project.name}`}
+                  </>
+                ))}
+              </div>
+            ) : null}
+          </LedgerItem>
         ))}
       </Ledger>
     </section>
@@ -151,10 +184,9 @@ const isHistorical = (person: Member | HistoricalAlumnus): person is HistoricalA
     <section class="ds-section" aria-labelledby={`role-${role}`}>
       <Kicker size="md" as="h2" id={`role-${role}`}>{t[`role_${role}`] ?? role}</Kicker>
       <DataTable columns={[
-        { label: t.label_name, width: '22%' },
-        { label: t.label_grade, width: '8%' },
-        { label: t.label_department, width: '24%' },
-        { label: t.label_research },
+        { label: t.label_name, width: '26%' },
+        { label: t.label_department },
+        { label: t.label_area, width: '26%' },
       ]}>
         {grouped.get(role)!.map((member) => (
           <tr>
@@ -162,9 +194,12 @@ const isHistorical = (person: Member | HistoricalAlumnus): person is HistoricalA
               {displayName(member)}
               {secondaryName(member) && <span> ({secondaryName(member)})</span>}
             </td>
-            <td class="ds-num">{member.grade ?? ''}</td>
             <td>{departmentLabel(member.department, locale)}</td>
-            <td>{research(member)}</td>
+            <td>
+              {area(member)
+                ? area(member).split(' · ').map((one) => <Tag tone="brand">{one}</Tag>)
+                : ''}
+            </td>
           </tr>
         ))}
       </DataTable>
@@ -190,7 +225,9 @@ const isHistorical = (person: Member | HistoricalAlumnus): person is HistoricalA
           <td class="ds-mono-sm">{isHistorical(person)
             ? (person.department ?? '')
             : departmentLabel(person.department, locale)}</td>
-          <td>{isHistorical(person) ? (person.thesis ?? '') : (research(person as Member) || '')}</td>
+          {/* Historical alumni carry a real thesis title. Vault alumni have
+              only a working research topic, which is not shown. */}
+          <td>{isHistorical(person) ? (person.thesis ?? '') : ''}</td>
         </tr>
       ))}
     </DataTable>
