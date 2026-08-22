@@ -3,6 +3,14 @@
 # Migrated from the hard-coded list in contents/index_zh.html. Hand-maintained:
 # add new items at the top.
 news:
+# Verified on 2026-08-22 against the host's own announcement page. The gap
+# between this and the 2018 items below is real, not a lapse in maintenance: the
+# lab's public record for 2019-2024 is awards, which live in honors.yml.
+- text: 2025年曾宇鳳教授應長庚大學智慧運算學院暨人工智慧研究中心邀請演講題目「人工智慧在藥物發現與藥物開發的應用與前景」
+  links:
+  - label: 長庚大學
+    url: https://www.cgu.edu.tw/coic/Subject/Detail/65252?nodeId=16993
+  year: 2025
 - text: 2018年曾宇鳳教授應生技中心(DCB)邀請演講題目「AI與機器學習對新藥開發臨床數據科學的影響」
   year: 2018
 - text: '2018年曾宇鳳教授應邀於台灣醫療科技展(DCB X AI)演講題目「AI for drug development: What''s ready to go !」'

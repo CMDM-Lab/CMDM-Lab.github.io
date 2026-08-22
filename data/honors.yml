@@ -83,6 +83,42 @@ achievements:
       - label: NTU BEBI
         url: https://www.bebi.ntu.edu.tw/?p=6071
 
+  # Announced 2025-10-22. 114 年度 again: kept inside the award's name because it
+  # is part of the official name, while the leading year is the calendar year of
+  # the announcement.
+  - citation:
+      zh: 2025 年，曾宇鳳教授榮獲中國電機工程學會 114 年度傑出電機工程教授獎。
+      en: 2025, Professor Yufeng Jane Tseng received the Outstanding Electrical Engineering
+        Professor Award of the Chinese Institute of Electrical Engineering.
+    links:
+      - label: NTU BEBI
+        url: https://www.bebi.ntu.edu.tw/?p=5724
+
+  # Announced 2024-09-24. The award's own name is in English on the
+  # announcement, so it is not translated back into Chinese here.
+  - citation:
+      zh: 2024 年，曾宇鳳教授榮獲 Global SPARK 傑出領導獎 (Distinguished Leadership Award)。
+      en: 2024, Professor Yufeng Jane Tseng received the Distinguished Leadership Award from
+        Global SPARK.
+    links:
+      - label: NTU BEBI
+        url: https://www.bebi.ntu.edu.tw/?p=3578
+
+  # Announced 2024-06-19. The award goes to the student, supervised by the PI --
+  # written that way round because that is what the announcement says.
+  #
+  # 何明洋 is not on the members page: he is on eight of the lab's papers
+  # (2020-2026, including FastEval Parkinsonism and the movement-analysis
+  # platform) but has no row in the vault roster, so the sync cannot see him.
+  # Raised with the lab on 2026-08-22.
+  - citation:
+      zh: 2024 年，曾宇鳳教授指導的博士生何明洋榮獲 2024 鴻海科技獎。
+      en: 2024, Ming-Yang Ho, a doctoral student supervised by Professor Yufeng Jane Tseng,
+        received a 2024 Foxconn Technology Award.
+    links:
+      - label: NTU BEBI
+        url: https://www.bebi.ntu.edu.tw/?p=3241
+
   - citation: 2018年：曾宇鳳教授團隊的「改善精神分裂症之負性症狀與認知功能藥物」於 2018 BioAsia and Bio SPARK
       SHOWCASE 大放異彩
   - citation: 2018年：曾宇鳳教授帶領之 Virtual Man 團隊獲選 107 年度第一梯次創新創業激勵計畫，並於 2018 Taiwan Big
