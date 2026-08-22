@@ -21,7 +21,8 @@ import LedgerItem from './ds/LedgerItem.astro';
 import ColophonTable from './ds/ColophonTable.astro';
 import {
   allAlumni, getHomeIntro, getHomeRecord, getHonors, getNews, getPublications,
-  getResearchAreas, romanNumeral, getServices, getStrings, membersByRole, type Locale,
+  getResearchAreas, labAffiliations, labPublicationCount, LAB_FOUNDED, romanNumeral,
+  getServices, getStrings, membersByRole, type Locale,
 } from '../lib/data';
 import { LEGACY_CONTENT_MAP, pathFor } from '../lib/routes';
 
@@ -41,22 +42,24 @@ const record = getHomeRecord(locale);
 
 const facts = [
   { label: t.label_director, value: locale === 'en' ? 'Prof. Yufeng Jane Tseng' : '曾宇鳳 教授' },
-  {
-    label: t.label_affiliation,
-    value: locale === 'en' ? 'NTU CSIE · BEBI · GSB · MHI' : '臺大資工系 · 生醫電資所 · 基因體所 · 智慧醫療學程',
-  },
-  { label: t.label_platforms, value: 'LC-QTOF-MS · GCxGC/TOF-MS · 1D ¹H-NMR' },
+  // Read from the roster, not written here: the hand-written list said
+  // "基因體所", which is not the name of anything -- GSB is a degree program --
+  // and it had no 網媒所 although a member is in it.
+  { label: t.label_affiliation, value: labAffiliations(locale) },
   {
     label: t.label_public_tools,
     value: locale === 'en'
       ? `${services.length} services under cmdm.tw`
       : `cmdm.tw 網域下共 ${services.length} 項服務`,
   },
+  // Counted from the lab's founding, not from the length of the list: its four
+  // earliest entries are the PI's own postdoc work at UIC and the NCBI, from
+  // 2003-2004, before the lab existed.
   {
     label: t.nav_publications,
     value: locale === 'en'
-      ? `${publications.length} journal articles`
-      : `期刊論文 ${publications.length} 篇`,
+      ? `${labPublicationCount()} since ${LAB_FOUNDED}`
+      : `${LAB_FOUNDED} 年起共 ${labPublicationCount()} 篇`,
   },
   {
     label: t.label_alumni_count,

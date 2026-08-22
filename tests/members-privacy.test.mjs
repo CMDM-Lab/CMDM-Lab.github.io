@@ -332,3 +332,66 @@ test('year of study is not rendered on the members page', {
     );
   }
 });
+
+test('a department publishes as a known code and nothing else', async () => {
+  // The column allowlist governs which *column* may be published; it cannot see
+  // what a cell holds. One undergraduate's 所屬 cell reads "CSIE <student id>",
+  // and the id was reaching data/members.yml and the rendered page, because the
+  // label helper prints anything it does not recognise verbatim.
+  const script = await readFile(path.join(ROOT, 'scripts', 'lib', 'vault-members.mjs'), 'utf8');
+  const codes = [...(script.match(/DEPARTMENT_CODES = \[([^\]]*)\]/)?.[1] ?? '')
+    .matchAll(/'([A-Z]+)'/g)].map((m) => m[1]);
+  assert.ok(codes.length, 'could not read DEPARTMENT_CODES from the sync script');
+
+  // The parser and the site must agree on the set, or a real code publishes and
+  // then renders as itself instead of the unit's name.
+  const dataTs = await readFile(path.join(ROOT, 'src', 'lib', 'data.ts'), 'utf8');
+  const labels = [...(dataTs.match(/DEPARTMENT_LABELS[^=]*=\s*\{([\s\S]*?)\n\};/)?.[1] ?? '')
+    .matchAll(/^ {2}([A-Z]+):/gm)].map((m) => m[1]);
+  assert.deepEqual(
+    [...codes].sort(), [...labels].sort(),
+    'DEPARTMENT_CODES and DEPARTMENT_LABELS list different units',
+  );
+
+  if (!hasGeneratedMembers) return;
+  const members = YAML.parse(await readFile(MEMBERS_YML, 'utf8')).members ?? [];
+  for (const member of members) {
+    const department = member.department;
+    if (!department) continue;
+    // Historical alumni carry free-text departments from the previous site;
+    // everyone from the vault carries a code.
+    if (member.role === 'alumni' && !/^[A-Z]+$/.test(department)) continue;
+    assert.ok(
+      codes.includes(department),
+      `"${member.name}" has department "${department}", which is not one of ${codes.join(', ')} `
+      + '-- a vault cell with more than the code must publish the code alone',
+    );
+  }
+});
+
+test('no identifier that looks like a student number is published', async () => {
+  // The specific thing that leaked, as its own rule: a lab page has no reason to
+  // carry anyone's student id, and the vault mixes them into other columns.
+  const STUDENT_ID = /\b[a-z]\d{8,9}\b/i;
+  for (const file of ['members.yml', 'members-review.yml', 'alumni-historical.yml']) {
+    const full = path.join(ROOT, 'data', file);
+    if (!existsSync(full)) continue;
+    const source = await readFile(full, 'utf8');
+    const hit = source.match(STUDENT_ID);
+    assert.ok(!hit, `data/${file} contains what looks like a student id (${hit?.[0]})`);
+  }
+});
+
+test('the roster parser is a text file git can diff', async () => {
+  // It used a NUL-delimited sentinel for escaped pipes, which made git classify
+  // it as binary: every change to the file that decides what may leave a private
+  // vault showed up in review as "Binary files differ".
+  for (const file of ['lib/vault-members.mjs', 'sync-members.mjs']) {
+    const bytes = await readFile(path.join(ROOT, 'scripts', file));
+    const control = [...bytes].find((byte) => byte < 9 || (byte > 13 && byte < 32));
+    assert.equal(
+      control, undefined,
+      `scripts/${file} contains control byte 0x${control?.toString(16)}; git will treat it as binary`,
+    );
+  }
+});

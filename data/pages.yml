@@ -46,11 +46,18 @@ about:
       #   LLM for clinical   Schizophrenia Bulletin
       - >-
         近年新增的三個方向已有發表成果：量子計算應用於藥物探索與專利檢索、影像式步態與帕金森氏症動作分析，以及大型語言模型應用於臨床評估。
-      # Output and people. Numbers from the data files; tools from services.yml.
+      # Output and people. Every number here is counted from the data files, and
+      # tests/content.test.mjs recounts them -- prose numbers go stale silently.
+      #
+      # The count starts at 2006, the lab's founding year. The journal list
+      # reaches back to 2003, but those four entries (2003-2004, 4D-QSAR work at
+      # UIC) are the PI's own postdoc publications from before the lab existed
+      # and are not the lab's output. Corrected on 2026-08-22 at the lab's
+      # instruction; the previous wording claimed all 117 since 2003.
       - >-
-        實驗室自 2003 年起發表 117 篇期刊論文，其中 44 篇在 2020 年之後，另有 64 篇會議論文與 16 項專利。我們在 cmdm.tw
-        網域下維運 8 項公開服務，包含 3Omics、Lipidpedia、CypRules、GC2MS、Chromaligner 與
-        PITracer，皆開放外部研究者使用。實驗室現有成員 41 人，畢業校友 66 人。
+        實驗室自 2006 年創立以來發表 113 篇期刊論文，其中 44 篇在 2020 年之後，另有 64 篇會議論文與 16 項專利。我們在
+        cmdm.tw 網域下維運 8 項公開服務，包含 3Omics、Lipidpedia、CypRules、GC2MS、Chromaligner 與
+        PITracer，皆開放外部研究者使用。實驗室現有成員 37 人，畢業校友 64 人。
   en:
     paragraphs:
       - >-
@@ -82,11 +89,14 @@ about:
         The three newer directions each have published results: quantum computing for drug
         discovery and patent search, video-based gait and Parkinsonian movement analysis, and
         large language models for clinical assessment.
+      # See the note on the Chinese paragraph above: the count starts at the
+      # lab's founding in 2006, not at the first entry in the journal list.
       - >-
-        Since 2003 the lab has published 117 journal articles, 44 of them since 2020, together
-        with 64 conference papers and 16 patents. We maintain eight public services under
-        cmdm.tw -- among them 3Omics, Lipidpedia, CypRules, GC2MS, Chromaligner and PITracer --
-        all open to external researchers. The lab currently has 41 members and 66 alumni.
+        Since the lab was founded in 2006 it has published 113 journal articles, 44 of them
+        since 2020, together with 64 conference papers and 16 patents. We maintain eight public
+        services under cmdm.tw -- among them 3Omics, Lipidpedia, CypRules, GC2MS, Chromaligner
+        and PITracer -- all open to external researchers. The lab currently has 37 members and
+        64 alumni.
 
 # The lab's research pillars, in the order they are shown.
 #

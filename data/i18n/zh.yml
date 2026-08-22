@@ -65,7 +65,7 @@ publications_title: 學術發表
 publications_description: 國立臺灣大學計算分子設計與代謝體學實驗室的期刊論文、會議論文、專利與專書著作完整清單。
 publications_kicker: 論文
 publications_subtitle: 期刊論文 · 會議論文 · 專利 · 專書
-publications_lede: 期刊論文自 ORCID 與 Crossref 每週同步；會議論文、專利與專書由人工維護。
+publications_lede: 期刊論文自 ORCID 與 Crossref 每週同步；會議論文、專利與專書由人工維護。本表為完整著作紀錄，最早四篇（2003–2004 年）發表於實驗室 2006 年成立之前，屬曾教授博士後階段的研究。
 
 # ── Honors ───────────────────────────────────────────────────
 honors_title: 榮譽事蹟
@@ -155,7 +155,6 @@ label_publisher: 出版社頁面
 label_skip_to_content: 跳至主要內容
 label_director: 主持人
 label_affiliation: 所屬單位
-label_platforms: 分析平台
 label_public_tools: 公開工具
 label_alumni_count: 畢業校友
 

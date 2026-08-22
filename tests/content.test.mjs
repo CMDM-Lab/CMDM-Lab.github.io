@@ -255,3 +255,73 @@ test('no data file carries markup, script or anchor text from the old site', asy
     walk(YAML.parse(source), file.replace(/\.yml$/, ''));
   }
 });
+
+test('the numbers in the About prose match the data files', async () => {
+  // Prose numbers go stale silently: the About paragraph claimed 117 journal
+  // articles since 2003, 41 members and 66 alumni. The first was wrong because
+  // the lab was founded in 2006 and the four earliest articles are the PI's own
+  // postdoc work; the other two were simply out of date by four people. Nothing
+  // said so, and nothing would have.
+  const data = await pages();
+  const LAB_FOUNDED = Number(
+    (await readFile(path.join(ROOT, 'src', 'lib', 'data.ts'), 'utf8'))
+      .match(/LAB_FOUNDED = (\d{4})/)?.[1],
+  );
+  assert.ok(LAB_FOUNDED, 'could not read LAB_FOUNDED from src/lib/data.ts');
+
+  const publications = YAML.parse(
+    await readFile(path.join(ROOT, 'data', 'publications.yml'), 'utf8'),
+  ).publications ?? [];
+  const legacy = YAML.parse(
+    await readFile(path.join(ROOT, 'data', 'publications-legacy.yml'), 'utf8'),
+  ) ?? {};
+  const members = YAML.parse(
+    await readFile(path.join(ROOT, 'data', 'members.yml'), 'utf8'),
+  ).members ?? [];
+  const historical = YAML.parse(
+    await readFile(path.join(ROOT, 'data', 'alumni-historical.yml'), 'utf8'),
+  ).alumni ?? [];
+  const services = YAML.parse(
+    await readFile(path.join(ROOT, 'data', 'services.yml'), 'utf8'),
+  ).services ?? [];
+
+  const current = members.filter((member) => member.role !== 'alumni');
+  const vaultAlumni = members.filter((member) => member.role === 'alumni');
+  const currentNames = new Set(current.map((member) => member.name));
+  const alumniNames = new Set(vaultAlumni.map((member) => member.name));
+
+  const expected = {
+    journal: publications.filter((entry) => (entry.year ?? 0) >= LAB_FOUNDED).length,
+    recent: publications.filter((entry) => (entry.year ?? 0) >= 2020).length,
+    conference: (legacy.conference_papers ?? []).length,
+    patents: (legacy.patents ?? []).length,
+    services: services.length,
+    members: current.length,
+    alumni: vaultAlumni.length + historical.filter(
+      (person) => !alumniNames.has(person.name) && !currentNames.has(person.name),
+    ).length,
+  };
+
+  // The paragraph that carries the counts is the one naming cmdm.tw.
+  for (const locale of ['zh', 'en']) {
+    const paragraph = (data.about?.[locale]?.paragraphs ?? []).find((text) => text.includes('cmdm.tw'));
+    assert.ok(paragraph, `the ${locale} About text has no paragraph of counts`);
+    const numbers = new Set([...paragraph.matchAll(/\d+/g)].map((m) => Number(m[0])));
+
+    for (const [what, value] of Object.entries(expected)) {
+      if (what === 'services') continue; // written as a word ("eight" / 8 項)
+      assert.ok(
+        numbers.has(value),
+        `the ${locale} About paragraph does not state ${value} for ${what}; it says: ${paragraph}`,
+      );
+    }
+    assert.ok(
+      numbers.has(LAB_FOUNDED),
+      `the ${locale} About paragraph counts from a year other than ${LAB_FOUNDED}`,
+    );
+    assert.ok(
+      !numbers.has(2003),
+      `the ${locale} About paragraph still counts from 2003; the lab was founded in ${LAB_FOUNDED}`,
+    );
+  }
+});

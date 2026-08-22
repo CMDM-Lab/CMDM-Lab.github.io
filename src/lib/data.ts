@@ -106,19 +106,94 @@ export interface HistoricalAlumnus {
   thesis?: string;
 }
 
-/** Department codes used in the vault roster, spelled out for the public site. */
-const DEPARTMENT_LABELS: Record<string, { 'zh-Hant': string; en: string }> = {
-  BEBI: { 'zh-Hant': '生醫電子與資訊學研究所', en: 'Graduate Institute of Biomedical Electronics and Bioinformatics' },
-  CSIE: { 'zh-Hant': '資訊工程學系', en: 'Department of Computer Science and Information Engineering' },
-  GSB: { 'zh-Hant': '基因體與系統生物學學位學程', en: 'Genome and Systems Biology Degree Program' },
-  MHI: { 'zh-Hant': '智慧醫療與健康資訊學程', en: 'Master Program in Health Informatics' },
-  GINM: { 'zh-Hant': '網路與多媒體研究所', en: 'Graduate Institute of Networking and Multimedia' },
+/**
+ * Department codes used in the vault roster, spelled out for the public site.
+ *
+ * Declaration order is the order the affiliation line lists them: the lab's own
+ * department first, then the institutes and degree programs its members come
+ * from. `short` is the form the lab uses in running text.
+ *
+ * Official names and sites, so a correction has something to check against:
+ *   CSIE  https://www.csie.ntu.edu.tw/
+ *   BEBI  https://bebi.ntu.edu.tw/
+ *   GSB   https://ntugsb.ntu.edu.tw/       基因體與系統生物學學位學程
+ *   MHI   https://mhi.ntu.edu.tw/
+ *   GINM  https://www.ginm.ntu.edu.tw/     資訊網路與多媒體研究所（網媒所）
+ *
+ * Keep in step with DEPARTMENT_CODES in scripts/lib/vault-members.mjs;
+ * tests/members-privacy.test.mjs asserts the two agree.
+ */
+const DEPARTMENT_LABELS: Record<string, { 'zh-Hant': string; en: string; short: { 'zh-Hant': string; en: string } }> = {
+  CSIE: {
+    'zh-Hant': '資訊工程學系',
+    en: 'Department of Computer Science and Information Engineering',
+    short: { 'zh-Hant': '臺大資工系', en: 'NTU CSIE' },
+  },
+  BEBI: {
+    'zh-Hant': '生醫電子與資訊學研究所',
+    en: 'Graduate Institute of Biomedical Electronics and Bioinformatics',
+    short: { 'zh-Hant': '生醫電資所', en: 'BEBI' },
+  },
+  GSB: {
+    'zh-Hant': '基因體與系統生物學學位學程',
+    en: 'Genome and Systems Biology Degree Program',
+    // No abbreviation: the previous line called this 基因體所, which is not the
+    // name of anything -- it is a degree program, not an institute.
+    short: { 'zh-Hant': '基因體與系統生物學學位學程', en: 'GSB' },
+  },
+  MHI: {
+    'zh-Hant': '智慧醫療與健康資訊學程',
+    en: 'Master Program in Health Informatics',
+    short: { 'zh-Hant': '智慧醫療學程', en: 'MHI' },
+  },
+  GINM: {
+    'zh-Hant': '資訊網路與多媒體研究所',
+    en: 'Graduate Institute of Networking and Multimedia',
+    short: { 'zh-Hant': '網媒所', en: 'GINM' },
+  },
 };
 
 export function departmentLabel(code: string | undefined, locale: Locale): string {
   if (!code) return '';
   const known = DEPARTMENT_LABELS[code.trim()];
   return known ? known[locale] : code;
+}
+
+/**
+ * The year the lab was founded, and the year its output is counted from.
+ *
+ * The PI returned to NTU as an assistant professor in 2006 (see the biography
+ * in data/pages.yml) and the site's colophon has carried "2006" since the
+ * previous version. The journal list reaches back to 2003, but those four
+ * entries are her own postdoc work at UIC and the NCBI -- before the lab
+ * existed -- so the lab's own count starts here.
+ */
+export const LAB_FOUNDED = 2006;
+
+/** Journal articles published since the lab was founded. */
+export function labPublicationCount(): number {
+  return getPublications().filter((entry) => (entry.year ?? 0) >= LAB_FOUNDED).length;
+}
+
+/**
+ * The units the lab's members belong to, in declaration order.
+ *
+ * Read from the roster rather than written down: the hand-written version had
+ * "基因體所", a name for a unit that does not exist, and was missing 網媒所
+ * although a member has been in it. A department appears here the moment
+ * someone from it joins, and disappears when the last of them leaves.
+ */
+export function labAffiliations(locale: Locale): string {
+  const present = new Set(
+    getMembers()
+      .filter((member) => member.role !== 'alumni')
+      .map((member) => (member.department ?? '').trim())
+      .filter(Boolean),
+  );
+  return Object.entries(DEPARTMENT_LABELS)
+    .filter(([code]) => present.has(code))
+    .map(([, labels]) => labels.short[locale])
+    .join(' · ');
 }
 
 export function getMembers(): Member[] {
