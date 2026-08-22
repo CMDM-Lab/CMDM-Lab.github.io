@@ -259,6 +259,42 @@ test('nobody appears twice in the member list', async () => {
   }
 });
 
+test('every honour is written in both languages', async () => {
+  // getHonors() falls back to the Chinese citation when there is no English one,
+  // which is why six entries sat in the English list in Chinese for as long as
+  // they did: the page rendered, and the fallback is invisible unless you read
+  // the English page. There are no string-only entries left, so this keeps it
+  // that way.
+  const honors = YAML.parse(
+    await readFile(path.join(ROOT, 'data', 'honors.yml'), 'utf8'),
+  ).achievements ?? [];
+  assert.ok(honors.length, 'no honours declared');
+
+  for (const [index, entry] of honors.entries()) {
+    const citation = entry.citation;
+    assert.equal(
+      typeof citation, 'object',
+      `honour ${index + 1} is a plain string, so the English page will show Chinese: `
+      + `${String(citation).slice(0, 40)} -- write it as a zh/en pair`,
+    );
+    for (const locale of ['zh', 'en']) {
+      assert.ok(
+        citation?.[locale]?.trim(),
+        `honour ${index + 1} has no ${locale} citation`,
+      );
+    }
+    // House style: the year leads, and the sentence closes.
+    assert.match(
+      citation.zh, /^(19|20)\d{2} 年，/,
+      `honour ${index + 1} does not open with "YYYY 年，": ${citation.zh.slice(0, 24)}`,
+    );
+    assert.match(
+      citation.zh, /。$/,
+      `honour ${index + 1} does not end with a full stop: ${citation.zh.slice(-24)}`,
+    );
+  }
+});
+
 test('no data file carries markup, script or anchor text from the old site', async () => {
   // The migration scraped the legacy pages, and twice now it brought their
   // machinery with it: publisher markup inside a fetched abstract, and -- found
