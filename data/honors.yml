@@ -19,27 +19,69 @@
 # declarative sentence, then bracketed sources at the end. People are third
 # person and always carry their title. No emoji, no exclamation marks.
 
+# ENGLISH AWARD NAMES ARE DESCRIPTIVE RENDERINGS of the Chinese originals, not
+# NTU's own English titles -- the announcement pages are Chinese-only. Replace
+# them if the university publishes official English names. The Chinese name is
+# the authoritative one, and the source link carries it.
+
 achievements:
+  # Announced 2026-06-15.
   - citation:
-      zh: 2025 年，DeePFAS 論文獲選為《Environmental Science & Technology》第 59 卷第 51 期封面。
-      en: 2025, the DeePFAS paper was selected as the cover art of Environmental Science &
-        Technology, volume 59, issue 51.
+      zh: 2026 年，曾宇鳳教授指導的師生團隊榮獲「臺大 1975 級電機系系友捐贈科技研究創新獎勵」特別獎。
+      en: 2026, a student team supervised by Professor Yufeng Jane Tseng received the Special
+        Award of the NTU Electrical Engineering Class of 1975 Alumni Technology Research
+        Innovation Award.
+    links:
+      - label: NTU BEBI
+        url: https://www.bebi.ntu.edu.tw/?p=6889
+
+  # Two issue numbers, both correct: the paper appeared in the 59(46) special
+  # issue and was picked up for the cover of 59(51) afterwards. Confirmed by the
+  # lab on 2026-08-22. Stated explicitly because the Research page's meta line
+  # carries 59(46) from Crossref, and without this the pair reads as a typo.
+  - citation:
+      zh: 2025 年，發表於《Environmental Science & Technology》59 卷 46 期特刊的 DeePFAS 論文，獲選為同卷 51
+        期封面。
+      en: 2025, the DeePFAS paper, published in a special issue of Environmental Science &
+        Technology 59(46), was selected as the cover art of issue 59(51).
     links:
       - label: ACS Publications
         url: https://pubs.acs.org/esthag/issue/59/51
       - label: DOI
         url: https://doi.org/10.1021/acs.est.5c09769
 
+  # Results announced late November 2025, which is why this sits above the
+  # publication award below (announced 2025-11-25).
+  #
+  # The hackathon's own announcement page is no longer reachable -- the lab
+  # reports it was taken down or hidden. The organiser's standing "past winning
+  # teams" index is linked instead, which still lists the team under 2025, and
+  # the two NTU announcements carry the award tier. All three were checked on
+  # 2026-08-22.
   - citation:
       zh: 2025 年，曾宇鳳教授帶領學生團隊參與 2025 總統盃黑客松，以「AI 綠色化學智匯診斷家」獲卓越團隊獎。
       en: 2025, Professor Yufeng Jane Tseng led a student team to the Presidential Hackathon
         2025, receiving the Team Excellence Award for an AI-assisted green chemistry
         diagnostic system.
     links:
+      - label: Presidential Hackathon
+        url: https://presidential-hackathon.taiwan.gov.tw/teams
       - label: NTU EECS
         url: https://eecs.ntu.edu.tw/zh_tw/News/Spotlight/AI%E7%B6%A0%E8%89%B2%E5%8C%96%E5%AD%B8%E6%99%BA%E5%8C%AF%E8%A8%BA%E6%96%B7%E5%AE%B6-%E4%BF%83%E9%80%B2%E7%94%A2%E6%A5%AD%E6%B0%B8%E7%BA%8C%E8%BD%89%E5%9E%8B%E4%B9%8B%E8%B7%A8%E5%9F%9F%E6%B2%BB%E7%90%86%E5%AF%A6%E8%B8%90-86567356
       - label: NTU CSIE
         url: https://www.csie.ntu.edu.tw/zh_tw/more_announcement/%5B%E7%8D%B2%E7%8D%8E%E5%85%AC%E5%91%8A%5D%E8%B3%80-%E6%9B%BE%E5%AE%87%E9%B3%B3%E6%95%99%E6%8E%88%E5%B8%B6%E9%A0%98%E5%AD%B8%E7%94%9F%E5%9C%98%E9%9A%8A%E7%8D%B2-2025%E7%B8%BD%E7%B5%B1%E7%9B%83%E9%BB%91%E5%AE%A2%E6%9D%BE%E5%8D%93%E8%B6%8A%E5%9C%98%E9%AB%94%E7%8D%8E-36866948
+
+  # Announced 2025-11-25. The leading year is the calendar year of the
+  # announcement; "114 年度" stays inside the award's name because it is part of
+  # the official name, and because ROC year 114 runs Aug 2025 to Jul 2026 -- the
+  # same 年度 as the 1975-alumni award above, whose announcement fell in 2026.
+  - citation:
+      zh: 2025 年，曾宇鳳教授榮獲臺大 114 年度學術著作傑出獎。
+      en: 2025, Professor Yufeng Jane Tseng received National Taiwan University's Outstanding
+        Academic Publication Award for the 2025 academic year.
+    links:
+      - label: NTU BEBI
+        url: https://www.bebi.ntu.edu.tw/?p=6071
 
   - citation: 2018年：曾宇鳳教授團隊的「改善精神分裂症之負性症狀與認知功能藥物」於 2018 BioAsia and Bio SPARK
       SHOWCASE 大放異彩
