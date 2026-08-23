@@ -48,6 +48,18 @@ members:
     degree: phd
   張景曜:
     name_en: Ching-Yao Chang # published
+    # As 徐銘聰 below: part of the 2026-08-23 batch, added to the entry he
+    # already had. The vault's 校友 row gives the year and nothing else.
+    department: BEBI
+    degree: masters
+    # Both titles from the 審定書, supplied by the lab. The Chinese one is on one
+    # line on purpose -- a folded scalar joins its lines with a space, which is
+    # right for English and wrong between Chinese characters.
+    thesis: 脫附型電噴灑游離法質譜成像探討多系統萎縮症患者腦區的脂質混亂及其與 α-突觸核蛋白聚集的空間關聯研究
+    thesis_en: >-
+      Exploring Lipid Disturbances and its Spatial Association with α-Synuclein
+      Aggregation in MSA Patient Brain Regions via Desorption Electrospray
+      Ionization Mass Spectrometry Imaging
   許洸誠:
     name_en: Kuang-Cheng Hsu # published
   鍾岳辰:
@@ -226,7 +238,15 @@ members:
   姚柏仰:
     name_en: Po-Yang Yao
     graduated: 2023
+    department: BEBI
     degree: masters
+    # Both titles from the 審定書, supplied by the lab (2026-08-23). Chinese on
+    # one line, as for 張景曜 above.
+    thesis: 用於增強空間分析和分子定位的三維質譜影像重建流程:以思覺失調小鼠大腦為例
+    thesis_en: >-
+      3D Mass Spectrometry Imaging Reconstruction Protocol for Enhanced Spatial
+      Profiling and Molecular Mapping with Example Application of Schizophrenia
+      Mouse Brain
   黎芷琪:
     name_en: Chih-Chi Li
     # Her defense was January 2024, which is where the vault's "畢業 2023" comes

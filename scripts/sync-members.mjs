@@ -217,6 +217,7 @@ async function main() {
       // rendered. Curated per person, never derived: the vault's own titles moved
       // repeatedly during the defense round.
       ...(override.thesis ? { thesis: override.thesis } : {}),
+      ...(override.thesis_en ? { thesis_en: override.thesis_en } : {}),
       ...(override.area !== undefined
         ? (override.area ? { area: override.area, area_en: override.area_en ?? '' } : {})
         : (areas.length

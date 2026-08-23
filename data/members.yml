@@ -516,18 +516,27 @@ members:
   - name: 姚柏仰
     name_en: Po-Yang Yao
     role: alumni
+    department: BEBI
     graduated: 2023
     degree: masters
     research: 3D MSI 思覺失調
     research_en: ""
+    thesis: 用於增強空間分析和分子定位的三維質譜影像重建流程:以思覺失調小鼠大腦為例
+    thesis_en: 3D Mass Spectrometry Imaging Reconstruction Protocol for Enhanced Spatial Profiling and
+      Molecular Mapping with Example Application of Schizophrenia Mouse Brain
     area: 代謝體學
     area_en: Metabolomics
   - name: 張景曜
     name_en: Ching-Yao Chang
     role: alumni
+    department: BEBI
     graduated: 2023
+    degree: masters
     research: DESI-MSI 多系統萎縮症腦區脂質與 α-synuclein 空間關聯
     research_en: ""
+    thesis: 脫附型電噴灑游離法質譜成像探討多系統萎縮症患者腦區的脂質混亂及其與 α-突觸核蛋白聚集的空間關聯研究
+    thesis_en: Exploring Lipid Disturbances and its Spatial Association with α-Synuclein Aggregation in
+      MSA Patient Brain Regions via Desorption Electrospray Ionization Mass Spectrometry Imaging
     area: 代謝體學
     area_en: Metabolomics
   - name: 徐銘聰

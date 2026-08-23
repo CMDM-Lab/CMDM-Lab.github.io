@@ -242,8 +242,10 @@ const people = [...grouped.values()].flat().map((member) => ({
               section to carry the level, the way the current-members sections
               do. Short unit form, matching the 2008-2022 rows below. */}
           <td class="ds-mono-sm">{alumnusProgram(person, locale)}</td>
-          {/* Only a confirmed thesis title, never the vault's working topic. */}
-          <td>{person.thesis ?? ''}</td>
+          {/* Only a confirmed thesis title, never the vault's working topic.
+              Most were deposited in English and exist once, so the English page
+              falls back to the same string the Chinese one shows. */}
+          <td>{(isEnglish && person.thesis_en) || person.thesis || ''}</td>
         </tr>
       ))}
     </DataTable>

@@ -80,6 +80,16 @@ export interface Member {
    */
   thesis?: string;
   /**
+   * The same title as deposited in English, where the person read at NTU in
+   * Chinese and the 審定書 carries both.
+   *
+   * Only the alumni table reads it, and only on the English page, which falls
+   * back to `thesis` -- most of these titles were deposited in English and
+   * exist once. A `thesis_en` with no `thesis` behind it would leave the
+   * Chinese page's cell empty, so the test forbids it.
+   */
+  thesis_en?: string;
+  /**
    * Coarse research area, always one of the pillars in data/pages.yml.
    *
    * The page shows this instead of `research`: the specific topic is working
@@ -115,6 +125,8 @@ export interface HistoricalAlumnus {
   graduated?: number | null;
   department?: string;
   thesis?: string;
+  /** As on Member: the English title, where the 審定書 carries both. */
+  thesis_en?: string;
   /** The alumnus's own site, where they publish one. */
   homepage?: string;
 }

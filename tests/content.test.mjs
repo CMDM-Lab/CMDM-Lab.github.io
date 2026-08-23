@@ -332,6 +332,28 @@ test('every member area is one of the declared research pillars', async () => {
   }
 });
 
+test('an English thesis title has a title behind it', async () => {
+  // Unlike `area`, the two thesis fields are not both-or-neither: most titles
+  // were deposited in English, exist once, and are shown on both pages. What
+  // cannot happen is the other way round -- `thesis_en` alone leaves the
+  // Chinese page's cell empty while the English one carries a title, and an
+  // empty cell in that column reads as "no thesis on record".
+  const members = YAML.parse(
+    await readFile(path.join(ROOT, 'data', 'members.yml'), 'utf8'),
+  ).members ?? [];
+  const historical = YAML.parse(
+    await readFile(path.join(ROOT, 'data', 'alumni-historical.yml'), 'utf8'),
+  ).alumni ?? [];
+
+  for (const person of [...members, ...historical]) {
+    if (!person.thesis_en) continue;
+    assert.ok(
+      person.thesis,
+      `"${person.name}" has an English thesis title and no title in the deposited language`,
+    );
+  }
+});
+
 test('nobody appears twice in the member list', async () => {
   // A graduate who returns as staff is entered as an override on the vault row,
   // not as a second person. Adding them to `additional` instead produces two
