@@ -131,7 +131,15 @@ export interface HistoricalAlumnus {
   /** Romanised name, only where a publication or the person's own site gives it. */
   name_en?: string;
   graduated?: number | null;
-  department?: string;
+  /**
+   * A department code, or -- where the previous site's row is not a programme at
+   * all -- a zh/en pair for whatever it does say.
+   *
+   * One row needs the second form: a research assistant, whose cell reads
+   * 研究助理. That is a job, and there is no code for it to be, but it still has
+   * to say so in English on the English page.
+   */
+  department?: Localized<string>;
   thesis?: string;
   /** As on Member: the English title, where the 審定書 carries both. */
   thesis_en?: string;
@@ -269,18 +277,18 @@ export function degreeLabel(degree: string | undefined, locale: Locale): string 
  * no unit, still prints what is known rather than nothing.
  */
 export function alumnusProgram(
-  person: { department?: string; degree?: string; graduated?: number | null },
+  person: { department?: Localized<string>; degree?: string; graduated?: number | null },
   locale: Locale,
 ): string {
-  const known = person.department ? DEPARTMENT_LABELS[person.department.trim()] : undefined;
+  const department = pickLocale(person.department, locale);
+  const known = department ? DEPARTMENT_LABELS[department.trim()] : undefined;
   const era = known?.bareBefore && (person.graduated ?? Infinity) < known.bareBefore.since
     ? known.bareBefore
     : undefined;
-  // Anything not a code is free text from the previous site. One row is left:
-  // 研究助理, which is a job rather than a programme and has no code to be.
+  // Anything that is not a code has already been resolved for this locale above.
   const unit = known
     ? (era ?? known.bare ?? known.short)[locale]
-    : (person.department ?? '');
+    : (department ?? '');
   return [unit, degreeLabel(person.degree, locale)].filter(Boolean).join(' ');
 }
 

@@ -116,9 +116,23 @@ alumni:
   degree: masters
   thesis: 系統生物學、細胞計算模型
 - name: 陳巧欣
+  # Identified by the lab on 2026-08-23, and the romanisation is the lab's own
+  # publication record rather than a reading of the characters: she is
+  # Ciao-Sin Chen on the Human Breathomics Database paper (Database, 2020),
+  # which data/publications.yml carries in full. Now at the University of
+  # Michigan.
+  name_en: Ciao-Sin Chen
   graduated: 2019
-  department: 研究助理
-  thesis: 系統生物學、細胞計算模型
+  # A pair, not a code. She was a research assistant, so this cell is a job and
+  # not a programme -- there is nothing for it to be a code of, and it still has
+  # to be English on the English page.
+  department:
+    zh: 研究助理
+    en: Research Assistant
+  # The old site's row has 系統生物學、細胞計算模型 here, which is a research
+  # topic and not a deposited title. She read for no degree in this lab, so
+  # there is none to record.
+  thesis: ''
 - name: 卓東昇
   graduated: 2019
   department: BEBI

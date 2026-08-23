@@ -600,6 +600,41 @@ test('the numbers in the About prose match the data files', async () => {
   }
 });
 
+test('an alumnus\'s programme is a code or a pair, never bare Chinese', async () => {
+  // The label helper turns a code into each locale's name and passes anything
+  // else through as it stands, so a free-text department renders in Chinese on
+  // the English page. Forty-one rows did exactly that until 2026-08-23, and
+  // nothing failed, because from the code's point of view a string is a string.
+  const dataTs = await readFile(path.join(ROOT, 'src', 'lib', 'data.ts'), 'utf8');
+  const codes = [...(dataTs.match(/DEPARTMENT_LABELS[^=]*=\s*\{([\s\S]*?)\n\};/)?.[1] ?? '')
+    .matchAll(/^ {2}([A-Z]+):/gm)].map((m) => m[1]);
+  assert.ok(codes.length, 'could not read DEPARTMENT_LABELS from src/lib/data.ts');
+
+  const historical = YAML.parse(
+    await readFile(path.join(ROOT, 'data', 'alumni-historical.yml'), 'utf8'),
+  ).alumni ?? [];
+
+  for (const person of historical) {
+    const department = person.department;
+    if (!department) continue;
+    if (typeof department === 'string') {
+      assert.ok(
+        codes.includes(department),
+        `"${person.name}" has department "${department}", which is neither one of `
+        + `${codes.join(', ')} nor a zh/en pair -- the English page would show it as it is`,
+      );
+      continue;
+    }
+    // Not a programme, so not a code: it has to carry both languages itself.
+    for (const locale of ['zh', 'en']) {
+      assert.ok(
+        department?.[locale]?.trim(),
+        `"${person.name}" has a department pair with no ${locale}`,
+      );
+    }
+  }
+});
+
 test('a thesis_url is a handle in the one repository the checker reads', async () => {
   // scripts/check-thesis-records.mjs runs monthly and talks to NTU. A typo here
   // would surface as one line in a scheduled job's log a fortnight later, or as
