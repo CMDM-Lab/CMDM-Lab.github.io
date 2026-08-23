@@ -511,11 +511,10 @@
   }
 
   /* ── A row of figure plates ────────────────────────────────────
-     Several photographs of one thing, side by side on their own plates. Used by
-     the honours list, whose items are otherwise set to the prose measure -- a
-     photograph is not prose, so the row is allowed the full column and folds to
-     one photograph per row on a phone through --grid-min-ledger, like every
-     other auto-fit grid here. */
+     Several photographs of one thing, side by side on their own plates, under
+     the honours item they belong to. On a phone --grid-min-ledger becomes 100%,
+     so the plates' floor below becomes the full width and they stack one per
+     row -- the same token override every other grid on the site reflows on. */
   .ds-plate-row{
     /* A strip of thumbnails, all one height, under the item they belong to.
        Was a grid of ledger-width plates, which made one photograph a 380px block
@@ -541,10 +540,28 @@
     width:auto;
     max-width:100%;
     object-fit:contain;
+    /* Centred, because the plate is a mount: white on both sides of a portrait
+       photograph reads as a margin, white on one side reads as a mistake. */
+    margin-inline:auto;
   }
-  /* Without this a 240px-wide thumbnail with a sentence-long credit under it
-     grows a tall column of text and drags the row's height with it. */
-  .ds-plate-row .ds-ledger-item__plate figcaption{max-width:var(--thumb-h)}
+  /* The figure is as wide as its photograph, and the caption wraps to that.
+     It was capped at --thumb-h, which is the row's HEIGHT and says nothing about
+     how wide any given photograph comes out: the 3:4 journal cover is 128px wide
+     at that height, so a 170px caption made the plate wider than the picture and
+     stranded 42px of white down its right-hand side; the 16:9 project card is
+     306px wide, so its caption broke at 「介／紹卡。」 with 136px of the line
+     still free.
+
+     min-content is the photograph's own width, since `anywhere` below drops the
+     caption's contribution to about one character. The floor stops a portrait
+     photograph setting its credit in a 128px column, where the two lines of
+     rights notice under the journal cover would have run to six. Anything wider
+     than the floor -- which is most of them -- is unaffected. */
+  .ds-plate-row .ds-ledger-item__plate{
+    width:min-content;
+    min-width:var(--grid-min-ledger);
+  }
+  .ds-plate-row .ds-ledger-item__plate figcaption{overflow-wrap:anywhere}
 
   /* ── Zoomable figure and its dialog ───────────────────────────
      The link around a photograph is the whole feature with JavaScript off: it
