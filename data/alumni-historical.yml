@@ -38,13 +38,35 @@ alumni:
   thesis: 帕金森氏症人工智慧綜合判讀系統
   homepage: https://kaminyou.com/
 - name: 許至廷
+  # From his repository record, which the lab pointed at (2026-08-23):
+  # tdr.lib.ntu.edu.tw/jspui/handle/123456789/64182, doi 10.6342/NTU202100407,
+  # 碩士, 生醫電子與資訊學研究所.
+  #
+  # That record says 出版年 2021 and 學年期 109-1, where this row says 2020. Left
+  # at 2020, which is the previous site's own number and the 學年度 that semester
+  # falls in. Worth settling for the whole column one day rather than row by row.
+  name_en: Chih-Tim Hsu
   graduated: 2020
   department: 生醫電資所 碩士
-  thesis: ''
+  thesis: 幹細胞外泌體結合3D生物列印GelMA材料對STZ誘導糖尿病大鼠之傷口癒合影響
+  thesis_en: >-
+    Effect of stem-cell-exosome-embedded GelMA hydrogel fabricated by 3D
+    bioprinting on wound healing in streptozotocin-induced diabetic rats
 - name: 張家瑜
+  # NOT the 張家瑜 in the current roster, who is the lab's research assistant and
+  # publishes as Chia-I. Chang. This one is Chia-Yu Chang, whose 2019 thesis is
+  # on CHO cell metabolic models -- the lab said so and the repository record
+  # agrees: tdr.lib.ntu.edu.tw/jspui/handle/123456789/78485,
+  # doi 10.6342/NTU201904286, 出版年 2019, 碩士, 生醫電子與資訊學研究所. Two
+  # people, one name; the romanisation is the only thing telling them apart on
+  # the page, which is reason enough to carry it.
+  name_en: Chia-Yu Chang
   graduated: 2019
   department: 生醫電資所 碩士
-  thesis: 系統生物學、細胞計算模型
+  thesis: 縱向代謝物資料分析於中國倉鼠卵巢細胞單株抗體生產最佳化之研究
+  thesis_en: >-
+    Longitudinal metabolomic data analysis of Chinese hamster ovary cells for
+    mAb production optimization
 - name: 田耘政
   graduated: 2019
   department: 生醫電資所 碩士

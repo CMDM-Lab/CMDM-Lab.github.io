@@ -243,8 +243,9 @@ members:
     # name appears in the literature.
     name_en: Chia-I. Chang
     # Graduated, then stayed on as the lab's research assistant (2026-08-22).
-    # The vault still has her under alumni; the current role wins, which also
-    # keeps her from appearing in both the staff list and the alumni table.
+    # The vault still has her under alumni; the current role wins, so this is
+    # which section she leads with. She is not the 張家瑜 who graduated in 2019 --
+    # that is Chia-Yu Chang, and alumni-historical.yml says so on her row.
     role: staff
     title: 研究助理
     title_en: Research Assistant
