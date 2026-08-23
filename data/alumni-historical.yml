@@ -1,3 +1,10 @@
+# YEARS ARE CALENDAR YEARS -- the year the 口試 was passed, which is
+# `dc.date.accepted` in NTU's repository. Not 學年度, and not the repository's
+# 出版年, both of which differ for anyone who defended in January or over the
+# summer. The lab settled this on 2026-08-23; three rows here moved as a result
+# and each says so. Checked against the repository for 45 of the 65 people on
+# the page, the rest having no record there to check.
+#
 # Graduates recorded on the pre-2026 website, recovered from the old
 # contents/member_zh.html table. The CMDM-Lobe vault has no pages for these
 # 47 people -- this file is the only record of that stretch of lab history, so
@@ -89,7 +96,9 @@ alumni:
   # hsiaoyi0504.github.io address the lab was given redirects here, so the
   # js.org one is recorded to save the hop (2026-08-23).
   name_en: Yi Hsiao
-  graduated: 2018
+  # Was 2018, the 學年度 (107-1). 口試 2019-01-07 per handle 71713, which is also
+  # what his own site says: M.S. Sep 2015 - Jan 2019.
+  graduated: 2019
   department: 生醫電資所 碩士
   thesis: 虛擬老鼠:系統性電腦預測臨床前ADMET參數
   homepage: https://hsiaoyi0504.js.org/
@@ -158,7 +167,8 @@ alumni:
   department: 網媒所 碩士
   thesis: GPU在結構計算上的應用
 - name: 徐國翔
-  graduated: 2013
+  # Was 2013, the 學年度 (102-2). 口試 2014-08-05 per handle 57045.
+  graduated: 2014
   department: 生醫電資所 碩士
   thesis: 艾美氏致突變性試驗的化學結構之骨架分析
 - name: 蘇柏翰
@@ -174,7 +184,8 @@ alumni:
   department: 生醫電資所 碩士
   thesis: 在奈米碳管回歸模型以及細胞毒性分類模型在支持向量機上的應用
 - name: 邵祈諭
-  graduated: 2012
+  # Was 2012, the 學年度 (101-2). 口試 2013-08-07 per handle 61356.
+  graduated: 2013
   department: 生醫電資所 碩士
   thesis: 肝臟與經修飾奈米碳管毒性模型
 - name: 林芳宇

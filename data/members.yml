@@ -505,6 +505,18 @@ members:
     thesis: 結合多目標最佳化與生成式網路應用於阿茲海默症分子藥物設計
     thesis_en: Alzheimer’s Disease Drug Discovery through De Novo Molecular Design via Multi-objective
       Optimization on Generative Network
+  - name: 許洸誠
+    name_en: Kuang-Cheng Hsu
+    role: alumni
+    department: CSIE
+    graduated: 2025
+    degree: masters
+    research: 可解釋 GNN 預測 P-醣蛋白受體
+    research_en: ""
+    thesis: 可解釋性的圖神經網路之於預測 P-醣蛋白受體
+    thesis_en: Interpretable graph neural networks for predicting P-glycoprotein substrates
+    area: 計算分子設計
+    area_en: Computational Molecular Design
   - name: 游子慧
     name_en: Tzu-Hui Yu
     role: alumni
@@ -518,18 +530,6 @@ members:
       for Accelerated Trial Eligibility Screening"
     area: AI Agent 系統
     area_en: AI Agent Systems
-  - name: 許洸誠
-    name_en: Kuang-Cheng Hsu
-    role: alumni
-    department: CSIE
-    graduated: 2024
-    degree: masters
-    research: 可解釋 GNN 預測 P-醣蛋白受體
-    research_en: ""
-    thesis: 可解釋性的圖神經網路之於預測 P-醣蛋白受體
-    thesis_en: Interpretable graph neural networks for predicting P-glycoprotein substrates
-    area: 計算分子設計
-    area_en: Computational Molecular Design
   - name: 詹易玹
     name_en: ""
     role: alumni

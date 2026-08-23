@@ -73,6 +73,11 @@ members:
     # From NTU's institutional repository, which the lab found on 2026-08-23:
     # tdr.lib.ntu.edu.tw/jspui/handle/123456789/96777, doi 10.6342/NTU202500022.
     # Advisor 曾宇鳳, 學位 碩士, 系所單位 資訊工程學系, deposited as ntu-113-1.pdf.
+    #
+    # 2025, not the 2024 both the vault and the repository's 出版年 say: his
+    # 口試 was 2025-01-06 (dc.date.accepted) and this column carries the calendar
+    # year. 學年度 113-1 is where the other number comes from.
+    graduated: 2025
     department: CSIE
     degree: masters
     # The Chinese title says P-醣蛋白 where its own abstract and keywords say
@@ -258,6 +263,11 @@ members:
   # internal status -- so the vault knows the year for some of these people, the
   # degree for almost none, and the unit for two. The alumni table was showing a
   # dozen names against an empty 所屬 cell.
+  #
+  # YEARS ARE CALENDAR YEARS -- the year the 口試 was passed, which is
+  # `dc.date.accepted` in NTU's repository, not 學年度 and not its 出版年. The
+  # lab settled this on 2026-08-23; see the same note at the top of
+  # alumni-historical.yml, which the same rule governs.
   #
   # Everything below was supplied by the lab on 2026-08-23, and `degree` is the
   # level read here -- `masters` or `phd`, printed after the unit. Either half
