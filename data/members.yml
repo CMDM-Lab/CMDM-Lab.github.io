@@ -531,6 +531,17 @@ members:
     degree: phd
     research: 腸道菌細菌胞外囊泡（BEV）標記與功能
     research_en: ""
+  - name: 鍾岳辰
+    name_en: Yue-Chen Jhong
+    role: alumni
+    department: BEBI
+    graduated: 2024
+    degree: masters
+    research: GNN HLM 穩定性
+    research_en: ""
+    thesis: 利用回歸圖神經網路模型預測人類肝臟微粒體穩定性與臨床呼吸體學資料庫
+    thesis_en: Predicting human liver microsomal stability with a regressive graph neural network model
+      and clinical breathomics database
   - name: Danielle Penella P. Yu
     name_en: 楊美美
     role: alumni
@@ -590,9 +601,4 @@ members:
     graduated: 2018
     degree: masters
     research: 管制藥品結構搜尋工具（NPSDB／TCSD 前手）
-    research_en: ""
-  - name: 鍾岳辰
-    name_en: Yue-Chen Jhong
-    role: alumni
-    research: GNN HLM 穩定性
     research_en: ""

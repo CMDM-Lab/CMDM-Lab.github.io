@@ -66,6 +66,15 @@ members:
     # Published as Yue-Chen Jhong on A Clinical Breathomics Dataset (Scientific
     # Data 11, 203, 2024). My earlier "Yueh-Chen Chung" was wrong on both parts.
     name_en: Yue-Chen Jhong
+    # As 徐銘聰 and 李哲宇 below: part of the 2026-08-23 batch, added to the entry
+    # he already had. The vault has him under 校友 with no year.
+    graduated: 2024
+    department: BEBI
+    degree: masters
+    thesis: 利用回歸圖神經網路模型預測人類肝臟微粒體穩定性與臨床呼吸體學資料庫
+    thesis_en: >-
+      Predicting human liver microsomal stability with a regressive graph neural
+      network model and clinical breathomics database
   李哲宇:
     name_en: Che-Yu Lee
     # As 徐銘聰 above: part of the 2026-08-23 batch, added to the entry he
