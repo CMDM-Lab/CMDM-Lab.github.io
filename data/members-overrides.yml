@@ -424,13 +424,22 @@ members:
     publish: false
 
   謝秉翰:
+    # From the repository record the lab found (2026-08-23):
+    # tdr.lib.ntu.edu.tw/jspui/handle/123456789/78910, doi 10.6342/NTU201803953.
+    name_en: Ping-Han Hsieh
     degree: masters
-    # Not from the lab's list either. He is one of the few people in both
-    # rosters, and the vault entry wins, which had been costing him the unit and
-    # the year the previous site recorded: alumni-historical.yml has him as
-    # 生醫電資所 碩士, 2018. The vault agrees on the year. The old site's
-    # research topic is NOT carried across -- 論文題目 takes a deposited title.
+    # He is one of the few people in both rosters, and the vault entry wins,
+    # which had been costing him the unit and the year the previous site
+    # recorded: alumni-historical.yml has him as 生醫電資所 碩士, 2018. The
+    # repository confirms both -- 系所單位 生醫電子與資訊學研究所, 出版年 2018.
     department: BEBI
+    # The deposited title, which is not the old site's 管制藥品結構搜尋工具
+    # (NPSDB／TCSD 前手) working note nor the vault's -- though this time the
+    # short title and the working note happen to read the same.
+    thesis: 管制藥品結構搜尋工具
+    thesis_en: >-
+      A Searching Tool for Comparing the Structure Similarity of Controlled
+      Drugs
 
 additional:
   # ---------------------------------------------------------------------------

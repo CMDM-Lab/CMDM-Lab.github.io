@@ -516,7 +516,6 @@ test('the numbers in the About prose match the data files', async () => {
 
   const current = members.filter((member) => member.role !== 'alumni');
   const vaultAlumni = members.filter((member) => member.role === 'alumni');
-  const currentNames = new Set(current.map((member) => member.name));
   const alumniNames = new Set(vaultAlumni.map((member) => member.name));
 
   const expected = {
@@ -526,9 +525,13 @@ test('the numbers in the About prose match the data files', async () => {
     patents: (legacy.patents ?? []).length,
     services: services.length,
     members: current.length,
-    alumni: vaultAlumni.length + historical.filter(
-      (person) => !alumniNames.has(person.name) && !currentNames.has(person.name),
-    ).length,
+    // Same rule as allAlumni(): the vault's own, plus the historical rows for
+    // people it does not already carry. Someone who graduated here and stayed
+    // on is in both sections and is counted, which is the point of counting
+    // alumni. This clause used to exclude them and the page did too, and when
+    // the page stopped, nothing failed -- hence the row count below.
+    alumni: vaultAlumni.length
+      + historical.filter((person) => !alumniNames.has(person.name)).length,
   };
 
   // The paragraph that carries the counts is the one naming cmdm.tw.
@@ -553,6 +556,32 @@ test('the numbers in the About prose match the data files', async () => {
       `the ${locale} About paragraph still counts from 2003; the lab was founded in ${LAB_FOUNDED}`,
     );
   }
+});
+
+test('the About page\'s alumni count is the length of the alumni table', {
+  skip: existsSync(DIST) ? false : 'run `npm run build` first',
+}, async () => {
+  // The test above computes the count from the data files, which means it holds
+  // a second copy of the rule allAlumni() implements. The two drifted once: the
+  // page started listing graduates who stayed on and the count did not follow,
+  // and nothing said so because both sides of that assertion were wrong in the
+  // same way. This one counts the rows that actually rendered.
+  const html = await readFile(path.join(DIST, 'members', 'index.html'), 'utf8');
+  const start = html.indexOf('id="role-alumni"');
+  assert.ok(start > -1, 'the members page has no alumni section');
+  const table = html.slice(start, html.indexOf('</section>', start));
+  // The year cell, which every row has and the header does not.
+  const rows = (table.match(/<td class="ds-num"/g) ?? []).length;
+  assert.ok(rows > 0, 'found no rows in the alumni table');
+
+  const paragraph = ((await pages()).about?.zh?.paragraphs ?? [])
+    .find((text) => text.includes('cmdm.tw'));
+  const numbers = new Set([...paragraph.matchAll(/\d+/g)].map((m) => Number(m[0])));
+  assert.ok(
+    numbers.has(rows),
+    `the alumni table has ${rows} rows and the About paragraph states none of `
+    + `${[...numbers].join(', ')}`,
+  );
 });
 
 test('the front page defers to the news archive without losing an item', {

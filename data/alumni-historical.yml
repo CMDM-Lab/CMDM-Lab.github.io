@@ -6,6 +6,9 @@
 count: 42
 alumni:
 - name: 王珮驊
+  # Her row renders again now that a graduate who stayed on is listed in both
+  # sections, so it carries the romanisation the postdoc entry uses.
+  name_en: Pei-Hua Wang
   graduated: 2022
   department: 生醫電資所 博士
   thesis: QSAR模型建構、量子演算法應用於藥物專利搜尋
@@ -89,9 +92,17 @@ alumni:
   department: 生醫電資所 博士
   thesis: 電腦設計胜肽抑制劑、次世代定序軟體及建構定量構效模型
 - name: 郭天爵
+  # As 王珮驊 above. Confirmed against his repository record,
+  # tdr.lib.ntu.edu.tw/jspui/handle/123456789/53206: 出版年 2015, 學位 博士,
+  # 系所單位 生醫電子與資訊學研究所, and the title below is the deposited one --
+  # unusually for this file, where most of the column is research topics.
+  name_en: Tien-Chueh Kuo
   graduated: 2015
   department: 生醫電資所 博士
   thesis: 代謝體系統生物學分析與工具及脂質知識庫
+  thesis_en: >-
+    Analysis and Tool of Metabolomics in Systems Biology and a Lipidomics
+    Knowledgebase
 - name: 劉家瑋
   graduated: 2015
   department: 網媒所 碩士

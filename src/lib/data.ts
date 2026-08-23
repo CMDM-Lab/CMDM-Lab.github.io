@@ -349,21 +349,22 @@ export function membersByRole(): Map<string, Member[]> {
  *
  * Two sources overlap here. The vault tracks people who left recently, while
  * `alumni-historical.yml` holds the 2008-2022 cohort recovered from the old
- * site -- and a few names appear in both (Pei-Hwa Wang graduated in 2022 and is
- * now a postdoc; Yu-Hao Ni is in both lists). The vault entry wins, and anyone
- * currently on staff is dropped from the alumni list entirely so they are not
- * listed twice on the page.
+ * site, and a few names appear in both (Yu-Hao Ni, for one). The vault entry
+ * wins where they do.
+ *
+ * Someone who graduated here and then stayed on appears twice, once in each
+ * section, which is what the lab asked for on 2026-08-23 -- three people, both
+ * postdocs and a research assistant, and their degrees are as much a part of the
+ * lab's record as anyone else's. This used to drop them from the alumni list on
+ * the reasoning that one person should occupy one row. Their alumni row is the
+ * historical one, since the graduation year exists nowhere else.
  */
 export function allAlumni(): Array<Member | HistoricalAlumnus> {
   const members = getMembers();
-  const currentNames = new Set(
-    members.filter((member) => member.role !== 'alumni').map((member) => member.name),
-  );
   const fromVault = members.filter((member) => member.role === 'alumni');
   const seen = new Set(fromVault.map((member) => member.name));
 
-  const historical = getHistoricalAlumni()
-    .filter((person) => !seen.has(person.name) && !currentNames.has(person.name));
+  const historical = getHistoricalAlumni().filter((person) => !seen.has(person.name));
 
   return [...fromVault, ...historical].sort(
     (a, b) => (b.graduated ?? 0) - (a.graduated ?? 0)
