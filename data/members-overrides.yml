@@ -336,6 +336,14 @@ members:
   Danielle Penella P. Yu:
     department: MHI
     degree: masters
+  賴侑辰:
+    # NOT PUBLISHED. He was a 專題生 and has left -- the vault's 校友 row says
+    # exactly that, "專題生，已離開", and being in that table is what put him in
+    # the site's 畢業成員 list. He did not graduate from the lab, and 專題生 is a
+    # section for current members only, so there is nowhere on the page he
+    # belongs. The lab's call, 2026-08-23.
+    publish: false
+
   林柏嶢:
     # NOT PUBLISHED, at the lab's instruction (2026-08-23). The vault has him in
     # the 校友 table with no year, and the site was listing him under 畢業成員 on
