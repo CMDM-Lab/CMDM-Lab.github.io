@@ -230,6 +230,11 @@ const DEPARTMENT_LABELS: Record<string, DepartmentLabel> = {
     en: 'Graduate Institute of Networking and Multimedia',
     short: { 'zh-Hant': '網媒所', en: 'GINM' },
   },
+  EE: {
+    'zh-Hant': '電機工程學研究所',
+    en: 'Graduate Institute of Electrical Engineering',
+    short: { 'zh-Hant': '電機所', en: 'EE' },
+  },
   PHARM: {
     'zh-Hant': '藥學研究所',
     en: 'Graduate Institute of Pharmaceutical Sciences',

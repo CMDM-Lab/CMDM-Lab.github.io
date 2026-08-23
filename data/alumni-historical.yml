@@ -5,6 +5,14 @@
 # and each says so. Checked against the repository for 45 of the 65 people on
 # the page, the rest having no record there to check.
 #
+# ROMANISED NAMES come from the person's own thesis record, read out of the
+# `dc.contributor.author` pair that carries the Chinese and the Latin form of one
+# name together. Not from anyone's reading of the characters: this file's sister,
+# members-overrides.yml, lost five names that way. Four of the names below also
+# appear on the lab's own Human Breathomics Database paper (Database, 2020) and
+# agree with it. A row with no record has no romanisation, which is the right
+# answer rather than a guessed one.
+#
 # `thesis_url` is the record in NTU's repository, and is what makes the year
 # above checkable: scripts/check-thesis-records.mjs reads 口試通過日期 from it
 # on a schedule. 34 of these rows have one; the rest are people the repository
@@ -32,6 +40,7 @@ alumni:
     Drafting
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/85785
 - name: 陳人豪
+  name_en: Jen-Hao Chen
   graduated: 2022
   department: CSIE
   degree: phd
@@ -59,6 +68,7 @@ alumni:
   degree: masters
   thesis: QSAR模型最佳化
 - name: 林柏璋
+  name_en: Bo-Jhang Lin
   graduated: 2021
   department: BEBI
   degree: masters
@@ -158,6 +168,7 @@ alumni:
   homepage: https://hsiaoyi0504.js.org/
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/71713
 - name: 蔡東銘
+  name_en: Dong-Ming Tsai
   # Two rows for one person, his master's and his doctorate, and the previous
   # site listed both. Two records, correspondingly -- the checker reads the year
   # out of each, which is how a first pass that put the doctorate's handle on the
@@ -168,24 +179,28 @@ alumni:
   thesis: 基於親水作用液相層析質譜儀的代謝體研究- 化學計算方法開發與腹膜透析引流液分析
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/59696
 - name: 鄭羽嫣
+  name_en: Yu-Yen Cheng
   graduated: 2017
   department: BEBI
   degree: masters
   thesis: 脂質辨識加速工具：自動處理和辨識液相層析串聯質譜脂體學資料
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/77833
 - name: 林宜儒
+  name_en: Yi-Ru Lin
   graduated: 2017
   department: BEBI
   degree: masters
   thesis: 一維質子核磁共振代謝體圖譜之線上自動分析服務
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/77669
 - name: 劉律琪
+  name_en: Lu-Chi Liu
   graduated: 2017
   department: CSIE
   degree: masters
   thesis: G蛋白偶聯受體之多標靶、老藥新用與副作用預測
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/77679
 - name: 杜羿樞
+  name_en: Yi-Shu Tu
   graduated: 2015
   department: BEBI
   degree: phd
@@ -206,24 +221,28 @@ alumni:
     Knowledgebase
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/53206
 - name: 劉家瑋
+  name_en: Jia-Wei Liu
   graduated: 2015
   department: GINM
   degree: masters
   thesis: 搭配頻寬估測方法在核密度估測液相層析質譜儀資料之滯留時間校正與一維質子核磁共振代謝體圖譜之相位校正
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/7983
 - name: 王三源
+  name_en: San-Yuan Wang
   graduated: 2014
   department: CSIE
   degree: phd
   thesis: 離子軌跡偵測與訊號校正於高解析液相層析串聯飛行時間質譜儀平台之代謝體學應用
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/16871
 - name: 林潔
+  name_en: Chieh Lin
   graduated: 2014
   department: CSIE
   degree: masters
   thesis: PolyName2Structure 系統 - 利用預測聚合物單體結構的反應途徑，來達成從聚合物名稱轉成結構的目標
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/57079
 - name: 譚承恩
+  name_en: Cheng-En Tan
   graduated: 2014
   department: CSIE
   degree: masters
@@ -233,6 +252,7 @@ alumni:
     Processing Toolkit for GC-MS
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/5343
 - name: 王國清
+  name_en: Kuo-Ching Wang
   graduated: 2013
   department: BEBI
   degree: phd
@@ -243,24 +263,28 @@ alumni:
     Fumes Exposure
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/60781
 - name: 張嘉芸
+  name_en: Chia-Yun Chang
   graduated: 2013
   department: PHARM
   degree: phd
   thesis: 老藥新用及細胞毒性分析與選擇性偏優化
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/61363
 - name: 鍾宇彥
+  name_en: Yu-Yen Chung
   graduated: 2013
   department: BEBI
   degree: masters
   thesis: 去噪、成分分離及辨識於氣相層析串聯飛行時間質譜儀之工具套件
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/58819
 - name: 舒艾琉
+  name_en: Alioune Schurz
   graduated: 2013
   department: GINM
   degree: masters
   thesis: GPU在結構計算上的應用
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/62013
 - name: 徐國翔
+  name_en: Kuo-Hsiang Hsu
   # Was 2013, the 學年度 (102-2). 口試 2014-08-05 per handle 57045.
   graduated: 2014
   department: BEBI
@@ -268,24 +292,28 @@ alumni:
   thesis: 艾美氏致突變性試驗的化學結構之骨架分析
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/57045
 - name: 蘇柏翰
+  name_en: Bo-Han Su
   graduated: 2012
   department: CSIE
   degree: phd
   thesis: 新藥設計及化學結構組合最佳化與心毒性模擬
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/64697
 - name: 林澤豪
+  name_en: Ze-Hao Lin
   graduated: 2012
   department: BEBI
   degree: masters
   thesis: 分子螢光分類模型
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/16127
 - name: 陳星佐
+  name_en: Sing-Zuo Chen
   graduated: 2012
   department: BEBI
   degree: masters
   thesis: 在奈米碳管回歸模型以及細胞毒性分類模型在支持向量機上的應用
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/64930
 - name: 邵祈諭
+  name_en: Chi-Yu Shao
   # Was 2012, the 學年度 (101-2). 口試 2013-08-07 per handle 61356.
   graduated: 2013
   department: BEBI
@@ -293,60 +321,75 @@ alumni:
   thesis: 肝臟與經修飾奈米碳管毒性模型
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/61356
 - name: 林芳宇
+  name_en: Fang-Yu Lin
   graduated: 2011
   department: BEBI
   degree: masters
   thesis: 以蛋白質結構為基礎之合成可行性先導藥物最適化電腦輔助藥物設計
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/28641
 - name: 何宗融
+  name_en: Tsung-Jung Ho
   graduated: 2011
   department: CSIE
   degree: masters
   thesis: 滯留時間校準、去噪與化合物辨識在代謝體學上之應用
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/30296
 - name: 田士鋒
+  name_en: Tze-Feng Tian
   graduated: 2011
-  department: CSIE
+  # The previous site had him in 資工所. His own record (handle 48009) says
+  # 電機工程學研究所, which is a different institute, not a different name for
+  # the same one. Found by scripts/check-thesis-records.mjs on the run right
+  # after these rows stopped being free text -- while it was free text there was
+  # nothing for the check to compare.
+  department: EE
   degree: masters
   thesis: 二維氣相層析質譜圖之滯留時間校準演算法
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/48009
 - name: 韓羽晨
+  name_en: Yeu-Chern Harn
   graduated: 2011
   department: GINM
   degree: masters
   thesis: 結構獵人：預測混合物中新的化學結構
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/29407
 - name: 黃薏璇
+  name_en: Yi-Syuan Huang
   graduated: 2010
   department: BEBI
   degree: masters
   thesis: 分子片段組合之新穎結構設計於抗血管內皮生長因子受體藥物開發
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/47473
 - name: 蔡政倢
+  name_en: Cheng-Chieh Tsai
   graduated: 2010
   department: BEBI
   degree: masters
   thesis: 蛇毒 C 型凝集素衍生之拮抗劑與血小板醣蛋白陸交互作用的結構探討
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/45761
 - name: 沈孟俞
+  name_en: Meng-Yu Shen
   graduated: 2010
   department: CSIE
   degree: masters
   thesis: 支持向量機在hERG毒性分類模型及蛋白質定位突變法的應用
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/23351
 - name: 康文譯
+  name_en: Wen-Yi Kang
   graduated: 2009
   department: BEBI
   degree: masters
   thesis: 不同PT/INR危急值警示系統與warfarin使用安全性之評估
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/43540
 - name: 蔡東銘
+  name_en: Dong-Ming Tsai
   graduated: 2009
   department: BEBI
   degree: masters
   thesis: 馬兜鈴酸腎毒性在囓齒類動物的代謝體學研究
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/8889
 - name: 吳東潤
+  name_en: Tong-Jung Wu
   graduated: 2008
   department: CSIE
   degree: masters

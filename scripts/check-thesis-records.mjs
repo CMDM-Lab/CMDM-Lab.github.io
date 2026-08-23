@@ -48,15 +48,23 @@ const DEGREE_FROM_ZH = { 碩士: 'masters', 博士: 'phd' };
  * from this map is reported, not assumed wrong.
  */
 const UNIT_FOR_CODE = {
-  // The repository's own wording moved: records before about 2023 say
-  // 資訊工程學研究所 where later ones say 資訊工程學系. Every row carrying the
-  // CSIE code is a recent graduate, so the later form is the one to match; an
-  // older row added with the code would report a mismatch that is really this.
-  CSIE: '資訊工程學系',
-  BEBI: '生醫電子與資訊學研究所',
-  GSB: '基因體與系統生物學學位學程',
-  MHI: '智慧醫療與健康資訊碩士學位學程',
-  GINM: '資訊網路與多媒體研究所',
+  // A list, because the repository's own wording for the home department moved:
+  // a thesis accepted in September 2022 is filed under 資訊工程學研究所 and one
+  // accepted in July 2023 under 資訊工程學系. Either is right for its own
+  // graduate. Which of the two the page prints is decided by `bareBefore` in
+  // src/lib/data.ts, off the graduation year -- and the year is checked here, so
+  // matching either name costs nothing.
+  //
+  // These are the repository's strings, not the site's: it writes MHI out as
+  // 智慧醫療與健康資訊碩士學位學程 where DEPARTMENT_LABELS has
+  // 智慧醫療與健康資訊學程.
+  CSIE: ['資訊工程學系', '資訊工程學研究所'],
+  BEBI: ['生醫電子與資訊學研究所'],
+  GSB: ['基因體與系統生物學學位學程'],
+  MHI: ['智慧醫療與健康資訊碩士學位學程'],
+  GINM: ['資訊網路與多媒體研究所'],
+  PHARM: ['藥學研究所'],
+  EE: ['電機工程學研究所'],
 };
 
 /** Parse the `?mode=full` page into its dc.* fields. */
@@ -169,8 +177,8 @@ async function main() {
 
     const unit = first('dc.contributor.author-dept');
     const expected = UNIT_FOR_CODE[person.department];
-    if (expected && unit && expected !== unit) {
-      say(`page says ${person.department} (${expected}), the record says ${unit}`);
+    if (expected && unit && !expected.includes(unit)) {
+      say(`page says ${person.department} (${expected.join(' / ')}), the record says ${unit}`);
     } else if (person.department && !expected) {
       // The rows recovered from the previous site fuse the unit and the degree
       // into free text, which no map can check. Counted rather than listed:
