@@ -306,8 +306,26 @@ members:
     department: CSIE
     degree: masters
   田傑睿:
+    # Supplied by the lab with the thesis, 2026-08-23.
+    name_en: Jie-Rui Tien
     graduated: 2025
+    department: GSB
     degree: masters
+    thesis: 應用合成數據和可解釋性人工智慧來提高預測亞硝胺致突變性的準確性和可靠性，並應用於藥物合成途徑規劃
+    thesis_en: >-
+      Enhancing the Accuracy and Reliability of Predicting the Mutagenicity of
+      Nitrosamines Using Synthetic Data and Explainable Artificial Intelligence,
+      with Applications to Drug Synthesis Pathway Planning
+  林詩敏:
+    graduated: 2025
+    department: CSIE
+    # The lab gave the year, the unit and the thesis. The level is from the
+    # vault's own 校友 row for her, which reads 碩士論文（主題待補）.
+    degree: masters
+    thesis: 結合多目標最佳化與生成式網路應用於阿茲海默症分子藥物設計
+    thesis_en: >-
+      Alzheimer’s Disease Drug Discovery through De Novo Molecular Design via
+      Multi-objective Optimization on Generative Network
   黃靖蓉:
     graduated: 2026
     # Not from the lab's list, which gave the year and the degree only. The

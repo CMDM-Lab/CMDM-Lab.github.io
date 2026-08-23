@@ -454,12 +454,17 @@ members:
     area: 代謝體學
     area_en: Metabolomics
   - name: 田傑睿
-    name_en: ""
+    name_en: Jie-Rui Tien
     role: alumni
+    department: GSB
     graduated: 2025
     degree: masters
     research: Nitrosamine cheminformatics
     research_en: ""
+    thesis: 應用合成數據和可解釋性人工智慧來提高預測亞硝胺致突變性的準確性和可靠性，並應用於藥物合成途徑規劃
+    thesis_en: Enhancing the Accuracy and Reliability of Predicting the Mutagenicity of Nitrosamines
+      Using Synthetic Data and Explainable Artificial Intelligence, with Applications to Drug
+      Synthesis Pathway Planning
     area: 計算分子設計
     area_en: Computational Molecular Design
   - name: 吳偉業
@@ -481,6 +486,17 @@ members:
     research_en: ""
     area: 代謝體學
     area_en: Metabolomics
+  - name: 林詩敏
+    name_en: ""
+    role: alumni
+    department: CSIE
+    graduated: 2025
+    degree: masters
+    research: ""
+    research_en: ""
+    thesis: 結合多目標最佳化與生成式網路應用於阿茲海默症分子藥物設計
+    thesis_en: Alzheimer’s Disease Drug Discovery through De Novo Molecular Design via Multi-objective
+      Optimization on Generative Network
   - name: 游子慧
     name_en: Tzu-Hui Yu
     role: alumni
@@ -563,11 +579,6 @@ members:
     graduated: 2018
     degree: masters
     research: 管制藥品結構搜尋工具（NPSDB／TCSD 前手）
-    research_en: ""
-  - name: 林詩敏
-    name_en: ""
-    role: alumni
-    research: ""
     research_en: ""
   - name: 倪宇澔
     name_en: ""
