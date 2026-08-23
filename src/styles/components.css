@@ -520,10 +520,15 @@
   /* A single figure that carries a page rather than sitting beside text.
      Two ledger columns wide: at the page measure a 4:3 group photograph came out
      705px tall and pushed the roster it belongs to below the fold, and the wide
-     shell would read as a banner, which this system does not have. */
+     shell would read as a banner, which this system does not have.
+
+     Centred, which it was not: 760px capped inside a 1125px column with no auto
+     margins left 365px of white down one side, which is the same shape of mistake
+     as the plate rows on the honours page. A figure narrower than its column has
+     to say where it sits. */
   .ds-plate--wide{
     max-width:calc(var(--grid-min-wide) * 2);
-    margin-top:var(--space-6);
+    margin:var(--space-6) auto 0;
   }
 
   /* ── A row of figure plates ────────────────────────────────────
