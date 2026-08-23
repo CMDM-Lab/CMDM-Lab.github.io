@@ -32,26 +32,22 @@ const achievements = getHonors(locale);
 
   <section class="ds-section" aria-labelledby="achievements">
     <Kicker size="md" as="h2" id="achievements">{t.section_achievements}</Kicker>
-    {/* The list itself is not held to the prose measure; each citation is. A
-        photograph is not prose, so the plate row beside it gets the whole
-        column -- see .ds-honors in components.css. */}
+    {/* Neither the list nor the citations are held to the prose measure here --
+        see .ds-honors in components.css for why this page trades it. */}
     <ul class="ds-list ds-honors">
       {achievements.map((achievement) => (
         <li>
-          {/* Sentence on the left at the reading measure, photographs on the
-              right. The section rules span the column and the citation stops at
-              38em, which left the right 40% of the page permanently empty; the
-              photographs are the thing that wanted that space. An item with no
-              photograph is still one sentence and one column. */}
           <span class="ds-honors__text">
             {achievement.citation}
             {achievement.links?.map((link) => (
               <>{' '}<a class="ds-link" href={link.url}>[{link.label}]</a></>
             ))}
           </span>
-          {/* Photographs sit on the same white plate inside a hairline that the
-              paper figures use -- the design system has one figure treatment and
-              this is it. */}
+          {/* Photographs sit under their award, on the same white plate inside a
+              hairline that the paper figures use -- the design system has one
+              figure treatment and this is it. All one height, whatever their
+              proportions and however many an award has, because the size on the
+              page is no longer how anyone reads them: the click is. */}
           {achievement.images?.length && (
             <div class="ds-plate-row">
               {achievement.images.map((image) => (

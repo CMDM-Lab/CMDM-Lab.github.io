@@ -21,6 +21,7 @@
   --tap-min:44px;          /* never smaller, ever */
   --drawer-row-h:52px;     /* drawer rows are taller than the tap floor */
   --drawer-index-w:26px;   /* mono ordinal gutter in the drawer */
+  --thumb-h:170px;         /* honours photographs; the full size is a click away */
 }
 
 /* Mobile is a token override, not a component rewrite: re-point the shared

@@ -489,50 +489,17 @@
   .ds-list--bullet{list-style:disc;padding-left:var(--space-4)}
 
   /* ── Honours list ──────────────────────────────────────────────
-     The list carries sentences, which want the prose measure, and photographs,
-     which want the column. Holding the whole list to the measure gave a pair of
-     award photographs 532px to share, so they stacked and came out small. The
-     measure moves onto the sentence instead. */
+     Sentences and photographs, and neither is held to the reading measure. */
   .ds-honors{max-width:none}
-  .ds-honors__text{
-    display:block;
-    max-width:var(--prose-measure);
-  }
-
-  /* An award with one photograph is two columns: the sentence at the reading
-     measure, the plate beside it. The section rules span the whole column while
-     a Chinese citation stops at 38em, so the right 40% of this page was
-     permanently empty -- and the photograph, sitting below the sentence at one
-     ledger width, was the thing that wanted it.
-
-     ONE photograph, not several. A pair needs the whole column to stay legible:
-     side by side in what is left over they would be under 200px each, and
-     stacked they would tower over the sentence they belong to. So a pair keeps
-     the full-width row below, which is what .ds-plate-row was written for. The
-     selector says exactly that, rather than leaving it to how a grid happens to
-     resolve its intrinsic width inside a flex item. */
+  /* The citation spans the column rather than stopping at the reading measure.
+     This page is a list of one-sentence items under rules that span the whole
+     880px, so holding each sentence to 38em left the right 40% permanently
+     empty and reading as a second column nothing went into. The lab's call
+     (2026-08-23): the sentence takes the width, and the measure is traded for
+     not having a phantom column. It is the one place on the site that does --
+     everywhere with real paragraphs still holds the measure. */
+  .ds-honors__text{display:block}
   .ds-honors > li{display:flow-root}
-  .ds-honors > li:has(.ds-plate-row .ds-ledger-item__plate:only-child){
-    display:flex;
-    gap:var(--space-4);
-    /* The plate must not stretch to the sentence's height, the same reason
-       .ds-row is top-aligned. */
-    align-items:flex-start;
-    flex-wrap:wrap;
-  }
-  /* The sentence keeps its measure and takes the slack; the plate holds one
-     ledger column and gives up nothing until they no longer fit, at which point
-     the row wraps and the page is back to one column. */
-  .ds-honors > li:has(.ds-plate-row .ds-ledger-item__plate:only-child)
-    > .ds-honors__text{
-    flex:1 1 min(100%, var(--grid-min-wide));
-  }
-  .ds-honors > li:has(.ds-plate-row .ds-ledger-item__plate:only-child)
-    > .ds-plate-row{
-    /* No top margin: it is beside the sentence now, not under it. */
-    margin-top:0;
-    flex:0 1 var(--grid-min-wide);
-  }
 
   /* A single figure that carries a page rather than sitting beside text.
      Two ledger columns wide: at the page measure a 4:3 group photograph came out
@@ -550,21 +517,34 @@
      one photograph per row on a phone through --grid-min-ledger, like every
      other auto-fit grid here. */
   .ds-plate-row{
-    display:grid;
-    /* auto-FILL with a ceiling, not auto-fit with 1fr: one photograph on its own
-       would stretch to the whole 1125px column and take over the page. A plate
-       is never wider than a ledger column anywhere else in this system, so that
-       is the ceiling here too. */
-    grid-template-columns:repeat(auto-fill,minmax(0,var(--grid-min-wide)));
-    justify-content:start;
+    /* A strip of thumbnails, all one height, under the item they belong to.
+       Was a grid of ledger-width plates, which made one photograph a 380px block
+       and a pair a 780px band, so the row's weight depended on how many
+       photographs an award happened to have. A common height is the thing that
+       makes several of them read as one row; the width follows each
+       photograph's own proportions, and the full size is one click away. */
+    display:flex;
+    flex-wrap:wrap;
     gap:var(--space-3);
     margin-top:var(--space-3);
     max-width:none;
-    /* Each plate is its own height. Stretching them to match leaves a strip of
-       empty white under whichever one has no caption -- the same reason .ds-row
-       is top-aligned. */
-    align-items:start;
+    /* Each plate is its own height -- the images match, the captions under them
+       do not. Stretching leaves a strip of empty white under the shorter one. */
+    align-items:flex-start;
   }
+  /* Overrides the plate's own width:100% / height:auto, which is right for a
+     figure that carries a page and wrong for one in a strip. object-fit keeps a
+     very wide photograph from being squashed when max-width finally bites on a
+     narrow screen. */
+  .ds-plate-row .ds-ledger-item__plate img{
+    height:var(--thumb-h);
+    width:auto;
+    max-width:100%;
+    object-fit:contain;
+  }
+  /* Without this a 240px-wide thumbnail with a sentence-long credit under it
+     grows a tall column of text and drags the row's height with it. */
+  .ds-plate-row .ds-ledger-item__plate figcaption{max-width:var(--thumb-h)}
 
   /* ── Zoomable figure and its dialog ───────────────────────────
      The link around a photograph is the whole feature with JavaScript off: it
