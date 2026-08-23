@@ -121,10 +121,15 @@ alumni:
     mAb production optimization
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/78485
 - name: 田耘政
+  # A research assistant, per the lab (2026-08-23), so the previous site's
+  # 生醫電資所 碩士 was wrong: no degree here and therefore no thesis. The cell
+  # its row shared with three others, 系統生物學、細胞計算模型, was the group's
+  # research topic rather than anyone's title.
   graduated: 2019
-  department: BEBI
-  degree: masters
-  thesis: 系統生物學、細胞計算模型
+  department:
+    zh: 研究助理
+    en: Research Assistant
+  thesis: ''
 - name: 陳巧欣
   # Identified by the lab on 2026-08-23, and the romanisation is the lab's own
   # publication record rather than a reading of the characters: she is
@@ -144,10 +149,15 @@ alumni:
   # there is none to record.
   thesis: ''
 - name: 卓東昇
+  # A research assistant, per the lab (2026-08-23), so the previous site's
+  # 生醫電資所 碩士 was wrong: no degree here and therefore no thesis. The cell
+  # its row shared with three others, 系統生物學、細胞計算模型, was the group's
+  # research topic rather than anyone's title.
   graduated: 2019
-  department: BEBI
-  degree: masters
-  thesis: 系統生物學、細胞計算模型
+  department:
+    zh: 研究助理
+    en: Research Assistant
+  thesis: ''
 - name: 謝秉翰
   graduated: 2018
   department: BEBI
