@@ -20,13 +20,43 @@
 # the right person's -- the advisor field is the tell, and the script rejects a
 # record that is not 曾宇鳳's.
 #
-# Graduates recorded on the pre-2026 website, recovered from the old
-# contents/member_zh.html table. The CMDM-Lobe vault has no pages for these
+# Former members the vault does not track. Mostly graduates recorded on the
+# pre-2026 website, recovered from the old contents/member_zh.html table, plus
+# the staff and research assistants who have left -- some of whom were never on
+# that site at all. The CMDM-Lobe vault has no pages for these
 # 47 people -- this file is the only record of that stretch of lab history, so
 # it is hand-maintained here rather than generated. Recent graduates come from
 # the vault via scripts/sync-members.mjs instead.
-count: 42
+count: 44
 alumni:
+# STAFF WHO HAVE LEFT go here too, at the lab's instruction (2026-08-24). The
+# comment in members-overrides.yml said the opposite -- "staff leave no alumni
+# record -- that table is for graduates" -- and that was true of a table headed
+# 畢業成員. It is headed 歷屆成員 now, precisely because three research
+# assistants were already in it, so a former administrator belongs as much as a
+# former student does. Their 年份 is the year they left.
+- name: 黃立緯
+  # Administrative assistant, left 2025. Name and romanisation reported by the
+  # lab (2026-08-22); no publication carries him, so there is no stronger source
+  # than that and none is invented here.
+  name_en: Li-Wei Huang
+  graduated: 2025
+  department:
+    zh: 行政助理
+    en: Administrative Assistant
+  thesis: ''
+- name: 莊珮君
+  # Research assistant, left 2023. The romanisation is not a reading of the
+  # characters: she is Pei-Jiun Chuang on two of the lab's own 2023 papers,
+  # in Regulatory Toxicology and Pharmacology and in ACS Omega, and
+  # data/publications.yml carries both author lists. A comment in
+  # members-overrides.yml had her as Pei-Chun Chuang, which is corrected there.
+  name_en: Pei-Jiun Chuang
+  graduated: 2023
+  department:
+    zh: 研究助理
+    en: Research Assistant
+  thesis: ''
 - name: 王珮驊
   # Her row renders again now that a graduate who stayed on is listed in both
   # sections, so it carries the romanisation the postdoc entry uses.

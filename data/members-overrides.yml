@@ -525,12 +525,20 @@ additional:
       - BS in Pharmacy, National Taiwan University
 
   # Administrative assistant. Replaced 黃立緯 (Li-Wei Huang), who left the lab;
-  # the previous research assistant 莊珮君 (Pei-Chun Chuang) has also left, and
+  # the previous research assistant 莊珮君 (Pei-Jiun Chuang) has also left, and
   # that post is now held by 張家瑜, entered in the `members` map above because
   # the vault already knows her as a graduate.
   #
-  # Both departures were reported by the lab on 2026-08-22. Staff leave no alumni
-  # record -- that table is for graduates -- so their entries are simply removed.
+  # Both departures were reported by the lab on 2026-08-22. This used to add that
+  # "staff leave no alumni record -- that table is for graduates -- so their
+  # entries are simply removed", which stopped being true on 2026-08-24: both are
+  # rows in alumni-historical.yml now, the table having been renamed 歷屆成員 for
+  # exactly this reason.
+  #
+  # Pei-Jiun, not the Pei-Chun this said until 2026-08-24: she is Pei-Jiun Chuang
+  # on two of the lab's own 2023 papers, and publications.yml carries both author
+  # lists -- so the correction came out of this repository rather than from
+  # outside it.
   - name: 朱于君
     role: staff
     title: 行政助理
