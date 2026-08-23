@@ -558,6 +558,45 @@ test('the numbers in the About prose match the data files', async () => {
   }
 });
 
+test('a thesis_url is a handle in the one repository the checker reads', async () => {
+  // scripts/check-thesis-records.mjs runs monthly and talks to NTU. A typo here
+  // would surface as one line in a scheduled job's log a fortnight later, or as
+  // a request to a host we never meant to touch, so the shape is checked on
+  // every commit instead. What the URL *contains* is the scheduled job's
+  // business; that it is the right kind of URL is this one's.
+  const HANDLE = /^https:\/\/tdr\.lib\.ntu\.edu\.tw\/jspui\/handle\/123456789\/\d+$/;
+  const members = YAML.parse(
+    await readFile(path.join(ROOT, 'data', 'members.yml'), 'utf8'),
+  ).members ?? [];
+  const historical = YAML.parse(
+    await readFile(path.join(ROOT, 'data', 'alumni-historical.yml'), 'utf8'),
+  ).alumni ?? [];
+
+  const seen = new Map();
+  for (const person of [...members, ...historical]) {
+    if (!person.thesis_url) continue;
+    assert.match(
+      person.thesis_url, HANDLE,
+      `"${person.name}" has thesis_url "${person.thesis_url}", which is not an NTU handle`,
+    );
+    // One thesis, one author. The same handle on two people means a record was
+    // copied onto the wrong row, which the scheduled check would only catch for
+    // whichever of them the advisor and author fields disagree with.
+    const other = seen.get(person.thesis_url);
+    assert.ok(
+      !other,
+      `"${person.name}" and "${other}" both point at ${person.thesis_url}`,
+    );
+    seen.set(person.thesis_url, person.name);
+    if (person.role) {
+      assert.equal(
+        person.role, 'alumni',
+        `"${person.name}" has a thesis_url but is not an alumnus`,
+      );
+    }
+  }
+});
+
 test('the About page\'s alumni count is the length of the alumni table', {
   skip: existsSync(DIST) ? false : 'run `npm run build` first',
 }, async () => {

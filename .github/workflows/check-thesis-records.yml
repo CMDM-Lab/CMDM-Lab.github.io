@@ -1,0 +1,93 @@
+# Check the alumni table against NTU's thesis repository.
+#
+# The graduation years on the members page are calendar years -- the year the
+# 口試 was passed. That fact lives in NTU's repository and nowhere in this one,
+# so no offline test can hold the line on it. This job goes and reads it.
+#
+# WHY IT IS NOT PART OF `npm test`. That suite runs offline, in a second, on
+# every commit and inside the sync workflow. This one depends on a university
+# library's DSpace being up and willing, and a red light that goes red for
+# reasons the author cannot fix is a red light people learn to ignore. So it
+# runs on its own schedule, and the script distinguishes "these two disagree",
+# which fails, from "I could not ask", which does not.
+#
+# WHY MONTHLY. The data it checks changes when someone graduates, a few times a
+# year. Reading fifty pages off a library server more often than that buys
+# nothing and costs them bandwidth.
+
+name: Check thesis records
+
+on:
+  schedule:
+    # 04:40 UTC on the 8th = 12:40 in Taipei, a weekday-ish slot well clear of
+    # the Monday data sync.
+    - cron: '40 4 8 * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Compare the alumni table with NTU's records
+        id: check
+        run: |
+          {
+            echo '```'
+            node scripts/check-thesis-records.mjs 2>&1 | tee /tmp/thesis-check.log
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+          exit "${PIPESTATUS[0]}"
+
+      # A mismatch is a fact about the site that someone has to decide about --
+      # the page may be wrong, or NTU may be. Failing the run alone would leave
+      # that in a log nobody opens, so it becomes an issue with the detail in it.
+      - name: Raise an issue for the mismatches
+        if: failure() && steps.check.outcome == 'failure'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const log = fs.readFileSync('/tmp/thesis-check.log', 'utf8');
+            const title = 'Alumni years disagree with NTU’s thesis records';
+            const { data: open } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner, repo: context.repo.repo,
+              state: 'open', labels: 'thesis-check',
+            });
+            const body = [
+              'The scheduled check found rows where the members page and NTU’s',
+              'repository disagree. Either the page is wrong or the record is;',
+              'the deciding field is `dc.date.accepted`, the 口試通過日期.',
+              '',
+              '```',
+              log.trim(),
+              '```',
+              '',
+              `From ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}` +
+              `/actions/runs/${context.runId}`,
+            ].join('\n');
+            // Reuse one issue rather than opening a new one every month for a
+            // mismatch nobody has got to yet.
+            if (open.length) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner, repo: context.repo.repo,
+                issue_number: open[0].number, body,
+              });
+            } else {
+              await github.rest.issues.create({
+                owner: context.repo.owner, repo: context.repo.repo,
+                title, body, labels: ['thesis-check'],
+              });
+            }

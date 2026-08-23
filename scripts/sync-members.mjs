@@ -218,6 +218,9 @@ async function main() {
       // repeatedly during the defense round.
       ...(override.thesis ? { thesis: override.thesis } : {}),
       ...(override.thesis_en ? { thesis_en: override.thesis_en } : {}),
+      // The deposited record, which scripts/check-thesis-records.mjs reads the
+      // year and the rest back out of.
+      ...(override.thesis_url ? { thesis_url: override.thesis_url } : {}),
       ...(override.area !== undefined
         ? (override.area ? { area: override.area, area_en: override.area_en ?? '' } : {})
         : (areas.length

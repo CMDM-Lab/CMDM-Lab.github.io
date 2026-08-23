@@ -404,6 +404,7 @@ members:
     research_en: ""
     thesis: A Multimodal Machine Learning Framework for Distinguishing Tardive Dyskinesia via Voice and
       Facial Movement Analysis
+    thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/103607
     area: 步態分析
     area_en: Gait Analysis
   - name: 陳韻淇
@@ -430,6 +431,7 @@ members:
     research: ""
     research_en: ""
     thesis: A Conversational AI Assistant for Literature Searching and Data Analysis in Metabolomics
+    thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/103939
     area: 代謝體學
     area_en: Metabolomics
   - name: 王仁宏
@@ -453,9 +455,10 @@ members:
     degree: masters
     research: PFAS 深度學習標注 DeePFAS
     research_en: ""
-    thesis: 利用深度學習透過質譜嵌入和分子化學潛在空間加速對全氟化合物的非靶向註釋研究
+    thesis: 利用深度學習透過質譜嵌入和分子化學潛在空間加速對全氟烷基與多氟烷基物質的非靶向註釋研究
     thesis_en: "DeePFAS: Deep Learning-Enabled Rapid Annotation of PFAS for Enhancing Non-Targeted
       Screening through Spectral Encoding and Latent Space Analysis"
+    thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/100942
     area: 代謝體學
     area_en: Metabolomics
   - name: 田傑睿
@@ -492,6 +495,7 @@ members:
     research_en: ""
     thesis: 肺癌患者呼出氣體凝結液的呼吸體學分析
     thesis_en: Breathomics Analysis of the Exhaled Breath Condensate of Lung Cancer Patients
+    thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/98909
     area: 代謝體學
     area_en: Metabolomics
   - name: 林詩敏
@@ -515,6 +519,7 @@ members:
     research_en: ""
     thesis: 可解釋性的圖神經網路之於預測 P-醣蛋白受體
     thesis_en: Interpretable graph neural networks for predicting P-glycoprotein substrates
+    thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/96777
     area: 計算分子設計
     area_en: Computational Molecular Design
   - name: 游子慧
@@ -528,6 +533,7 @@ members:
     thesis: Patient-LITE：利用大型語言模型，打造以患者為中心的通用型臨床試驗資格篩選問卷
     thesis_en: "Patient-LITE: Empowering Patients with a Generalizable LLM-Based Questionnaire Generator
       for Accelerated Trial Eligibility Screening"
+    thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/96601
     area: AI Agent 系統
     area_en: AI Agent Systems
   - name: 詹易玹
@@ -580,6 +586,7 @@ members:
     thesis: 用於增強空間分析和分子定位的三維質譜影像重建流程:以思覺失調小鼠大腦為例
     thesis_en: 3D Mass Spectrometry Imaging Reconstruction Protocol for Enhanced Spatial Profiling and
       Molecular Mapping with Example Application of Schizophrenia Mouse Brain
+    thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/91132
     area: 代謝體學
     area_en: Metabolomics
   - name: 張景曜
@@ -593,6 +600,7 @@ members:
     thesis: 脫附型電噴灑游離法質譜成像探討多系統萎縮症患者腦區的脂質混亂及其與 α-突觸核蛋白聚集的空間關聯研究
     thesis_en: Exploring Lipid Disturbances and its Spatial Association with α-Synuclein Aggregation in
       MSA Patient Brain Regions via Desorption Electrospray Ionization Mass Spectrometry Imaging
+    thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/91207
     area: 代謝體學
     area_en: Metabolomics
   - name: 倪宇澔
@@ -606,6 +614,7 @@ members:
     thesis: 用於預測細胞色素P450介導代謝的全面性數據集：機器學習和深度學習的系統評估
     thesis_en: "A Comprehensively-Curated Dataset for Prediction of Cytochrome P450 Isoforms Mediated
       Metabolism: A Systematic Evaluation of Machine Learning and Deep Learning Methods"
+    thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/84449
   - name: 徐銘聰
     name_en: Ming-Tsung Hsu
     role: alumni
@@ -616,6 +625,7 @@ members:
     research_en: ""
     thesis: 肺癌幹細胞胞外體之分子鑑定
     thesis_en: Molecular Identification of Lung Cancer Stem Cell-Derived Exosomes
+    thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/77542
   - name: 謝秉翰
     name_en: Ping-Han Hsieh
     role: alumni
@@ -626,3 +636,4 @@ members:
     research_en: ""
     thesis: 管制藥品結構搜尋工具
     thesis_en: A Searching Tool for Comparing the Structure Similarity of Controlled Drugs
+    thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/78910

@@ -54,6 +54,7 @@ members:
     degree: phd
     thesis: 肺癌幹細胞胞外體之分子鑑定
     thesis_en: Molecular Identification of Lung Cancer Stem Cell-Derived Exosomes
+    thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/77542
   張景曜:
     name_en: Ching-Yao Chang # published
     # As 徐銘聰 below: part of the 2026-08-23 batch, added to the entry he
@@ -68,6 +69,7 @@ members:
       Exploring Lipid Disturbances and its Spatial Association with α-Synuclein
       Aggregation in MSA Patient Brain Regions via Desorption Electrospray
       Ionization Mass Spectrometry Imaging
+    thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/91207
   許洸誠:
     name_en: Kuang-Cheng Hsu # published -- and as the thesis record below has it
     # From NTU's institutional repository, which the lab found on 2026-08-23:
@@ -87,6 +89,7 @@ members:
     thesis_en: >-
       Interpretable graph neural networks for predicting P-glycoprotein
       substrates
+    thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/96777
   鍾岳辰:
     # Published as Yue-Chen Jhong on A Clinical Breathomics Dataset (Scientific
     # Data 11, 203, 2024). My earlier "Yueh-Chen Chung" was wrong on both parts.
@@ -178,6 +181,7 @@ members:
     thesis: >-
       A Multimodal Machine Learning Framework for Distinguishing Tardive
       Dyskinesia via Voice and Facial Movement Analysis
+    thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/103607
 
   葉芷瑜:
     role: alumni
@@ -194,6 +198,7 @@ members:
     thesis: >-
       A Conversational AI Assistant for Literature Searching and Data Analysis
       in Metabolomics
+    thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/103939
 
   丁瓘茵:
     role: alumni
@@ -269,6 +274,10 @@ members:
   # lab settled this on 2026-08-23; see the same note at the top of
   # alumni-historical.yml, which the same rule governs.
   #
+  # `thesis_url` is that record. scripts/check-thesis-records.mjs reads the year,
+  # the degree, the unit and the titles back out of it on a schedule, so a row
+  # carrying one is checked against NTU rather than against a comment.
+  #
   # Everything below was supplied by the lab on 2026-08-23, and `degree` is the
   # level read here -- `masters` or `phd`, printed after the unit. Either half
   # may be missing: several of these people have a degree on record and no unit,
@@ -289,6 +298,7 @@ members:
       3D Mass Spectrometry Imaging Reconstruction Protocol for Enhanced Spatial
       Profiling and Molecular Mapping with Example Application of Schizophrenia
       Mouse Brain
+    thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/91132
   黎芷琪:
     name_en: Chih-Chi Li
     # Her defense was January 2024, which is where the vault's "畢業 2023" comes
@@ -309,6 +319,7 @@ members:
     thesis_en: >-
       Patient-LITE: Empowering Patients with a Generalizable LLM-Based
       Questionnaire Generator for Accelerated Trial Eligibility Screening
+    thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/96601
   陳韻淇:
     name_en: Yun-Chi Chen
     graduated: 2026
@@ -317,10 +328,13 @@ members:
     name_en: Heng Wang
     department: CSIE
     degree: masters
-    thesis: 利用深度學習透過質譜嵌入和分子化學潛在空間加速對全氟化合物的非靶向註釋研究
+    # 全氟烷基與多氟烷基物質, the deposited wording, not the 全氟化合物 the
+    # lab's message shortened it to. Caught by the scheduled check.
+    thesis: 利用深度學習透過質譜嵌入和分子化學潛在空間加速對全氟烷基與多氟烷基物質的非靶向註釋研究
     thesis_en: >-
       DeePFAS: Deep Learning-Enabled Rapid Annotation of PFAS for Enhancing
       Non-Targeted Screening through Spectral Encoding and Latent Space Analysis
+    thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/100942
   古庭榮:
     name_en: Ting-Jung Ku
     department: GINM
@@ -352,6 +366,7 @@ members:
     thesis_en: >-
       Breathomics Analysis of the Exhaled Breath Condensate of Lung Cancer
       Patients
+    thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/98909
   詹易玹:
     graduated: 2024
     department: BEBI
@@ -414,6 +429,7 @@ members:
       A Comprehensively-Curated Dataset for Prediction of Cytochrome P450
       Isoforms Mediated Metabolism: A Systematic Evaluation of Machine Learning
       and Deep Learning Methods
+    thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/84449
 
   賴侑辰:
     # NOT PUBLISHED. He was a 專題生 and has left -- the vault's 校友 row says
@@ -451,6 +467,7 @@ members:
     thesis_en: >-
       A Searching Tool for Comparing the Structure Similarity of Controlled
       Drugs
+    thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/78910
 
 additional:
   # ---------------------------------------------------------------------------

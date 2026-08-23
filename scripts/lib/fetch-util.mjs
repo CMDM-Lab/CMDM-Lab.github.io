@@ -15,6 +15,9 @@ const HOST_THROTTLE_MS = {
   'eutils.ncbi.nlm.nih.gov': 400, // stay under the 3 req/s cap
   'api.crossref.org': 200,
   'pub.orcid.org': 200,
+  // A university library's DSpace, not an API built for traffic. The thesis
+  // check reads about fifty pages in a run and has all month to do it.
+  'tdr.lib.ntu.edu.tw': 1000,
 };
 
 const lastRequestAt = new Map();
@@ -64,6 +67,44 @@ export async function fetchJson(url, { attempts = 3, timeoutMs = 45_000 } = {}) 
         // without making the whole sync job look hung.
         await sleep(1000 * 2 ** (attempt - 1));
       }
+    } finally {
+      clearTimeout(timer);
+    }
+  }
+  throw new Error(`giving up after ${attempts} attempts: ${lastError?.message}`);
+}
+
+/**
+ * GET a URL and return the body as text.
+ *
+ * Same throttle and retry policy as `fetchJson`; the difference is the Accept
+ * header and that nothing is parsed. NTU's repository is a DSpace instance with
+ * no API, so the only way to read a thesis record is to ask for the page.
+ */
+export async function fetchText(url, { attempts = 3, timeoutMs = 45_000 } = {}) {
+  const host = new URL(url).host;
+  let lastError;
+
+  for (let attempt = 1; attempt <= attempts; attempt += 1) {
+    await throttle(host);
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), timeoutMs);
+    try {
+      const response = await fetch(url, {
+        signal: controller.signal,
+        headers: { Accept: 'text/html', 'User-Agent': USER_AGENT },
+      });
+      if (response.status === 404) {
+        throw Object.assign(new Error(`404 Not Found: ${url}`), { fatal: true });
+      }
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status} ${response.statusText}: ${url}`);
+      }
+      return await response.text();
+    } catch (error) {
+      if (error.fatal) throw error;
+      lastError = error;
+      if (attempt < attempts) await sleep(1000 * 2 ** (attempt - 1));
     } finally {
       clearTimeout(timer);
     }
