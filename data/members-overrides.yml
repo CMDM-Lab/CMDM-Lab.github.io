@@ -268,13 +268,28 @@ members:
     name_en: Heng Wang
     department: CSIE
     degree: masters
+    thesis: 利用深度學習透過質譜嵌入和分子化學潛在空間加速對全氟化合物的非靶向註釋研究
+    thesis_en: >-
+      DeePFAS: Deep Learning-Enabled Rapid Annotation of PFAS for Enhancing
+      Non-Targeted Screening through Spectral Encoding and Latent Space Analysis
   古庭榮:
     name_en: Ting-Jung Ku
+    department: GINM
     degree: masters
+    # 5-HT2A, not the "5-HT 2 A" the title reads as when 2A is a subscript and
+    # the formatting is lost on the way out of the document.
+    thesis: 促進非致幻 5-HT2A 致效劑發現的 De Novo 生成式 AI 框架：邁向抗憂鬱藥物探索
+    thesis_en: >-
+      A De Novo Generative AI Framework Enabling Discovery of Non-Hallucinogenic
+      5-HT2A Agonists Toward Antidepressant Drug Discovery
   王仁宏:
     graduated: 2025
     department: BEBI
     degree: masters
+    thesis: 基於氣相色譜-質譜的非靶向代謝體學揭示急性肺損傷患者的代謝擾動
+    thesis_en: >-
+      Gas chromatography-mass spectrometry-based untargeted metabolomics reveals
+      metabolic perturbations in acute lung injury patients
   林首志:
     graduated: 2025
     # DEPARTMENT DELIBERATELY ABSENT. The lab's answer was 資工所, hedged --
