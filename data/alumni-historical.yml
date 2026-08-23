@@ -38,9 +38,17 @@ alumni:
     Computer-Aided Drug Design for molecular property prediction
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/85760
 - name: 高紀威
+  name_en: Chi-Wei Kao
   graduated: 2022
-  department: 生醫電資所 碩士
-  thesis: ''
+  # The previous site's row said 生醫電資所. His record says 資訊工程學研究所,
+  # which is 資工所 -- the wording the repository uses for that era and the same
+  # one the other pre-2023 CSIE rows here carry. Corrected, like the titles
+  # below it: free text is not a reason to leave a known error standing.
+  department: 資工所 碩士
+  # His row had a record and an empty title, which is how linking the titles
+  # found him: 45 links for 46 records.
+  thesis: 以柏雷多效率為核心概念的分子最佳化演算法
+  thesis_en: Simultaneous optimization of drug properties with Pareto efficiency
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/85944
 - name: 倪宇澔
   graduated: 2022

@@ -48,6 +48,10 @@ const DEGREE_FROM_ZH = { 碩士: 'masters', 博士: 'phd' };
  * from this map is reported, not assumed wrong.
  */
 const UNIT_FOR_CODE = {
+  // The repository's own wording moved: records before about 2023 say
+  // 資訊工程學研究所 where later ones say 資訊工程學系. Every row carrying the
+  // CSIE code is a recent graduate, so the later form is the one to match; an
+  // older row added with the code would report a mismatch that is really this.
   CSIE: '資訊工程學系',
   BEBI: '生醫電子與資訊學研究所',
   GSB: '基因體與系統生物學學位學程',

@@ -90,6 +90,14 @@ export interface Member {
    */
   thesis_en?: string;
   /**
+   * The deposited record in NTU's repository, which the title links to.
+   *
+   * Also what scripts/check-thesis-records.mjs reads the year, the degree, the
+   * unit and the titles back out of every month -- so the link a reader follows
+   * to check a row is the same one the scheduled job checks it against.
+   */
+  thesis_url?: string;
+  /**
    * Coarse research area, always one of the pillars in data/pages.yml.
    *
    * The page shows this instead of `research`: the specific topic is working
@@ -127,6 +135,8 @@ export interface HistoricalAlumnus {
   thesis?: string;
   /** As on Member: the English title, where the 審定書 carries both. */
   thesis_en?: string;
+  /** As on Member: the deposited record, which the title links to. */
+  thesis_url?: string;
   /** The alumnus's own site, where they publish one. */
   homepage?: string;
 }

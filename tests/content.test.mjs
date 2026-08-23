@@ -597,6 +597,36 @@ test('a thesis_url is a handle in the one repository the checker reads', async (
   }
 });
 
+test('every thesis record reachable from the data is linked on the page', {
+  skip: existsSync(DIST) ? false : 'run `npm run build` first',
+}, async () => {
+  // The title renders through a fallback -- English title, else the deposited
+  // one, else nothing -- and the link hangs off whether that produced anything.
+  // A row with a record and no title silently drops its link, which is how
+  // 高紀威 was found: 45 links against 46 records.
+  const members = YAML.parse(
+    await readFile(path.join(ROOT, 'data', 'members.yml'), 'utf8'),
+  ).members ?? [];
+  const historical = YAML.parse(
+    await readFile(path.join(ROOT, 'data', 'alumni-historical.yml'), 'utf8'),
+  ).alumni ?? [];
+  const vault = new Set(members.filter((m) => m.role === 'alumni').map((m) => m.name));
+  const onPage = [
+    ...members.filter((m) => m.role === 'alumni'),
+    ...historical.filter((p) => !vault.has(p.name)),
+  ].filter((p) => p.thesis_url);
+
+  for (const locale of [['members'], ['en', 'members']]) {
+    const html = await readFile(path.join(DIST, ...locale, 'index.html'), 'utf8');
+    for (const person of onPage) {
+      assert.ok(
+        html.includes(`href="${person.thesis_url}"`),
+        `/${locale.join('/')}/ does not link "${person.name}" to their thesis record`,
+      );
+    }
+  }
+});
+
 test('the About page\'s alumni count is the length of the alumni table', {
   skip: existsSync(DIST) ? false : 'run `npm run build` first',
 }, async () => {

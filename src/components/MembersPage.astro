@@ -55,6 +55,9 @@ const displayName = (person: { name: string; name_en?: string }) => (
 const secondaryName = (person: { name: string; name_en?: string }) => (
   isEnglish ? (person.name_en ? person.name : '') : (person.name_en ?? '')
 );
+const thesisTitle = (person: { thesis?: string; thesis_en?: string }) => (
+  (isEnglish && person.thesis_en) || person.thesis || ''
+);
 const roleTitle = (member: Member) => (
   (isEnglish ? member.title_en : member.title) || member.title || ''
 );
@@ -244,8 +247,16 @@ const people = [...grouped.values()].flat().map((member) => ({
           <td class="ds-mono-sm">{alumnusProgram(person, locale)}</td>
           {/* Only a confirmed thesis title, never the vault's working topic.
               Most were deposited in English and exist once, so the English page
-              falls back to the same string the Chinese one shows. */}
-          <td>{(isEnglish && person.thesis_en) || person.thesis || ''}</td>
+              falls back to the same string the Chinese one shows.
+
+              Linked to the deposited record where there is one, the way a name
+              is linked to a homepage: the row asserts what someone's thesis was
+              called, and the reader should be able to go and see. */}
+          <td>{thesisTitle(person)
+            ? (person.thesis_url
+              ? <a href={person.thesis_url}>{thesisTitle(person)}</a>
+              : thesisTitle(person))
+            : ''}</td>
         </tr>
       ))}
     </DataTable>
