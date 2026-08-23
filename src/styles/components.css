@@ -494,10 +494,44 @@
      award photographs 532px to share, so they stacked and came out small. The
      measure moves onto the sentence instead. */
   .ds-honors{max-width:none}
-  .ds-honors > li{display:flow-root}
   .ds-honors__text{
     display:block;
     max-width:var(--prose-measure);
+  }
+
+  /* An award with one photograph is two columns: the sentence at the reading
+     measure, the plate beside it. The section rules span the whole column while
+     a Chinese citation stops at 38em, so the right 40% of this page was
+     permanently empty -- and the photograph, sitting below the sentence at one
+     ledger width, was the thing that wanted it.
+
+     ONE photograph, not several. A pair needs the whole column to stay legible:
+     side by side in what is left over they would be under 200px each, and
+     stacked they would tower over the sentence they belong to. So a pair keeps
+     the full-width row below, which is what .ds-plate-row was written for. The
+     selector says exactly that, rather than leaving it to how a grid happens to
+     resolve its intrinsic width inside a flex item. */
+  .ds-honors > li{display:flow-root}
+  .ds-honors > li:has(.ds-plate-row .ds-ledger-item__plate:only-child){
+    display:flex;
+    gap:var(--space-4);
+    /* The plate must not stretch to the sentence's height, the same reason
+       .ds-row is top-aligned. */
+    align-items:flex-start;
+    flex-wrap:wrap;
+  }
+  /* The sentence keeps its measure and takes the slack; the plate holds one
+     ledger column and gives up nothing until they no longer fit, at which point
+     the row wraps and the page is back to one column. */
+  .ds-honors > li:has(.ds-plate-row .ds-ledger-item__plate:only-child)
+    > .ds-honors__text{
+    flex:1 1 min(100%, var(--grid-min-wide));
+  }
+  .ds-honors > li:has(.ds-plate-row .ds-ledger-item__plate:only-child)
+    > .ds-plate-row{
+    /* No top margin: it is beside the sentence now, not under it. */
+    margin-top:0;
+    flex:0 1 var(--grid-min-wide);
   }
 
   /* A single figure that carries a page rather than sitting beside text.
@@ -531,6 +565,57 @@
        is top-aligned. */
     align-items:start;
   }
+
+  /* ── Zoomable figure and its dialog ───────────────────────────
+     The link around a photograph is the whole feature with JavaScript off: it
+     opens the file. The cursor says so, and is the only affordance -- an overlay
+     or a magnifier badge would be furniture on a plate that is deliberately
+     bare. */
+  .ds-zoom{display:block;cursor:zoom-in}
+
+  .ds-lightbox{
+    /* The dialog is the frame, so it gets the plate's own treatment rather than
+       the user-agent's white box with a border-radius this system does not use. */
+    background:var(--white);
+    border:var(--border-hairline);
+    padding:var(--space-2);
+    max-width:min(96vw, 1400px);
+    /* Leave room for the padding and the caption inside the viewport, so a tall
+       photograph is bounded by the window rather than by its own height. */
+    max-height:92vh;
+    overflow:auto;
+  }
+  .ds-lightbox::backdrop{background:rgb(0 0 0 / 0.72)}
+  .ds-lightbox img{
+    display:block;
+    /* 92vh less the chrome above and below it. */
+    max-height:calc(92vh - var(--space-8));
+    max-width:100%;
+    width:auto;
+    height:auto;
+    margin:0 auto;
+  }
+  .ds-lightbox__caption{
+    margin-top:var(--space-2);
+    font-family:var(--kicker-font);
+    font-size:var(--text-kicker);
+    color:var(--text-meta);
+    text-align:center;
+  }
+  .ds-lightbox__close{
+    display:block;
+    margin-left:auto;
+    /* The tap-target floor the mobile block sets for everything else. */
+    min-width:44px;
+    min-height:44px;
+    background:none;
+    border:0;
+    cursor:pointer;
+    font-size:var(--text-h3, 1.25rem);
+    line-height:1;
+    color:var(--text-secondary);
+  }
+  .ds-lightbox__close:hover{color:var(--text-primary)}
 
   /* ══ Mobile (< 768px) ══════════════════════════════════════════════════
      One breakpoint, and the layout reflow is not here: it is the token

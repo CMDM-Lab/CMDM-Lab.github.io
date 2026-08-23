@@ -38,6 +38,11 @@ const achievements = getHonors(locale);
     <ul class="ds-list ds-honors">
       {achievements.map((achievement) => (
         <li>
+          {/* Sentence on the left at the reading measure, photographs on the
+              right. The section rules span the column and the citation stops at
+              38em, which left the right 40% of the page permanently empty; the
+              photographs are the thing that wanted that space. An item with no
+              photograph is still one sentence and one column. */}
           <span class="ds-honors__text">
             {achievement.citation}
             {achievement.links?.map((link) => (
@@ -46,13 +51,18 @@ const achievements = getHonors(locale);
           </span>
           {/* Photographs sit on the same white plate inside a hairline that the
               paper figures use -- the design system has one figure treatment and
-              this is it. The row breaks out of the prose measure the list is set
-              to, because a photograph is not prose. */}
+              this is it. */}
           {achievement.images?.length && (
             <div class="ds-plate-row">
               {achievement.images.map((image) => (
                 <figure class="ds-ledger-item__plate">
-                  <img src={image.src} alt={image.alt} loading="lazy" decoding="async" />
+                  {/* The link is the whole feature without JavaScript: it opens
+                      the file, which is the full-resolution photograph. The
+                      script below upgrades that to a dialog, the same way the
+                      mobile nav's Escape handler upgrades a <details>. */}
+                  <a class="ds-zoom" href={image.src} data-credit={image.credit ?? ''}>
+                    <img src={image.src} alt={image.alt} loading="lazy" decoding="async" />
+                  </a>
                   {image.credit && <figcaption>{image.credit}</figcaption>}
                 </figure>
               ))}
@@ -67,4 +77,56 @@ const achievements = getHonors(locale);
   <p class="ds-section">
     <a class="ds-link" href={pathFor('publications', locale)}>{t.nav_publications} &rarr;</a>
   </p>
+
+  {/* One dialog for the page, filled in on click, rather than one per figure.
+      <dialog> earns its keep here: showModal() gives the focus trap, the
+      inert background and Escape-to-close for free, and ::backdrop is a real
+      element to dim with. */}
+  <dialog class="ds-lightbox" aria-label={t.label_enlarge}>
+    <form method="dialog">
+      <button class="ds-lightbox__close" aria-label={t.label_close}>&times;</button>
+    </form>
+    <img alt="" />
+    <p class="ds-lightbox__caption" hidden></p>
+  </dialog>
 </BaseLayout>
+
+<script is:inline>
+  // Progressive enhancement, like the mobile nav's Escape handler: without this
+  // the links still open the photographs, they just leave the page to do it.
+  (() => {
+    const dialog = document.querySelector('.ds-lightbox');
+    if (!dialog || typeof dialog.showModal !== 'function') return;
+    const image = dialog.querySelector('img');
+    const caption = dialog.querySelector('.ds-lightbox__caption');
+
+    document.addEventListener('click', (event) => {
+      const zoom = event.target.closest?.('.ds-zoom');
+      if (!zoom) return;
+      // Leave modified clicks alone -- someone asking for a new tab means it.
+      if (event.metaKey || event.ctrlKey || event.shiftKey || event.button !== 0) return;
+      event.preventDefault();
+      image.src = zoom.getAttribute('href');
+      // The alt text belongs to the photograph, so it comes along with it.
+      image.alt = zoom.querySelector('img')?.alt ?? '';
+      const credit = zoom.dataset.credit ?? '';
+      caption.textContent = credit;
+      caption.hidden = !credit;
+      dialog.showModal();
+    });
+
+    // Clicking the darkened area closes it. The dialog's own box is the only
+    // hit target it has, so anything landing outside that box is the backdrop.
+    dialog.addEventListener('click', (event) => {
+      if (event.target !== dialog) return;
+      const box = dialog.getBoundingClientRect();
+      const outside = event.clientX < box.left || event.clientX > box.right
+        || event.clientY < box.top || event.clientY > box.bottom;
+      if (outside) dialog.close();
+    });
+
+    // Drop the source on close so a large photograph is not held in memory, and
+    // so the next open never flashes the previous one.
+    dialog.addEventListener('close', () => { image.removeAttribute('src'); });
+  })();
+</script>
