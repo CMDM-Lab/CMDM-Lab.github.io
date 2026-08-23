@@ -165,8 +165,9 @@ achievements:
   #
   # THE ANNOUNCEMENT DOES NOT NAME THE RECIPIENTS. It records the launch and that
   # the scholarships were presented ("貴賓頒發頂尖博士獎學金獲獎同學") and stops
-  # there; that he is one of them comes from the lab (2026-08-23). So the link is
-  # a source for the scholarship and the ceremony, not for his name.
+  # there. That he is one of them is from the PI, and his being the student in the
+  # photograph was confirmed off the name badge he is wearing in it (2026-08-23).
+  # So the link is a source for the scholarship and the ceremony, not for his name.
   #
   # He has no romanisation on this site -- a doctoral student two years in has no
   # deposited thesis to take one from, and this file does not invent them. His
@@ -179,19 +180,32 @@ achievements:
         Engineering and Computer Science.
     # The college's own photograph of the presentation, resized here from
     # 4195x2800 / 5.5 MB to 1600px on the long edge and stripped of EXIF. Credited
-    # to the college, which is where it came from; worth confirming with them that
-    # the lab may carry it, since every other photograph on this page was the
-    # lab's own.
+    # to the college; still worth their say-so that the lab may carry it, since
+    # every other photograph on this page was the lab's own.
     #
-    # The alt text names nobody, as with the ceremony photograph above: the people
-    # in it have not agreed to be identified by name on a public page, and alt
-    # text is read out, indexed and translated.
+    # THE ALT TEXT NAMES HIM AND NOBODY ELSE, which is a different call from the
+    # ceremony photograph above and for a reason. That one is two dozen people at
+    # a distance; this is three, and he is the subject of the sentence it sits
+    # under -- describing him as an unnamed student would be a fiction the
+    # citation immediately contradicts. The other two are given by role. The one
+    # on the right is the college's dean, whose badge is as legible as his and who
+    # is here in an official capacity, and he is still not named: alt text is read
+    # out, indexed and translated, and it is not this page's place to put his
+    # name into all three.
+    #
+    # Left and right are the viewer's in both languages, which is the convention
+    # the college's own captions use (左起...). The first draft said "on his
+    # right" in English and 左 in Chinese -- both true, in mirrored frames, which
+    # is how a caption ends up contradicting itself.
     images:
       - src: /img/honors/2025-eecs-alliance-doctoral-scholarship.jpg
         alt:
-          zh: AI 電資大聯盟捐贈啟動典禮上的頂尖博士獎學金頒獎，貴賓與獲獎博士生在典禮舞台上合影。
-          en: The presentation of the Top Doctoral Scholarships at the launch ceremony of the
-            AI Alliance, guests and the doctoral recipients together on stage.
+          zh: 蔡哲維在 AI 電資大聯盟捐贈啟動典禮上獲頒頂尖博士獎學金獎狀，左為頒獎貴賓，右為電資學院院長，三人於印有 NTU EECS
+            與捐贈企業標誌的背板前合影。
+          en: 蔡哲維 receiving the Top Doctoral Scholarship certificate at the launch ceremony
+            of the AI Alliance, the presenting guest to the left of him and the college's dean
+            to the right, in front of a backdrop carrying the NTU EECS mark and the donor
+            companies' logos.
         credit:
           zh: AI 電資大聯盟捐贈啟動典禮，2025 年 7 月 9 日。圖片來源：臺大電資學院。
           en: Launch ceremony of the AI Alliance, 9 July 2025. Photograph, NTU College of
