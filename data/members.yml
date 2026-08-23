@@ -126,6 +126,11 @@ members:
     research_en: ""
     area: 代謝體學
     area_en: Metabolomics
+    honors:
+      - 2025 臺大電資學院「AI 電資大聯盟」頂尖博士獎學金
+    honors_en:
+      - Top Doctoral Scholarship, AI Alliance, NTU College of Electrical Engineering and Computer
+        Science (2025)
   - name: 廖翊婷
     name_en: ""
     role: masters

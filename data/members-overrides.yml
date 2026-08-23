@@ -218,6 +218,17 @@ members:
       When Retrieval Helps and Hurts: Evaluating the Safety–Coherence Trade-off
       in Retrieval-Augmented CBT Agents
 
+  蔡哲維:
+    # The award is honors.yml's 2025 entry for the college's AI 電資大聯盟
+    # scholarship, in the short form the members page carries. He is the first
+    # student to have one here; the two postdocs were the only entries with
+    # awards until now.
+    honors:
+      - 2025 臺大電資學院「AI 電資大聯盟」頂尖博士獎學金
+    honors_en:
+      - Top Doctoral Scholarship, AI Alliance, NTU College of Electrical Engineering and
+        Computer Science (2025)
+
   廖翊婷:
     role: masters
     # Was 5 while the four graduates above shared this section; she is now the

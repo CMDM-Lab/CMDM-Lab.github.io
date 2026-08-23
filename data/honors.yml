@@ -140,6 +140,66 @@ achievements:
       - label: NTU CSIE
         url: https://www.csie.ntu.edu.tw/zh_tw/more_announcement/%5B%E7%8D%B2%E7%8D%8E%E5%85%AC%E5%91%8A%5D%E8%B3%80-%E6%9B%BE%E5%AE%87%E9%B3%B3%E6%95%99%E6%8E%88%E5%B8%B6%E9%A0%98%E5%AD%B8%E7%94%9F%E5%9C%98%E9%9A%8A%E7%8D%B2-2025%E7%B8%BD%E7%B5%B1%E7%9B%83%E9%BB%91%E5%AE%A2%E6%9D%BE%E5%8D%93%E8%B6%8A%E5%9C%98%E9%AB%94%E7%8D%8E-36866948
 
+  # Announced 2025-09-25 by the college. The list itself is the 2024 edition, so
+  # both years are in the sentence: the leading year is when it was announced,
+  # as with every other entry here, and 2024 belongs to the list's own name.
+  #
+  # SINGLE-YEAR, NOT CAREER-LONG. Stanford's ranking publishes two lists, and the
+  # college's announcement tabulates them separately: 56 of its teachers on the
+  # career-long list (1960-2024), 29 on the 2024 single-year list, 22 on both, 63
+  # people in total. Prof. Tseng appears once, in the single-year table, under
+  # 生醫電子與資訊學研究所. Checked position by position against that page rather
+  # than read off the headline, because "入榜" alone would have been true of
+  # either and the two mean different things.
+  - citation:
+      zh: 2025 年，曾宇鳳教授入榜史丹佛大學 2024 年「全球前 2% 頂尖科學家」年度科學影響力榜單。
+      en: 2025, Professor Yufeng Jane Tseng was named in the single-year impact table of
+        Stanford University's World's Top 2% Scientists list for 2024.
+    links:
+      - label: NTU EECS
+        url: https://eecs.ntu.edu.tw/zh_tw/News/Spotlight/%E8%B3%80-%E6%9C%AC%E9%99%A263%E5%90%8D%E6%95%99%E5%B8%AB%E5%85%A5%E6%A6%9C2024%E5%B9%B4%E5%85%A8%E7%90%83%E5%89%8D2-%E9%A0%82%E5%B0%96%E7%A7%91%E5%AD%B8%E5%AE%B6%E6%A6%9C%E5%96%AE-55275196
+      - label: Elsevier Data Repository
+        url: https://elsevier.digitalcommonsdata.com/datasets/btchxktzyw/
+
+  # The ceremony was 2025-07-09, at the launch of the college's AI 電資大聯盟.
+  #
+  # THE ANNOUNCEMENT DOES NOT NAME THE RECIPIENTS. It records the launch and that
+  # the scholarships were presented ("貴賓頒發頂尖博士獎學金獲獎同學") and stops
+  # there; that he is one of them comes from the lab (2026-08-23). So the link is
+  # a source for the scholarship and the ceremony, not for his name.
+  #
+  # He has no romanisation on this site -- a doctoral student two years in has no
+  # deposited thesis to take one from, and this file does not invent them. His
+  # name reads as Chinese in the English citation, which is what the members page
+  # already does with it.
+  - citation:
+      zh: 2025 年，曾宇鳳教授指導的博士生蔡哲維獲臺大電資學院「AI 電資大聯盟」頂尖博士獎學金。
+      en: 2025, 蔡哲維, a doctoral student supervised by Professor Yufeng Jane Tseng, received
+        a Top Doctoral Scholarship from the AI Alliance of NTU's College of Electrical
+        Engineering and Computer Science.
+    # The college's own photograph of the presentation, resized here from
+    # 4195x2800 / 5.5 MB to 1600px on the long edge and stripped of EXIF. Credited
+    # to the college, which is where it came from; worth confirming with them that
+    # the lab may carry it, since every other photograph on this page was the
+    # lab's own.
+    #
+    # The alt text names nobody, as with the ceremony photograph above: the people
+    # in it have not agreed to be identified by name on a public page, and alt
+    # text is read out, indexed and translated.
+    images:
+      - src: /img/honors/2025-eecs-alliance-doctoral-scholarship.jpg
+        alt:
+          zh: AI 電資大聯盟捐贈啟動典禮上的頂尖博士獎學金頒獎，貴賓與獲獎博士生在典禮舞台上合影。
+          en: The presentation of the Top Doctoral Scholarships at the launch ceremony of the
+            AI Alliance, guests and the doctoral recipients together on stage.
+        credit:
+          zh: AI 電資大聯盟捐贈啟動典禮，2025 年 7 月 9 日。圖片來源：臺大電資學院。
+          en: Launch ceremony of the AI Alliance, 9 July 2025. Photograph, NTU College of
+            Electrical Engineering and Computer Science.
+    links:
+      - label: NTU EECS
+        url: https://eecs.ntu.edu.tw/zh_tw/News/Spotlight/AI%E9%9B%BB%E8%B3%87%E5%A4%A7%E8%81%AF%E7%9B%9F%E6%AD%A3%E5%BC%8F%E5%95%9F%E5%8B%95-%E6%94%9C%E6%89%8B%E5%85%B1%E5%89%B5%E7%94%A2%E5%AD%B8%E6%96%B0%E4%B8%89%E8%B4%8F-55904559
+
   # Announced 2025-11-25. The leading year is the calendar year of the
   # announcement; "114 年度" stays inside the award's name because it is part of
   # the official name, and because ROC year 114 runs Aug 2025 to Jul 2026 -- the
