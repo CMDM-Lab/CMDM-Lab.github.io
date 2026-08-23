@@ -58,6 +58,21 @@ const achievements = getHonors(locale);
                       mobile nav's Escape handler upgrades a <details>. */}
                   <a class="ds-zoom" href={image.src} data-credit={image.credit ?? ''}>
                     <img src={image.src} alt={image.alt} loading="lazy" decoding="async" />
+                    {/* The badge says the photograph opens; the cursor only says
+                        so to a mouse, and a phone has no cursor. Drawn rather
+                        than set in a glyph so it is one hairline weight, like
+                        every other line on the page. Decorative -- the words are
+                        on the span below it, which is where a screen reader gets
+                        them, since the link's name is the photograph's alt. */}
+                    <span class="ds-zoom__badge" aria-hidden="true">
+                      <svg viewBox="0 0 16 16" width="14" height="14" fill="none"
+                           stroke="currentColor" stroke-width="1.25" focusable="false">
+                        <circle cx="7" cy="7" r="4.5" />
+                        <path d="M10.4 10.4 L14 14" stroke-linecap="round" />
+                        <path d="M5.2 7h3.6M7 5.2v3.6" stroke-linecap="round" />
+                      </svg>
+                    </span>
+                    <span class="ds-hidden">{t.label_enlarge}</span>
                   </a>
                   {image.credit && <figcaption>{image.credit}</figcaption>}
                 </figure>

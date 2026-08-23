@@ -540,9 +540,6 @@
     width:auto;
     max-width:100%;
     object-fit:contain;
-    /* Centred, because the plate is a mount: white on both sides of a portrait
-       photograph reads as a margin, white on one side reads as a mistake. */
-    margin-inline:auto;
   }
   /* The figure is as wide as its photograph, and the caption wraps to that.
      It was capped at --thumb-h, which is the row's HEIGHT and says nothing about
@@ -561,14 +558,70 @@
     width:min-content;
     min-width:var(--grid-min-ledger);
   }
+  /* Centred within that floor, because the plate is a mount: white on both sides
+     of a portrait photograph reads as a margin, white on one side reads as a
+     mistake. Done on the link rather than the image, so the badge inside it
+     anchors to the picture. */
   .ds-plate-row .ds-ledger-item__plate figcaption{overflow-wrap:anywhere}
 
   /* ── Zoomable figure and its dialog ───────────────────────────
      The link around a photograph is the whole feature with JavaScript off: it
-     opens the file. The cursor says so, and is the only affordance -- an overlay
-     or a magnifier badge would be furniture on a plate that is deliberately
-     bare. */
-  .ds-zoom{display:block;cursor:zoom-in}
+     opens the file. */
+  /* Shrink-wrapped to the photograph and centred, so the badge below can anchor
+     to a corner of the picture. Left at full width it anchored to the plate, and
+     a portrait photograph sitting in a 260px mount would have had its badge
+     floating 66px out in the white. */
+  .ds-zoom{
+    display:block;
+    position:relative;
+    width:fit-content;
+    margin-inline:auto;
+    cursor:zoom-in;
+  }
+
+  /* The badge that says so. The cursor said it too, and only to a mouse -- a
+     phone has no hover and no pointer, and there was nothing on the picture to
+     suggest it did anything.
+
+     Built out of what the rest of the page is built out of: a white plate, a
+     hairline, a monochrome mark, no radius and no shadow. It sits inside the
+     picture rather than over the plate's margin, so it reads as belonging to the
+     photograph and not to the frame. */
+  .ds-zoom__badge{
+    position:absolute;
+    right:var(--space-1);
+    bottom:var(--space-1);
+    display:grid;
+    place-items:center;
+    width:26px;
+    height:26px;
+    background:var(--white);
+    border:var(--border-hairline);
+    color:var(--text-secondary);
+    /* The photograph scrolls under it on a narrow screen; keep it legible over
+       whatever it lands on. */
+    opacity:.92;
+  }
+  .ds-zoom:hover .ds-zoom__badge,
+  .ds-zoom:focus-visible .ds-zoom__badge{
+    opacity:1;
+    color:var(--text-primary);
+    border-color:var(--text-primary);
+  }
+  /* Reachable by a screen reader, absent from the page. The link's name is the
+     photograph's alt text, which describes the picture and not what clicking it
+     does; this adds the second half. */
+  .ds-hidden{
+    position:absolute;
+    width:1px;
+    height:1px;
+    margin:-1px;
+    padding:0;
+    overflow:hidden;
+    clip-path:inset(50%);
+    white-space:nowrap;
+    border:0;
+  }
 
   .ds-lightbox{
     /* The dialog is the frame, so it gets the plate's own treatment rather than
