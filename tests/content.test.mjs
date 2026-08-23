@@ -157,13 +157,55 @@ test('no news item prints its own link labels twice', async () => {
   // The migration kept the old page's bracketed anchor text inside the item and
   // also extracted the anchors, so each label rendered twice in a row.
   const news = YAML.parse(await readFile(path.join(ROOT, 'data', 'news.yml'), 'utf8')).news ?? [];
+  // Both halves of the pair, and both halves of a label: the duplication can be
+  // introduced in one language and not the other.
+  const both = (value) => (typeof value === 'string' ? [value] : Object.values(value ?? {}));
   for (const item of news) {
     for (const link of item.links ?? []) {
+      for (const text of both(item.text)) {
+        for (const label of both(link.label)) {
+          assert.ok(
+            !text.includes(`[${label}]`),
+            `a news item names its own link label in its text ("[${label}]"), `
+            + 'which renders it twice',
+          );
+        }
+      }
+    }
+  }
+});
+
+test('every news item is written in both languages', async () => {
+  // The same rule the honours list has, and for the same reason: getNews() falls
+  // back to the Chinese when there is no English, so an untranslated item shows
+  // as Chinese in the middle of the English page and the page still renders.
+  // Every item was a plain string until 2026-08-23, which is exactly how the
+  // English archive came to be a Chinese one.
+  const news = YAML.parse(await readFile(path.join(ROOT, 'data', 'news.yml'), 'utf8')).news ?? [];
+  assert.ok(news.length, 'no news items declared');
+
+  for (const [index, item] of news.entries()) {
+    assert.equal(
+      typeof item.text, 'object',
+      `news item ${index + 1} is a plain string, so the English page will show `
+      + `Chinese: ${String(item.text).slice(0, 40)} -- write it as a zh/en pair`,
+    );
+    for (const locale of ['zh', 'en']) {
       assert.ok(
-        !item.text.includes(`[${link.label}]`),
-        `a news item names its own link label in its text ("[${link.label}]"), `
-        + 'which renders it twice',
+        item.text?.[locale]?.trim(),
+        `news item ${index + 1} has no ${locale} text`,
       );
+    }
+    // A label that is a name is the same in both languages and stays a string.
+    // One that is a pair must be a whole pair.
+    for (const link of item.links ?? []) {
+      if (typeof link.label === 'string') continue;
+      for (const locale of ['zh', 'en']) {
+        assert.ok(
+          link.label?.[locale]?.trim(),
+          `news item ${index + 1} has a link label with no ${locale}`,
+        );
+      }
     }
   }
 });
@@ -671,13 +713,24 @@ test('the front page defers to the news archive without losing an item', {
   const home = await readFile(path.join(DIST, 'index.html'), 'utf8');
   const archive = await readFile(path.join(DIST, 'news', 'index.html'), 'utf8');
 
+  // The five characters Astro escapes. The double quote was missing until the
+  // news was translated: every Chinese item quotes with 「」 and never produced
+  // one, so the gap could not show until an English title did.
   const escape = (text) => text
-    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/'/g, '&#39;');
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  // Per locale, since the item exists twice now. An untranslated item would
+  // still pass this -- getNews() falls back -- which is what the bilingual test
+  // above is for; this one is about nothing being published to no page.
+  const enArchive = await readFile(path.join(DIST, 'en', 'news', 'index.html'), 'utf8');
   for (const item of news) {
-    assert.ok(
-      archive.includes(escape(item.text)),
-      `a news item is on no page: ${item.text.slice(0, 40)}`,
-    );
+    for (const [page, where] of [[archive, 'zh'], [enArchive, 'en']]) {
+      const text = item.text?.[where] ?? item.text;
+      assert.ok(
+        page.includes(escape(text)),
+        `a news item is on no ${where} page: ${text.slice(0, 40)}`,
+      );
+    }
   }
 
   const cap = Number(

@@ -5,6 +5,16 @@
 # Migrated from the hard-coded list in contents/index_zh.html. Hand-maintained:
 # add new items at the top.
 #
+# BOTH LANGUAGES, always. `text` is a zh/en pair and getNews() falls back to the
+# Chinese when there is no English, so an untranslated item renders as Chinese in
+# the middle of the English archive and nothing complains -- which is what the
+# whole page was until 2026-08-23, every item having been a plain string. A test
+# in tests/content.test.mjs fails on a string or a half-filled pair now.
+#
+# A link `label` stays a plain string when it is a name: TechNews and Stanford
+# Medicine are the same word in both languages. It becomes a pair when it is a
+# word, which is 照片 and 長庚大學.
+#
 # TWO THINGS THE MIGRATION LEFT, both fixed on 2026-08-22 and both now covered
 # by tests, because neither is visible in a diff of this file:
 #
@@ -19,54 +29,120 @@ news:
 # Verified on 2026-08-22 against the host's own announcement page. The gap
 # between this and the 2018 items below is real, not a lapse in maintenance: the
 # lab's public record for 2019-2024 is awards, which live in honors.yml.
-- text: 2021年9月起實驗室承接「高風險化學物質之安全替代化學物質搜尋、評估及篩選系統」GreenN（SAS）計畫，由環境部化學物質管理署委辦，持續進行中
+- text:
+    zh: 2021年9月起實驗室承接「高風險化學物質之安全替代化學物質搜尋、評估及篩選系統」GreenN（SAS）計畫，由環境部化學物質管理署委辦，持續進行中
+    en: >-
+      Since September 2021 the lab has run GreenN (SAS), the Searching, Assessment
+      and Screening System for Safer Alternative Chemicals, commissioned by the
+      Chemicals Administration of the Ministry of Environment and ongoing
   links:
   - label: GreenN (SAS)
     url: https://sas.moenv.gov.tw/
   year: 2021
-- text: 2025年曾宇鳳教授應長庚大學智慧運算學院暨人工智慧研究中心邀請演講題目「人工智慧在藥物發現與藥物開發的應用與前景」
+- text:
+    zh: 2025年曾宇鳳教授應長庚大學智慧運算學院暨人工智慧研究中心邀請演講題目「人工智慧在藥物發現與藥物開發的應用與前景」
+    en: >-
+      2025, Professor Yufeng Jane Tseng spoke at the invitation of Chang Gung
+      University's College of Intelligence Computing and its Artificial
+      Intelligence Research Center on "Artificial Intelligence in Drug Discovery
+      and Drug Development: Applications and Prospects"
   links:
-  - label: 長庚大學
+  - label:
+      zh: 長庚大學
+      en: Chang Gung University
     url: https://www.cgu.edu.tw/coic/Subject/Detail/65252?nodeId=16993
   year: 2025
-- text: 2018年曾宇鳳教授應生技中心(DCB)邀請演講題目「AI與機器學習對新藥開發臨床數據科學的影響」
+- text:
+    zh: 2018年曾宇鳳教授應生技中心(DCB)邀請演講題目「AI與機器學習對新藥開發臨床數據科學的影響」
+    en: >-
+      2018, Professor Yufeng Jane Tseng spoke at the invitation of the
+      Development Center for Biotechnology (DCB) on "The Impact of AI and Machine
+      Learning on Clinical Data Science in Drug Development"
   year: 2018
-- text: '2018年曾宇鳳教授應邀於台灣醫療科技展(DCB X AI)演講題目「AI for drug development: What''s ready to go !」'
+- text:
+    zh: '2018年曾宇鳳教授應邀於台灣醫療科技展(DCB X AI)演講題目「AI for drug development: What''s ready to go !」'
+    en: >-
+      2018, Professor Yufeng Jane Tseng was invited to speak at the Healthcare
+      Expo Taiwan (DCB X AI) on "AI for drug development: What's ready to go !"
   year: 2018
-- text: 2018年曾宇鳳教授應邀於高通量微通道化學合成技術研討會演講題目「Predictive Toxicology」
+- text:
+    zh: 2018年曾宇鳳教授應邀於高通量微通道化學合成技術研討會演講題目「Predictive Toxicology」
+    en: >-
+      2018, Professor Yufeng Jane Tseng was invited to speak at the symposium on
+      high-throughput microchannel chemical synthesis on "Predictive Toxicology"
   year: 2018
-- text: 2018年生技中心(DCB)與曾宇鳳教授合作開發特定藥物研發ADMET性質之機器學習方法，未來透過AI虛擬篩選，可優化先導藥物篩選、提高先導藥物發現效率。
+- text:
+    zh: 2018年生技中心(DCB)與曾宇鳳教授合作開發特定藥物研發ADMET性質之機器學習方法，未來透過AI虛擬篩選，可優化先導藥物篩選、提高先導藥物發現效率。
+    en: >-
+      2018, the Development Center for Biotechnology (DCB) and Professor Yufeng
+      Jane Tseng collaborated on machine learning methods for the ADMET
+      properties of specific drug development programmes, with AI-driven virtual
+      screening to refine lead selection and make lead discovery more efficient.
   links:
   - label: Global Bio & Investment
     url: https://www.facebook.com/gbimonthly/videos/2167748566876977/
   year: 2018
-- text: 2018年Stanford Medicine報導曾宇鳳教授團隊的「改善精神分裂症之負性症狀與認知功能藥物」
+- text:
+    zh: 2018年Stanford Medicine報導曾宇鳳教授團隊的「改善精神分裂症之負性症狀與認知功能藥物」
+    en: >-
+      2018, Stanford Medicine covered Professor Yufeng Jane Tseng's team and
+      their drug for the negative symptoms and cognitive impairment of
+      schizophrenia
   links:
   - label: Stanford Medicine
     url: /files/SPARK%20Taiwan%20Stanford%20Magazine%202018.pdf
   year: 2018
-- text: 2018年曾宇鳳教授團隊的「改善精神分裂症之負性症狀與認知功能藥物」於2018 BioAsia and Bio SPARK SHOWCASE大放異彩
+- text:
+    zh: 2018年曾宇鳳教授團隊的「改善精神分裂症之負性症狀與認知功能藥物」於2018 BioAsia and Bio SPARK SHOWCASE大放異彩
+    en: >-
+      2018, the drug for the negative symptoms and cognitive impairment of
+      schizophrenia, from Professor Yufeng Jane Tseng's team, drew attention at
+      the 2018 BioAsia and Bio SPARK SHOWCASE
   links:
   - label: TechNews
     url: https://technews.tw/2018/03/20/bio-asia-taiwan-spark/
-  - label: photo
+  - label:
+      zh: 照片
+      en: photo
     url: /img/2018_bio-asia-taiwan-spark-624x534.jpg
   year: 2018
-- text: 2018年曾宇鳳教授帶領之Virtual Man團隊獲選107年度第一梯次創新創業激勵計畫 並於2018 Taiwan Big Demo受邀參展
+- text:
+    zh: 2018年曾宇鳳教授帶領之Virtual Man團隊獲選107年度第一梯次創新創業激勵計畫 並於2018 Taiwan Big Demo受邀參展
+    en: >-
+      2018, the Virtual Man team led by Professor Yufeng Jane Tseng was selected
+      for the first cohort of the 2018 From IP to IPO programme and was invited
+      to exhibit at the 2018 Taiwan Big Demo
   links:
-  - label: photo1
+  - label:
+      zh: 照片一
+      en: photo 1
     url: /img/2018_big_demo_1.jpg
-  - label: photo2
+  - label:
+      zh: 照片二
+      en: photo 2
     url: /img/2018_big_demo_2.jpg
   year: 2018
-- text: 2017年曾宇鳳教授團隊受邀參加科技部2017未來科技展，榮獲「未來科技突破獎」
+- text:
+    zh: 2017年曾宇鳳教授團隊受邀參加科技部2017未來科技展，榮獲「未來科技突破獎」
+    en: >-
+      2017, Professor Yufeng Jane Tseng's team was invited to the Ministry of
+      Science and Technology's 2017 Future Tech Expo and received a Future Tech
+      Breakthrough Award
   links:
   - label: NTU CSIE Announcement
     url: https://www.csie.ntu.edu.tw/intro/news.php?Sn=13448
-  - label: photo
+  - label:
+      zh: 照片
+      en: photo
     url: /img/2017_future_tech.jpg
   year: 2017
-- text: 2017年藥理所黃德富教授 生醫電資所曾宇鳳教授團隊治療血栓潛能蛋白藥物廣受國際矚目
+- text:
+    zh: 2017年藥理所黃德富教授 生醫電資所曾宇鳳教授團隊治療血栓潛能蛋白藥物廣受國際矚目
+    en: >-
+      2017, a candidate protein drug for thrombosis, from the teams of Professor
+      Tur-Fu Huang of the Graduate Institute of Pharmacology and Professor Yufeng
+      Jane Tseng of the Graduate Institute of Biomedical Electronics and
+      Bioinformatics, drew international attention
   links:
   - label: NTU Spotlight
     url: https://www.ntu.edu.tw/spotlight/2017/1161_20170629.html
@@ -75,7 +151,12 @@ news:
   - label: LANDSCAPE
     url: /files/LANDSCAPE_Issue_4.PDF
   year: 2017
-- text: 2016年曾宇鳳教授領導臺大交大國衛院 RS-D7 研發團隊榮獲第13屆國家新創獎
+- text:
+    zh: 2016年曾宇鳳教授領導臺大交大國衛院 RS-D7 研發團隊榮獲第13屆國家新創獎
+    en: >-
+      2016, the RS-D7 research team led by Professor Yufeng Jane Tseng, across
+      NTU, NCTU and the National Health Research Institutes, received the 13th
+      National Innovation Award
   links:
   - label: NTU Spotlight
     url: https://www.ntu.edu.tw/spotlight/2016/1021_20161230.html

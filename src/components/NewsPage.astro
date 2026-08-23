@@ -20,7 +20,7 @@ import { pathFor } from '../lib/routes';
 interface Props { locale: Locale }
 const { locale } = Astro.props;
 const t = getStrings(locale);
-const news = getNews();
+const news = getNews(locale);
 
 // Grouped by year, newest first, so a reader can see the shape of the record --
 // including the gap between 2018 and 2025, which is real.

@@ -31,7 +31,7 @@ const { locale } = Astro.props;
 const t = getStrings(locale);
 
 const areas = getResearchAreas(locale);
-const news = getNews();
+const news = getNews(locale);
 
 /** How many news items the front page carries before deferring to /news/. */
 const HOME_NEWS_ITEMS = 5;

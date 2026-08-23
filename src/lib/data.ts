@@ -455,6 +455,12 @@ export function formatAuthors(authors: Author[] | undefined, limit = 8): string 
 
 export interface LinkRef { label: string; url: string }
 export interface NewsItem { text: string; year?: number; links?: LinkRef[] }
+/** As stored: the text and a link's label may each be a zh/en pair. */
+interface RawNewsItem {
+  text?: Localized<string>;
+  year?: number;
+  links?: Array<{ label?: Localized<string>; url?: string }>;
+}
 /**
  * A photograph attached to an award.
  *
@@ -502,9 +508,26 @@ export interface CommissionedSystem {
  * exactly what happens when someone records something they had forgotten --
  * would lead the front page. Order within a year is the file's.
  */
-export function getNews(): NewsItem[] {
-  const news = loadYaml<{ news?: NewsItem[] }>('news.yml', {}).news ?? [];
-  return [...news].sort((a, b) => (b.year ?? 0) - (a.year ?? 0));
+export function getNews(locale: Locale): NewsItem[] {
+  const news = loadYaml<{ news?: RawNewsItem[] }>('news.yml', {}).news ?? [];
+  return news
+    .map((item) => ({
+      text: pickLocale(item.text, locale) ?? '',
+      ...(item.year !== undefined ? { year: item.year } : {}),
+      // A label is a pair only where it is a word. Most are names -- TechNews,
+      // NTU Spotlight, Stanford Medicine -- and a name is the same in both.
+      ...(item.links
+        ? {
+          links: item.links
+            .filter((link) => link.url)
+            .map((link) => ({
+              label: pickLocale(link.label, locale) ?? '',
+              url: link.url!,
+            })),
+        }
+        : {}),
+    }))
+    .sort((a, b) => (b.year ?? 0) - (a.year ?? 0));
 }
 
 interface RawAchievementImage { src?: string; alt?: Localized<string>; credit?: Localized<string> }
