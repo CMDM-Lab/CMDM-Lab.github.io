@@ -45,7 +45,15 @@ members:
     # Degree and year as recorded below with the rest of the 2026-08-23 batch;
     # this entry already existed, so the fields are added to it rather than to a
     # second one. The vault's own note agrees: "校友 · 博士 · 畢業 2018".
+    #
+    # Unit and titles from the repository record the lab found (2026-08-23):
+    # tdr.lib.ntu.edu.tw/jspui/handle/123456789/77542, doi 10.6342/NTU201802910.
+    # 系所單位 is 基因體與系統生物學學位學程, not the 生醫電資所 the rest of that
+    # year's graduates read at.
+    department: GSB
     degree: phd
+    thesis: 肺癌幹細胞胞外體之分子鑑定
+    thesis_en: Molecular Identification of Lung Cancer Stem Cell-Derived Exosomes
   張景曜:
     name_en: Ching-Yao Chang # published
     # As 徐銘聰 below: part of the 2026-08-23 batch, added to the entry he
@@ -94,6 +102,10 @@ members:
     graduated: 2026
     department: BEBI
     degree: masters
+    thesis: 以變分量子特徵值法計算有機錫化合物基態能量之研究
+    thesis_en: >-
+      Variational Quantum Eigensolver Calculation of Ground State Energies for
+      Organotin Compounds
   # ── Graduating cohort ──────────────────────────────────────────────────
   # The vault lists these six under 現役成員 › 即將畢業, whose only publishable
   # column is the name. Degree level, department and research area therefore come
@@ -122,6 +134,8 @@ members:
     area_en: AI Agent Systems
 
   高振翔:
+    # Supplied by the lab with the thesis, 2026-08-23.
+    name_en: Chen-Hsiang Kao
     role: alumni
     graduated: 2026
     department: MHI
@@ -130,19 +144,15 @@ members:
     # assessment of schizophrenia negative symptoms, driven by speech and text.
     area: AI Agent 系統
     area_en: AI Agent Systems
-    # THESIS TITLE UNRESOLVED -- deliberately blank.
-    #
-    # The vault holds three candidates and no record of which was deposited:
-    #   - "Developing a Virtual Patient System for Training Medical Personal in
-    #      Schizophrenia Negative Symptom Assessment" (his own, 2026-04-13)
-    #   - "Design and Validation of a High-Fidelity Virtual Patient System for
-    #      Negative Symptom Evaluation in Schizophrenia" (his own, same mail)
-    #   - "Preceptor, an AI-driven virtual patient system for training physicians
-    #      in schizophrenia negative-symptom assessment" (the PI's suggestion,
-    #      2026-07-06: "i think schizotrain is an odd phrase")
-    # The defense minutes record the topic in Chinese only, as "SchizoTrain
-    # 思覺失調症負性症狀評估訓練之虛擬病人系統", which is a description rather
-    # than a title. Fill this in from the 審定書.
+    # RESOLVED 2026-08-23, supplied by the lab. It was left blank while the
+    # vault held three candidates and no record of which was deposited -- two of
+    # his own and the PI's "Preceptor, an AI-driven virtual patient system…",
+    # suggested with "i think schizotrain is an odd phrase". SchizoTrain stayed;
+    # the deposited title is the one the defense minutes were describing.
+    thesis: SchizoTrain:思覺失調症負性症狀評估訓練之虛擬病人系統
+    thesis_en: >-
+      SchizoTrain: A Virtual Patient System for Training Raters in Schizophrenia
+      Negative Symptom Assessment
 
   許漢強:
     # Supplied by the lab. My earlier "Dwayne Hsu" invented the surname.
@@ -279,8 +289,15 @@ members:
     degree: phd
   游子慧:
     name_en: Tzu-Hui Yu
+    # Unit confirmed and titles taken from the repository record the lab found
+    # (2026-08-23): tdr.lib.ntu.edu.tw/jspui/handle/123456789/96601,
+    # doi 10.6342/NTU202500069, 系所單位 生醫電子與資訊學研究所.
     department: BEBI
     degree: masters
+    thesis: Patient-LITE：利用大型語言模型，打造以患者為中心的通用型臨床試驗資格篩選問卷
+    thesis_en: >-
+      Patient-LITE: Empowering Patients with a Generalizable LLM-Based
+      Questionnaire Generator for Accelerated Trial Eligibility Screening
   陳韻淇:
     name_en: Yun-Chi Chen
     graduated: 2026
@@ -363,6 +380,12 @@ members:
   Danielle Penella P. Yu:
     department: MHI
     degree: masters
+    thesis: 透過可解釋的認知評估，研究轉移、少樣本和元學習在基於靜息態和聽覺穩定狀態反應腦電圖的神經退化性疾病診斷之生物標記識別
+    thesis_en: >-
+      Investigating Transfer, Few-Shot, and Meta Learning for Biomarker
+      Identification in Resting-State and Auditory Steady-State Response
+      EEG-Based Diagnosis of Neurodegenerative Diseases with Interpretable
+      Cognitive Assessments
   倪宇澔:
     # Supplied by the lab with the thesis, 2026-08-23.
     name_en: Yu-Hao Ni

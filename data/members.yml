@@ -377,16 +377,21 @@ members:
     degree: masters
     research: VQE 有機錫化合物
     research_en: ""
+    thesis: 以變分量子特徵值法計算有機錫化合物基態能量之研究
+    thesis_en: Variational Quantum Eigensolver Calculation of Ground State Energies for Organotin Compounds
     area: 量子計算
     area_en: Quantum Computing
   - name: 高振翔
-    name_en: ""
+    name_en: Chen-Hsiang Kao
     role: alumni
     department: MHI
     graduated: 2026
     degree: masters
     research: ""
     research_en: ""
+    thesis: SchizoTrain:思覺失調症負性症狀評估訓練之虛擬病人系統
+    thesis_en: "SchizoTrain: A Virtual Patient System for Training Raters in Schizophrenia Negative
+      Symptom Assessment"
     area: AI Agent 系統
     area_en: AI Agent Systems
   - name: 許漢強
@@ -508,6 +513,9 @@ members:
     degree: masters
     research: Patient-LITE — LLM 臨床試驗資格篩選問卷
     research_en: ""
+    thesis: Patient-LITE：利用大型語言模型，打造以患者為中心的通用型臨床試驗資格篩選問卷
+    thesis_en: "Patient-LITE: Empowering Patients with a Generalizable LLM-Based Questionnaire Generator
+      for Accelerated Trial Eligibility Screening"
     area: AI Agent 系統
     area_en: AI Agent Systems
   - name: 許洸誠
@@ -557,6 +565,10 @@ members:
     degree: masters
     research: EEG 神經退化疾病診斷 — transfer／few-shot／meta learning ＋ Grad-CAM
     research_en: ""
+    thesis: 透過可解釋的認知評估，研究轉移、少樣本和元學習在基於靜息態和聽覺穩定狀態反應腦電圖的神經退化性疾病診斷之生物標記識別
+    thesis_en: Investigating Transfer, Few-Shot, and Meta Learning for Biomarker Identification in
+      Resting-State and Auditory Steady-State Response EEG-Based Diagnosis of Neurodegenerative
+      Diseases with Interpretable Cognitive Assessments
   - name: 姚柏仰
     name_en: Po-Yang Yao
     role: alumni
@@ -597,10 +609,13 @@ members:
   - name: 徐銘聰
     name_en: Ming-Tsung Hsu
     role: alumni
+    department: GSB
     graduated: 2018
     degree: phd
     research: 肺癌幹細胞胞外體之分子鑑定
     research_en: ""
+    thesis: 肺癌幹細胞胞外體之分子鑑定
+    thesis_en: Molecular Identification of Lung Cancer Stem Cell-Derived Exosomes
   - name: 謝秉翰
     name_en: ""
     role: alumni
