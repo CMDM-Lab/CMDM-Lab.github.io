@@ -103,7 +103,10 @@ export function cleanCell(raw) {
  * The public site spells these out; DEPARTMENT_LABELS in src/lib/data.ts holds
  * the wording, and tests/members-privacy.test.mjs asserts the two lists agree.
  */
-export const DEPARTMENT_CODES = ['CSIE', 'BEBI', 'GSB', 'MHI', 'GINM'];
+// PHARM is here for one alumna from 2013 rather than for anyone in the vault;
+// the list is shared with DEPARTMENT_LABELS in src/lib/data.ts, which the
+// alumni table reads, and tests/members-privacy.test.mjs asserts they agree.
+export const DEPARTMENT_CODES = ['CSIE', 'BEBI', 'GSB', 'MHI', 'GINM', 'PHARM'];
 
 /**
  * Reduce a 所屬 cell to the code alone.

@@ -24,7 +24,8 @@ alumni:
   # sections, so it carries the romanisation the postdoc entry uses.
   name_en: Pei-Hua Wang
   graduated: 2022
-  department: 生醫電資所 博士
+  department: BEBI
+  degree: phd
   thesis: 智能專利：快速草擬化學專利範圍的智慧系統
   thesis_en: >-
     IntelliPatent: an Intelligent System for Fast Chemical Patent Claim
@@ -32,7 +33,8 @@ alumni:
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/85785
 - name: 陳人豪
   graduated: 2022
-  department: 資工所 博士
+  department: CSIE
+  degree: phd
   thesis: 用於分子特性預測的電腦輔助藥物設計
   thesis_en: >-
     Computer-Aided Drug Design for molecular property prediction
@@ -44,7 +46,8 @@ alumni:
   # which is 資工所 -- the wording the repository uses for that era and the same
   # one the other pre-2023 CSIE rows here carry. Corrected, like the titles
   # below it: free text is not a reason to leave a known error standing.
-  department: 資工所 碩士
+  department: CSIE
+  degree: masters
   # His row had a record and an empty title, which is how linking the titles
   # found him: 45 links for 46 records.
   thesis: 以柏雷多效率為核心概念的分子最佳化演算法
@@ -52,11 +55,13 @@ alumni:
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/85944
 - name: 倪宇澔
   graduated: 2022
-  department: 生醫電資所 碩士
+  department: BEBI
+  degree: masters
   thesis: QSAR模型最佳化
 - name: 林柏璋
   graduated: 2021
-  department: 生醫電資所 碩士
+  department: BEBI
+  degree: masters
   thesis: 組織學影像與質譜影像之自動化對準網頁服務與應用
   thesis_en: >-
     Web Service and Application for Automatic Registration with Mass
@@ -68,7 +73,8 @@ alumni:
   # (2026-08-22).
   name_en: Ming-Yang Ho
   graduated: 2021
-  department: 生醫電資所 碩士
+  department: BEBI
+  degree: masters
   thesis: 帕金森氏症人工智慧綜合判讀系統
   homepage: https://kaminyou.com/
 - name: 許至廷
@@ -81,7 +87,8 @@ alumni:
   # falls in. Worth settling for the whole column one day rather than row by row.
   name_en: Chih-Tim Hsu
   graduated: 2020
-  department: 生醫電資所 碩士
+  department: BEBI
+  degree: masters
   thesis: 幹細胞外泌體結合3D生物列印GelMA材料對STZ誘導糖尿病大鼠之傷口癒合影響
   thesis_en: >-
     Effect of stem-cell-exosome-embedded GelMA hydrogel fabricated by 3D
@@ -96,7 +103,8 @@ alumni:
   # the page, which is reason enough to carry it.
   name_en: Chia-Yu Chang
   graduated: 2019
-  department: 生醫電資所 碩士
+  department: BEBI
+  degree: masters
   thesis: 縱向代謝物資料分析於中國倉鼠卵巢細胞單株抗體生產最佳化之研究
   thesis_en: >-
     Longitudinal metabolomic data analysis of Chinese hamster ovary cells for
@@ -104,7 +112,8 @@ alumni:
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/78485
 - name: 田耘政
   graduated: 2019
-  department: 生醫電資所 碩士
+  department: BEBI
+  degree: masters
   thesis: 系統生物學、細胞計算模型
 - name: 陳巧欣
   graduated: 2019
@@ -112,11 +121,13 @@ alumni:
   thesis: 系統生物學、細胞計算模型
 - name: 卓東昇
   graduated: 2019
-  department: 生醫電資所 碩士
+  department: BEBI
+  degree: masters
   thesis: 系統生物學、細胞計算模型
 - name: 謝秉翰
   graduated: 2018
-  department: 生醫電資所 碩士
+  department: BEBI
+  degree: masters
   thesis: 肝臟微粒體穩定性
 - name: 蕭毅
   # His own site (copyright Yi Hsiao), which records the 2015-2019 BEBI
@@ -127,7 +138,8 @@ alumni:
   # Was 2018, the 學年度 (107-1). 口試 2019-01-07 per handle 71713, which is also
   # what his own site says: M.S. Sep 2015 - Jan 2019.
   graduated: 2019
-  department: 生醫電資所 碩士
+  department: BEBI
+  degree: masters
   thesis: 虛擬老鼠:系統性電腦預測臨床前ADMET參數
   homepage: https://hsiaoyi0504.js.org/
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/71713
@@ -137,27 +149,32 @@ alumni:
   # out of each, which is how a first pass that put the doctorate's handle on the
   # master's row was caught the same afternoon it was written.
   graduated: 2017
-  department: 生醫電資所 博士
+  department: BEBI
+  degree: phd
   thesis: 基於親水作用液相層析質譜儀的代謝體研究- 化學計算方法開發與腹膜透析引流液分析
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/59696
 - name: 鄭羽嫣
   graduated: 2017
-  department: 生醫電資所 碩士
+  department: BEBI
+  degree: masters
   thesis: 脂質辨識加速工具：自動處理和辨識液相層析串聯質譜脂體學資料
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/77833
 - name: 林宜儒
   graduated: 2017
-  department: 生醫電資所 碩士
+  department: BEBI
+  degree: masters
   thesis: 一維質子核磁共振代謝體圖譜之線上自動分析服務
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/77669
 - name: 劉律琪
   graduated: 2017
-  department: 資工所 碩士
+  department: CSIE
+  degree: masters
   thesis: G蛋白偶聯受體之多標靶、老藥新用與副作用預測
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/77679
 - name: 杜羿樞
   graduated: 2015
-  department: 生醫電資所 博士
+  department: BEBI
+  degree: phd
   thesis: 電腦設計胜肽抑制劑、次世代定序軟體及建構定量構效模型
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/17897
 - name: 郭天爵
@@ -167,7 +184,8 @@ alumni:
   # unusually for this file, where most of the column is research topics.
   name_en: Tien-Chueh Kuo
   graduated: 2015
-  department: 生醫電資所 博士
+  department: BEBI
+  degree: phd
   thesis: 代謝體系統生物學分析與工具及脂質知識庫
   thesis_en: >-
     Analysis and Tool of Metabolomics in Systems Biology and a Lipidomics
@@ -175,22 +193,26 @@ alumni:
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/53206
 - name: 劉家瑋
   graduated: 2015
-  department: 網媒所 碩士
+  department: GINM
+  degree: masters
   thesis: 搭配頻寬估測方法在核密度估測液相層析質譜儀資料之滯留時間校正與一維質子核磁共振代謝體圖譜之相位校正
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/7983
 - name: 王三源
   graduated: 2014
-  department: 資工所 博士
+  department: CSIE
+  degree: phd
   thesis: 離子軌跡偵測與訊號校正於高解析液相層析串聯飛行時間質譜儀平台之代謝體學應用
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/16871
 - name: 林潔
   graduated: 2014
-  department: 資工所 碩士
+  department: CSIE
+  degree: masters
   thesis: PolyName2Structure 系統 - 利用預測聚合物單體結構的反應途徑，來達成從聚合物名稱轉成結構的目標
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/57079
 - name: 譚承恩
   graduated: 2014
-  department: 資工所 碩士
+  department: CSIE
+  degree: masters
   thesis: 成份分離、辨識及統計分析於氣相層析質譜儀之圖形化工具套件
   thesis_en: >-
     IDMass 2.0: Component Extraction, Identification and Statistics GUI
@@ -198,7 +220,8 @@ alumni:
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/5343
 - name: 王國清
   graduated: 2013
-  department: 生醫電資所 博士
+  department: BEBI
+  degree: phd
   thesis: 壹維質子核磁共振代謝體圖譜之基線校正、圖譜還原與在電焊暴露代謝體特徵上的應用
   thesis_en: >-
     Baseline Correction, Spectral Deconvolution of Metabolomic 1D 1H-NMR
@@ -207,93 +230,111 @@ alumni:
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/60781
 - name: 張嘉芸
   graduated: 2013
-  department: 藥學所 博士
+  department: PHARM
+  degree: phd
   thesis: 老藥新用及細胞毒性分析與選擇性偏優化
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/61363
 - name: 鍾宇彥
   graduated: 2013
-  department: 生醫電資所 碩士
+  department: BEBI
+  degree: masters
   thesis: 去噪、成分分離及辨識於氣相層析串聯飛行時間質譜儀之工具套件
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/58819
 - name: 舒艾琉
   graduated: 2013
-  department: 網媒所 碩士
+  department: GINM
+  degree: masters
   thesis: GPU在結構計算上的應用
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/62013
 - name: 徐國翔
   # Was 2013, the 學年度 (102-2). 口試 2014-08-05 per handle 57045.
   graduated: 2014
-  department: 生醫電資所 碩士
+  department: BEBI
+  degree: masters
   thesis: 艾美氏致突變性試驗的化學結構之骨架分析
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/57045
 - name: 蘇柏翰
   graduated: 2012
-  department: 資工所 博士
+  department: CSIE
+  degree: phd
   thesis: 新藥設計及化學結構組合最佳化與心毒性模擬
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/64697
 - name: 林澤豪
   graduated: 2012
-  department: 生醫電資所 碩士
+  department: BEBI
+  degree: masters
   thesis: 分子螢光分類模型
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/16127
 - name: 陳星佐
   graduated: 2012
-  department: 生醫電資所 碩士
+  department: BEBI
+  degree: masters
   thesis: 在奈米碳管回歸模型以及細胞毒性分類模型在支持向量機上的應用
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/64930
 - name: 邵祈諭
   # Was 2012, the 學年度 (101-2). 口試 2013-08-07 per handle 61356.
   graduated: 2013
-  department: 生醫電資所 碩士
+  department: BEBI
+  degree: masters
   thesis: 肝臟與經修飾奈米碳管毒性模型
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/61356
 - name: 林芳宇
   graduated: 2011
-  department: 生醫電資所 碩士
+  department: BEBI
+  degree: masters
   thesis: 以蛋白質結構為基礎之合成可行性先導藥物最適化電腦輔助藥物設計
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/28641
 - name: 何宗融
   graduated: 2011
-  department: 資工所 碩士
+  department: CSIE
+  degree: masters
   thesis: 滯留時間校準、去噪與化合物辨識在代謝體學上之應用
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/30296
 - name: 田士鋒
   graduated: 2011
-  department: 資工所 碩士
+  department: CSIE
+  degree: masters
   thesis: 二維氣相層析質譜圖之滯留時間校準演算法
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/48009
 - name: 韓羽晨
   graduated: 2011
-  department: 網媒所 碩士
+  department: GINM
+  degree: masters
   thesis: 結構獵人：預測混合物中新的化學結構
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/29407
 - name: 黃薏璇
   graduated: 2010
-  department: 生醫電資所 碩士
+  department: BEBI
+  degree: masters
   thesis: 分子片段組合之新穎結構設計於抗血管內皮生長因子受體藥物開發
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/47473
 - name: 蔡政倢
   graduated: 2010
-  department: 生醫電資所 碩士
+  department: BEBI
+  degree: masters
   thesis: 蛇毒 C 型凝集素衍生之拮抗劑與血小板醣蛋白陸交互作用的結構探討
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/45761
 - name: 沈孟俞
   graduated: 2010
-  department: 資工所 碩士
+  department: CSIE
+  degree: masters
   thesis: 支持向量機在hERG毒性分類模型及蛋白質定位突變法的應用
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/23351
 - name: 康文譯
   graduated: 2009
-  department: 生醫電資所 碩士
+  department: BEBI
+  degree: masters
   thesis: 不同PT/INR危急值警示系統與warfarin使用安全性之評估
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/43540
 - name: 蔡東銘
   graduated: 2009
-  department: 生醫電資所 碩士
+  department: BEBI
+  degree: masters
   thesis: 馬兜鈴酸腎毒性在囓齒類動物的代謝體學研究
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/8889
 - name: 吳東潤
   graduated: 2008
-  department: 資工所 碩士
+  department: CSIE
+  degree: masters
   thesis: 4D-QSAR分析TW01系列類似物之定量構效關係
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/26283

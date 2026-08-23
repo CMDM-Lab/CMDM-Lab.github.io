@@ -178,6 +178,16 @@ type DepartmentLabel = {
    * graduate of it graduated from.
    */
   bare?: { 'zh-Hant': string; en: string };
+  /**
+   * What the same unit was called in records before `since`.
+   *
+   * NTU has the department and its graduate institute as one unit and has moved
+   * between the two names: its repository files a thesis accepted in September
+   * 2022 under 資訊工程學研究所 and one accepted in July 2023 under 資訊工程學系.
+   * A graduate is listed as what their own record says, which is also the
+   * wording the previous site's rows carry. The English is the same either way.
+   */
+  bareBefore?: { since: number; 'zh-Hant': string; en: string };
 };
 
 const DEPARTMENT_LABELS: Record<string, DepartmentLabel> = {
@@ -186,6 +196,7 @@ const DEPARTMENT_LABELS: Record<string, DepartmentLabel> = {
     en: 'Department of Computer Science and Information Engineering',
     short: { 'zh-Hant': '臺大資工系', en: 'NTU CSIE' },
     bare: { 'zh-Hant': '資工系', en: 'CSIE' },
+    bareBefore: { since: 2023, 'zh-Hant': '資工所', en: 'CSIE' },
   },
   BEBI: {
     'zh-Hant': '生醫電子與資訊學研究所',
@@ -210,6 +221,13 @@ const DEPARTMENT_LABELS: Record<string, DepartmentLabel> = {
     'zh-Hant': '資訊網路與多媒體研究所',
     en: 'Graduate Institute of Networking and Multimedia',
     short: { 'zh-Hant': '網媒所', en: 'GINM' },
+  },
+  PHARM: {
+    'zh-Hant': '藥學研究所',
+    en: 'Graduate Institute of Pharmaceutical Sciences',
+    // No acronym, unlike the four above -- nobody calls it one, so the English
+    // short form is the word rather than an initialism invented here.
+    short: { 'zh-Hant': '藥學所', en: 'Pharmacy' },
   },
 };
 
@@ -251,14 +269,17 @@ export function degreeLabel(degree: string | undefined, locale: Locale): string 
  * no unit, still prints what is known rather than nothing.
  */
 export function alumnusProgram(
-  person: { department?: string; degree?: string },
+  person: { department?: string; degree?: string; graduated?: number | null },
   locale: Locale,
 ): string {
   const known = person.department ? DEPARTMENT_LABELS[person.department.trim()] : undefined;
-  // Anything not a code is free text from the previous site, which already
-  // reads the way this cell should and is passed through untouched.
+  const era = known?.bareBefore && (person.graduated ?? Infinity) < known.bareBefore.since
+    ? known.bareBefore
+    : undefined;
+  // Anything not a code is free text from the previous site. One row is left:
+  // 研究助理, which is a job rather than a programme and has no code to be.
   const unit = known
-    ? (known.bare ?? known.short)[locale]
+    ? (era ?? known.bare ?? known.short)[locale]
     : (person.department ?? '');
   return [unit, degreeLabel(person.degree, locale)].filter(Boolean).join(' ');
 }
