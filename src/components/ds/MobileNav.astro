@@ -25,8 +25,12 @@ interface Props {
   locale: Locale;
   /** Route slug of the current page, so its drawer row reads as current. */
   slug: string;
+  /** Where the language link goes; BaseLayout decides, so the two navs agree. */
+  otherHref: string;
+  /** True on a page that is not a route, which has no translation to declare. */
+  noRoute?: boolean;
 }
-const { locale, slug } = Astro.props;
+const { locale, slug, otherHref, noRoute = false } = Astro.props;
 
 const t = getStrings(locale);
 const navRoutes = ROUTES.filter((entry) => entry.inNav);
@@ -67,9 +71,8 @@ const other = otherLocale(locale);
         <div class="ds-mnav__foot">
           <a
             class="ds-mnav__lang"
-            href={pathFor(slug, other)}
-            hreflang={langTag(other)}
-            rel="alternate"
+            href={otherHref}
+            {...noRoute ? {} : { hreflang: langTag(other), rel: 'alternate' }}
           >{t.nav_language}</a>
         </div>
       </div>

@@ -1,0 +1,64 @@
+---
+// The 404 body, served by GitHub Pages for anything it cannot find.
+//
+// ONE PAGE, BOTH LANGUAGES, and not the usual pair of locale routes. Pages
+// serves the site's single root `404.html` whatever URL was asked for, so an
+// `/en/404.html` would never be reached -- a visitor who mistypes an English
+// URL gets this file too. So it says everything twice rather than guessing.
+//
+// It exists because of what the old site left behind. Until now this repository
+// served the previous site from master's root, where `contents/about_zh.html`,
+// `applications.html`, `css/` and `js/` were real files. None of them survives
+// the rebuild, and the one URL that search engines actually held --
+// `index_zh.html?content=<key>` -- is handled by the shim in public/. Everything
+// else that was ever linked to now lands here, and GitHub's own 404 page would
+// leave a visitor with no way back into the site.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hairline from '../components/ds/Hairline.astro';
+import Kicker from '../components/ds/Kicker.astro';
+import { getStrings } from '../lib/data';
+import { ROUTES, pathFor } from '../lib/routes';
+
+const zh = getStrings('zh-Hant');
+const en = getStrings('en');
+const sections = ROUTES.filter((route) => route.inNav);
+---
+
+<BaseLayout
+  locale="zh-Hant"
+  slug="404"
+  title="找不到這個頁面"
+  description="這個網址沒有對應的頁面。"
+  noRoute
+>
+  <div class="ds-masthead">
+    <Kicker size="md">404</Kicker>
+    <Hairline tone="ink" />
+    <h1 class="ds-masthead__title">找不到這個頁面</h1>
+    <div class="ds-masthead__subtitle">Page not found</div>
+    <p class="ds-masthead__lede">
+      這個網址沒有對應的頁面。本站於 2026 年重建，舊版的網址多已改變；若你是從書籤或外部連結過來的，請從下面的頁面重新進入。
+    </p>
+    <p class="ds-masthead__lede">
+      This URL does not match a page. The site was rebuilt in 2026 and most of
+      the previous addresses have changed. If you followed a bookmark or an
+      outside link, the sections below are where to start again.
+    </p>
+  </div>
+
+  {/* Read from ROUTES rather than written out, so a page added to the site
+      cannot go missing from the one list a lost visitor is given. Both locales
+      of each, because this page cannot know which one was wanted. */}
+  <section class="ds-section" aria-labelledby="sections">
+    <Kicker size="md" as="h2" id="sections">頁面 · Sections</Kicker>
+    <ul class="ds-list">
+      {sections.map((route) => (
+        <li>
+          <a class="ds-link" href={pathFor(route.slug, 'zh-Hant')}>{zh[route.navKey]}</a>
+          {' · '}
+          <a class="ds-link" href={pathFor(route.slug, 'en')}>{en[route.navKey]}</a>
+        </li>
+      ))}
+    </ul>
+  </section>
+</BaseLayout>

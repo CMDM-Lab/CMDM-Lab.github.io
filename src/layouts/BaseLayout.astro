@@ -33,10 +33,21 @@ interface Props {
   structuredData?: Record<string, unknown>[];
   /** Page container width. The design system's screens all run wide. */
   width?: 'default' | 'wide';
+  /**
+   * A page that is not a place: the 404 body, which GitHub Pages serves under
+   * whatever URL was asked for.
+   *
+   * It drops the canonical link and the hreflang pair, because both would name a
+   * URL that does not exist and claim it is this page's address. The robots meta
+   * is deliberately NOT added: Pages returns a real 404 status with this body,
+   * and a status code is the stronger signal.
+   */
+  noRoute?: boolean;
 }
 
 const {
   locale, slug, title, description, structuredData = [], width = 'wide',
+  noRoute = false,
 } = Astro.props;
 
 const t = getStrings(locale);
@@ -104,6 +115,12 @@ const jsonLd = {
 
 const navRoutes = ROUTES.filter((entry) => entry.inNav);
 const other = otherLocale(locale);
+// The language link normally points at this page in the other locale. A page
+// that is not a route has no counterpart, so it points at that locale's home
+// instead -- and drops rel/hreflang with it, which would otherwise declare the
+// home page to be this page's translation. Without this the 404 body linked to
+// /en/404/, which cannot exist: GitHub Pages serves one root 404.html.
+const otherHref = noRoute ? pathFor('', other) : pathFor(slug, other);
 const year = new Date().getFullYear();
 ---
 
@@ -114,8 +131,8 @@ const year = new Date().getFullYear();
 
     <title>{documentTitle}</title>
     <meta name="description" content={pageDescription} />
-    <link rel="canonical" href={canonical} />
-    {alternates.map((alt) => (
+    {!noRoute && <link rel="canonical" href={canonical} />}
+    {!noRoute && alternates.map((alt) => (
       <link rel="alternate" hreflang={alt.hreflang} href={alt.href} />
     ))}
 
@@ -145,7 +162,7 @@ const year = new Date().getFullYear();
         runtime to ask, so the swap is `display:none` on either side of the same
         breakpoint. A hidden element is not in the accessibility tree, so only
         one nav is ever announced. */}
-    <MobileNav locale={locale} slug={slug} />
+    <MobileNav locale={locale} slug={slug} otherHref={otherHref} noRoute={noRoute} />
 
     <nav class="ds-nav" aria-label={t.nav_label}>
       <a class="ds-nav__brand" href={pathFor('', locale)}>
@@ -171,9 +188,8 @@ const year = new Date().getFullYear();
             page uncrawlable. */}
         <a
           class="ds-nav__link"
-          href={pathFor(slug, other)}
-          hreflang={langTag(other)}
-          rel="alternate"
+          href={otherHref}
+          {...noRoute ? {} : { hreflang: langTag(other), rel: 'alternate' }}
         >{t.nav_language}</a>
       </div>
     </nav>
