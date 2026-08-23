@@ -219,6 +219,13 @@ members:
       in Retrieval-Augmented CBT Agents
 
   蔡哲維:
+    # Stated by the lab (2026-08-23). The classifier read only 代謝體學, off a
+    # vault topic that is all metabolomics -- saliency maps, XAI, a causal
+    # inference reproduction -- and says nothing about the quantum work. An
+    # explicit area replaces the classifier's rather than adding to it, so both
+    # pillars have to be written out.
+    area: 代謝體學 · 量子計算
+    area_en: Metabolomics · Quantum Computing
     # The award is honors.yml's 2025 entry for the college's AI 電資大聯盟
     # scholarship, in the short form the members page carries. He is the first
     # student to have one here; the two postdocs were the only entries with

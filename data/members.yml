@@ -124,8 +124,8 @@ members:
     department: CSIE
     research: Saliency map/XAI untargeted metabolomic profiling；新方向：Causal Inference 論文重現；王仁宏 ALI/ARDS 共同作者
     research_en: ""
-    area: 代謝體學
-    area_en: Metabolomics
+    area: 代謝體學 · 量子計算
+    area_en: Metabolomics · Quantum Computing
     honors:
       - 2025 臺大電資學院「AI 電資大聯盟」頂尖博士獎學金
     honors_en:
