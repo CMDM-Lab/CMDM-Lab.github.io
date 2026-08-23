@@ -61,7 +61,19 @@ members:
       Aggregation in MSA Patient Brain Regions via Desorption Electrospray
       Ionization Mass Spectrometry Imaging
   許洸誠:
-    name_en: Kuang-Cheng Hsu # published
+    name_en: Kuang-Cheng Hsu # published -- and as the thesis record below has it
+    # From NTU's institutional repository, which the lab found on 2026-08-23:
+    # tdr.lib.ntu.edu.tw/jspui/handle/123456789/96777, doi 10.6342/NTU202500022.
+    # Advisor 曾宇鳳, 學位 碩士, 系所單位 資訊工程學系, deposited as ntu-113-1.pdf.
+    department: CSIE
+    degree: masters
+    # The Chinese title says P-醣蛋白 where its own abstract and keywords say
+    # P-糖蛋白. Deposited titles are transcribed, not corrected, and the vault's
+    # topic for him spells it the same way.
+    thesis: 可解釋性的圖神經網路之於預測 P-醣蛋白受體
+    thesis_en: >-
+      Interpretable graph neural networks for predicting P-glycoprotein
+      substrates
   鍾岳辰:
     # Published as Yue-Chen Jhong on A Clinical Breathomics Dataset (Scientific
     # Data 11, 203, 2024). My earlier "Yueh-Chen Chung" was wrong on both parts.

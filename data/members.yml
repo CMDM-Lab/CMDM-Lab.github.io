@@ -513,9 +513,13 @@ members:
   - name: 許洸誠
     name_en: Kuang-Cheng Hsu
     role: alumni
+    department: CSIE
     graduated: 2024
+    degree: masters
     research: 可解釋 GNN 預測 P-醣蛋白受體
     research_en: ""
+    thesis: 可解釋性的圖神經網路之於預測 P-醣蛋白受體
+    thesis_en: Interpretable graph neural networks for predicting P-glycoprotein substrates
     area: 計算分子設計
     area_en: Computational Molecular Design
   - name: 詹易玹
