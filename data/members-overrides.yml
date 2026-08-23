@@ -300,12 +300,18 @@ members:
       Gas chromatography-mass spectrometry-based untargeted metabolomics reveals
       metabolic perturbations in acute lung injury patients
   林首志:
+    # Supplied by the lab with the thesis, 2026-08-23.
+    name_en: Shou-Zhi Lin
     graduated: 2025
-    # DEPARTMENT DELIBERATELY ABSENT. The lab's answer was 資工所, hedged --
-    # "應該是". A hedge is not a source, and this file has been wrong before by
-    # publishing an inference (five romanised names, removed 2026-08-22). Add
-    # `department: CSIE` once someone has actually checked.
+    # Held back on the first pass, when the lab's answer was hedged -- "應該是
+    # 資工所". Confirmed against the thesis on 2026-08-23, which is also where
+    # the 系-not-所 wording in the CSIE label came from.
+    department: CSIE
     degree: masters
+    thesis: 肺癌患者呼出氣體凝結液的呼吸體學分析
+    thesis_en: >-
+      Breathomics Analysis of the Exhaled Breath Condensate of Lung Cancer
+      Patients
   詹易玹:
     graduated: 2024
     department: BEBI

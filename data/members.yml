@@ -478,12 +478,15 @@ members:
     area: 量子計算
     area_en: Quantum Computing
   - name: 林首志
-    name_en: ""
+    name_en: Shou-Zhi Lin
     role: alumni
+    department: CSIE
     graduated: 2025
     degree: masters
     research: 肺癌 EBC Breathomics
     research_en: ""
+    thesis: 肺癌患者呼出氣體凝結液的呼吸體學分析
+    thesis_en: Breathomics Analysis of the Exhaled Breath Condensate of Lung Cancer Patients
     area: 代謝體學
     area_en: Metabolomics
   - name: 林詩敏
