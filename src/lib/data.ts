@@ -154,15 +154,20 @@ type DepartmentLabel = {
   /** The form the lab uses in running text, where it is naming its own units. */
   short: { 'zh-Hant': string; en: string };
   /**
-   * The form the alumni table uses, where the short form names the wrong thing.
+   * The short form with nothing said about whose unit it is.
    *
-   * Only the home department needs one. 資工系 is the undergraduate department
-   * and 資工所 the graduate institute -- one administrative unit at NTU, but a
-   * master's graduate read at the institute, which is what the previous site's
-   * rows say and what the lab says. The other four units award graduate degrees
-   * only, so their short form is already the right one and they omit this.
+   * Only the home department needs one, because only its short form carries the
+   * 臺大 prefix -- that form is for running prose, where the sentence is naming
+   * the lab's own department. A column of units on the lab's own site is not,
+   * and 臺大資工系 next to 生醫電資所 and 網媒所 reads as a different kind of
+   * thing.
+   *
+   * It says 學系 and not 研究所. NTU has these as one unit, 資訊工程學系暨研究
+   * 所, and 資工所 is what the previous site's rows say -- but the lab read the
+   * theses (2026-08-23) and the cover pages say 資訊工程學系, so that is what a
+   * graduate of it graduated from.
    */
-  graduate?: { 'zh-Hant': string; en: string };
+  bare?: { 'zh-Hant': string; en: string };
 };
 
 const DEPARTMENT_LABELS: Record<string, DepartmentLabel> = {
@@ -170,9 +175,7 @@ const DEPARTMENT_LABELS: Record<string, DepartmentLabel> = {
     'zh-Hant': '資訊工程學系',
     en: 'Department of Computer Science and Information Engineering',
     short: { 'zh-Hant': '臺大資工系', en: 'NTU CSIE' },
-    // No 臺大 here: the prose form says whose department it is, and a column of
-    // units on the lab's own site does not need telling.
-    graduate: { 'zh-Hant': '資工所', en: 'CSIE' },
+    bare: { 'zh-Hant': '資工系', en: 'CSIE' },
   },
   BEBI: {
     'zh-Hant': '生醫電子與資訊學研究所',
@@ -245,7 +248,7 @@ export function alumnusProgram(
   // Anything not a code is free text from the previous site, which already
   // reads the way this cell should and is passed through untouched.
   const unit = known
-    ? (known.graduate ?? known.short)[locale]
+    ? (known.bare ?? known.short)[locale]
     : (person.department ?? '');
   return [unit, degreeLabel(person.degree, locale)].filter(Boolean).join(' ');
 }
