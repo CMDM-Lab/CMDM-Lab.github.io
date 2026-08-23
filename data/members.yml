@@ -565,6 +565,17 @@ members:
       MSA Patient Brain Regions via Desorption Electrospray Ionization Mass Spectrometry Imaging
     area: 代謝體學
     area_en: Metabolomics
+  - name: 倪宇澔
+    name_en: Yu-Hao Ni
+    role: alumni
+    department: BEBI
+    graduated: 2022
+    degree: masters
+    research: CYP450 review
+    research_en: ""
+    thesis: 用於預測細胞色素P450介導代謝的全面性數據集：機器學習和深度學習的系統評估
+    thesis_en: "A Comprehensively-Curated Dataset for Prediction of Cytochrome P450 Isoforms Mediated
+      Metabolism: A Systematic Evaluation of Machine Learning and Deep Learning Methods"
   - name: 徐銘聰
     name_en: Ming-Tsung Hsu
     role: alumni
@@ -579,11 +590,6 @@ members:
     graduated: 2018
     degree: masters
     research: 管制藥品結構搜尋工具（NPSDB／TCSD 前手）
-    research_en: ""
-  - name: 倪宇澔
-    name_en: ""
-    role: alumni
-    research: CYP450 review
     research_en: ""
   - name: 鍾岳辰
     name_en: Yue-Chen Jhong

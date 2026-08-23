@@ -336,6 +336,24 @@ members:
   Danielle Penella P. Yu:
     department: MHI
     degree: masters
+  倪宇澔:
+    # Supplied by the lab with the thesis, 2026-08-23.
+    name_en: Yu-Hao Ni
+    # One of the people in both rosters. The vault has him under 校友 with no
+    # year, and the vault entry wins, which was costing him the 2022 and the
+    # 生醫電資所 碩士 that alumni-historical.yml records from the previous site.
+    # The lab's answer agrees with that row on all three.
+    graduated: 2022
+    department: BEBI
+    degree: masters
+    # The old site's row for him reads QSAR模型最佳化, which is a research topic
+    # rather than a deposited title. This is the title.
+    thesis: 用於預測細胞色素P450介導代謝的全面性數據集：機器學習和深度學習的系統評估
+    thesis_en: >-
+      A Comprehensively-Curated Dataset for Prediction of Cytochrome P450
+      Isoforms Mediated Metabolism: A Systematic Evaluation of Machine Learning
+      and Deep Learning Methods
+
   賴侑辰:
     # NOT PUBLISHED. He was a 專題生 and has left -- the vault's 校友 row says
     # exactly that, "專題生，已離開", and being in that table is what put him in
