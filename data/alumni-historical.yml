@@ -25,12 +25,17 @@ alumni:
   name_en: Pei-Hua Wang
   graduated: 2022
   department: 生醫電資所 博士
-  thesis: QSAR模型建構、量子演算法應用於藥物專利搜尋
+  thesis: 智能專利：快速草擬化學專利範圍的智慧系統
+  thesis_en: >-
+    IntelliPatent: an Intelligent System for Fast Chemical Patent Claim
+    Drafting
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/85785
 - name: 陳人豪
   graduated: 2022
   department: 資工所 博士
-  thesis: 計算化學與毒理學、化學資訊學、藥物設計、量子演算法應用於藥物專利搜尋
+  thesis: 用於分子特性預測的電腦輔助藥物設計
+  thesis_en: >-
+    Computer-Aided Drug Design for molecular property prediction
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/85760
 - name: 高紀威
   graduated: 2022
@@ -44,7 +49,10 @@ alumni:
 - name: 林柏璋
   graduated: 2021
   department: 生醫電資所 碩士
-  thesis: 小鼠腦部MRI模型建構
+  thesis: 組織學影像與質譜影像之自動化對準網頁服務與應用
+  thesis_en: >-
+    Web Service and Application for Automatic Registration with Mass
+    Spectrometry Imaging and Histology
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/82069
 - name: 何明洋
   # Published as Ho, M. Y. on eight of the lab's papers. Now a CS doctoral
@@ -175,12 +183,19 @@ alumni:
 - name: 譚承恩
   graduated: 2014
   department: 資工所 碩士
-  thesis: 成份分離、辨識及統計分析於氣相層析質譜儀之圖型化工具套件
+  thesis: 成份分離、辨識及統計分析於氣相層析質譜儀之圖形化工具套件
+  thesis_en: >-
+    IDMass 2.0: Component Extraction, Identification and Statistics GUI
+    Processing Toolkit for GC-MS
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/5343
 - name: 王國清
   graduated: 2013
   department: 生醫電資所 博士
-  thesis: 壹維核磁共振代謝體圖譜之基線校正、圖譜還原與在電焊暴露代謝體特徵上的應用
+  thesis: 壹維質子核磁共振代謝體圖譜之基線校正、圖譜還原與在電焊暴露代謝體特徵上的應用
+  thesis_en: >-
+    Baseline Correction, Spectral Deconvolution of Metabolomic 1D 1H-NMR
+    Spectra and Their Applications in Metabolomic Characterization of Welding
+    Fumes Exposure
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/60781
 - name: 張嘉芸
   graduated: 2013
