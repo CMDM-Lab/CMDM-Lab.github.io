@@ -59,9 +59,15 @@ alumni:
   department: 生醫電資所 碩士
   thesis: 肝臟微粒體穩定性
 - name: 蕭毅
+  # His own site (copyright Yi Hsiao), which records the 2015-2019 BEBI
+  # master's and lists building this lab's website among his projects. The
+  # hsiaoyi0504.github.io address the lab was given redirects here, so the
+  # js.org one is recorded to save the hop (2026-08-23).
+  name_en: Yi Hsiao
   graduated: 2018
   department: 生醫電資所 碩士
   thesis: 虛擬老鼠:系統性電腦預測臨床前ADMET參數
+  homepage: https://hsiaoyi0504.js.org/
 - name: 蔡東銘
   graduated: 2017
   department: 生醫電資所 博士
