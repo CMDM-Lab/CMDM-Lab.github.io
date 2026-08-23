@@ -558,9 +558,9 @@ additional:
     # citation names a team and no individual, and the 第三屆 award predates that
     # file's earliest entry, so it is on no other page at all.
     #
-    # The hackathon award is honors.yml's 2025 entry, whose Chinese says
-    # 帶領學生團隊. He is a postdoc, so 師生團隊 would be the accurate wording
-    # there -- worth a look on that page rather than a silent edit here.
+    # The hackathon award is honors.yml's 2025 entry, which says 師生團隊 -- it
+    # said 學生團隊 until this was raised from here, and one of the people on
+    # that team is a postdoc.
     honors:
       - 2025 總統盃黑客松卓越團隊獎（AI 綠色化學智匯診斷家）
       - 臺大生醫電資所第三屆獎勵研究創新學生傑出研究獎
