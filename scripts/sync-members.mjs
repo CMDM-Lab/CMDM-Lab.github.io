@@ -121,10 +121,14 @@ const RESEARCH_AREAS = [
  * The list exists so a typo in an override still fails the test in
  * tests/content.test.mjs rather than shipping. Keep it short; a term that
  * belongs to several people probably wants to be a pillar instead.
+ *
+ * It is empty as of 2026-08-23. 深度學習 was the one entry, carried for 郭天爵's
+ * line; the lab's word is that the term names none of its areas, so it went
+ * from his override and from here in the same change. Empty is the stricter
+ * state -- the test now requires every area on the members page to be a pillar
+ * -- and is the one to leave in place until someone asks for a term back.
  */
-const EXTRA_AREAS = new Map([
-  ['深度學習', 'Deep Learning'],
-]);
+const EXTRA_AREAS = new Map([]);
 
 /** Assign at most two coarse areas to a research description. */
 function classifyAreas(text) {

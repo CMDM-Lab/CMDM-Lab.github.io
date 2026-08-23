@@ -273,11 +273,11 @@ additional:
     publish_email: true
     research: 代謝體學生物判讀、脂質體學分析流程設計
     research_en: Biological interpretation of metabolomics, lipidomics analysis pipeline design
-    # Stated by him rather than derived from the topic above. 深度學習 is not one
-    # of the lab's pillars and should not become one -- it is a method used
-    # across several -- so it is declared in EXTRA_AREAS in the sync script.
-    area: 代謝體學 · 深度學習 · AI Agent 系統
-    area_en: Metabolomics · Deep Learning · AI Agent Systems
+    # Stated by him rather than derived from the topic above. 深度學習 was listed
+    # here too until 2026-08-23; the lab's word is that it is not one of its
+    # pillars, and a method used across several is not what this line is for.
+    area: 代謝體學 · AI Agent 系統
+    area_en: Metabolomics · AI Agent Systems
     # A project, not a research area. He leads the lab's work on this system for
     # the Chemicals Administration, Ministry of Environment. Official name
     # supplied by the lab on 2026-08-22; the site's own <title> is only "SAS".

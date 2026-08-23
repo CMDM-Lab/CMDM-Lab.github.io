@@ -43,8 +43,8 @@ members:
     email: cot@cmdm.csie.ntu.edu.tw
     research: 代謝體學生物判讀、脂質體學分析流程設計
     research_en: Biological interpretation of metabolomics, lipidomics analysis pipeline design
-    area: 代謝體學 · 深度學習 · AI Agent 系統
-    area_en: Metabolomics · Deep Learning · AI Agent Systems
+    area: 代謝體學 · AI Agent 系統
+    area_en: Metabolomics · AI Agent Systems
     projects:
       - name: 高風險化學物質之安全替代化學物質搜尋、評估及篩選系統
         name_en: Searching, Assessment and Screening System for Safer Alternative Chemicals
