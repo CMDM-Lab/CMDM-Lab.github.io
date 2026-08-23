@@ -552,13 +552,34 @@ additional:
         name_en: Searching, Assessment and Screening System for Safer Alternative Chemicals
         short: GreenN (SAS)
         url: https://sas.moenv.gov.tw/
+    # The short name of each award, newest first. The honours page carries the
+    # full dated citation and its source; these are written here rather than
+    # derived from honors.yml because the two do not line up -- the hackathon
+    # citation names a team and no individual, and the 第三屆 award predates that
+    # file's earliest entry, so it is on no other page at all.
+    #
+    # The hackathon award is honors.yml's 2025 entry, whose Chinese says
+    # 帶領學生團隊. He is a postdoc, so 師生團隊 would be the accurate wording
+    # there -- worth a look on that page rather than a silent edit here.
     honors:
+      - 2025 總統盃黑客松卓越團隊獎（AI 綠色化學智匯診斷家）
       - 臺大生醫電資所第三屆獎勵研究創新學生傑出研究獎
+    honors_en:
+      - Team Excellence Award, Presidential Hackathon 2025 (AI-Powered Green Chemistry
+        Diagnostic Advisor)
+      - Outstanding Student Research Award, 3rd NTU BEBI Research Innovation Awards
 
   - name: 王珮驊
     # Confirmed by the lab on 2026-08-22. The previous site said Pei-Hwa, which
     # no publication uses; twelve of her own papers carry Pei-Hua, including
     # Briefings in Bioinformatics 2025 and Journal of Cheminformatics 2025.
+    #
+    # Her award is honors.yml's 2023 entry, which names her: the wording here
+    # matches that citation rather than paraphrasing it a second way.
+    honors:
+      - 2023 生醫電資所第十二屆獎勵研究創新年度最佳博士論文獎
+    honors_en:
+      - Best Doctoral Dissertation, 12th BEBI Research Innovation Awards (2023)
     name_en: Pei-Hua Wang # published, confirmed
     role: postdoc
     order: 2

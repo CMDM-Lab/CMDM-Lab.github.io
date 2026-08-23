@@ -175,6 +175,29 @@ test('no news item prints its own link labels twice', async () => {
   }
 });
 
+test('a member\'s awards are listed in both languages', async () => {
+  // The members page falls back to the Chinese list when there is no English
+  // one, so a half-translated entry renders Chinese awards under an English
+  // heading. Same rule as the news items and the honours citations, and the same
+  // reason: the fallback is what makes the omission invisible.
+  const members = YAML.parse(
+    await readFile(path.join(ROOT, 'data', 'members.yml'), 'utf8'),
+  ).members ?? [];
+
+  for (const member of members) {
+    if (!member.honors?.length) continue;
+    assert.ok(
+      member.honors_en?.length,
+      `"${member.name}" has awards in Chinese and none in English`,
+    );
+    assert.equal(
+      member.honors.length, member.honors_en.length,
+      `"${member.name}" lists ${member.honors.length} awards in Chinese and `
+      + `${member.honors_en.length} in English`,
+    );
+  }
+});
+
 test('every news item is written in both languages', async () => {
   // The same rule the honours list has, and for the same reason: getNews() falls
   // back to the Chinese when there is no English, so an untranslated item shows

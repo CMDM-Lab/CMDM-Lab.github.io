@@ -58,6 +58,11 @@ const secondaryName = (person: { name: string; name_en?: string }) => (
 const thesisTitle = (person: { thesis?: string; thesis_en?: string }) => (
   (isEnglish && person.thesis_en) || person.thesis || ''
 );
+// Same shape as the professor page's education list: an `_en` twin, falling back
+// to the Chinese so a half-translated entry shows something rather than nothing.
+const honorsFor = (member: Member) => (
+  (isEnglish ? member.honors_en : member.honors) ?? member.honors ?? []
+);
 const roleTitle = (member: Member) => (
   (isEnglish ? member.title_en : member.title) || member.title || ''
 );
@@ -176,6 +181,19 @@ const people = [...grouped.values()].flat().map((member) => ({
                 {area(member).split(' · ').map((one) => <Tag tone="brand">{one}</Tag>)}
               </Fragment>
             )}
+            {/* The previous site listed a postdoc's awards on their own entry
+                and this one had the field for it from the start, unrendered.
+                The honours page stays the full record -- dated sentences with
+                their sources; this is the short name of the award, on the entry
+                of the person who holds it. */}
+            {honorsFor(member).length ? (
+              <div class="ds-meta" slot="meta">
+                {t.label_honors}:{' '}
+                {honorsFor(member).map((award, i) => (
+                  <>{i > 0 && ' · '}{award}</>
+                ))}
+              </div>
+            ) : null}
             {member.projects?.length ? (
               <div class="ds-meta" slot="meta">
                 {t.label_projects}:{' '}

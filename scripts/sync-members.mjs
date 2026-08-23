@@ -235,6 +235,7 @@ async function main() {
       ...(override.homepage ? { homepage: override.homepage } : {}),
       ...(override.expertise ? { expertise: override.expertise } : {}),
       ...(override.honors ? { honors: override.honors } : {}),
+      ...(override.honors_en ? { honors_en: override.honors_en } : {}),
     };
     published.push(entry);
 

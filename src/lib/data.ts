@@ -114,7 +114,19 @@ export interface Member {
    */
   projects?: Array<{ name: string; name_en?: string; short?: string; url?: string }>;
   expertise?: string;
+  /**
+   * Awards this person holds, shortest useful form, newest first.
+   *
+   * The honours page is the full record: dated sentences with their sources.
+   * This is the short name of the award on the person's own entry, which the
+   * previous site carried for its postdocs and this one had the field for and
+   * never rendered. Written per person rather than derived from honors.yml,
+   * because the two do not line up -- a team award names no individual, and an
+   * award older than that file's earliest entry is on nobody's page but this
+   * one.
+   */
   honors?: string[];
+  honors_en?: string[];
   email?: string;
   phone?: string;
   office?: string;
