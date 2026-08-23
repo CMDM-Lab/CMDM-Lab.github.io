@@ -675,9 +675,10 @@
 
      What is here is the two components that change *shape* rather than size --
      the nav becomes a drawer and a table stops being a table -- plus the tap
-     target floor. The type ramp is deliberately untouched: the design system
-     says 13.5px body holds on a phone, and scaling it would break the tabular
-     alignment the tables depend on.
+     target floor. The type ramp is deliberately untouched HERE: one size for
+     both, because scaling it per breakpoint would break the tabular alignment
+     the tables depend on. The ramp itself moved up a step in
+     tokens/typography.css, which a phone gets too.
 
      Every query below is the same `max-width:767px`. One breakpoint means one
      number; a second number anywhere in this stylesheet is a bug, and

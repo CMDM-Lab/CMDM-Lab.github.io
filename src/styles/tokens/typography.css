@@ -10,14 +10,25 @@
 
 :root{
   /* ── Scale ───────────────────────────────────────────────── */
+  /* THE CONTENT BAND IS ONE STEP UP from the design system's handoff, at the
+     lab's request (2026-08-23): the reading sizes were small on a desktop, and
+     Chinese at 14px especially. Each token moved to the next value the ramp
+     already had -- 12/12.5/13/13.5/14 -- which is why 15px is new and is the
+     only new value here.
+
+     Was: small 12, body 13, body-lg 13.5, table 12.5, lede 14.
+
+     Headings and kickers are untouched, so the gap between the lede and h4 is
+     now 1px. They still read apart: h4 is medium weight with heading tracking
+     and leading, and nothing sets the two next to each other. */
   --text-kicker-sm:9.5px;   /* mono uppercase only */
   --text-kicker:11px;
   --text-kicker-cjk:12px;   /* CJK kickers never go below 12px */
-  --text-small:12px;        /* absolute floor for anything not a kicker */
-  --font-size-body:13px;
-  --font-size-body-lg:13.5px;
-  --text-table:12.5px;
-  --text-lede:14px;
+  --text-small:12.5px;      /* smallest non-kicker; the hard floor is 12px */
+  --font-size-body:13.5px;
+  --font-size-body-lg:14px;
+  --text-table:13px;
+  --text-lede:15px;
   --text-h4:16px;
   --text-h3:19px;
   --text-h2:24px;
