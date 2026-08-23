@@ -249,6 +249,26 @@ achievements:
       - label: NTU EECS
         url: https://eecs.ntu.edu.tw/zh_tw/News/Spotlight/AI%E9%9B%BB%E8%B3%87%E5%A4%A7%E8%81%AF%E7%9B%9F%E6%AD%A3%E5%BC%8F%E5%95%9F%E5%8B%95-%E6%94%9C%E6%89%8B%E5%85%B1%E5%89%B5%E7%94%A2%E5%AD%B8%E6%96%B0%E4%B8%89%E8%B4%8F-55904559
 
+  # From the PI (2026-08-23). NO SOURCE LINK: no public announcement of this could
+  # be found, and the college's student-awards listing 404s, so unlike every other
+  # entry on this page there is nothing to check it against.
+  #
+  # The award's name is the lab's wording. NTU carries Garmin's name on more than
+  # one thing -- the college's own pages mention a university-level Garmin 講座/
+  # 學者 for faculty -- so the full official name of the student scholarship may
+  # be longer than this. Worth replacing both the name and the missing link if the
+  # lab has the announcement.
+  #
+  # He is a second-year master's student, so his award shows here and not on his
+  # own entry: the members page carries an awards line on the ledger roles only,
+  # and master's students are a table.
+  #
+  # No romanisation, as with 蔡哲維 above and for the same reason.
+  - citation:
+      zh: 2025 年，曾宇鳳教授指導的碩士生陳弈辰獲 Garmin 獎學金。
+      en: 2025, 陳弈辰, a master's student supervised by Professor Yufeng Jane Tseng, received
+        a Garmin Scholarship.
+
   # Announced 2025-11-25. The leading year is the calendar year of the
   # announcement; "114 年度" stays inside the award's name because it is part of
   # the official name, and because ROC year 114 runs Aug 2025 to Jul 2026 -- the
