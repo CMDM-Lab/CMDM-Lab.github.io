@@ -23,29 +23,44 @@
 about:
   zh:
     paragraphs:
-      # Scope. The five pillars from research_areas, in the lab's own terms.
+      # Scope. The five pillars from research_areas, in the lab's own terms. The
+      # applications line gained environmental and regulatory chemistry, which is
+      # what the PFAS work and the commissioned system below actually are.
       - >-
-        本實驗室以計算方法研究分子與代謝物。創立之初的兩大主軸為計算分子設計與代謝體學生物標記偵測，近年延伸至量子計算、步態分析與 AI Agent
-        系統，共五個方向。我們開發演算法與軟體工具，並將其應用於藥物開發與臨床檢驗。
-      # Drug design track. NRPB projects, partners, patents, prediction models --
-      # all carried over from the previous site's About text.
+        本實驗室以計算方法研究分子與代謝物。創立之初的兩大主軸為計算分子設計與代謝體學生物標記偵測，近年延伸至量子計算、步態分析與 AI Agent 系統，共五個方向。我們開發演算法與軟體工具，並將其應用於藥物開發、環境與法規化學，以及臨床評估。
+      # Drug design track. The NRPB projects, partners and patents are the previous
+      # site's text. The second half is the current record, and the journals stay out
+      # of the prose at the lab's request -- recorded here so the claim is traceable:
+      #   P-glycoprotein, interpretable GNN   Briefings in Bioinformatics 2025
+      #   CYP450 interaction dataset          Scientific Data 2025
+      #   DeePFAS, PFAS annotation            Environmental Science & Technology 2025
       - >-
-        在計算分子設計方面，本實驗室參與國家生技醫藥研究計畫的六項新藥開發專案，與中國醫藥大學、國立清華大學、臺北醫學大學等校的化學與藥學系所合作，目標為神經病理性疼痛、血栓與癌症的治療藥物，並持有多項美國專利。所建立的預測模型涵蓋
-        hERG 心臟毒性、人體口服吸收、皮膚穿透與皮膚敏感化的 QSAR 分析。
-      # Metabolomics track. Metabolomics Core Lab, MS/NMR methods, the Analytical
-      # Chemistry record (6 papers), and the clinical applications the old text
-      # lists.
+        在計算分子設計方面，本實驗室參與國家生技醫藥研究計畫的六項新藥開發專案，與中國醫藥大學、國立清華大學、臺北醫學大學等校的化學與藥學系所合作，目標為神經病理性疼痛、血栓與癌症的治療藥物，並持有多項美國專利。早期建立的預測模型涵蓋 hERG 心臟毒性、人體口服吸收、皮膚穿透與皮膚敏感化的 QSAR 分析；近年則以可解釋的圖神經網路預測 P-醣蛋白受體、整理涵蓋大部分第一相藥物代謝的 CYP450 交互作用資料集，並以深度學習加速全氟與多氟烷基物質的非目標鑑定。
+      # Metabolomics track. The Metabolomics Core Lab, the Metabolomics Society award
+      # and the older applications are the previous site's; the recent clinical work
+      # is from the publication list. Analytical Chemistry left the sentence with the
+      # other journal names. Sources:
+      #   Human Breathomics Database          Database 2020
+      #   A Clinical Breathomics Dataset      Scientific Data 2024
+      #   gut microbiome in MSA               Frontiers in Neuroscience 2025
+      #   metabolites in children with ADHD   Translational Psychiatry 2025
       - >-
-        在代謝體學方面，本實驗室於臺大基因體研究中心代謝體核心實驗室建立研究團隊，開發質譜與核磁共振的計算方法，成果發表於《Analytical
-        Chemistry》等期刊，並曾獲國際代謝體學會年會最佳資訊學論文獎。這些方法已應用於焊接煙塵暴露、中草藥成分鑑定與毒性預測、乳癌細胞缺氧反應，以及肺癌、白血病、慢性阻塞性肺病與加護病房死亡率的標記研究。
-      # Newer directions. The journals were dropped from the prose at the lab's
-      # request -- the reader can find them on the Publications page -- but they
-      # are recorded here so the claim stays traceable:
-      #   quantum computing  Journal of Cheminformatics, Scientific Reports
-      #   gait / movement    npj Digital Medicine, IEEE J. Biomed. Health Inform.
-      #   LLM for clinical   Schizophrenia Bulletin
+        在代謝體學方面，本實驗室於臺大基因體研究中心代謝體核心實驗室建立研究團隊，開發質譜與核磁共振的計算方法，並曾獲國際代謝體學會年會最佳資訊學論文獎。這些方法應用於焊接煙塵暴露、中草藥成分鑑定與毒性預測，以及肺癌、白血病、慢性阻塞性肺病與加護病房死亡率的標記研究；近年的臨床應用包括人體呼吸體學資料庫與臨床呼吸體學資料集、多系統萎縮症的腸道菌相與代謝路徑，以及注意力不足過動症兒童的代謝物鑑定。
+      # Newer directions, each with what the record now shows rather than a bare
+      # claim that results exist. Sources:
+      #   two quantum programming platforms   Journal of Cheminformatics 2025
+      #   patent search on a quantum computer Scientific Reports 2022
+      #   Movement Anywhere                   IEEE J. Biomed. Health Inform. 2026
+      #   generative AI, negative symptoms    Schizophrenia Bulletin 2025
       - >-
-        近年新增的三個方向已有發表成果：量子計算應用於藥物探索與專利檢索、影像式步態與帕金森氏症動作分析，以及大型語言模型應用於臨床評估。
+        三個較新的方向都已有發表成果：量子計算用於藥物探索與專利檢索，並比較量子程式平台在量子化學上的表現；步態分析發展為開源的分散式二維影像動作分析平台；AI Agent 與生成式模型則用於思覺失調症負性症狀的自動評估。
+      # Commissioned work, added 2026-08-23 at the lab's request: the About page had
+      # said nothing about the one system the lab has run for five years, which is
+      # also the work behind two of the awards on the honours page. Every fact here
+      # is from the `commissioned` entry in services.yml and from honors.yml -- the
+      # start date, the agency, what the system does, and the two awards.
+      - >-
+        除了論文與公開工具，本實驗室自 2021 年 9 月起承接環境部化學署委辦的「高風險化學物質之安全替代化學物質搜尋、評估及篩選系統」GreenN（SAS），協助企業掌握化學品的危害與風險、法規關注程度，並找出可行的替代方案，支援研發前期評估與法規遵循；計畫持續進行中。在既有架構上開發的「AI 綠色化學智匯診斷家」，於 2025 年總統盃黑客松獲卓越團隊獎，並獲 2026 年臺大 1975 級電機系系友捐贈科技研究創新獎勵特別獎。
       # Output and people. Every number here is counted from the data files, and
       # tests/content.test.mjs recounts them -- prose numbers go stale silently.
       #
@@ -55,54 +70,28 @@ about:
       # and are not the lab's output. Corrected on 2026-08-22 at the lab's
       # instruction; the previous wording claimed all 117 since 2003.
       - >-
-        實驗室自 2006 年創立以來發表 113 篇期刊論文，其中 44 篇在 2020 年之後，另有 64 篇會議論文與 16 項專利。我們在
-        cmdm.tw 網域下維運 8 項公開服務，包含 3Omics、Lipidpedia、CypRules、GC2MS、Chromaligner 與
-        PITracer，皆開放外部研究者使用。實驗室現有成員 37 人，歷屆成員 65 人。
+        實驗室自 2006 年創立以來發表 113 篇期刊論文，其中 44 篇在 2020 年之後，另有 64 篇會議論文與 16 項專利。我們在 cmdm.tw 網域下維運 8 項公開服務，包含 3Omics、Lipidpedia、CypRules、GC2MS、Chromaligner 與 PITracer，皆開放外部研究者使用。實驗室現有成員 37 人，歷屆成員 65 人。
   en:
     paragraphs:
       - >-
-        The lab studies molecules and metabolites by computation. Its two founding
-        directions were computational molecular design and biomarker detection in
-        metabolomics; in recent years these have been joined by quantum computing, gait
-        analysis and AI agent systems, giving five research pillars. We develop algorithms and
-        software tools, and apply them to drug development and clinical assay work.
+        The lab studies molecules and metabolites by computation. Its two founding directions were computational molecular design and biomarker detection in metabolomics; in recent years these have been joined by quantum computing, gait analysis and AI agent systems, giving five research pillars. We develop algorithms and software tools, and apply them to drug development, environmental and regulatory chemistry, and clinical assessment.
+      # Sources are on the Chinese paragraph above.
       - >-
-        In computational molecular design, the lab took part in six drug development projects
-        under the National Research Program for Biopharmaceuticals, working with the chemistry
-        and pharmacy departments of China Medical University, National Tsing Hua University and
-        Taipei Medical University among others. The targets were treatments for neuropathic
-        pain, thrombosis and cancer, and the work holds several U.S. patents. The predictive
-        models built here cover hERG cardiotoxicity, human oral drug absorption, and QSAR
-        analyses of skin penetration and skin sensitization.
+        In computational molecular design, the lab took part in six drug development projects under the National Research Program for Biopharmaceuticals, working with the chemistry and pharmacy departments of China Medical University, National Tsing Hua University and Taipei Medical University among others. The targets were treatments for neuropathic pain, thrombosis and cancer, and the work holds several U.S. patents. The earlier predictive models cover hERG cardiotoxicity, human oral drug absorption, and QSAR analyses of skin penetration and skin sensitization; the recent ones predict P-glycoprotein substrates with interpretable graph neural networks, curate a CYP450 interaction dataset covering most of phase I drug metabolism, and use deep learning to speed up the non-targeted annotation of per- and polyfluoroalkyl substances.
+      # Sources are on the Chinese paragraph above.
       - >-
-        In metabolomics, the lab built a research group at the Metabolomics Core Laboratory of
-        the NTU Center of Genomic Medicine, developing mass-spectrometry and NMR computing
-        methods published in Analytical Chemistry and elsewhere, and received the Best
-        Informatics Paper award at an International Conference of the Metabolomics Society.
-        Those methods have been applied to welding-fume exposure, compound identification and
-        toxicity prediction in Chinese herbs, hypoxia in breast cancer cells, and markers for
-        lung cancer, leukaemia, chronic obstructive pulmonary disease and mortality among
-        intensive-care patients.
-      # See the note on the Chinese paragraph above for the journals behind each
-      # of these three, which the lab asked to keep out of the prose.
+        In metabolomics, the lab built a research group at the Metabolomics Core Laboratory of the NTU Center of Genomic Medicine, developing mass-spectrometry and NMR computing methods, and received the Best Informatics Paper award at an International Conference of the Metabolomics Society. Those methods have been applied to welding-fume exposure, compound identification and toxicity prediction in Chinese herbs, and markers for lung cancer, leukaemia, chronic obstructive pulmonary disease and mortality among intensive-care patients; the recent clinical work includes a human breathomics database and a clinical breathomics dataset, gut microbial networks and metabolic pathways in multiple system atrophy, and the identification of metabolites in children with attention-deficit hyperactivity disorder.
+      # Sources are on the Chinese paragraph above.
       - >-
-        The three newer directions each have published results: quantum computing for drug
-        discovery and patent search, video-based gait and Parkinsonian movement analysis, and
-        large language models for clinical assessment.
+        The three newer directions each have published results: quantum computing for drug discovery and patent search, including a comparison of two quantum programming platforms for quantum chemistry; gait analysis, now an open-source distributed platform for 2D video-based movement analysis; and AI agents and generative models for the automatic assessment of negative symptoms in schizophrenia.
+      # Sources are on the Chinese paragraph above.
+      - >-
+        Besides papers and public tools, the lab has run GreenN (SAS), the Searching, Assessment and Screening System for Safer Alternative Chemicals, since September 2021, commissioned by the Chemicals Administration of the Ministry of Environment. It helps companies assess the hazard and risk of a chemical, how closely it is regulated, and what it can be replaced with, supporting early-stage R&D decisions and regulatory compliance; the project is ongoing. "AI-Powered Green Chemistry Diagnostic Advisor", built on that framework, received a Team Excellence Award at the Presidential Hackathon 2025 and the Special Award in the 2026 NTU Electrical Engineering Class of 1975 Alumni Endowed Award for Technology Research Innovation.
       # See the note on the Chinese paragraph above: the count starts at the
       # lab's founding in 2006, not at the first entry in the journal list.
       - >-
-        Since the lab was founded in 2006 it has published 113 journal articles, 44 of them
-        since 2020, together with 64 conference papers and 16 patents. We maintain eight public
-        services under cmdm.tw -- among them 3Omics, Lipidpedia, CypRules, GC2MS, Chromaligner
-        and PITracer -- all open to external researchers. The lab currently has 37 members and
-        65 alumni.
+        Since the lab was founded in 2006 it has published 113 journal articles, 44 of them since 2020, together with 64 conference papers and 16 patents. We maintain eight public services under cmdm.tw -- among them 3Omics, Lipidpedia, CypRules, GC2MS, Chromaligner and PITracer -- all open to external researchers. The lab currently has 37 members and 65 alumni.
 
-# The lab's research pillars, in the order they are shown.
-#
-# The first two are the lab's historic core and are its own wording, carried
-# over from the previous site. The remaining three were added on 2026-08-22 at
-# the lab's direction; their sub-items are drawn from what the record actually
 # shows rather than written from scratch:
 #
 #   Quantum computing  2 members, 5 papers (J Cheminform 2025, IEEE
