@@ -11,7 +11,7 @@
     "check": "astro check",
     "fetch:publications": "node scripts/fetch-publications.mjs",
     "sync:members": "node scripts/sync-members.mjs",
-    "test": "node --test tests/"
+    "test": "node --test tests/*.test.mjs"
   },
   "repository": {
     "type": "git",

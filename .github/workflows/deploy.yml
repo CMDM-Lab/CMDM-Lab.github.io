@@ -43,6 +43,13 @@ jobs:
       # The privacy tripwire runs before anything is published. data/members.yml
       # is derived from a private repository, so a leak must block the deploy,
       # not be discovered on the live site.
+      #
+      # The runner's Node is newer than the one this is developed on, and the
+      # first deploy failed here for that reason alone: `npm test` was
+      # `node --test tests/`, which Node 20 accepts as a directory to walk and
+      # Node 22 and 24 read as a module path. It passes explicit files now, which
+      # every version accepts. Worth running the tests on the CI Node before
+      # pushing rather than finding out here.
       - name: Run tests
         run: npm test
 
