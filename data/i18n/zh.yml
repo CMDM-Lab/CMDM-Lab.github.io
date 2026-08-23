@@ -89,7 +89,7 @@ label_all_news: 全部消息
 
 # ── Members ──────────────────────────────────────────────────
 members_title: 實驗室成員
-members_description: 國立臺灣大學計算分子設計與代謝體學實驗室的指導教授、博士後研究員、博碩士班學生與歷屆畢業成員名單。
+members_description: 國立臺灣大學計算分子設計與代謝體學實驗室的指導教授、博士後研究員、博碩士班學生與歷屆成員名單。
 members_kicker: 成員
 members_subtitle: 主持人 · 博士後 · 博碩士生 · 校友
 # {units} is filled in from the roster -- see labAffiliationProse().
@@ -178,7 +178,7 @@ label_skip_to_content: 跳至主要內容
 label_director: 主持人
 label_affiliation: 所屬單位
 label_public_tools: 公開工具
-label_alumni_count: 畢業校友
+label_alumni_count: 歷屆成員
 
 # ── Roles ────────────────────────────────────────────────────
 role_faculty: 計畫主持人
@@ -188,7 +188,7 @@ role_phd: 博士班學生
 role_masters: 碩士班學生
 role_undergraduate: 專題生
 role_current: 在學成員
-role_alumni: 畢業成員
+role_alumni: 歷屆成員
 label_title: 標題
 label_area: 研究領域
 label_projects: 負責專案
