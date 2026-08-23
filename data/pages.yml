@@ -273,12 +273,13 @@ courses:
     - Cheminformatics
 
 home_intro:
-  zh: 本實驗室主要研究內容為計算分子設計 (Computational Molecular Design) 與代謝體中的生物標記偵測 (Biomarker
-    Detection in Metabolomics)，包含新演算法開發與軟體工具開發，使其能夠應用於生化檢驗與分子結構設計。
-  en: The lab works on Computational Molecular Design and Biomarker Detection in Metabolomics,
-    developing new algorithms and software tools for biochemical assays and molecular structure
-    design.
-
+  # The overview's own description of the lab. It named the two founding
+  # pillars only, which was the whole lab in 2006 and two fifths of it now.
+  # Rewritten 2026-08-24 from the same sources as the About page.
+  zh: >-
+    本實驗室以計算方法研究分子與代謝物，開發演算法與軟體工具，並將其應用於藥物開發、環境與法規化學，以及臨床評估。創立時的兩大主軸為計算分子設計與代謝體學生物標記偵測，現已延伸為五個方向，另含量子計算、步態分析與 AI Agent 系統。
+  en: >-
+    The lab studies molecules and metabolites by computation, developing algorithms and software tools and applying them to drug development, environmental and regulatory chemistry, and clinical assessment. Its two founding directions -- computational molecular design and biomarker detection in metabolomics -- have grown to five, the others being quantum computing, gait analysis and AI agent systems.
 home_video: https://www.youtube.com/embed/LUdHlIMiyFY?rel=0
 
 # The "Lab record" section of the home page.
@@ -292,23 +293,31 @@ home_video: https://www.youtube.com/embed/LUdHlIMiyFY?rel=0
 #
 # If the lab rewrites these, replace them; nothing derives from them.
 home_record:
+  # What the record is now, in two paragraphs beside the colophon table.
+  #
+  # It used to be the NRPB projects, the partner universities and the
+  # Analytical Chemistry metabolomics work -- the previous site's text, and by
+  # now the oldest part of the record rather than a summary of it.
+  #
+  # Deliberately not the same sentences as the About page: this says what shape
+  # the work has and names a few examples, About carries the full account. The
+  # counts stay out entirely, since the table beside this prose is nothing but
+  # counts. Sources for every claim are in the About block above.
+  #
+  # The first draft ended the first paragraph with "右側列出的公開服務都仍在運作",
+  # which was wrong twice: that table counts the services rather than listing
+  # them, and it sits under this prose rather than beside it below 768px. Nothing
+  # in either language points at where anything is on the page.
   zh:
-    - >-
-      本實驗室參與國家生技醫藥研究計畫中六項新藥開發專案，並與中國醫藥大學、國立清華大學、臺北醫學大學等校化學系與藥學系合作。主要目標為開發神經病理性疼痛、血栓與癌症的治療藥物。
-    - >-
-      在代謝體學方面，我們開發的質譜與核磁共振計算方法已發表於《Analytical
-      Chemistry》，並應用於中草藥成分鑑定、乳癌細胞缺氧反應，以及肺癌與白血病的分子標記研究。
+  - >-
+    方法工作橫跨藥物性質預測、環境分析與臨床評估：近年包括以可解釋的圖神經網路預測 P-醣蛋白受體、整理涵蓋大部分第一相藥物代謝的 CYP450 交互作用資料集，以及以深度學習加速全氟與多氟烷基物質的非目標鑑定。這些成果不只是論文：其中的資料集與工具本身就是產出。
+  - >-
+    本實驗室也承接委辦系統：自 2021 年 9 月起執行環境部化學署的 GreenN（SAS）高風險化學物質之安全替代化學物質搜尋、評估及篩選系統，協助企業評估化學品的危害、法規關注程度與可行替代方案，計畫持續進行中。在其架構上開發的「AI 綠色化學智匯診斷家」於 2025 年總統盃黑客松獲卓越團隊獎。
   en:
-    - >-
-      The lab was involved in six drug development projects in the National Research Program for
-      Biopharmaceuticals, in collaboration with the chemistry and pharmacy departments of China
-      Medical University, National Tsing Hua University, Taipei Medical University and others. Our
-      primary objective is to develop treatments for neuropathic pain, thrombosis and cancer.
-    - >-
-      In metabolomics, the mass spectrometry and NMR computing methods we developed have been
-      published in Analytical Chemistry and applied to compound identification in Chinese herbs,
-      hypoxia in breast cancer cells, and molecular markers for lung cancer and leukaemia.
-
+  - >-
+    The method work spans drug-property prediction, environmental analysis and clinical assessment: recent examples include predicting P-glycoprotein substrates with interpretable graph neural networks, curating a CYP450 interaction dataset that covers most of phase I drug metabolism, and using deep learning to speed up the non-targeted annotation of per- and polyfluoroalkyl substances. The output is not only papers: the datasets and the tools are themselves the product.
+  - >-
+    The lab also runs commissioned systems. Since September 2021 it has delivered GreenN (SAS), the Searching, Assessment and Screening System for Safer Alternative Chemicals, for the Chemicals Administration of the Ministry of Environment: it helps companies weigh a chemical's hazard, how closely it is regulated, and what it can be replaced with, and the project is ongoing. "AI-Powered Green Chemistry Diagnostic Advisor", built on that framework, received a Team Excellence Award at the Presidential Hackathon 2025.
 # Principal investigator detail page, migrated from contents/janetseng_zh.html.
 #
 # NEEDS VERIFICATION. The appointments below are copied verbatim from a page
