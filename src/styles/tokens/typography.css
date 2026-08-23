@@ -10,26 +10,28 @@
 
 :root{
   /* ── Scale ───────────────────────────────────────────────── */
-  /* THE CONTENT BAND IS ONE STEP UP from the design system's handoff, at the
-     lab's request (2026-08-23): the reading sizes were small on a desktop, and
-     Chinese at 14px especially. Each token moved to the next value the ramp
-     already had -- 12/12.5/13/13.5/14 -- which is why 15px is new and is the
-     only new value here.
+  /* THE CONTENT BAND IS TWO STEPS UP from the design system's handoff, at the
+     lab's request -- one step on 2026-08-23 and a second the same day, the
+     reading sizes still being small on a desktop and Chinese especially, since
+     `--prose-size` resolves to the lede for CJK.
 
-     Was: small 12, body 13, body-lg 13.5, table 12.5, lede 14.
+     Was, as handed off: small 12, body 13, body-lg 13.5, table 12.5, lede 14.
 
-     Headings and kickers are untouched, so the gap between the lede and h4 is
-     now 1px. They still read apart: h4 is medium weight with heading tracking
-     and leading, and nothing sets the two next to each other. */
+     KICKERS ARE UNTOUCHED. h4 is not, and could not be: it sizes
+     .ds-ledger-item__title, the heading on every card on the site, and at 16px
+     it would now be the same size as the body text under it. It moves to 18,
+     which is where h4 has to sit to stay a heading. h3 and above keep their
+     values -- they head mastheads, not cards, and nothing puts them next to a
+     paragraph. */
   --text-kicker-sm:9.5px;   /* mono uppercase only */
   --text-kicker:11px;
   --text-kicker-cjk:12px;   /* CJK kickers never go below 12px */
-  --text-small:12.5px;      /* smallest non-kicker; the hard floor is 12px */
-  --font-size-body:13.5px;
-  --font-size-body-lg:14px;
-  --text-table:13px;
-  --text-lede:15px;
-  --text-h4:16px;
+  --text-small:13px;        /* smallest non-kicker; the hard floor is 12px */
+  --font-size-body:14px;
+  --font-size-body-lg:15px;
+  --text-table:13.5px;
+  --text-lede:16px;
+  --text-h4:18px;
   --text-h3:19px;
   --text-h2:24px;
   --text-h2-hero:28px;
@@ -48,6 +50,11 @@
   --tracking-kicker-cjk:0.08em;   /* 0.14em pulls Chinese glyphs apart */
   --tracking-table-head:0.12em;
 
+  /* NOT APPLIED TO BODY COPY as of 2026-08-23. Both are still defined, still
+     resolve into --prose-measure below, and are still correct about what a
+     comfortable line is -- nothing reads them. The lab chose a full-width
+     column over an empty half-page; components.css says so on .ds-prose, and
+     names the four rules to restore if that is ever reversed. */
   --measure-prose:64ch;
   --measure-prose-cjk:38em;   /* ~38 Chinese characters per line */
   --leading-body-cjk:1.8;     /* CJK needs more leading than 1.55 */

@@ -28,11 +28,24 @@
   .ds-shell--wide{max-width:var(--page-max-wide)}
 
   /* ── Prose ─────────────────────────────────────────────────
-     Latin justifies at 64ch; Chinese sets ragged-right at 38em / 1.8.
      Justification is deliberately dropped for CJK: it stretches
-     inter-character spacing and breaks technical tokens. */
+     inter-character spacing and breaks technical tokens.
+
+     BODY COPY IS NO LONGER HELD TO THE READING MEASURE. The lab's call
+     (2026-08-23), and the reason is what the page looked like: the shell runs
+     1180px wide by default, a Chinese column stopped at 38em -- 608px at the
+     current size -- and the section rules and headings spanned the whole
+     1125px content box. So 46% of every text page was empty, and it read as a
+     two-column layout with nothing in the second column, on page after page.
+
+     The cost is line length: Chinese now sets about 70 characters to the line
+     where the design system says 38. That is the trade that was chosen, with
+     the alternatives being a narrower shell for text pages or living with the
+     empty half. --prose-measure and the two tokens behind it are still defined
+     and still resolve per locale; nothing applies them to body copy any more.
+     Putting the measure back means restoring four `max-width` lines: here,
+     .ds-article-flow's CJK block, .ds-masthead__lede and .ds-list. */
   .ds-prose{
-    max-width:var(--prose-measure);
     font-size:var(--prose-size);
     line-height:var(--prose-leading);
     text-align:var(--prose-align);
@@ -82,7 +95,9 @@
   :root:lang(zh-Hant) .ds-article-flow:not(.ds-article-flow--latin),
   :root:lang(zh) .ds-article-flow:not(.ds-article-flow--latin){
     columns:1;
-    max-width:var(--measure-prose-cjk);
+    /* No measure -- see the note on .ds-prose. One column at the shell's full
+       width, which for the About page is the whole point: it was one 608px
+       column of Chinese in a 880px shell. */
     font-size:var(--text-lede);
     line-height:var(--leading-body-cjk);
     text-align:left;
@@ -236,7 +251,8 @@
   }
   .ds-masthead__lede{
     margin-top:var(--space-4);
-    max-width:var(--prose-measure);
+    /* No measure -- see the note on .ds-prose. This one was on every page of
+       the site, under a rule that spanned the shell. */
     font-size:var(--text-lede);
     line-height:var(--prose-leading);
     text-align:var(--prose-align);
@@ -484,13 +500,13 @@
     font-size:var(--prose-size);
     line-height:var(--prose-leading);
     color:var(--text-secondary);
-    max-width:var(--prose-measure);
+    /* No measure -- see the note on .ds-prose. */
   }
   .ds-list--bullet{list-style:disc;padding-left:var(--space-4)}
 
   /* ── Honours list ──────────────────────────────────────────────
-     Sentences and photographs, and neither is held to the reading measure. */
-  .ds-honors{max-width:none}
+     This page got there first: its citations came off the measure on their own
+     before every other list did. Nothing left to override. */
   /* The citation spans the column rather than stopping at the reading measure.
      This page is a list of one-sentence items under rules that span the whole
      880px, so holding each sentence to 38em left the right 40% permanently
