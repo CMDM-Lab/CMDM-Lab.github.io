@@ -61,7 +61,7 @@ const FORBIDDEN_IN_PUBLIC = [
  */
 const ALLOWED_MEMBER_FIELDS = new Set([
   // Identity and grouping.
-  'name', 'name_en', 'role', 'title', 'title_en', 'grade', 'department', 'graduated', 'order',
+  'name', 'name_en', 'role', 'title', 'title_en', 'grade', 'department', 'degree', 'graduated', 'order',
   // Research description. `research` is the vault's specific topic and is NOT
   // rendered; `area` is the coarse pillar that is. `thesis` is the deposited
   // title -- a public bibliographic record, curated in members-overrides.yml and
@@ -365,6 +365,33 @@ test('a department publishes as a known code and nothing else', async () => {
       codes.includes(department),
       `"${member.name}" has department "${department}", which is not one of ${codes.join(', ')} `
       + '-- a vault cell with more than the code must publish the code alone',
+    );
+  }
+});
+
+test('a degree publishes as a known level, and only for alumni', async () => {
+  // Two rules in one, because they fail the same way -- as a blank cell. The
+  // label helper renders an unrecognised level as nothing rather than as
+  // itself, and only the alumni table reads the field at all, so a degree that
+  // is misspelt or put on a current member simply does not appear. Nothing on
+  // the page says so; this does.
+  const dataTs = await readFile(path.join(ROOT, 'src', 'lib', 'data.ts'), 'utf8');
+  const levels = [...(dataTs.match(/DEGREE_LABELS[^=]*=\s*\{([\s\S]*?)\n\};/)?.[1] ?? '')
+    .matchAll(/^ {2}(\w+):/gm)].map((m) => m[1]);
+  assert.ok(levels.length, 'could not read DEGREE_LABELS from src/lib/data.ts');
+
+  if (!hasGeneratedMembers) return;
+  const members = YAML.parse(await readFile(MEMBERS_YML, 'utf8')).members ?? [];
+  for (const member of members) {
+    if (!member.degree) continue;
+    assert.ok(
+      levels.includes(member.degree),
+      `"${member.name}" has degree "${member.degree}", which is not one of ${levels.join(', ')}`,
+    );
+    assert.equal(
+      member.role, 'alumni',
+      `"${member.name}" carries a degree but is not an alumnus -- a current member's `
+      + 'level is the section they are listed under, and this field would not render',
     );
   }
 });

@@ -59,6 +59,15 @@ export interface Member {
   grade?: string;
   department?: string;
   graduated?: number;
+  /**
+   * Degree read, for the alumni table only.
+   *
+   * A current student's level is the section they are listed under. An alumnus
+   * has no section to carry it -- everyone who has left shares one table -- so
+   * the row has to say it. Values are the two role names they correspond to,
+   * `masters` and `phd`, so a value that drifts from `role` reads as wrong.
+   */
+  degree?: string;
   research?: string;
   research_en?: string;
   /**
@@ -127,11 +136,31 @@ export interface HistoricalAlumnus {
  * Keep in step with DEPARTMENT_CODES in scripts/lib/vault-members.mjs;
  * tests/members-privacy.test.mjs asserts the two agree.
  */
-const DEPARTMENT_LABELS: Record<string, { 'zh-Hant': string; en: string; short: { 'zh-Hant': string; en: string } }> = {
+type DepartmentLabel = {
+  'zh-Hant': string;
+  en: string;
+  /** The form the lab uses in running text, where it is naming its own units. */
+  short: { 'zh-Hant': string; en: string };
+  /**
+   * The form the alumni table uses, where the short form names the wrong thing.
+   *
+   * Only the home department needs one. 資工系 is the undergraduate department
+   * and 資工所 the graduate institute -- one administrative unit at NTU, but a
+   * master's graduate read at the institute, which is what the previous site's
+   * rows say and what the lab says. The other four units award graduate degrees
+   * only, so their short form is already the right one and they omit this.
+   */
+  graduate?: { 'zh-Hant': string; en: string };
+};
+
+const DEPARTMENT_LABELS: Record<string, DepartmentLabel> = {
   CSIE: {
     'zh-Hant': '資訊工程學系',
     en: 'Department of Computer Science and Information Engineering',
     short: { 'zh-Hant': '臺大資工系', en: 'NTU CSIE' },
+    // No 臺大 here: the prose form says whose department it is, and a column of
+    // units on the lab's own site does not need telling.
+    graduate: { 'zh-Hant': '資工所', en: 'CSIE' },
   },
   BEBI: {
     'zh-Hant': '生醫電子與資訊學研究所',
@@ -163,6 +192,50 @@ export function departmentLabel(code: string | undefined, locale: Locale): strin
   if (!code) return '';
   const known = DEPARTMENT_LABELS[code.trim()];
   return known ? known[locale] : code;
+}
+
+/**
+ * Degree levels, spelled out per locale.
+ *
+ * Unlike `departmentLabel`, an unrecognised value renders as nothing rather
+ * than as itself. A department code that fell through printed a student id onto
+ * the page once; the lesson generalises, and the set here is two words long, so
+ * there is nothing a typo could be that is worth publishing. What catches the
+ * typo is the test in tests/members-privacy.test.mjs, not the page.
+ */
+const DEGREE_LABELS: Record<string, { 'zh-Hant': string; en: string }> = {
+  masters: { 'zh-Hant': '碩士', en: 'MS' },
+  phd: { 'zh-Hant': '博士', en: 'PhD' },
+};
+
+export function degreeLabel(degree: string | undefined, locale: Locale): string {
+  if (!degree) return '';
+  return DEGREE_LABELS[degree.trim()]?.[locale] ?? '';
+}
+
+/**
+ * The alumni table's 所屬 cell: the unit, then the degree read there.
+ *
+ * The short department form, not the official one the current-members table
+ * uses. Two reasons: the 2008-2022 rows recovered from the previous site
+ * already read "生醫電資所 碩士", so the short form is what the column has
+ * always shown below the fold; and this table gives the unit a fifth of the
+ * width, with the thesis title taking the rest.
+ *
+ * Either half may be missing. A unit with no degree on record, or a degree with
+ * no unit, still prints what is known rather than nothing.
+ */
+export function alumnusProgram(
+  person: { department?: string; degree?: string },
+  locale: Locale,
+): string {
+  const known = person.department ? DEPARTMENT_LABELS[person.department.trim()] : undefined;
+  // Anything not a code is free text from the previous site, which already
+  // reads the way this cell should and is passed through untouched.
+  const unit = known
+    ? (known.graduate ?? known.short)[locale]
+    : (person.department ?? '');
+  return [unit, degreeLabel(person.degree, locale)].filter(Boolean).join(' ');
 }
 
 /**

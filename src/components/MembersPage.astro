@@ -36,7 +36,7 @@ import DataTable from './ds/DataTable.astro';
 import Tag from './ds/Tag.astro';
 import ColophonTable from './ds/ColophonTable.astro';
 import {
-  allAlumni, departmentLabel, getStrings, labAffiliationProse, membersByRole,
+  allAlumni, alumnusProgram, departmentLabel, getStrings, labAffiliationProse, membersByRole,
   type Locale, type Member,
 } from '../lib/data';
 import { pathFor } from '../lib/routes';
@@ -238,9 +238,10 @@ const people = [...grouped.values()].flat().map((member) => ({
           <td>{person.homepage
             ? <a href={person.homepage}>{displayName(person)}</a>
             : displayName(person)}{secondaryName(person) && <span> ({secondaryName(person)})</span>}</td>
-          {/* departmentLabel spells out the vault's codes and returns anything
-              else unchanged, which is what the 2008-2022 rows carry. */}
-          <td class="ds-mono-sm">{departmentLabel(person.department, locale)}</td>
+          {/* Unit and degree in one cell: the alumni table has no per-degree
+              section to carry the level, the way the current-members sections
+              do. Short unit form, matching the 2008-2022 rows below. */}
+          <td class="ds-mono-sm">{alumnusProgram(person, locale)}</td>
           {/* Only a confirmed thesis title, never the vault's working topic. */}
           <td>{person.thesis ?? ''}</td>
         </tr>

@@ -42,6 +42,10 @@ members:
     name_en: Yu-Yuan Yang
   徐銘聰:
     name_en: Ming-Tsung Hsu
+    # Degree and year as recorded below with the rest of the 2026-08-23 batch;
+    # this entry already existed, so the fields are added to it rather than to a
+    # second one. The vault's own note agrees: "校友 · 博士 · 畢業 2018".
+    degree: phd
   張景曜:
     name_en: Ching-Yao Chang # published
   許洸誠:
@@ -52,6 +56,11 @@ members:
     name_en: Yue-Chen Jhong
   李哲宇:
     name_en: Che-Yu Lee
+    # As 徐銘聰 above: part of the 2026-08-23 batch, added to the entry he
+    # already had. The vault has him under 校友 with no year at all.
+    graduated: 2026
+    department: BEBI
+    degree: masters
   # ── Graduating cohort ──────────────────────────────────────────────────
   # The vault lists these six under 現役成員 › 即將畢業, whose only publishable
   # column is the name. Degree level, department and research area therefore come
@@ -83,6 +92,7 @@ members:
     role: alumni
     graduated: 2026
     department: MHI
+    degree: masters
     # SchizoTrain: a video-retrieval virtual-patient system for training
     # assessment of schizophrenia negative symptoms, driven by speech and text.
     area: AI Agent 系統
@@ -107,6 +117,7 @@ members:
     role: alumni
     graduated: 2026
     department: MHI
+    degree: masters
     # Vault topic is Gait Analysis; thesis is a multimodal ML framework for
     # tardive dyskinesia from speech and facial motion.
     area: 步態分析
@@ -124,6 +135,7 @@ members:
     role: alumni
     graduated: 2026
     department: GSB
+    degree: masters
     area: 代謝體學
     area_en: Metabolomics
     # From her own committee invitation and the vault's curated 研究主題 field.
@@ -139,6 +151,7 @@ members:
     role: alumni
     graduated: 2026
     department: BEBI
+    degree: masters
     area: AI Agent 系統
     area_en: AI Agent Systems
     # The vault carries two titles for her. This is the later one, from the
@@ -195,18 +208,100 @@ members:
     # Deliberately blank at her request -- `area: ''` survives the classifier,
     # which would otherwise read "ExoCSC LLM pipeline" as AI Agent Systems.
     area: ''
+  # ── Degrees and graduation years ───────────────────────────────────────
+  # The vault's 校友 table publishes three columns: name, research topic, note.
+  # The note is read for a graduation year and the remainder discarded as
+  # internal status -- so the vault knows the year for some of these people, the
+  # degree for almost none, and the unit for two. The alumni table was showing a
+  # dozen names against an empty 所屬 cell.
+  #
+  # Everything below was supplied by the lab on 2026-08-23, and `degree` is the
+  # level read here -- `masters` or `phd`, printed after the unit. Either half
+  # may be missing: several of these people have a degree on record and no unit,
+  # which prints as the degree alone rather than as nothing.
+  #
+  # Two of the batch (徐銘聰, 李哲宇) already had entries further up and carry
+  # their fields there. Where the lab and the vault disagree, the lab wins and
+  # the disagreement is written down rather than quietly resolved.
   姚柏仰:
     name_en: Po-Yang Yao
+    graduated: 2023
+    degree: masters
   黎芷琪:
     name_en: Chih-Chi Li
+    # Her defense was January 2024, which is where the vault's "畢業 2023" comes
+    # from: that January falls in 學年度 2023. Not a disagreement, two
+    # conventions -- and the column this feeds is headed 年份, so it carries the
+    # calendar year (2026-08-23).
+    graduated: 2024
+    department: BEBI
+    degree: phd
   游子慧:
     name_en: Tzu-Hui Yu
+    department: BEBI
+    degree: masters
   陳韻淇:
     name_en: Yun-Chi Chen
+    graduated: 2026
+    degree: masters
   王恆:
     name_en: Heng Wang
+    department: CSIE
+    degree: masters
   古庭榮:
     name_en: Ting-Jung Ku
+    degree: masters
+  王仁宏:
+    graduated: 2025
+    department: BEBI
+    degree: masters
+  林首志:
+    graduated: 2025
+    # DEPARTMENT DELIBERATELY ABSENT. The lab's answer was 資工所, hedged --
+    # "應該是". A hedge is not a source, and this file has been wrong before by
+    # publishing an inference (five romanised names, removed 2026-08-22). Add
+    # `department: CSIE` once someone has actually checked.
+    degree: masters
+  詹易玹:
+    graduated: 2024
+    department: BEBI
+    degree: masters
+  吳偉業:
+    graduated: 2025
+    department: CSIE
+    degree: masters
+  田傑睿:
+    graduated: 2025
+    degree: masters
+  黃靖蓉:
+    graduated: 2026
+    # Not from the lab's list, which gave the year and the degree only. The
+    # vault's 校友 row carries "校友 · BEBI" in its note, where the parser reads
+    # the year and drops the rest.
+    department: BEBI
+    degree: masters
+  Danielle Penella P. Yu:
+    department: MHI
+    degree: masters
+  林柏嶢:
+    # NOT PUBLISHED, at the lab's instruction (2026-08-23). The vault has him in
+    # the 校友 table with no year, and the site was listing him under 畢業成員 on
+    # the strength of that -- which is not his status. Why it is not is his
+    # business and is deliberately not written here: this file is tracked in a
+    # public repository, and the vault section that would say keeps it private
+    # for the same reason (scripts/lib/vault-members.mjs skips it wholesale).
+    #
+    # Drop this entry when the lab says the record is settled.
+    publish: false
+
+  謝秉翰:
+    degree: masters
+    # Not from the lab's list either. He is one of the few people in both
+    # rosters, and the vault entry wins, which had been costing him the unit and
+    # the year the previous site recorded: alumni-historical.yml has him as
+    # 生醫電資所 碩士, 2018. The vault agrees on the year. The old site's
+    # research topic is NOT carried across -- 論文題目 takes a deposited title.
+    department: BEBI
 
 additional:
   # ---------------------------------------------------------------------------

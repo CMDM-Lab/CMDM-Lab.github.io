@@ -204,6 +204,12 @@ async function main() {
       ...(override.graduated ?? record.graduated
         ? { graduated: override.graduated ?? record.graduated }
         : {}),
+      // Degree read, for alumni. The vault's 校友 table states it in the 備註
+      // cell for three people and says nothing for the rest, and the note's
+      // remainder is discarded as internal status either way -- so this comes
+      // from the overrides file, where the lab's own answer can be recorded per
+      // person along with where it came from.
+      ...(override.degree ? { degree: override.degree } : {}),
       research,
       research_en: override.research_en ?? '',
       // The deposited thesis title, which is a public bibliographic record --
