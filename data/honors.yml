@@ -36,15 +36,50 @@
 # than a translation of the Chinese, and news.yml calls it the same thing.
 
 achievements:
-  # Announced 2026-06-15.
+  # The college's own winners list is dated 2026-05-28 and the lab's note here
+  # said 2026-06-15; the earlier date is the announcement, so it is the one used.
+  #
+  # TWO AWARDS FROM ONE PROGRAMME, and they were one line until the lab pointed
+  # at the list (2026-08-23). Ten groups won across the college: one 特別獎, which
+  # is this, and nine others, one of which is 何明洋's 個人獎 below.
+  #
+  # WHAT THE SPECIAL AWARD WAS FOR was missing, and the list says: the hackathon
+  # project with the Chemicals Administration, top five of 190 teams. That is the
+  # 2025 entry further down, so the same work is on this page twice under two
+  # awards -- which is the fact, not a duplicate, and each citation names its own
+  # award.
+  #
+  # 師生團隊 stays, though the list names fourteen students and no one else: the
+  # award is a student one and the postdoc on the hackathon team is not on it.
+  # The team that did the work is what the sentence describes.
   - citation:
-      zh: 2026 年，曾宇鳳教授指導的師生團隊榮獲「臺大 1975 級電機系系友捐贈科技研究創新獎勵」特別獎。
-      en:  2026, a faculty and student team supervised by Professor Yufeng Jane Tseng received
-        the Special Award of the NTU Electrical Engineering Class of 1975 Alumni Endowed Award
-        for Technology Research Innovation.
+      zh: 2026 年，曾宇鳳教授指導的師生團隊以「AI 綠色化學智匯診斷家」榮獲「臺大 1975 級電機系系友捐贈科技研究創新獎勵」特別獎，為該年度唯一特別獎。
+      en: 2026, a faculty and student team supervised by Professor Yufeng Jane Tseng received
+        the year's only Special Award in the NTU Electrical Engineering Class of 1975 Alumni
+        Endowed Award for Technology Research Innovation, for "AI-Powered Green Chemistry
+        Diagnostic Advisor".
     links:
       - label: NTU BEBI
         url: https://www.bebi.ntu.edu.tw/?p=6889
+      - label: NTU EECS
+        url: https://eecs.ntu.edu.tw/zh_tw/News/Events/-%E7%8D%B2%E7%8D%8E%E5%85%AC%E5%91%8A-115%E5%B9%B4%E8%87%BA%E5%A4%A71975%E7%B4%9A%E9%9B%BB%E6%A9%9F%E7%B3%BB%E7%B3%BB%E5%8F%8B%E6%8D%90%E8%B4%88%E7%A7%91%E6%8A%80%E7%A0%94%E7%A9%B6%E5%89%B5%E6%96%B0%E7%8D%8E%EF%A5%BF%E7%8D%B2%E7%8D%8E%E5%90%8D%E5%96%AE-74829870
+
+  # The individual award in the same programme and the same list, which is where
+  # the details come from: 資工系, 博三, 個人, advisor 曾宇鳳. His own statement on
+  # that list gives the grounds -- first author on both an ECCV paper and one in
+  # npj Digital Medicine.
+  #
+  # He is on this page twice already, for the 2024 Foxconn award and the 2022 best
+  # master's thesis, and in alumni-historical.yml as a 2021 master's graduate who
+  # then read for a doctorate here. He left for Duke after this.
+  - citation:
+      zh: 2026 年，曾宇鳳教授指導的博士生何明洋獲「臺大 1975 級電機系系友捐贈科技研究創新獎勵」個人獎。
+      en: 2026, Ming-Yang Ho, a doctoral student supervised by Professor Yufeng Jane Tseng,
+        received an individual award in the NTU Electrical Engineering Class of 1975 Alumni
+        Endowed Award for Technology Research Innovation.
+    links:
+      - label: NTU EECS
+        url: https://eecs.ntu.edu.tw/zh_tw/News/Events/-%E7%8D%B2%E7%8D%8E%E5%85%AC%E5%91%8A-115%E5%B9%B4%E8%87%BA%E5%A4%A71975%E7%B4%9A%E9%9B%BB%E6%A9%9F%E7%B3%BB%E7%B3%BB%E5%8F%8B%E6%8D%90%E8%B4%88%E7%A7%91%E6%8A%80%E7%A0%94%E7%A9%B6%E5%89%B5%E6%96%B0%E7%8D%8E%EF%A5%BF%E7%8D%B2%E7%8D%8E%E5%90%8D%E5%96%AE-74829870
 
   # Two issue numbers, both correct: the paper appeared in the 59(46) special
   # issue and was picked up for the cover of 59(51) afterwards. Confirmed by the
