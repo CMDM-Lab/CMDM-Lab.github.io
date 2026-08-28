@@ -335,14 +335,16 @@ test('year of study is not rendered on the members page', {
   }
 });
 
-test("the master's roster carries no research-area column", {
+test('the student rosters carry no research-area column', {
   skip: existsSync(path.join(ROOT, 'dist')) ? false : 'run `npm run build` first',
 }, async () => {
-  // The lab asked for this column off the master's table specifically; the
-  // other rosters keep theirs. Checked per locale and structurally: the column
-  // head is the whole of what says the column is there, and below 768px the
-  // mobile record layout labels every cell from that same head, so a leftover
-  // head would print "研究領域" over each row on a phone.
+  // The lab asked for that column off the master's table and then the
+  // undergraduate one, so no roster table carries it. Checked per locale and
+  // structurally: the column head is the whole of what says the column is
+  // there, and below 768px the mobile record layout labels every cell from that
+  // same head, so a head left behind would print 研究領域 over every row on a
+  // phone. The ledger roles still tag their area, which is a value and not this
+  // label, so matching the label is what separates the two.
   const pages = [
     { html: path.join(ROOT, 'dist', 'members', 'index.html'), strings: 'zh.yml' },
     { html: path.join(ROOT, 'dist', 'en', 'members', 'index.html'), strings: 'en.yml' },
@@ -355,24 +357,28 @@ test("the master's roster carries no research-area column", {
     ).label_area;
     assert.ok(label, `data/i18n/${page.strings} declares no label_area`);
 
-    const section = html
-      .split('<section')
-      .find((block) => block.includes('aria-labelledby="role-masters"'));
-    assert.ok(section, `${page.strings}: no master's section on the members page`);
+    const heads = [...html.matchAll(/<th[^>]*>([\s\S]*?)<\/th>/g)].map((m) => m[1].trim());
+    assert.ok(heads.length, `${page.strings}: no table heads on the members page`);
     assert.ok(
-      !section.includes(label),
-      `${page.strings}: the master's roster still heads a column "${label}"`,
+      !heads.includes(label),
+      `${page.strings}: a table on the members page still heads a column "${label}"`,
     );
 
-    // Name and department, and nothing after them. Counted rather than matched,
-    // so a column added back without the label still fails.
-    const rows = section.match(/<tr>[\s\S]*?<\/tr>/g) ?? [];
-    assert.ok(rows.length > 1, `${page.strings}: expected master's rows to check`);
-    for (const row of rows.slice(1)) {
-      assert.equal(
-        (row.match(/<td/g) ?? []).length, 2,
-        `${page.strings}: a master's row has more than name and department: ${row}`,
-      );
+    // Name and unit, and nothing after them. Counted rather than matched, so a
+    // column added back without that label still fails.
+    for (const role of ['masters', 'undergraduate']) {
+      const section = html
+        .split('<section')
+        .find((block) => block.includes(`aria-labelledby="role-${role}"`));
+      assert.ok(section, `${page.strings}: no ${role} section on the members page`);
+      const rows = section.match(/<tr>[\s\S]*?<\/tr>/g) ?? [];
+      assert.ok(rows.length > 1, `${page.strings}: expected ${role} rows to check`);
+      for (const row of rows.slice(1)) {
+        assert.equal(
+          (row.match(/<td/g) ?? []).length, 2,
+          `${page.strings}: a ${role} row has more than name and unit: ${row}`,
+        );
+      }
     }
   }
 });
