@@ -335,6 +335,48 @@ test('year of study is not rendered on the members page', {
   }
 });
 
+test("the master's roster carries no research-area column", {
+  skip: existsSync(path.join(ROOT, 'dist')) ? false : 'run `npm run build` first',
+}, async () => {
+  // The lab asked for this column off the master's table specifically; the
+  // other rosters keep theirs. Checked per locale and structurally: the column
+  // head is the whole of what says the column is there, and below 768px the
+  // mobile record layout labels every cell from that same head, so a leftover
+  // head would print "研究領域" over each row on a phone.
+  const pages = [
+    { html: path.join(ROOT, 'dist', 'members', 'index.html'), strings: 'zh.yml' },
+    { html: path.join(ROOT, 'dist', 'en', 'members', 'index.html'), strings: 'en.yml' },
+  ];
+
+  for (const page of pages) {
+    const html = await readFile(page.html, 'utf8');
+    const label = YAML.parse(
+      await readFile(path.join(ROOT, 'data', 'i18n', page.strings), 'utf8'),
+    ).label_area;
+    assert.ok(label, `data/i18n/${page.strings} declares no label_area`);
+
+    const section = html
+      .split('<section')
+      .find((block) => block.includes('aria-labelledby="role-masters"'));
+    assert.ok(section, `${page.strings}: no master's section on the members page`);
+    assert.ok(
+      !section.includes(label),
+      `${page.strings}: the master's roster still heads a column "${label}"`,
+    );
+
+    // Name and department, and nothing after them. Counted rather than matched,
+    // so a column added back without the label still fails.
+    const rows = section.match(/<tr>[\s\S]*?<\/tr>/g) ?? [];
+    assert.ok(rows.length > 1, `${page.strings}: expected master's rows to check`);
+    for (const row of rows.slice(1)) {
+      assert.equal(
+        (row.match(/<td/g) ?? []).length, 2,
+        `${page.strings}: a master's row has more than name and department: ${row}`,
+      );
+    }
+  }
+});
+
 test('a department publishes as a known code and nothing else', async () => {
   // The column allowlist governs which *column* may be published; it cannot see
   // what a cell holds. One undergraduate's 所屬 cell reads "CSIE <student id>",

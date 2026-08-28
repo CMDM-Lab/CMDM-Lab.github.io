@@ -18,6 +18,11 @@
 //   what anyone is working on this month. The raw topic stays in the data and is
 //   not claimed in the Person structured data.
 //
+//   The research area, on the master's roster. The lab asked for that column
+//   off, for that table alone: doctoral, postdoctoral and staff entries keep
+//   their area tags, the undergraduate table keeps its column, and the field
+//   stays in the data for everyone.
+//
 //   Year of study. The lab asked for it off; the ordering already conveys
 //   seniority. It stays in the data because the sort depends on it.
 //
@@ -75,6 +80,9 @@ const faculty = grouped.get('faculty') ?? [];
 const LEDGER_ROLES = ['staff', 'postdoc', 'phd'];
 // Rosters: a table each, since a long list of names scans better as rows.
 const TABLE_ROLES = ['masters', 'undergraduate', 'current'];
+// Of those, the ones whose table carries a research-area column. `masters` is
+// deliberately absent -- see the note at the top of this file.
+const AREA_TABLE_ROLES = ['undergraduate', 'current'];
 
 const site = Astro.site ?? new URL('https://www.cmdm.tw');
 const membersUrl = new URL(pathFor('members', locale), site).href;
@@ -224,7 +232,7 @@ const people = [...grouped.values()].flat().map((member) => ({
       <DataTable columns={[
         { label: t.label_name, width: '26%' },
         { label: t.label_department },
-        { label: t.label_area, width: '26%' },
+        ...(AREA_TABLE_ROLES.includes(role) ? [{ label: t.label_area, width: '26%' }] : []),
       ]}>
         {grouped.get(role)!.map((member) => (
           <tr>
@@ -234,7 +242,9 @@ const people = [...grouped.values()].flat().map((member) => ({
                 labelled record and `td:empty` is what drops the label of a cell
                 with no value -- and a newline inside the element is a text node,
                 which stops it being empty. */}
-            <td>{area(member) ? area(member).split(' · ').map((one) => <Tag tone="brand">{one}</Tag>) : ''}</td>
+            {AREA_TABLE_ROLES.includes(role) && (
+              <td>{area(member) ? area(member).split(' · ').map((one) => <Tag tone="brand">{one}</Tag>) : ''}</td>
+            )}
           </tr>
         ))}
       </DataTable>
