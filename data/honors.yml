@@ -432,6 +432,22 @@ achievements:
       en: 2022, Professor Yufeng Jane Tseng was named an Outstanding Teacher of the year at
         National Taiwan University.
 
+  # CHECKED AGAINST THE OFFICIAL LIST ON 2026-08-31 AND SHE IS NOT ON IT. NSTC
+  # publishes 「2022 未來科技獎」獲獎名單 as a PDF (81 technologies) at
+  # nstc.gov.tw/nstc/attachments/aaee676b-39a3-497b-8f7c-164b06d0baa9, and it
+  # names 計畫主持人 AND 共同主持人 for every entry -- so an absence there means
+  # something. The only 曾 surnames in the whole file are 曾新穆, 曾大千 and 曾學文.
+  #
+  # The likely entry is #80, 國立臺灣大學「治療思覺失調症的新曙光」, whose PI is
+  # 賴文崧 with 陳儀莊 and 方俊民 as co-PIs. That is the lab's schizophrenia
+  # programme by subject -- 賴文崧 is a co-inventor on the DAAO patents in
+  # publications-legacy.yml, and the 2018 entry further down this file is the
+  # same drug work. #11, 「治療多重系統退化症的新希望」, is also 賴文崧's.
+  #
+  # So "曾宇鳳教授團隊...榮獲" may still be true of the project team while being
+  # wrong about who won it. The sentence is left as the CV has it pending the
+  # lab's word, because the list names only 主持人 and 共同主持人 and someone can
+  # be on a project team without being either.
   - citation:
       zh: 2022 年，曾宇鳳教授團隊於 2022 未來科技展榮獲「未來科技獎」。
       en: 2022, Professor Yufeng Jane Tseng's team received a Future Technology Award at the
@@ -489,6 +505,16 @@ achievements:
       en: 2019, Professor Yufeng Jane Tseng received the NTU Electrical Engineering Class of
         1975 Alumni Endowed Award for Technology Research Innovation.
 
+  # NOT ON THE OFFICIAL LIST EITHER, but here that proves much less than it does
+  # for 2022. 「2019 未來科技突破獎」得獎名單 (88 technologies) at
+  # nstc.gov.tw/nstc/attachments/8f54a774-1c0e-4440-869b-7dfb56b9d6ba has four
+  # columns -- 序號, 技術名稱, 所屬受補助單位, 計畫主持人 -- and no co-PI column at
+  # all, so it cannot rule out anyone who was not the named PI. Checked
+  # 2026-08-31.
+  #
+  # The likely entry is #30, 國立臺灣大學「研發多重系統退化症/小腦共濟失調症新藥物：
+  # 以臨床前小鼠行為表現型技術結合臨床動作檢測」, PI 賴文崧 -- the same collaborator
+  # as the 2022 entry above.
   - citation:
       zh: 2019 年，曾宇鳳教授團隊受邀參加 2019 未來科技展，榮獲「未來科技突破獎」。
       en: 2019, Professor Yufeng Jane Tseng's team was invited to the Future Tech Expo 2019 and
