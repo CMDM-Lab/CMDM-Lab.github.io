@@ -1,28 +1,243 @@
-# Program-committee service, invited talks and journal review activity.
+# Editorial service, society and programme committees, grant review, invited
+# talks and journal review.
 #
 # Migrated from contents/prof_acts_zh.html -- a page that existed but was never
 # reachable: no router entry and no navigation link pointed at it.
+#
+# REWRITTEN FROM THE PI'S AUGUST 2026 CV (YufengJaneTseng-CV-202608-chi-updated
+# .docx, supplied by the lab on 2026-08-31). What the migration left here was
+# the oldest content on the site: the committee list stopped in 2013, the talks
+# in 2012 and the review list in 2012, so a service record that now runs to 2025
+# was published as though it had ended thirteen years ago.
+#
+# ENTRIES ARE EITHER A PLAIN STRING OR A {zh, en} PAIR. The file arrived as
+# English-only strings and getProfessionalActivities() had no locale, so the
+# Chinese page carried an entirely English service record. Half of what the CV
+# lists is Chinese -- ministry review panels, university committees, domestic
+# symposia -- and it now reads in the right language on each page. A plain
+# string is still the right shape for a talk title or a journal name, which is
+# the same text either way; pickLocale() uses it for both locales.
+#
+# CHINESE-NAMED BODIES KEEP THEIR CHINESE NAMES INSIDE THE ENGLISH STRINGS, the
+# same rule honors.yml follows with 安成醫藥基金會: a domestic symposium or
+# foundation usually publishes no English name, and a translation invented here
+# is how a reader ends up unable to look it up. Ministry and agency names are
+# the exception -- those have official English names and they are used.
+#
+# FOUR SECTIONS WHERE THERE WERE THREE. The migrated program_committee list
+# already held editorial-advisor entries, so its old label -- 國際會議程序委員會,
+# "Technical Program Committees" -- was wrong about its own contents before any
+# of this. Editorial work and grant review are their own sections now.
+
+# Journal editorships, editorial boards and editor search committees.
+editorial:
+- zh: 《Analytical Chemistry》主編遴選委員會委員（2025 起）
+  en: Editor-in-Chief Search Committee, Analytical Chemistry (since 2025)
+- zh: 《ACS Chemical Neuroscience》主編遴選委員會委員（2025 起）
+  en: Editor-in-Chief Search Committee, ACS Chemical Neuroscience (since 2025)
+- zh: 《Journal of Cheminformatics》副主編（2024 起）
+  en: Associate Editor, Journal of Cheminformatics (since 2024)
+- zh: 《Scientific Data》編輯委員（2024 起）
+  en: Editorial Board Member, Scientific Data (since 2024)
+- zh: 美國化學學會《Organic Process Research & Development》主編遴選委員會委員（2024 起）
+  en: Editor Search Committee, Organic Process Research & Development, American Chemical Society
+    (since 2024)
+- zh: 《Journal of Computer-Aided Molecular Design》編輯委員（2022 起）
+  en: Editorial Board Member, Journal of Computer-Aided Molecular Design (since 2022)
+- zh: 《Journal of Combinatorial Chemistry and High Throughput Screening》特刊特邀主編（2013）
+  en: Guest Editor-in-Chief, special issue, Journal of Combinatorial Chemistry and High Throughput
+    Screening (2013)
+- zh: 《Journal of Molecular Graphics and Modelling》編輯顧問（2011 起）
+  en: Editorial Advisor, Journal of Molecular Graphics and Modelling (since 2011)
+# THESE TWO ARE THE SAME JOURNAL IN THE SAME YEAR under two different role
+# words, and the CV lists both, so both are here. They may well be one role
+# recorded twice -- worth the lab collapsing them if so.
+- zh: 《Journal of Combinatorial Chemistry & High Throughput Screening》編輯委員（2010 起）
+  en: Editorial Board Member, Journal of Combinatorial Chemistry & High Throughput Screening
+    (since 2010)
+- zh: 《Journal of Combinatorial Chemistry and High Throughput Screening》編輯顧問（2010 起）
+  en: Editorial Advisor, Journal of Combinatorial Chemistry and High Throughput Screening (since
+    2010)
+
+# Learned-society office, publication committees, programme committees and the
+# initiatives she helped found.
+#
+# THE SPARK ROLES ARE ALSO ON THE PROFESSOR PAGE, under 現職. That page says
+# what she currently holds; this one is the service record, and a record with
+# its three SPARK lines cut out because they appear elsewhere would not be one.
+# Teach-Discover-Treat is on both pages for the same reason.
 program_committee:
-- Steering Committee/Scientific Board Member,Collaborative computational drug discovery for neglected
-  diseases(2010)
-- Programming Board,Division of Computers in Chemistry, American Chemistry Society National Meetings(2009)
-- Chair for Drug Discovery Symposium,Division of Computers in Chemistry, American Chemistry Society National
-  Meetings(2009)
-- Media & Member Relations Chair,Division of Computers in Chemistry, American Chemistry Society National
-  Meetings(2009)
-- Member,International society of metabolomics(2007)
-- Member,American Chemical Society(1999)
-- Guest-Editor-in-Chief,The Journal of Combinatorial Chemistry and High Throughput Screening / Special
-  Issue(2013)
-- Editorial Advisor,The Journal of Molecular Graphics and Modelling(2011)
-- Editorial Advisor,The Journal of Combinatorial Chemistry and High Throughput Screening(2010)
-- Scientific Board Member,Collaborative computational drug discovery for neglected diseases. Steering
-  Committee(2010)
-- Ad hoc Grant Reviewer,Agency for Science, Technology and Research (A*STAR), Singapore(2010)
-- Media & Member Relations Chair,Computers in Chemistry Division, American Chemistry Society(1999)
-- Programming Board Member,Computers in Chemistry Division, American Chemistry Society(2009)
-- Chair for Drug Discovery Symposium,Division of Computers in Chemistry, American Chemistry Society National(2009)
+- zh: 美國化學學會農業與食品化學部永續與綠色科技組主席（2024 起）
+  en: Chair, Division of Sustainability and Green Technology, AGFD, American Chemical Society
+    (since 2024)
+- zh: 美國化學學會農業與食品化學部永續與綠色科技組副主席（2022 – 2023）
+  en: Vice-Chair, Division of Sustainability and Green Technology, AGFD, American Chemical Society
+    (2022 – 2023)
+- zh: 美國化學學會出版委員會委員（2021 起）
+  en: Society Committee on Publications, American Chemical Society (since 2021)
+- zh: 美國化學學會董事會與理事會聯合出版委員會，以及 ACS Publications 執行委員會委員（2020 – 2021）
+  en: Joint Board-Council Committee on Publications, and ACS Publications Executives Committee,
+    American Chemical Society (2020 – 2021)
+- zh: 全球 SPARK 執行委員會委員（2018 起）
+  en: Executive Committee, Global SPARK (since 2018)
+- zh: 亞洲 SPARK 主席（2018 起）
+  en: Director, SPARK Asia (since 2018)
+- zh: 史丹佛大學 SPARK 顧問（2017 起）
+  en: Advisor, SPARK at Stanford University, USA (since 2017)
+- zh: Teach-Discover-Treat 指導委員會委員（2011 – 2014）
+  en: Steering Committee, Teach-Discover-Treat (2011 – 2014)
+# The migrated file carried this one three times over, as "Steering
+# Committee/Scientific Board Member", as "Scientific Board Member ... Steering
+# Committee" and once more in its own right. One line, with the CV's own
+# wording, which adds that she is a founder.
+- zh: Collaborative Computational Drug Discovery for Neglected Diseases 共同發起人，指導委員會與科學委員會委員（2010
+    起）
+  en: Steering Committee and founder, Scientific Board, Collaborative Computational Drug Discovery
+    for Neglected Diseases (since 2010)
+# Also duplicated in the migrated file, as "Programming Board" and "Programming
+# Board Member" with the division's name written two ways.
+- zh: 美國化學學會化學資訊分部全國會議程序委員會委員（2010 起）
+  en: Programming Board, Division of Computers in Chemistry, American Chemical Society National
+    Meetings (since 2010)
+# ── The last four are from the migrated list only; the CV does not carry them.
+# ── That file gave each a bare year in brackets without saying whether it meant
+# ── the year of the role or the year it began. For the two memberships below a
+# ── bare year can only mean "since", and they are written that way. For the two
+# ── chairmanships it could mean either, so the year stands as it stood -- and
+# ── the professor page, following the CV, has her chairing the drug discovery
+# ── symposium from 2010 rather than 2009, which is a third reading again.
+#
+# This one was also duplicated, once with the division's name truncated
+# mid-phrase ("American Chemistry Society National").
+- zh: 美國化學學會化學資訊分部藥物開發研討會主席（2009）
+  en: Chair, Drug Discovery Symposium, Division of Computers in Chemistry, American Chemical
+    Society National Meetings (2009)
+# Duplicated too, and the duplicate was dated 1999 -- a year she was a graduate
+# student, so it is not the plausible one of the two.
+- zh: 美國化學學會化學資訊分部媒體與會員關係主席（2009）
+  en: Media and Member Relations Chair, Division of Computers in Chemistry, American Chemical
+    Society (2009)
+# The migrated text reads "International society of metabolomics". The society's
+# own name is the Metabolomics Society and "International Conference of the
+# Metabolomics Society" is its meeting, so the migrated name looks like the two
+# run together; it is kept rather than quietly corrected.
+- zh: 國際代謝體學會會員（2007 起）
+  en: Member, International Society of Metabolomics (since 2007)
+- zh: 美國化學學會會員（1999 起）
+  en: Member, American Chemical Society (since 1999)
+
+# Grant review panels and institutional committees.
+advisory:
+- zh: 法國國家研究署「CE14 生理與病理生理」審查小組審查委員（2024）
+  en: Reviewer, "CE14 - Physiology and pathophysiology" panel, French National Research Agency
+    (2024)
+- zh: 國家科學及技術委員會工程技術研究發展處智慧計算學門複審委員（2023 起）
+  en: Second-stage reviewer, Intelligent Computing programme, Department of Engineering and Technologies,
+    National Science and Technology Council (since 2023)
+- zh: 國立臺灣大學智慧醫療與健康資訊碩士學位學程（Smart MHI）學程會議委員（2022 起）
+  en: Member, programme committee, Master's Program in Smart Medicine and Health Informatics
+    (Smart MHI), National Taiwan University (since 2022)
+- zh: 國立臺灣大學國際學院智慧醫療與健康資訊碩士學位學程（Smart MHI）教師評審委員會委員（2022 起）
+  en: Member, faculty review committee of the International College for the Master's Program in
+    Smart Medicine and Health Informatics (Smart MHI), National Taiwan University (since 2022)
+- zh: 國立臺灣科學教育館青少年科學人才培育計畫評審委員（2022 起）
+  en: Reviewer, youth science talent development programme, National Taiwan Science Education
+    Center (since 2022)
+# The same programme as the 2023 line above, under the ministry's name before
+# 科技部 became 國家科學及技術委員會 in July 2022. Both are in the CV and both stay:
+# they are one continuing role across a renaming, and dropping either would hide
+# half of it.
+- zh: 中華民國科技部工程技術研究發展司智慧計算學門複審委員（2022）
+  en: Second-stage reviewer, Intelligent Computing programme, Department of Engineering and Technologies,
+    Ministry of Science and Technology (2022)
+- zh: 國立臺灣大學與中央研究院生物資訊學國際研究生博士學位學程（TIGP）委員（2021 起）
+  en: Committee member, Taiwan International Graduate Program in Bioinformatics, National Taiwan
+    University and Academia Sinica (since 2021)
+- zh: 中華民國科技部生命科學研究發展司藥學及中醫藥學學門（藥學組）複審委員（2019 – 2020）
+  en: Second-stage reviewer, Pharmacy and Chinese Medicine programme (pharmacy section), Department
+    of Life Sciences, Ministry of Science and Technology (2019 – 2020)
+# THE CV SAYS BOTH THINGS ABOUT THIS BOARD: here, that the term ran 2019 to
+# 2021; in its 現職 section, that she has sat on it since 2019 and still does.
+# The professor page carries it as current, following that section, and flags
+# the same contradiction. Whichever is right, one of the two pages is wrong.
+- zh: 中華民國科技部科學園區審議委員會審議委員（2019 – 2021）
+  en: Review board member, Science Park Review Board, Ministry of Science and Technology (2019
+    – 2021)
+- zh: 新加坡科技研究局（A*STAR）計畫特約審查委員（2010）
+  en: Ad hoc grant reviewer, Agency for Science, Technology and Research (A*STAR), Singapore (2010)
+- zh: 行政院國家科學委員會整合型跨領域計畫審查員（2007 起）
+  en: Grant reviewer, integrated interdisciplinary projects, National Science Council (since 2007)
+
+# Invited talks and presentations.
+#
+# TWO KINDS OF ENTRY, AND THE LIST CHANGES SHAPE PARTWAY DOWN. Everything from
+# 2016 on is the CV's 重要國際演講: the role she held at a named meeting, with
+# where and when. Everything from 2012 back is what the migration left, which
+# recorded talk titles and a month and named no venue at all. They are different
+# records of different things rather than one list in two formats, and neither
+# can be rewritten into the other from what is on hand. The older ones stay
+# plain strings, since a talk's title is its title in either language.
 talks:
+- zh: 2024 年 8 月，美國化學學會 2024 秋季年會分場主持人暨受邀講者（Denver, CO）。
+  en: Session presider and invited speaker, ACS Fall 2024 National Meeting & Exposition, Denver,
+    CO, 18-22 August 2024.
+- zh: 2024 年 6 月，SPARK TAIWAN 學研創新訓練營主持人（臺北）。
+  en: Host, SPARK Taiwan Bootcamp Training for Academic Innovation, Taipei, 24-26 June 2024.
+- zh: 2024 年，臺灣生物物理學會與國際蛋白質工程中心聯合研討會分場主席暨受邀講者（新竹）。
+  en: Session chair and invited speaker, 臺灣生物物理學會與國際蛋白質工程中心聯合研討會, Hsinchu, 2024.
+- zh: 2024 年 5 月，第 38 屆環境分析研討會專題演講（高雄）。
+  en: Keynote speaker, 第38屆環境分析研討會, Kaohsiung, 2-3 May 2024.
+- zh: 2024 年，2024 藥物探索前瞻論壇專題演講（臺北）。
+  en: Keynote speaker, 2024 藥物探索前瞻論壇, Taipei, 2024.
+- zh: 2024 年 1 月，第 29 屆細胞及分子生物新知研討會專題演講（屏東）。
+  en: Keynote speaker, 第29屆細胞及分子生物新知研討會, Pingtung, 24-26 January 2024.
+- zh: 2023 年，臺大藥學 70 週年慶受邀演講（臺北）。
+  en: Invited speaker, 臺大藥學70週年慶, Taipei, 2023.
+- zh: 2023 年，臺灣動物實驗替代科技發展論壇受邀演講（臺北）。
+  en: Invited speaker, 臺灣動物實驗替代科技發展論壇, Taipei, 2023.
+- zh: 2022 年 12 月，第 12 屆世界華人藥物化學研討會暨 2022 年藥物化學研討會受邀演講（廣州）。
+  en: Invited speaker, 第12屆世界華人藥物化學研討會暨2022年藥物化學研討會, Guangzhou, December 2022.
+- zh: 2022 年 12 月，International Workshop on Quantum Information Processing and Applications
+    受邀演講（高雄）。
+  en: Invited speaker, International Workshop on Quantum Information Processing and Applications,
+    Kaohsiung, 9-11 December 2022.
+- zh: 2022 年 4 月，量子電腦論壇受邀演講（臺北）。
+  en: Invited speaker, 量子電腦論壇 (Quantum Computing Forum), Taipei, 7 April 2022.
+- zh: 2022 年，美國化學學會 2022 春季年會受邀演講。
+  en: Invited speaker, ACS Spring 2022 National Meeting & Exposition, USA, 2022.
+- zh: 2021 年，美國化學學會 2021 春季年會理事長永續發展研討會受邀演講。
+  en: Invited speaker, ACS Presidential Symposium on Sustainability, American Chemical Society
+    Spring 2021, USA, 2021.
+- zh: 2021 年，2021 台灣風險分析學會年會受邀演講（臺北）。
+  en: Invited speaker, 2021 Taiwan Society for Risk Analysis, Taipei, 2021.
+- zh: 2020 年，第 18 屆亞洲化學大會暨亞洲化學聯合會第 20 屆大會受邀演講（臺北）。
+  en: Invited speaker, the 18th Asian Chemical Congress and 20th General Assembly of the Federation
+    of Asian Chemical Societies, Taipei, 2020.
+# The CV lists the 2020 showcase twice, identically. One line.
+- zh: 2020 年，Bio Asia International Conference — SPARK SHOWCASE 主持人暨評審（臺北）。
+  en: Host and judge, Bio Asia International Conference - SPARK Showcase, Taipei, 2020.
+- zh: 2020 年，2020 年量子科技研討會受邀演講（臺北）。
+  en: Invited speaker, 2020年量子科技研討會, Taipei, 2020.
+- zh: 2020 年，第一屆台灣量子科技共識論壇受邀演講（臺北）。
+  en: Invited speaker, 第一屆台灣量子科技共識論壇, Taipei, 2020.
+- zh: 2020 年，2020 年度台灣量子計算論壇受邀演講（臺北）。
+  en: Invited speaker, 2020年度台灣量子計算論壇, Taipei, 2020.
+- zh: 2020 年，經濟部第九十二屆藥事論壇講座受邀演講：「邁向 2022 的生技新藥產業發展條例與 AI 在新藥的應用兼論學名藥 ICH M9 指引及問答」（臺北）。
+  en: Invited speaker, 經濟部第九十二屆藥事論壇講座, on the biotech and new drug industry development
+    act towards 2022, AI in new drug development, and the ICH M9 guideline for generics, Taipei,
+    2020.
+- zh: 2019 年 7 月，Bio Asia International Conference — SPARK SHOWCASE 主持人暨評審（臺北）。
+  en: Host and judge, Bio Asia International Conference - SPARK Showcase, Taipei, July 2019.
+- zh: 2019 年 7 月，臺法人工智慧暑期學校專題演講（臺北）。
+  en: Keynote lecturer, Taiwan-French AI summer school, Taipei, July 2019.
+- zh: 2018 年，BIO Asia International Conference「生技製藥與大學合作的經驗」座談主持人（東京）。
+  en: Panel host, BIO Asia International Conference - Lessons on Biopharma Partnerships with
+    Universities, Tokyo, 2018.
+- zh: 2018 年，Bio-investor Forum SPARK SHOWCASE 座談主持人暨發表人（東京）。
+  en: Panel host and presenter, Bio-investor Forum SPARK Showcase, Tokyo, 2018.
+- zh: 2016 與 2017 年，Bio-investor Forum SPARK SHOWCASE 發表人。
+  en: Presenter, Bio-investor Forum SPARK Showcase, 2016 and 2017.
+# ── The migrated talks, 2008 to 2012: titles and a month, no venue. ─────────
 - Metabolomics in sepsis marker discovery(November 2012)
 - 'LeadOp: Structure-based fragment hopping for lead optimization using pre-docked fragment database,
   (Invited talk, Drug Discovery Symposium)(August 2012)'
@@ -61,7 +276,20 @@ talks:
   2010)
 - Metabolomics in Translational Medicine(September 2009)
 - 'BBB Permeable MRI Contrast Agent: are we there yet?(November 2008)'
+
+# Journals reviewed for. Plain strings: a journal's name is its name in either
+# language.
+#
+# THE FIRST THREE CARRY NO YEAR because the CV's reviewer line carries none --
+# it is one sentence naming ten journals. Six of those ten were already here
+# with a year from the migration and keep it; the other four are new, and one of
+# them, "Journal of Toxicological Sciences", is near enough to the migrated
+# "Toxicological Sciences (2007)" that it is taken to be the same journal rather
+# than added twice.
 paper_review:
+- Scientific Reports
+- PLOS One
+- Journal of Molecular Modeling
 - The Korean Journal of Chemical Engineering(2012)
 - Toxicological Sciences(2007)
 - Journal of Chemical Information and Modeling(2006)

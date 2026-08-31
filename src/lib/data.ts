@@ -650,11 +650,26 @@ export function getCommissionedSystems(locale: Locale): CommissionedSystem[] {
     }));
 }
 
-export function getProfessionalActivities(): Record<string, string[]> {
-  const parsed = loadYaml<Record<string, string[]>>('professional-activities.yml', {});
+export function getProfessionalActivities(locale: Locale): Record<string, string[]> {
+  // Entries are either a plain string, used in both locales, or a {zh, en}
+  // pair. The file arrived from the migration as English-only strings, which
+  // put an entirely English service record on the Chinese page; the Chinese
+  // half of the record has Chinese names that no honest translation reaches, so
+  // the pairs carry both. A plain string is still right for a talk title or a
+  // journal name, which is the same text in either language.
+  const parsed = loadYaml<Record<string, (string | Localized<string>)[]>>(
+    'professional-activities.yml', {},
+  );
   // Drop the leading comment key if PyYAML ever emits one.
   return Object.fromEntries(
-    Object.entries(parsed).filter(([key]) => !key.startsWith('_')),
+    Object.entries(parsed)
+      .filter(([key]) => !key.startsWith('_'))
+      .map(([key, entries]) => [
+        key,
+        (entries ?? [])
+          .map((entry) => pickLocale(entry, locale) ?? '')
+          .filter((entry) => entry.trim()),
+      ]),
   );
 }
 

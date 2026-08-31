@@ -12,10 +12,12 @@ import { getProfessionalActivities, getStrings, type Locale } from '../lib/data'
 interface Props { locale: Locale }
 const { locale } = Astro.props;
 const t = getStrings(locale);
-const activities = getProfessionalActivities();
+const activities = getProfessionalActivities(locale);
 
 const SECTION_LABELS: Record<string, string> = {
+  editorial: t.section_editorial,
   program_committee: t.section_program_committee,
+  advisory: t.section_advisory,
   talks: t.section_talks,
   paper_review: t.section_paper_review,
 };

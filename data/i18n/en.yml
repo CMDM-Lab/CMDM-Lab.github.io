@@ -120,10 +120,10 @@ courses_lede: Courses taught by Prof. Yufeng Jane Tseng in the Department of Com
 
 # ── Activities ───────────────────────────────────────────────
 activities_title: Professional Activities
-activities_description: Program committee service, invited talks, and journal review activity of
-  Prof. Yufeng Jane Tseng.
+activities_description: Editorial service, society and committee service, invited talks, and journal
+  review activity of Prof. Yufeng Jane Tseng.
 activities_kicker: Activities
-activities_subtitle: Program committees · Invited talks · Journal review
+activities_subtitle: Editorial service · Committees · Invited talks · Journal review
 activities_lede: Prof. Yufeng Jane Tseng's service record in the international research community.
 
 # ── Professor ────────────────────────────────────────────────
@@ -147,7 +147,9 @@ section_conference_papers: Conference Papers
 section_patents: Patents
 section_books: Books
 section_achievements: Selected Achievements
-section_program_committee: Technical Program Committees
+section_editorial: Editorial Service
+section_program_committee: Society and Program Committees
+section_advisory: Grant Review and Advisory Committees
 section_talks: Invited Talks and Presentations
 section_paper_review: Journal Review
 section_catalogue: Catalogue

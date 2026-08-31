@@ -115,9 +115,9 @@ courses_lede: 曾宇鳳教授於資訊工程學系與相關研究所開設之課
 
 # ── Activities ───────────────────────────────────────────────
 activities_title: 學術活動
-activities_description: 曾宇鳳教授參與之國際會議程序委員會、受邀演講與期刊審稿紀錄。
+activities_description: 曾宇鳳教授的期刊編務、學會與委員會服務、受邀演講與期刊審稿紀錄。
 activities_kicker: 學術活動
-activities_subtitle: 程序委員會 · 受邀演講 · 期刊審稿
+activities_subtitle: 期刊編務 · 學會與委員會 · 受邀演講 · 期刊審稿
 activities_lede: 曾宇鳳教授於國際學術社群的服務紀錄。
 
 # ── Professor ────────────────────────────────────────────────
@@ -138,7 +138,9 @@ section_conference_papers: 會議論文
 section_patents: 專利
 section_books: 專書著作
 section_achievements: 摘錄成就
-section_program_committee: 國際會議程序委員會
+section_editorial: 期刊編務
+section_program_committee: 學會與程序委員會
+section_advisory: 審查與諮詢委員
 section_talks: 受邀演講與發表
 section_paper_review: 期刊審稿
 section_catalogue: 服務清單

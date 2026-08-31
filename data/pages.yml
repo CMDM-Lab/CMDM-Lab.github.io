@@ -396,6 +396,11 @@ professor:
     - 分子模擬軟體首席開發者 (The Chem21 Group, Inc., Lake Forest, USA)（1998 – 2006）
     - 伊利諾大學芝加哥分校 藥物化學與生藥學 博士（2002）
     - 國立臺灣大學 藥學系 學士（1997）
+    # A licence rather than a post or a degree, and the only place on the site
+    # for it: the CV lists it under 專業相關服務, but the Activities page is a
+    # record of service to other people's committees and journals, which this
+    # is not.
+    - 中華民國藥師執照（1997 起）
   biography_zh:
     - 曾宇鳳教授 1997 年於國立臺灣大學藥學系畢業，並於 2002 年取得伊利諾大學芝加哥分校 (UIC) 藥物化學和生藥學博士學位。先後在 2003
       年、2005 年分別於伊利諾大學芝加哥分校、美國國家衛生研究院生物技術資訊中心 (NCBI) 擔任博士後研究員。
@@ -454,6 +459,7 @@ professor:
       (1998 – 2006)
     - PhD in Medicinal Chemistry and Pharmacognosy, University of Illinois at Chicago (2002)
     - BS in Pharmacy, National Taiwan University (1997)
+    - Licensed pharmacist, Republic of China (since 1997)
   biography_en:
     - Professor Yufeng Jane Tseng graduated from the School of Pharmacy at National Taiwan
       University in 1997 and took her doctorate in medicinal chemistry and pharmacognosy at
