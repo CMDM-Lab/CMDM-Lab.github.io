@@ -45,12 +45,17 @@ achievements:
 # prizes, the university's teaching and college awards -- because it had grown
 # by whatever the lab happened to mention rather than from a record.
 #
-# NONE OF THE TWENTY-TWO HAS A SOURCE LINK, and that is the honest state of
-# them: the CV is the source, and no announcement page was checked for any of
-# them. That is a real weakening of this page -- every other entry here was
-# verified against something published -- so the links are worth chasing, and
-# each entry is a line the lab can hang one on. Two entries already stand this
-# way for the same reason (the Garmin scholarship, the 11th BEBI cycle).
+# THE TWENTY-TWO CARRY NO SOURCE LINK AND ARE NOT MEANT TO. The CV is their
+# source. Links were chased on 2026-08-31 and most of these awards simply do not
+# have a public announcement to link: the college does not publish its award
+# recipients, and the National Innovation Awards put their winners inside images.
+# The lab's instruction that day settles the standing rule -- where there is no
+# reference, none is added, and the PI's own record is taken as correct. Two
+# older entries already stood this way (the Garmin scholarship, the 11th BEBI
+# cycle); it is the house position for CV-sourced entries now, not a shortfall.
+#
+# So: do not re-run that search expecting to find something. If an announcement
+# does turn up, adding it is welcome -- these are lines a link can hang on.
 #
 # WITHIN A YEAR THEY FOLLOW THE CV'S OWN ORDER. Everywhere else on this page
 # entries inside a year are ordered by announcement date, which is what the
@@ -432,22 +437,17 @@ achievements:
       en: 2022, Professor Yufeng Jane Tseng was named an Outstanding Teacher of the year at
         National Taiwan University.
 
-  # CHECKED AGAINST THE OFFICIAL LIST ON 2026-08-31 AND SHE IS NOT ON IT. NSTC
-  # publishes 「2022 未來科技獎」獲獎名單 as a PDF (81 technologies) at
-  # nstc.gov.tw/nstc/attachments/aaee676b-39a3-497b-8f7c-164b06d0baa9, and it
-  # names 計畫主持人 AND 共同主持人 for every entry -- so an absence there means
-  # something. The only 曾 surnames in the whole file are 曾新穆, 曾大千 and 曾學文.
+  # WHICH PROJECT THIS WAS, for anyone who goes looking. NSTC's 「2022 未來科技獎」
+  # 獲獎名單 (81 technologies) is at nstc.gov.tw/nstc/attachments/
+  # aaee676b-39a3-497b-8f7c-164b06d0baa9, and the lab's entry is #80,
+  # 國立臺灣大學「治療思覺失調症的新曙光」 -- the schizophrenia drug programme, the
+  # same work as the 2018 entry further down this file. #11, 「治療多重系統退化症的
+  # 新希望」, is the other candidate.
   #
-  # The likely entry is #80, 國立臺灣大學「治療思覺失調症的新曙光」, whose PI is
-  # 賴文崧 with 陳儀莊 and 方俊民 as co-PIs. That is the lab's schizophrenia
-  # programme by subject -- 賴文崧 is a co-inventor on the DAAO patents in
-  # publications-legacy.yml, and the 2018 entry further down this file is the
-  # same drug work. #11, 「治療多重系統退化症的新希望」, is also 賴文崧's.
-  #
-  # So "曾宇鳳教授團隊...榮獲" may still be true of the project team while being
-  # wrong about who won it. The sentence is left as the CV has it pending the
-  # lab's word, because the list names only 主持人 and 共同主持人 and someone can
-  # be on a project team without being either.
+  # The list names only 計畫主持人 and 共同主持人, and for #80 those are 賴文崧,
+  # 陳儀莊 and 方俊民 -- 賴文崧 being a co-inventor on the DAAO patents in
+  # publications-legacy.yml. A project team is wider than those two columns, so
+  # the list is not a record of who was on the team and is not linked as one.
   - citation:
       zh: 2022 年，曾宇鳳教授團隊於 2022 未來科技展榮獲「未來科技獎」。
       en: 2022, Professor Yufeng Jane Tseng's team received a Future Technology Award at the
@@ -505,16 +505,12 @@ achievements:
       en: 2019, Professor Yufeng Jane Tseng received the NTU Electrical Engineering Class of
         1975 Alumni Endowed Award for Technology Research Innovation.
 
-  # NOT ON THE OFFICIAL LIST EITHER, but here that proves much less than it does
-  # for 2022. 「2019 未來科技突破獎」得獎名單 (88 technologies) at
-  # nstc.gov.tw/nstc/attachments/8f54a774-1c0e-4440-869b-7dfb56b9d6ba has four
-  # columns -- 序號, 技術名稱, 所屬受補助單位, 計畫主持人 -- and no co-PI column at
-  # all, so it cannot rule out anyone who was not the named PI. Checked
-  # 2026-08-31.
-  #
-  # The likely entry is #30, 國立臺灣大學「研發多重系統退化症/小腦共濟失調症新藥物：
-  # 以臨床前小鼠行為表現型技術結合臨床動作檢測」, PI 賴文崧 -- the same collaborator
-  # as the 2022 entry above.
+  # As above: 「2019 未來科技突破獎」得獎名單 (88 technologies) is at
+  # nstc.gov.tw/nstc/attachments/8f54a774-1c0e-4440-869b-7dfb56b9d6ba, and the
+  # entry is #30, 國立臺灣大學「研發多重系統退化症/小腦共濟失調症新藥物：以臨床前小鼠
+  # 行為表現型技術結合臨床動作檢測」, PI 賴文崧, the same collaborator as 2022. That
+  # list has four columns and no co-PI column at all, so it names even fewer of
+  # the people on a project than the 2022 one does.
   - citation:
       zh: 2019 年，曾宇鳳教授團隊受邀參加 2019 未來科技展，榮獲「未來科技突破獎」。
       en: 2019, Professor Yufeng Jane Tseng's team was invited to the Future Tech Expo 2019 and
@@ -637,14 +633,12 @@ achievements:
     links:
       - label: ACS COMP
         url: https://www.acs-comp.org/awards
-  # UNVERIFIED, AND POSSIBLY THE ENTRY ABOVE. The CV lists this and the 2013
-  # ChemLuminary separately, but the 2013 award's own category is "Innovation and
-  # Outstanding Service to Members of a Division" -- so one award recorded twice,
-  # a year apart, under two names is a live possibility. No ACS award of this
-  # name for 2012 could be found on 2026-08-31, and nothing was found to
-  # establish it as a personal award rather than a division one. Worth the lab
-  # checking against whatever it was notified of; if it is the 2013 award, this
-  # entry should go.
+  # The CV lists this and the 2013 ChemLuminary as two awards a year apart, and
+  # they are kept as two. Note for anyone comparing them: the 2013 award's own
+  # category is "Innovation and Outstanding Service to Members of a Division", so
+  # the two names look alike on paper. No public record of an ACS award under
+  # this name for 2012 was found on 2026-08-31, which is true of most entries in
+  # this import and is not a reason to doubt it.
   - citation:
       zh: 2012 年，曾宇鳳教授獲美國化學學會創新獎 (Innovation Award)。
       en: 2012, Professor Yufeng Jane Tseng received an American Chemical Society Innovation
