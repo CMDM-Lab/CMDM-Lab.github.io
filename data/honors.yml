@@ -586,10 +586,39 @@ achievements:
       zh: 2013 年，曾宇鳳教授榮獲臺大電機資訊學院傑出研究獎。
       en: 2013, Professor Yufeng Jane Tseng received the Outstanding Research Award of NTU's
         College of Electrical Engineering and Computer Science.
+  # THE CV'S LINE READS AS A PERSONAL AWARD AND IT IS NOT ONE. Checked on
+  # 2026-08-31: ChemLuminary Awards go to ACS divisions, local sections, regional
+  # meetings and division-backed initiatives as bodies, never to an individual in
+  # their own name. The 2013 award went to the Teach-Discover-Treat initiative in
+  # the category "Innovation and Outstanding Service to Members of a Division",
+  # and was accepted on 10 September 2013 at the Indianapolis national meeting on
+  # behalf of the Division of Computers in Chemistry. She sat on
+  # Teach-Discover-Treat's steering committee from 2011 to 2014 -- the Activities
+  # page carries that line -- and presented on the initiative at that same
+  # meeting, which is in the conference list. The sentence says that instead.
+  #
+  # The link is the COMP division's own awards page, whose news archive carries
+  # the 2013 recognition; it was read on 2026-08-31. ACS's own 2013 winners list
+  # is at acs.org/content/acs/en/funding-and-awards/awards/community/
+  # chemluminary/2013-chemluminary-award-winners.html -- it resolves, but renders
+  # client-side and could not be read from here, so it is named and not linked.
   - citation:
-      zh: 2013 年，曾宇鳳教授獲美國化學學會 ChemLuminary 獎。
-      en: 2013, Professor Yufeng Jane Tseng received an American Chemical Society ChemLuminary
-        Award.
+      zh: 2013 年，曾宇鳳教授參與指導委員會的 Teach-Discover-Treat 計畫獲美國化學學會 ChemLuminary
+        獎「對分部會員之創新與傑出服務」獎項。
+      en: 2013, the Teach-Discover-Treat initiative, on whose steering committee Professor
+        Yufeng Jane Tseng served, received an American Chemical Society ChemLuminary Award for
+        Innovation and Outstanding Service to Members of a Division.
+    links:
+      - label: ACS COMP
+        url: https://www.acs-comp.org/awards
+  # UNVERIFIED, AND POSSIBLY THE ENTRY ABOVE. The CV lists this and the 2013
+  # ChemLuminary separately, but the 2013 award's own category is "Innovation and
+  # Outstanding Service to Members of a Division" -- so one award recorded twice,
+  # a year apart, under two names is a live possibility. No ACS award of this
+  # name for 2012 could be found on 2026-08-31, and nothing was found to
+  # establish it as a personal award rather than a division one. Worth the lab
+  # checking against whatever it was notified of; if it is the 2013 award, this
+  # entry should go.
   - citation:
       zh: 2012 年，曾宇鳳教授獲美國化學學會創新獎 (Innovation Award)。
       en: 2012, Professor Yufeng Jane Tseng received an American Chemical Society Innovation
