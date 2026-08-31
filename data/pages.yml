@@ -320,39 +320,159 @@ home_record:
     The lab also runs commissioned systems. Since September 2021 it has delivered GreenN (SAS), the Searching, Assessment and Screening System for Safer Alternative Chemicals, for the Chemicals Administration of the Ministry of Environment: it helps companies weigh a chemical's hazard, how closely it is regulated, and what it can be replaced with, and the project is ongoing. "AI-Powered Green Chemistry Diagnostic Advisor", built on that framework, received a Team Excellence Award at the Presidential Hackathon 2025.
 # Principal investigator detail page, migrated from contents/janetseng_zh.html.
 #
-# NEEDS VERIFICATION. The appointments below are copied verbatim from a page
-# last touched in 2022 and describe roles as of roughly 2018 -- several are
-# almost certainly out of date, and the vice-chair and centre-director terms in
-# particular are fixed-length. Confirm each line before the site goes live
-# rather than republishing stale titles.
+# VERIFIED AND REWRITTEN against the PI's own Chinese CV of August 2026
+# (YufengJaneTseng-CV-202608-chi-updated.docx), supplied by the lab on
+# 2026-08-31. That is the first source this block has ever had, and the
+# verification note that used to stand here was right: three of the nine
+# "current" appointments had ended -- the drug research centre's directorship in
+# 2021, the cognition centre's vice-directorship in 2022 and the department's
+# vice-chairmanship in 2023 -- and this page had gone on publishing all three as
+# current. They are in the career list below now, with the terms the CV gives,
+# and the six current roles the old list did not have are in.
+#
+# EVERY LINE CARRIES ITS TERM, which the old bare-title list did not. That is
+# how a fixed-length appointment goes on being published for four years after it
+# ends with nothing about the page looking wrong. A reader can date each line
+# now, and so can the next person to check this block against a CV.
+#
+# THE CV CONTRADICTS ITSELF IN TWO PLACES. Both are flagged inline below rather
+# than settled quietly: the science-park review board, and the year the NCBI post
+# began.
+#
+# ENGLISH COPY NOW EXISTS. It did not before, so the English page rendered these
+# three lists in Chinese -- the same defect honors.yml went to some length to get
+# rid of, and just as invisible unless you read the English page. Unit names are
+# descriptive renderings except where the repository already had one: 基因體研究中心
+# is "Center of Genomic Medicine" as on the About page, 生醫電子與資訊學研究所 is the
+# institute's own English name as in news.yml, and 智慧醫療與健康資訊碩士學位學程 keeps
+# the "Smart MHI" short form the CV itself uses. Replace any of them with NTU's
+# own English titles where NTU publishes one.
 professor:
+  # 現職, in the CV's own order, which is roughly newest appointment first.
   appointments_zh:
-    - 國立臺灣大學醫學院藥學專業學院藥物研究中心 主任
-    - 神經生物與認知研究中心 副主任
-    - 資訊工程系 副系主任
-    - 資訊工程系／藥學系／生醫電子與資訊學研究所 教授
-    - 基因體研究中心代謝體核心實驗室 主持人
-    - 科技部科學園區審議委員會 委員
-    - 亞洲 SPARK 區域委員會 主席
-    - 台灣生醫與醫材轉譯加值人才培訓計畫 主持人
-    - 美國化學學會藥物化學研討會程序委員會 主席
+    - 國立臺灣大學國際學院智慧醫療與健康資訊碩士學位學程 教授（2022 起）
+    - STB-Stanford Biodesign Program 主持人（2020 起）
+    - 國立臺灣大學藥物研究中心藥物資訊組 組長（2021 起）
+    - 國家理論科學研究中心物理組 核心科學家（2019 起）
+    # THE CV SAYS BOTH THINGS ABOUT THIS ONE. Its 現職 section lists the board as
+    # current from 2019; its 專業相關服務 section lists the same board as
+    # 2019~2021, ended. Kept here because 現職 is the section whose whole job is
+    # to say what is current, but the conflict is real and unresolved -- worth
+    # asking the lab which is right. The agency's name is the current one: 科技部
+    # became 國家科學及技術委員會 in July 2022, and the CV's 現職 line already
+    # uses the new name while the retired 服務 line uses the old.
+    - 國家科學及技術委員會科學園區審議委員會 委員（2019 起）
+    - 亞洲 SPARK 區域委員會 主席（2018 起）
+    - 全球 SPARK 執行委員會 委員（2018 起）
+    - 臺灣生醫與醫材轉譯加值人才培訓計畫 主持人（2017 起）
+    - 國家實驗研究院 研究員（2017 起）
+    - 國立臺灣大學生醫電子與資訊學研究所／資訊工程學系／藥學系 教授（2014 起）
+    # The CV's Chinese reads 美國化學學會藥物態所研討會程序委員會主席, where 藥物態所
+    # is not a unit that exists -- apparently a typo. The wording used here is the
+    # biography's own further down this block ("其藥物開發研討會主席"), and the CV's
+    # English service list names the body: Programming Board, Division of
+    # Computers in Chemistry, ACS National Meetings.
+    - 美國化學學會藥物開發研討會程序委員會 主席（2010 起）
+    - 國立臺灣大學基因體研究中心代謝體核心實驗室 主持人（2009 起）
+  # 學經歷: the CV's 專業經歷 in its own order, then the two degrees.
   background_zh:
-    - 工業技術研究院生醫與醫材研究所 研究顧問
-    - 教學-發現-治療指導委員會 委員
-    - 國立臺灣大學藥物研究中心藥物資訊組 組長
-    - 美國國家衛生研究院國家生物技術資訊中心 (NCBI) 研究員
-    - 分子模擬軟體首席開發者 (The Chem21 Group, Inc., Lake Forest, USA)
-    - 伊利諾大學芝加哥分校 藥物化學與生藥學 博士
-    - 國立臺灣大學 藥學系 學士
+    - 國立臺灣大學資訊工程學系 副主任（2020 – 2023）
+    - 國立臺灣大學神經生物與認知研究中心 副主任（2016 – 2022）
+    - 國立臺灣大學藥物研究中心 主任（2015 – 2021）
+    - 工業技術研究院 特聘研究（2017 – 2018）
+    - 工業技術研究院生醫與醫材研究所 顧問（2017）
+    # Left in English, as the CV's Chinese section does. It is the name of an
+    # initiative rather than a description of one, and the old rendering
+    # 教學-發現-治療指導委員會 is a gloss nobody could search for.
+    - Teach-Discover-Treat 指導委員會 委員（2011 – 2014）
+    - 國立臺灣大學藥物研究中心藥物資訊組 組長（2010 – 2015）
+    - 國立臺灣大學生醫電子與資訊學研究所／資訊工程學系／藥學系 副教授（2008 – 2014）
+    - 國立臺灣大學生醫電子與資訊學研究所／資訊工程學系／藥學系 助理教授（2006 – 2008）
+    # 2004 IS THE CV'S 專業經歷 DATE and it is the one used, being the CV's
+    # dedicated employment section. Two other records say 2005: the biography
+    # below ("2005 年...NCBI"), and the NIH Intramural Training Award the CV
+    # itself dates 2005 – 2006. Worth the lab settling.
+    - 美國國家衛生研究院國家生物技術資訊中心 (NCBI) 研究員（2004 – 2006）
+    - 分子模擬軟體首席開發者 (The Chem21 Group, Inc., Lake Forest, USA)（1998 – 2006）
+    - 伊利諾大學芝加哥分校 藥物化學與生藥學 博士（2002）
+    - 國立臺灣大學 藥學系 學士（1997）
   biography_zh:
     - 曾宇鳳教授 1997 年於國立臺灣大學藥學系畢業，並於 2002 年取得伊利諾大學芝加哥分校 (UIC) 藥物化學和生藥學博士學位。先後在 2003
       年、2005 年分別於伊利諾大學芝加哥分校、美國國家衛生研究院生物技術資訊中心 (NCBI) 擔任博士後研究員。
+    # The last sentence used to read 2015 年起擔任國立臺灣大學藥物研發中心主任, which
+    # was two things at once: a term that ended in 2021 written as if it were
+    # open, and 藥物研發中心 for a centre the CV calls 藥物研究中心 throughout.
     - 曾教授於 2006 年返回臺灣擔任國立臺灣大學資訊工程系助理教授及生醫電子與資訊學研究所合聘教授，並同時擔任國立臺灣大學基因體研究中心代謝體核心實驗室主持人，以及國立臺灣大學藥物研究中心分子模擬小組負責人。2015
-      年起擔任國立臺灣大學藥物研發中心主任。
-    - 曾教授曾擔任《組合化學和高通量篩選雜誌》特刊的特邀主編，並擔任《分子圖形與模擬雜誌》與《組合化學與高通量篩選雜誌》的編輯顧問，亦曾為美國化學學會化學資訊專業程序委員會成員，並擔任其藥物開發研討會主席。
-  # English copy for these lists does not exist in the repository. Until the lab
-  # supplies it, the English page shows the Chinese text with the education
-  # entries it does have in English.
-  appointments_en: []
-  background_en: []
-  biography_en: []
+      至 2021 年擔任國立臺灣大學藥物研究中心主任，2021 年起主持該中心藥物資訊組。
+    # The editorial sentence was entirely in the past tense and stopped at 2013,
+    # while the CV's 專業相關服務 lists four editorial posts currently held. The
+    # second sentence is those. Full list on the Activities page.
+    - 曾教授曾擔任《組合化學和高通量篩選雜誌》特刊的特邀主編，並擔任《分子圖形與模擬雜誌》與《組合化學與高通量篩選雜誌》的編輯顧問，亦曾為美國化學學會化學資訊專業程序委員會成員，並擔任其藥物開發研討會主席。現任《Journal
+      of Cheminformatics》副主編，以及《Scientific Data》與《Journal of Computer-Aided Molecular
+      Design》編輯委員，並自 2024 年起擔任美國化學學會農業與食品化學部永續與綠色科技組主席。
+  appointments_en:
+    - Professor, Master's Program in Smart Medicine and Health Informatics (Smart MHI),
+      International College, National Taiwan University (since 2022)
+    - Director, STB-Stanford Biodesign Program (since 2020)
+    - Head, Drug Informatics Division, Drug Research Center, National Taiwan University (since
+      2021)
+    - Core Scientist, Physics Division, National Center for Theoretical Sciences (since 2019)
+    - Member, Science Park Review Board, National Science and Technology Council (since 2019)
+    - Chair, SPARK Asia Regional Committee (since 2018)
+    - Member, Global SPARK Executive Committee (since 2018)
+    - Director, SPARK Taiwan, the national biomedical and medical device translational training
+      programme (since 2017)
+    - Researcher, National Applied Research Laboratories (since 2017)
+    - Professor, Graduate Institute of Biomedical Electronics and Bioinformatics / Department
+      of Computer Science and Information Engineering / School of Pharmacy, National Taiwan
+      University (since 2014)
+    - Chair, Drug Discovery Symposium programming board, Division of Computers in Chemistry,
+      American Chemical Society (since 2010)
+    - Director, Metabolomics Core Laboratory, Center of Genomic Medicine, National Taiwan
+      University (since 2009)
+  background_en:
+    - Vice-Chair, Department of Computer Science and Information Engineering, National Taiwan
+      University (2020 – 2023)
+    - Deputy Director, Neurobiology and Cognitive Science Center, National Taiwan University
+      (2016 – 2022)
+    - Director, Drug Research Center, National Taiwan University (2015 – 2021)
+    - Distinguished Researcher, Industrial Technology Research Institute (2017 – 2018)
+    - Consultant, Biomedical Technology and Device Research Laboratories, Industrial Technology
+      Research Institute (2017)
+    - Steering Committee, Teach-Discover-Treat (2011 – 2014)
+    - Head, Drug Informatics Division, Drug Research Center, National Taiwan University (2010
+      – 2015)
+    - Associate Professor, Graduate Institute of Biomedical Electronics and Bioinformatics /
+      Department of Computer Science and Information Engineering / School of Pharmacy, National
+      Taiwan University (2008 – 2014)
+    - Assistant Professor, Graduate Institute of Biomedical Electronics and Bioinformatics /
+      Department of Computer Science and Information Engineering / School of Pharmacy, National
+      Taiwan University (2006 – 2008)
+    - Researcher, National Center for Biotechnology Information (NCBI), National Institutes of
+      Health, USA (2004 – 2006)
+    - Principal Molecular Modeling Software Developer, The Chem21 Group, Inc., Lake Forest, USA
+      (1998 – 2006)
+    - PhD in Medicinal Chemistry and Pharmacognosy, University of Illinois at Chicago (2002)
+    - BS in Pharmacy, National Taiwan University (1997)
+  biography_en:
+    - Professor Yufeng Jane Tseng graduated from the School of Pharmacy at National Taiwan
+      University in 1997 and took her doctorate in medicinal chemistry and pharmacognosy at
+      the University of Illinois at Chicago in 2002. She was a postdoctoral researcher at the
+      University of Illinois at Chicago from 2003 and at the National Center for Biotechnology
+      Information (NCBI) of the National Institutes of Health from 2005.
+    - She returned to Taiwan in 2006 as an assistant professor in National Taiwan University's
+      Department of Computer Science and Information Engineering, jointly appointed at the
+      Graduate Institute of Biomedical Electronics and Bioinformatics, and at the same time
+      took charge of the Metabolomics Core Laboratory at the university's Center of Genomic
+      Medicine and of the molecular modelling group at its Drug Research Center. She directed
+      the Drug Research Center from 2015 to 2021, and has headed its drug informatics division
+      since 2021.
+    - She has been guest editor-in-chief of a special issue of the Journal of Combinatorial
+      Chemistry and High Throughput Screening, editorial advisor to the Journal of Molecular
+      Graphics and Modelling and to the Journal of Combinatorial Chemistry and High Throughput
+      Screening, and a member of the programming board of the American Chemical Society's
+      Division of Computers in Chemistry, chairing its drug discovery symposium. She is
+      currently an associate editor of the Journal of Cheminformatics and an editorial board
+      member of Scientific Data and of the Journal of Computer-Aided Molecular Design, and has
+      chaired the Division of Sustainability and Green Technology of the ACS Division of
+      Agricultural and Food Chemistry since 2024.
