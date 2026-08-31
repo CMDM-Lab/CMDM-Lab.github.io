@@ -36,6 +36,37 @@
 # than a translation of the Chinese, and news.yml calls it the same thing.
 
 achievements:
+
+# ── Entries added from the PI's August 2026 CV ──────────────────────────────
+# Twenty-two awards below came from YufengJaneTseng-CV-202608-chi-updated.docx,
+# supplied by the lab on 2026-08-31, and are marked "2026-08 CV". Before that
+# import this list ran from 2015 to 2026 but skipped most of the PI's own awards
+# between 2019 and 2024 -- the National Innovation Awards, the Future Tech Expo
+# prizes, the university's teaching and college awards -- because it had grown
+# by whatever the lab happened to mention rather than from a record.
+#
+# NONE OF THE TWENTY-TWO HAS A SOURCE LINK, and that is the honest state of
+# them: the CV is the source, and no announcement page was checked for any of
+# them. That is a real weakening of this page -- every other entry here was
+# verified against something published -- so the links are worth chasing, and
+# each entry is a line the lab can hang one on. Two entries already stand this
+# way for the same reason (the Garmin scholarship, the 11th BEBI cycle).
+#
+# WITHIN A YEAR THEY FOLLOW THE CV'S OWN ORDER. Everywhere else on this page
+# entries inside a year are ordered by announcement date, which is what the
+# comments above them record; for these there is no announcement date to order
+# by, so the CV's sequence stands in. Their placement between years is real.
+#
+# AWARD NAMES: the same rule as the rest of the file. The Chinese is the
+# authoritative name and the English is a descriptive rendering, not the
+# awarding body's own English title. 景康 stays in Chinese inside its English
+# sentence, as 安成醫藥基金會 does further down and for the same reason -- a
+# guessed romanisation is how a reader ends up unable to look an organisation up.
+#
+# THE TITLE 教授 IS ANACHRONISTIC in the 2005 and 2001 entries: she was a
+# postdoctoral researcher and a doctoral student then. It is kept because this
+# page's rule is that people carry their title, and the sentence identifies who
+# won rather than claiming what she was at the time.
   # The college's own winners list is dated 2026-05-28 and the lab's note here
   # said 2026-06-15; the earlier date is the announcement, so it is the one used.
   #
@@ -292,6 +323,15 @@ achievements:
       - label: NTU BEBI
         url: https://www.bebi.ntu.edu.tw/?p=5724
 
+  # 2026-08 CV. 114 年度 again, and inside the award's name for the same reason
+  # as the two entries above it. Placed last in 2025 because its announcement
+  # date is not known and every other 2025 entry's is; if the college's
+  # announcement turns up and predates 2025-10-22, it belongs higher.
+  - citation:
+      zh: 2025 年，曾宇鳳教授榮獲臺大電機資訊學院 114 年度學術貢獻獎。
+      en: 2025, Professor Yufeng Jane Tseng received the Academic Contribution Award of NTU's
+        College of Electrical Engineering and Computer Science for the 2025 academic year.
+
   # Announced 2024-09-24. The award's own name is in English on the
   # announcement, so it is not translated back into Chinese here.
   - citation:
@@ -316,6 +356,18 @@ achievements:
       - label: NTU BEBI
         url: https://www.bebi.ntu.edu.tw/?p=3505
 
+  # 2026-08 CV, which records this as won by a start-up out of the lab rather
+  # than by the lab itself ("由曾老師實驗室新創公司獲獎"). The company is not named
+  # in the CV and is not named here.
+  #
+  # Placed between the 2024-09-10 and 2024-06-19 announcements on the Taipei
+  # Biotech Awards' usual mid-year timing, which is a guess, not a date.
+  - citation:
+      zh: 2024 年，曾宇鳳教授實驗室衍生的新創公司榮獲臺北生技獎「創新技術獎」製藥暨應用生技組獎項。
+      en: 2024, a start-up spun out of Professor Yufeng Jane Tseng's laboratory received an
+        Innovation Technology Award in the pharmaceuticals and applied biotechnology category
+        of the Taipei Biotech Awards.
+
   # Announced 2024-06-19. The award goes to the student, supervised by the PI --
   # written that way round because that is what the announcement says.
   #
@@ -332,6 +384,24 @@ achievements:
       - label: NTU BEBI
         url: https://www.bebi.ntu.edu.tw/?p=3241
 
+  # 2026-08 CV. Same programme and the same category as the 2016 entry further
+  # down, so the English follows that entry's wording rather than inventing a
+  # second rendering of 學研新創獎.
+  - citation:
+      zh: 2023 年，曾宇鳳教授研究團隊榮獲第 20 屆「國家新創獎─學研新創獎」。
+      en: 2023, Professor Yufeng Jane Tseng's research team received the 20th National
+        Innovation Award in its academic research category.
+
+  # 2026-08 CV, again recorded as won by a start-up out of the lab.
+  #
+  # 精進獎 is the continuation prize the programme gives a previous winner, and
+  # "Continued Innovation Award" is a descriptive rendering of it, not the
+  # organiser's own English name.
+  - citation:
+      zh: 2023 年，曾宇鳳教授實驗室衍生的新創公司榮獲「國家新創精進獎」。
+      en: 2023, a start-up spun out of Professor Yufeng Jane Tseng's laboratory received a
+        Continued Innovation Award in the National Innovation Awards.
+
   # Winners posted 2023-01-16; the prize was presented at the institute's
   # colloquium on 2023-03-06. The year here is the calendar year of both.
   - citation:
@@ -341,6 +411,31 @@ achievements:
     links:
       - label: NTU BEBI
         url: https://www.bebi.ntu.edu.tw/?p=2308
+
+  # 2026-08 CV, all four. Ordered as the CV lists them, and placed above the
+  # 11th BEBI cycle below because that one was announced on 2022-01-03 and none
+  # of these four can have been.
+  - citation:
+      zh: 2022 年，曾宇鳳教授團隊於環境科技論壇獲「視覺設計創新力」獎。
+      en: 2022, Professor Yufeng Jane Tseng's team received an award for innovation in visual
+        design at the Environmental Technology Forum.
+
+  - citation:
+      zh: 2022 年，曾宇鳳教授研究團隊榮獲第 19 屆國家新創獎「國家新創精進獎」。
+      en: 2022, Professor Yufeng Jane Tseng's research team received a Continued Innovation
+        Award in the 19th National Innovation Awards.
+
+  # The CV writes 國立台灣大學 here and 國立臺灣大學 for the 2021 award; 臺 is what
+  # the rest of this site uses.
+  - citation:
+      zh: 2022 年，曾宇鳳教授獲選國立臺灣大學年度績優教師。
+      en: 2022, Professor Yufeng Jane Tseng was named an Outstanding Teacher of the year at
+        National Taiwan University.
+
+  - citation:
+      zh: 2022 年，曾宇鳳教授團隊於 2022 未來科技展榮獲「未來科技獎」。
+      en: 2022, Professor Yufeng Jane Tseng's team received a Future Technology Award at the
+        Future Tech Expo 2022.
 
   # NO SOURCE LINK, deliberately. The 11th cycle's winners were announced on
   # 2022-01-03 on the institute's previous website, which has since been retired;
@@ -354,7 +449,59 @@ achievements:
       en: 2022, Ming-Yang Ho, supervised by Professor Yufeng Jane Tseng, received the Best
         Master's Thesis of the year in the 11th BEBI Research Innovation Awards.
 
+  # 2026-08 CV, the eight entries from 2021, 2020 and 2019. This is the stretch
+  # the list skipped entirely: it went from the 11th BEBI cycle in 2022 straight
+  # to the 2018 showcase.
+  #
+  # The 1975-alumni award appears three times in this file now -- 2019, 2021 and
+  # 2026 -- which is the record: the CV lists it in all three years. Its full
+  # official name is used, as in the 2026 entries, rather than the CV's shorter
+  # 臺大1975級電機系系友科技研究創新獎.
+  - citation:
+      zh: 2021 年，曾宇鳳教授獲選國立臺灣大學績優教師。
+      en: 2021, Professor Yufeng Jane Tseng was named an Outstanding Teacher at National
+        Taiwan University.
+
+  - citation:
+      zh: 2021 年，曾宇鳳教授榮獲臺大電機資訊學院學術貢獻獎。
+      en: 2021, Professor Yufeng Jane Tseng received the Academic Contribution Award of NTU's
+        College of Electrical Engineering and Computer Science.
+
+  - citation:
+      zh: 2021 年，曾宇鳳教授榮獲「臺大 1975 級電機系系友捐贈科技研究創新獎勵」。
+      en: 2021, Professor Yufeng Jane Tseng received the NTU Electrical Engineering Class of
+        1975 Alumni Endowed Award for Technology Research Innovation.
+
+  # The CV gives no category for the 17th and 16th cycles, unlike the 20th and
+  # the 13th, so neither entry claims one.
+  - citation:
+      zh: 2020 年，曾宇鳳教授研究團隊榮獲第 17 屆國家新創獎。
+      en: 2020, Professor Yufeng Jane Tseng's research team received the 17th National
+        Innovation Award.
+
+  - citation:
+      zh: 2020 年，曾宇鳳教授團隊榮獲傑出生技產業獎「年度創新獎」。
+      en: 2020, Professor Yufeng Jane Tseng's team received the year's Innovation Award in the
+        Outstanding Biotechnology Industry Awards.
+
+  - citation:
+      zh: 2019 年，曾宇鳳教授榮獲「臺大 1975 級電機系系友捐贈科技研究創新獎勵」。
+      en: 2019, Professor Yufeng Jane Tseng received the NTU Electrical Engineering Class of
+        1975 Alumni Endowed Award for Technology Research Innovation.
+
+  - citation:
+      zh: 2019 年，曾宇鳳教授團隊受邀參加 2019 未來科技展，榮獲「未來科技突破獎」。
+      en: 2019, Professor Yufeng Jane Tseng's team was invited to the Future Tech Expo 2019 and
+        received a Future Tech Breakthrough Award.
+
+  - citation:
+      zh: 2019 年，曾宇鳳教授研究團隊榮獲第 16 屆國家新創獎。
+      en: 2019, Professor Yufeng Jane Tseng's research team received the 16th National
+        Innovation Award.
+
   # ── The pre-2019 entries ────────────────────────────────────────────────
+  # -- the ones that came over from the old honours page, that is. Entries below
+  # marked "2026-08 CV" were added from the CV instead and were never on it.
   # These came over from the old honours page as Chinese-only strings in its own
   # style ("2018年：…", no closing period), which put two typographic
   # conventions in one list and left the English page showing Chinese in the
@@ -381,6 +528,19 @@ achievements:
     links:
       - label: NTU CSIE
         url: https://www.csie.ntu.edu.tw/intro/news.php?Sn=13448
+
+  # 2026-08 CV. The CV lists the Novartis mentor programme in 2016 and again in
+  # 2017; the 2016 selection is already in the entry two below, which is why
+  # this one reads 再度.
+  - citation:
+      zh: 2017 年，曾宇鳳教授研究團隊再度獲選諾華創投基金（Novartis Venture Fund）全球導師計畫。
+      en: 2017, Professor Yufeng Jane Tseng's research team was again selected for the Novartis
+        Venture Fund's global mentor programme.
+
+  - citation:
+      zh: 2017 年，曾宇鳳教授榮獲臺大電機資訊學院學術貢獻獎。
+      en: 2017, Professor Yufeng Jane Tseng received the Academic Contribution Award of NTU's
+        College of Electrical Engineering and Computer Science.
   # November 2016.
   - citation:
       zh: 2016 年，曾宇鳳教授研究團隊榮獲第十三屆「國家新創獎─學研新創獎」，並獲選為諾華創投基金（Novartis Venture
@@ -391,6 +551,22 @@ achievements:
     links:
       - label: NTU Spotlight
         url: https://www.ntu.edu.tw/spotlight/2016/1021_20161230.html
+
+  # 2026-08 CV. 景康 keeps its Chinese name inside the English sentence, as
+  # 安成醫藥基金會 does below: no English name for it could be checked, and
+  # inventing a romanisation is how a reader ends up unable to look it up.
+  - citation:
+      zh: 2016 年，曾宇鳳教授榮獲景康青年教師獎。
+      en: 2016, Professor Yufeng Jane Tseng received the 景康 Young Faculty Award.
+
+  # 2026-08 CV. Placed above the October 2015 award below on the centre's usual
+  # end-of-year timing for its results conference, which is a guess about the
+  # month, not a date. 國家晶片系統設計中心 has an official English name and it is
+  # used. The CV writes the award as 優良晶片特別設計奬, with a variant form of 獎.
+  - citation:
+      zh: 2015 年，曾宇鳳教授團隊於國家晶片系統設計中心成果發表會榮獲優良晶片特別設計獎。
+      en: 2015, Professor Yufeng Jane Tseng's team received a Special Design Award for an
+        outstanding chip at the results conference of the National Chip Implementation Center.
   # October 2015. The foundation's own English name is not published anywhere I
   # could check, so the English sentence keeps the Chinese name rather than
   # inventing a romanisation of it.
@@ -402,3 +578,32 @@ achievements:
   - citation:
       zh: 2015 年，曾宇鳳教授榮獲 2015 IBM Faculty Award。
       en: 2015, Professor Yufeng Jane Tseng received a 2015 IBM Faculty Award.
+
+  # ── 2026-08 CV: the awards from before this list began ──────────────────────
+  # The old honours page started at 2015, so these five were not migrated: they
+  # were never on the site. The two oldest predate the lab.
+  - citation:
+      zh: 2013 年，曾宇鳳教授榮獲臺大電機資訊學院傑出研究獎。
+      en: 2013, Professor Yufeng Jane Tseng received the Outstanding Research Award of NTU's
+        College of Electrical Engineering and Computer Science.
+  - citation:
+      zh: 2013 年，曾宇鳳教授獲美國化學學會 ChemLuminary 獎。
+      en: 2013, Professor Yufeng Jane Tseng received an American Chemical Society ChemLuminary
+        Award.
+  - citation:
+      zh: 2012 年，曾宇鳳教授獲美國化學學會創新獎 (Innovation Award)。
+      en: 2012, Professor Yufeng Jane Tseng received an American Chemical Society Innovation
+        Award.
+  # The award runs 2005 to 2006 in the CV; the leading year is when it began, as
+  # the year always leads on this page. The NCBI post it was held during is one
+  # of the two dates the CV contradicts itself on -- see data/pages.yml.
+  - citation:
+      zh: 2005 年，曾宇鳳教授於美國國家衛生研究院國家生物技術資訊中心研究期間，獲 2005 至 2006 年度校內研究訓練獎 (Intramural
+        Training Award)。
+      en: 2005, Professor Yufeng Jane Tseng received an Intramural Training Award for 2005 to
+        2006 while at the National Center for Biotechnology Information of the National
+        Institutes of Health in Bethesda, Maryland.
+  - citation:
+      zh: 2001 年，曾宇鳳教授於伊利諾大學芝加哥分校博士班期間，獲計算化學 Charles Bell 獎。
+      en: 2001, Professor Yufeng Jane Tseng received the Charles Bell Award for Computational
+        Chemistry at the University of Illinois at Chicago.
