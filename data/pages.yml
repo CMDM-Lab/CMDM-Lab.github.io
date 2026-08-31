@@ -357,14 +357,12 @@ professor:
     - STB-Stanford Biodesign Program 主持人（2020 起）
     - 國立臺灣大學藥物研究中心藥物資訊組 組長（2021 起）
     - 國家理論科學研究中心物理組 核心科學家（2019 起）
-    # THE CV SAYS BOTH THINGS ABOUT THIS ONE. Its 現職 section lists the board as
-    # current from 2019; its 專業相關服務 section lists the same board as
-    # 2019~2021, ended. Kept here because 現職 is the section whose whole job is
-    # to say what is current, but the conflict is real and unresolved -- worth
-    # asking the lab which is right. The agency's name is the current one: 科技部
-    # became 國家科學及技術委員會 in July 2022, and the CV's 現職 line already
-    # uses the new name while the retired 服務 line uses the old.
-    - 國家科學及技術委員會科學園區審議委員會 委員（2019 起）
+    # THE SCIENCE-PARK REVIEW BOARD IS NOT HERE, and the gap is deliberate. The
+    # CV said both things about it: its 現職 section listed the board as current
+    # from 2019, its 專業相關服務 section as 2019~2021 and ended. The lab settled
+    # it on 2026-08-31 -- the term has ended -- so it belongs to the service
+    # record on the Activities page and not to this list. It was published here
+    # as current for one commit, which is what following 現職 over 服務 cost.
     - 亞洲 SPARK 區域委員會 主席（2018 起）
     - 全球 SPARK 執行委員會 委員（2018 起）
     - 臺灣生醫與醫材轉譯加值人才培訓計畫 主持人（2017 起）
@@ -425,7 +423,6 @@ professor:
     - Head, Drug Informatics Division, Drug Research Center, National Taiwan University (since
       2021)
     - Core Scientist, Physics Division, National Center for Theoretical Sciences (since 2019)
-    - Member, Science Park Review Board, National Science and Technology Council (since 2019)
     - Chair, SPARK Asia Regional Committee (since 2018)
     - Member, Global SPARK Executive Committee (since 2018)
     - Director, SPARK Taiwan, the national biomedical and medical device translational training
