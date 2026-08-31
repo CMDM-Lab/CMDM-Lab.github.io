@@ -33,12 +33,38 @@ conference_papers:
 # Computer Science chapter with a DOI, so putting it here too would show one
 # paper twice on the page. This file is for what the sync cannot reach.
 #
-# The August 2026 ACS Fall talk, "Predicting human liver microsomal stability
-# with a regressive graph neural network" (Chicago, 23-27 August 2026). The CV
-# gives its author list as "YJ Tseng*" followed by "(待補author)" -- authors still
-# to be added. Publishing it as it stands would credit the PI alone for work the
-# CV itself says has other authors, which on a lab's own site under-credits a
-# student. It goes in when the lab supplies the list.
+# Two of the three ACS Fall 2026 abstracts. The lab reports three; the GreenN
+# poster below is the one whose submission record it has supplied (2026-08-31),
+# and the other two are still out.
+#
+# One of them is in the CV: "Predicting human liver microsomal stability with a
+# regressive graph neural network" (Chicago, 23-27 August 2026), whose author
+# list the CV gives as "YJ Tseng*" followed by "(待補author)" -- authors still to
+# be added. Publishing it as it stands would credit the PI alone for work the CV
+# itself says has other authors, which on a lab's own site under-credits a
+# student. Both go in when the lab supplies the details.
+#
+# ── ACS Fall 2026 ───────────────────────────────────────────────────────────
+# From the ACS abstract submission record, supplied by the lab on 2026-08-31:
+# General Posters in Chemical Health and Safety, Division of Chemical Health &
+# Safety, in-person poster. The meeting ran 23-27 August 2026 and this file
+# takes it as presented; if the poster was withdrawn, the entry should go.
+#
+# THE SUBMITTED TITLE READS "(Greenn)". It is written "(GreenN)" here, which is
+# the system's own name and the spelling every other page on this site uses --
+# the ACS system title-cased it. Nothing else about the title is changed.
+#
+# NO ASTERISK IS ASSERTED FROM THE RECORD: it names authors and institutions and
+# does not say who is corresponding. The asterisk follows this file's convention
+# for the PI as last author, as every other lab entry here does.
+#
+# Three of the nine authors are at the Ministry of Environment's Chemicals
+# Administration, the agency that commissions GreenN. The citation form in this
+# file carries no institutions, so that is recorded here instead.
+- 'YT Hsu, PW Du, JC Hong, CW Tsai, TC Kuo, PK Hsiao, HP Kao, SC Lin, YJ Tseng* (2026, Aug). Development of
+  the Guided Risk Evaluation and Environmental Navigation (GreenN) System: A Computational Approach for Greener
+  Chemical Evaluation and Visualization. ACS Fall 2026 National Meeting & Exposition, Chicago, IL. August 23-27,
+  2026.'
 - YC Chen, YJ Tseng* (2024, Nov). Predicting Microsatellite Instability from Histology Images with Dilated Neighborhood
   Attention Transformer in Colorectal Cancer, The IEEE International Conference on Bioinformatics & Bioengineering
   (BIBE2024), Kragujevac, Serbia. Nov 27-29, 2024.

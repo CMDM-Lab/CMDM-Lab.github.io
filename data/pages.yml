@@ -19,7 +19,7 @@
 # tests/content.test.mjs checks each one against the data and fails when they
 # drift, which is how the conference-paper and patent figures below came to be
 # corrected on 2026-08-31 rather than quietly going stale.
-# True on 2026-08-31: 113 journal articles since 2006 (44 since 2020), 97
+# True on 2026-08-31: 113 journal articles since 2006 (44 since 2020), 98
 # conference papers, 45 patents, 8 public services, 37 current members, 67
 # alumni. The home page shows the live figures in its colophon.
 
@@ -73,7 +73,7 @@ about:
       # and are not the lab's output. Corrected on 2026-08-22 at the lab's
       # instruction; the previous wording claimed all 117 since 2003.
       - >-
-        實驗室自 2006 年創立以來發表 113 篇期刊論文，其中 44 篇在 2020 年之後，另有 97 篇會議論文與 45 項專利。我們在 cmdm.tw 網域下維運 8 項公開服務，包含 3Omics、Lipidpedia、CypRules、GC2MS、Chromaligner 與 PITracer，皆開放外部研究者使用。實驗室現有成員 37 人，歷屆成員 67 人。
+        實驗室自 2006 年創立以來發表 113 篇期刊論文，其中 44 篇在 2020 年之後，另有 98 篇會議論文與 45 項專利。我們在 cmdm.tw 網域下維運 8 項公開服務，包含 3Omics、Lipidpedia、CypRules、GC2MS、Chromaligner 與 PITracer，皆開放外部研究者使用。實驗室現有成員 37 人，歷屆成員 67 人。
   en:
     paragraphs:
       - >-
@@ -93,7 +93,7 @@ about:
       # See the note on the Chinese paragraph above: the count starts at the
       # lab's founding in 2006, not at the first entry in the journal list.
       - >-
-        Since the lab was founded in 2006 it has published 113 journal articles, 44 of them since 2020, together with 97 conference papers and 45 patents. We maintain eight public services under cmdm.tw -- among them 3Omics, Lipidpedia, CypRules, GC2MS, Chromaligner and PITracer -- all open to external researchers. The lab currently has 37 members and 67 alumni.
+        Since the lab was founded in 2006 it has published 113 journal articles, 44 of them since 2020, together with 98 conference papers and 45 patents. We maintain eight public services under cmdm.tw -- among them 3Omics, Lipidpedia, CypRules, GC2MS, Chromaligner and PITracer -- all open to external researchers. The lab currently has 37 members and 67 alumni.
 
 # shows rather than written from scratch:
 #
