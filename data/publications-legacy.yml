@@ -7,7 +7,112 @@
 #
 # Entries are free-text citations, matching how the old site rendered them. The
 # trailing asterisk on an author marks the corresponding author.
+#
+# EXTENDED FROM THE PI'S AUGUST 2026 CV (YufengJaneTseng-CV-202608-chi-updated
+# .docx, supplied by the lab on 2026-08-31). All three sections stopped well
+# short of the record: conference papers at 2016, patents at the early filings,
+# and books at the two English chapters. Thirty-three conference papers,
+# twenty-nine patents and five books came off the CV.
+#
+# NEW ENTRIES KEEP THE CV'S OWN CITATION FORM rather than being recast into the
+# migrated entries' one. There is no single migrated form to match -- the
+# scraped citations use semicolons in one entry and commas in the next, and
+# spaces before commas in both -- so recasting sixty-seven citations would mean
+# inventing a house style while retyping author lists and patent numbers by
+# hand, and a mistyped author list or patent number is a worse fault than two
+# citation styles on one page. Light typographic tidying was done and nothing
+# else: doubled spaces closed up, a stray "and," and "YJ. Tseng" fixed, and the
+# CV's 本人為通訊作者 annotations dropped, since the asterisk already says it.
 conference_papers:
+# ── 2017 to 2024, from the CV ────────────────────────────────────────────────
+# TWO THINGS THE CV HAS HERE ARE DELIBERATELY NOT BELOW.
+#
+# The ECCV 2024 paper on dense normalisation, which the CV lists twice -- once
+# as the proceedings entry and once as the Milan presentation. The automated
+# sync already reaches it: it is in publications.yml as a Lecture Notes in
+# Computer Science chapter with a DOI, so putting it here too would show one
+# paper twice on the page. This file is for what the sync cannot reach.
+#
+# The August 2026 ACS Fall talk, "Predicting human liver microsomal stability
+# with a regressive graph neural network" (Chicago, 23-27 August 2026). The CV
+# gives its author list as "YJ Tseng*" followed by "(待補author)" -- authors still
+# to be added. Publishing it as it stands would credit the PI alone for work the
+# CV itself says has other authors, which on a lab's own site under-credits a
+# student. It goes in when the lab supplies the list.
+- YC Chen, YJ Tseng* (2024, Nov). Predicting Microsatellite Instability from Histology Images with Dilated Neighborhood
+  Attention Transformer in Colorectal Cancer, The IEEE International Conference on Bioinformatics & Bioengineering
+  (BIBE2024), Kragujevac, Serbia. Nov 27-29, 2024.
+- YJ Tseng* (2024, Aug). Quantum Computing for Natural Product Structure Elucidation. ACS Fall 2024 National Meeting
+  & Exposition, Denver, CO. August 18-22, 2024.
+- PY Yao, TC Kuo, YK Wang, HH Chung, YH Chen, CH Chen, DZ Luo, CC Hsu, WS Lai, YJ Tseng* (2024, Jun). AI-enhanced
+  Spatial Metabolomics Utilizing Mass Spectrometry Imaging in Schizophrenic Mouse Brain. Metabolomics 2024, Osaka,
+  Japan. June 16-20, 2024.
+- CY Chang, MC Kuo, YJ Tseng* (2024, Apr). Exploring Lipid Disturbances and its Spatial Association with a-Synuclein
+  Aggregation in MSA Patient Brain Regions via Desorption Electrospray Ionization Mass Spectrometry Imaging. 2024
+  AAN Annual Meeting, Denver, CO. April 13-18, 2024.
+- MY Ho, MC Kuo, CS Chen, RM Wu, CC Chuang, CS Shih, YJ Tseng* (2024, Apr). Pathological Gait Analysis with an Open-source
+  Cloud-enabled Platform Empowered by Semi-supervised Learning—PathoOpenGait. 2024 AAN Annual Meeting, Denver, CO.
+  April 13-18, 2024.
+- C Lee, PH Wang, YJ Tseng* (2023, Aug). Exploration of Quantum-Inspired Computing for Natural Product Structure
+  Elucidation. ACS Fall 2023 National Meeting & Exposition, San Francisco, CA.
+- 'PH Kuo, YC Jhong, TC Kuo, CH Kuo, YJ Tseng* (2023, Jun). CBDB: A clinical breathomics database. Metabolomics
+  2023, Niagara Falls, Canada.'
+- CY Chang, MC Kuo, YK Wang, HH Chun, YS Chen, ZX Chen, CC Hsu, YJ Tseng* (2023, Jun). Metabolomic Alterations in
+  Different Brain Regions of Multiple System Atrophy using DESI-MSI. Metabolomics 2023, Niagara Falls, Canada.
+- CY Chang, YJ Tseng* (2023, Jun). Correlating α-Synuclein Accumulation with Metabolomic Alterations in Different
+  Brain Regions of Multiple System Atrophy using DESI-MSI. Metabolomics 2023, Niagara Falls, Canada.
+- CC Li*, YJ Tseng, AM Wo (2023, May). Association of bacterial extracellular vesicles in human stool, plasma and
+  gut microbiota using a composite purification method. ISEV2023 Annual Meeting, Seattle, WA.
+- PH Wang, YY Yang, YJ Tseng* (2022, Aug). QSAR model of carcinogenicity based on data from GreenScreen Hazard Assessment.
+  ACS Fall 2022 National Meeting & Exposition, Chicago, IL.
+- TC Kuo, PH Wang, YK Wang, YY Yang, CY Chang, PY Yao, YC Jhong, CY Lee, YJ Tseng* (2022, Aug). Benchmark Dataset
+  for Hazardous Substances for Safer Alternative Chemicals. ACS Fall 2022 National Meeting & Exposition, Chicago,
+  IL.
+- YK Wang, CY Chang, YY Yang, YJ Tseng* (2022, Aug). Current Trends in Safer Alternatives and Risk Assessment. ACS
+  Fall 2022 National Meeting & Exposition, Chicago, IL.
+- YJ Tseng* (2022, Aug). Sustainability and green technology – in silico databases, and tools. ACS Fall 2022 National
+  Meeting & Exposition, Chicago, IL.
+- YJ Tseng* (2022, Mar). Big data and deep learning in agriculture and food chemistry - considerations and practice.
+  ACS Spring 2022 National Meeting & Exposition, San Diego, CA.
+- C Lee, YJ Tseng* (2022, Mar). Competitive analysis of trending deep-learning-based protein modelling methods on
+  G-protein coupling receptors. ACS Spring 2022 National Meeting & Exposition, San Diego, CA.
+- YY Yang, YJ Tseng* (2022, Mar). Competitive analysis of different SARS-CoV-2 variants in United Kingdom, Israel,
+  South Africa, Brazil and Peru. ACS Spring 2022 National Meeting & Exposition, San Diego, CA.
+- H Liu, CW Lee, YJ Tseng* (2021, Aug). Optimizing all properties – A novel multi-objective ADMET modeling for structure
+  optimization using reinforcement graph constitutional neural networks. ACS Fall 2021 National Meeting & Exposition,
+  Atlanta, GA.
+- 'YJ Tseng* (2021, Mar). Sustainability: Advances and Applications of Chemicals Prediction Tools in Food Safety
+  and Security. ACS Spring 2021 National Meeting & Exposition, San Antonio, TX.'
+- H Liu, CW Lee, BH Su, YJ Tseng* (2020, Aug). Training strategy for unbalanced small datasets in deep learning.
+  ACS Fall 2020 National Meeting & Exposition, San Francisco, CA.
+- H Liu, YC Tien, TS Cho, BH Su, YJ Tseng* (2020, Aug). Graph Convolution Neural Network in Environmental Carcinogenicity
+  Prediction. ACS Fall 2020 National Meeting & Exposition, San Francisco, CA.
+- 'H Liu, CW Lee, BH Su, YJ Tseng* (2020, Aug). A New explainable graph convolution network based on discrete method:
+  using water solubility as an example. ACS Fall 2020 National Meeting & Exposition, San Francisco, CA.'
+- H Liu, CW Lee, BH Su, YJ Tseng* (2020, Aug). Explainable AI in toxicity prediction. ACS Fall 2020 National Meeting
+  & Exposition, San Francisco, CA.
+- YJ Tseng* (2020, Aug). Graph convolution neural network in environmental carcinogenicity prediction. ACS Fall
+  2020 National Meeting & Exposition, San Francisco, CA, August 17-20, 2020.
+- A Renn, BH Su, H Liu, YJ Tseng* (2019, Apr). Mouse-Liver Microsomal Stability Prediction using Graph Convolutional
+  Neural Networks. Spring 2019 ACS National Meeting, Orlando, FL.
+- H Liu, BH Su, TS Cho, YC Tien, YJ Tseng* (2019, Apr). Graph based neural network model for predicting aqueous
+  solubility. Spring 2019 ACS National Meeting, Orlando, FL.
+- 'PH Wang, YS Tu, YJ Tseng* (2019, Apr). PgpRules: a Decision Tree Based Prediction Server for P-glycoprotein Substrates
+  and Inhibitors. Spring 2019 ACS National Meeting, Orlando, FL.'
+- TW Shieh, BH Su, YJ Tseng* (2019, Apr). Predicting human liver microsomal stability. Spring 2019 ACS National
+  Meeting, Orlando, FL.
+- YS Tu, YJ Tseng, M Appell (2018, Aug). Quantum molecular dynamics and cheminformatics study of mycotoxin toxicity
+  and detection to improve food safety. 256th American Chemical Society National Meeting and Exposition, Boston,
+  Massachusetts.
+- YS Tu, YJ Tseng, M Appell (2018, Mar). Density functional theory and ab initio investigation of the detection
+  properties of cyromazine. 255th American Chemical Society National Meeting and Exposition, New Orleans, Louisiana.
+- MT Hsu, LP Chow, TY Ling, HW Chen, CH Kuo, YJ Tseng* (2017, Jun). Molecular Landscape of Lung Cancer Stem Cell-Derived
+  Exosomes. 2017 Exosomes and Liquid Biopsies Asia, Taoyuan, Taiwan.
+- PH Wang, YJ Tseng* (2017, Apr). Auto Generation of Markush Structure for Maximizing Composition Patent Claim.
+  253rd American Chemical Society National Meeting & Expo, San Francisco, California.
+- BH Su, D Huang, OA Lin, YJ Tseng* (2017, Apr). Computationally Predicted Signatures of EGFR Exon 20 Insertions
+  In Non-Small Cell Lung Cancer and Its Response to Irreversible Inhibitors. 253rd American Chemical Society National
+  Meeting & Expo, San Francisco, California.
 - Wang, S. Y., Tseng, Y. J.*, Tseng, T. H., Kuo, C. Y., Huang, P. K., Huang, Y. M., Hsieh, W. C., Huang,
   Y. J., Kuo, P. H., Yu, S. A., Tian, W. C., Lee, S. C., and Lu, S.-S., “Lung Cancer Associated Volatile
   Organic Compounds Detection Using a Novel Portable Gas Chromatographic Device Integrated MEMS and CMOS
@@ -180,6 +285,76 @@ conference_papers:
 - Tseng YJ*, Wang SY, Tsai LL, Kuo CH, Metabolic profiling on breast cancer cell lines in hypoxia, 4th
   Metabolomics Society Conference, Boston, USA, September 2-6, 2008
 patents:
+# ── From the CV ─────────────────────────────────────────────────────────────
+# THE SAME TWO INVENTIONS RECUR ACROSS FIFTEEN JURISDICTIONS, which is what the
+# list looks like when a family is filed internationally rather than a sign of
+# duplicated entries: one on the use of known compounds as D-amino acid oxidase
+# inhibitors, one on substituted benzimidazole derivatives as DAAO inhibitors.
+#
+# THE DATES ARE NOT ALL THE SAME KIND OF DATE. The first six carry grant dates.
+# The September 2017 and April 2015 groups carry the family's priority date --
+# their numbers are application numbers, several from later series than the year
+# suggests -- so those years say when the family was filed, not when each office
+# granted it. The CV presents them this way and so does this file; a reader who
+# needs grant dates needs the register.
+#
+# The Taiwanese patents keep their Chinese titles and inventor names, as a
+# citation does: that is what the certificate says.
+- Yufeng Jane Tseng, Chung-Ming Sun, Wen-Sung Lai, Hai-Gwo Hwu, Chih-Min Liu, Yu-Li Liu, “Use of known compounds
+  as D-amino acid oxidase inhibitors”, CN Patent No. 201580021632.9, November 2020.
+- 曾宇鳳、孫仲銘、賴文崧、胡海國、劉智民、劉玉麗，「作為 D-胺基酸氧化酶抑制劑之已知化合物之用途」，中華民國專利 I675660 號，2019 年 11 月。
+- Yufeng Jane Tseng, Chung-Ming Sun, Wen-Sung Lai, Hai-Gwo Hwu, Chih-Min Liu, Yu-Li Liu, “Use of known compounds
+  as D-amino acid oxidase inhibitors”, AU Patent No. 2015253099, July 2019.
+- 曾宇鳳、孫仲銘、賴文崧、胡海國、劉智民、劉玉麗，「作為 D-胺基酸氧化酶 (DAAO) 抑制劑之新穎經取代苯并咪唑衍生物」，中華民國專利 I659022 號，2019 年 5 月。
+- Yufeng Jane Tseng, Chung-Ming Sun, Wen-Sung Lai, Hai-Gwo Hwu, Chih-Min Liu, Yu-Li Liu, “Use of known compounds
+  as D-amino acid oxidase inhibitors”, US Patent No. 9,868,975, January 2018.
+- 曾宇鳳、林芳宇，「為先導藥物最適化之以結構為基礎的片段遷越及合成可行性之改良」，中華民國專利 I611053 號，2018 年 1 月。
+- Yufeng Jane Tseng, Chung-Ming Sun, Wen-Sung Lai, Hai-Gwo Hwu, Chih-Min Liu, Yu-Li Liu, “Novel substituted benzimidazole
+  derivatives as D-amino acid oxidase (DAAO) inhibitors”, EP Patent No. 17851543.3, September 2017.
+- Yufeng Jane Tseng, Chung-Ming Sun, Wen-Sung Lai, Hai-Gwo Hwu, Chih-Min Liu, Yu-Li Liu, “Novel substituted benzimidazole
+  derivatives as D-amino acid oxidase (DAAO) inhibitors”, US Patent No. 16/332,628, September 2017.
+- Yufeng Jane Tseng, Chung-Ming Sun, Wen-Sung Lai, Hai-Gwo Hwu, Chih-Min Liu, Yu-Li Liu, “Novel substituted benzimidazole
+  derivatives as D-amino acid oxidase (DAAO) inhibitors”, CN Patent No. 201780056602.0, September 2017.
+- Yufeng Jane Tseng, Chung-Ming Sun, Wen-Sung Lai, Hai-Gwo Hwu, Chih-Min Liu, Yu-Li Liu, “Novel substituted benzimidazole
+  derivatives as D-amino acid oxidase (DAAO) inhibitors”, JP Patent No. 2019-513382, September 2017.
+- Yufeng Jane Tseng, Chung-Ming Sun, Wen-Sung Lai, Hai-Gwo Hwu, Chih-Min Liu, Yu-Li Liu, “Novel substituted benzimidazole
+  derivatives as D-amino acid oxidase (DAAO) inhibitors”, KR Patent No. 2019-7010035, September 2017.
+- Yufeng Jane Tseng, Chung-Ming Sun, Wen-Sung Lai, Hai-Gwo Hwu, Chih-Min Liu, Yu-Li Liu, “Novel substituted benzimidazole
+  derivatives as D-amino acid oxidase (DAAO) inhibitors”, AU Patent No. 2017326359, September 2017.
+- Yufeng Jane Tseng, Chung-Ming Sun, Wen-Sung Lai, Hai-Gwo Hwu, Chih-Min Liu, Yu-Li Liu, “Novel substituted benzimidazole
+  derivatives as D-amino acid oxidase (DAAO) inhibitors”, CA Patent No. 3,036,250, September 2017.
+- Yufeng Jane Tseng, Chung-Ming Sun, Wen-Sung Lai, Hai-Gwo Hwu, Chih-Min Liu, Yu-Li Liu, “Novel substituted benzimidazole
+  derivatives as D-amino acid oxidase (DAAO) inhibitors”, MX Patent No. MX/a/2019/002726, September 2017.
+- Yufeng Jane Tseng, Chung-Ming Sun, Wen-Sung Lai, Hai-Gwo Hwu, Chih-Min Liu, Yu-Li Liu, “Novel substituted benzimidazole
+  derivatives as D-amino acid oxidase (DAAO) inhibitors”, SG Patent No. 11201902053Y, September 2017.
+- Yufeng Jane Tseng, Chung-Ming Sun, Wen-Sung Lai, Hai-Gwo Hwu, Chih-Min Liu, Yu-Li Liu, “Novel substituted benzimidazole
+  derivatives as D-amino acid oxidase (DAAO) inhibitors”, IL Patent No. 265108, September 2017.
+- Yufeng Jane Tseng, Chung-Ming Sun, Wen-Sung Lai, Hai-Gwo Hwu, Chih-Min Liu, Yu-Li Liu, “Novel substituted benzimidazole
+  derivatives as D-amino acid oxidase (DAAO) inhibitors”, NZ Patent No. 751050, September 2017.
+- Yufeng Jane Tseng, Chung-Ming Sun, Wen-Sung Lai, Hai-Gwo Hwu, Chih-Min Liu, Yu-Li Liu, “Novel substituted benzimidazole
+  derivatives as D-amino acid oxidase (DAAO) inhibitors”, HK Patent No. unassigned as of the CV, September 2017.
+- Yufeng Jane Tseng, Chung-Ming Sun, Wen-Sung Lai, Hai-Gwo Hwu, Chih-Min Liu, Yu-Li Liu, “Use of known compounds
+  as D-amino acid oxidase inhibitors”, EP Patent No. 15786611.2, April 2015.
+- Yufeng Jane Tseng, Chung-Ming Sun, Wen-Sung Lai, Hai-Gwo Hwu, Chih-Min Liu, Yu-Li Liu, “Use of known compounds
+  as D-amino acid oxidase inhibitors”, EP Patent No. 19150604.7, April 2015.
+- Yufeng Jane Tseng, Chung-Ming Sun, Wen-Sung Lai, Hai-Gwo Hwu, Chih-Min Liu, Yu-Li Liu, “Use of known compounds
+  as D-amino acid oxidase inhibitors”, JP Patent No. 2017-510438, April 2015.
+- Yufeng Jane Tseng, Chung-Ming Sun, Wen-Sung Lai, Hai-Gwo Hwu, Chih-Min Liu, Yu-Li Liu, “Use of known compounds
+  as D-amino acid oxidase inhibitors”, JP Patent No. 2020-035496, April 2015.
+- Yufeng Jane Tseng, Chung-Ming Sun, Wen-Sung Lai, Hai-Gwo Hwu, Chih-Min Liu, Yu-Li Liu, “Use of known compounds
+  as D-amino acid oxidase inhibitors”, KR Patent No. 10-2016-7032409, April 2015.
+- Yufeng Jane Tseng, Chung-Ming Sun, Wen-Sung Lai, Hai-Gwo Hwu, Chih-Min Liu, Yu-Li Liu, “Use of known compounds
+  as D-amino acid oxidase inhibitors”, CA Patent No. 2,946,153, April 2015.
+- Yufeng Jane Tseng, Chung-Ming Sun, Wen-Sung Lai, Hai-Gwo Hwu, Chih-Min Liu, Yu-Li Liu, “Use of known compounds
+  as D-amino acid oxidase inhibitors”, MX Patent No. MX/a/2016/011551, April 2015.
+- Yufeng Jane Tseng, Chung-Ming Sun, Wen-Sung Lai, Hai-Gwo Hwu, Chih-Min Liu, Yu-Li Liu, “Use of known compounds
+  as D-amino acid oxidase inhibitors”, SG Patent No. 11201607166X, April 2015.
+- Yufeng Jane Tseng, Chung-Ming Sun, Wen-Sung Lai, Hai-Gwo Hwu, Chih-Min Liu, Yu-Li Liu, “Use of known compounds
+  as D-amino acid oxidase inhibitors”, IL Patent No. 248567, April 2015.
+- Yufeng Jane Tseng, Chung-Ming Sun, Wen-Sung Lai, Hai-Gwo Hwu, Chih-Min Liu, Yu-Li Liu, “Use of known compounds
+  as D-amino acid oxidase inhibitors”, NZ Patent No. 723652, April 2015.
+- Yufeng Jane Tseng, Chung-Ming Sun, Wen-Sung Lai, Hai-Gwo Hwu, Chih-Min Liu, Yu-Li Liu, “Use of known compounds
+  as D-amino acid oxidase inhibitors”, HK Patent No. 17106840.0, April 2015.
 - Tseng, Y. J., Lin, F. Y., Structure-Based Fragment Hopping For Lead Optimization And Improvement In
   Synthetic Accessibility, U.S. Patent No. 13778858, February 27, 2013.
 - Fu, W. M., Kang, K. H., Liou, H. H., Liou, H. C., Tseng, Y. J., Quinazolinone and quinazoline compounds
@@ -217,6 +392,20 @@ patents:
 - Tseng, Yufeng; Wang Kuo-Ching, A Distribution-based Classification Method for Baseline Correction of
   Metabolomic 1D Proton Nuclear Magnetic Resonance Spectra, February, 2013, Patent Pending
 books:
+# ── From the CV, which files these under 專書章節 ─────────────────────────────
+# THREE OF THE FIVE ARE NEWSLETTER ARTICLES, in the Food and Drug
+# Administration's 管制藥品簡訊, rather than book chapters; one is a translated
+# book and one a chapter in an industry yearbook. They are here because the CV's
+# 專書章節 section is where it puts them, and splitting a five-item list into
+# three sections would say more about this file than about the work.
+#
+# Chinese citations stay in Chinese on both pages. A citation is not translated
+# -- the reader looking for 管制藥品簡訊 95 needs the name it was published under.
+- 曾宇鳳（民 112 年）。電腦模擬評估苯乙胺類物質藥毒理作用之研究。衛生福利部食品藥物管理署管制藥品簡訊，95，1-3。
+- 曾宇鳳（譯）（2022）。學界藥品開發實用指南：SPARK 方法論（原作者：Daria Mochly-Rosen）。臺北市：國立臺灣大學。
+- 曾宇鳳（民 111 年 4 月）。以電腦模擬方式建置資料庫與評估類大麻活性物質。衛生福利部食品藥物管理署管制藥品簡訊，91，1-3。
+- 曾宇鳳（民 110 年 4 月）。以電腦模擬方式建置資料庫與評估新興影響精神物質之應用。衛生福利部食品藥物管理署管制藥品簡訊，87，1-3。
+- 曾宇鳳*（2019）。人工智慧藥物開發。載於許毓真（主編），醫藥產業年鑑 2019（頁 288-292）。臺北市：財團法人生物技術開發中心。
 - 'YJ Tseng*, BH Su, MT Hsu, OA Lin. Steps Toward a Virtual Rat: Predictive Absorption, Distribution,
   Metabolism, and Toxicity Models. Frontiers in Molecular Design and Chemical Information Science - Herman
   Skolnik Award Symposium 2015: Jürgen Bajorath (ISBN: 9780841231412). Oct, 2016: ACS Symposium Series,
