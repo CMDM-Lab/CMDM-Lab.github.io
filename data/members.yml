@@ -27,13 +27,15 @@ members:
     role: staff
     title: 行政助理
     title_en: Administrative Assistant
-  - name: 張家瑜
-    name_en: Chia-I. Chang
+  - name: 葉芷瑜
+    name_en: Zhi-Yu Yeh
     role: staff
     title: 研究助理
     title_en: Research Assistant
-    research: ExoCSC LLM pipeline
+    research: ""
     research_en: ""
+    area: 代謝體學
+    area_en: Metabolomics
   - name: 郭天爵
     name_en: Tien-Chueh Kuo
     role: postdoc
@@ -436,18 +438,6 @@ members:
     degree: masters
     research: ""
     research_en: ""
-  - name: 葉芷瑜
-    name_en: ""
-    role: alumni
-    department: GSB
-    graduated: 2026
-    degree: masters
-    research: ""
-    research_en: ""
-    thesis: A Conversational AI Assistant for Literature Searching and Data Analysis in Metabolomics
-    thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/103939
-    area: 代謝體學
-    area_en: Metabolomics
   - name: 王仁宏
     name_en: ""
     role: alumni
@@ -523,6 +513,14 @@ members:
     thesis: 結合多目標最佳化與生成式網路應用於阿茲海默症分子藥物設計
     thesis_en: Alzheimer’s Disease Drug Discovery through De Novo Molecular Design via Multi-objective
       Optimization on Generative Network
+  - name: 張家瑜
+    name_en: Chia-I. Chang
+    role: alumni
+    department: BEBI
+    graduated: 2025
+    degree: masters
+    research: ExoCSC LLM pipeline
+    research_en: ""
   - name: 許洸誠
     name_en: Kuang-Cheng Hsu
     role: alumni

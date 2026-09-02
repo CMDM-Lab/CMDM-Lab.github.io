@@ -27,7 +27,7 @@
 # 47 people -- this file is the only record of that stretch of lab history, so
 # it is hand-maintained here rather than generated. Recent graduates come from
 # the vault via scripts/sync-members.mjs instead.
-count: 44
+count: 45
 alumni:
 # STAFF WHO HAVE LEFT go here too, at the lab's instruction (2026-08-24). The
 # comment in members-overrides.yml said the opposite -- "staff leave no alumni
@@ -57,6 +57,39 @@ alumni:
     zh: 研究助理
     en: Research Assistant
   thesis: ''
+- name: 葉芷瑜
+  # A 2026 graduate in the file for people the vault does not carry, because she
+  # is the lab's research assistant from 2026-09-01: her members-overrides.yml
+  # entry leads with the post, and this row is what keeps the degree on the page.
+  # The same arrangement as 王珮驊 below and 郭天爵 further down, and the same
+  # instruction of 2026-08-23 -- a degree earned here belongs in the lab's record
+  # whether or not the person is still in the building.
+  #
+  # Every field was read from the deposited record on 2026-09-02, which is the
+  # right thesis because dc.contributor.advisor is 曾宇鳳: dc.contributor.author
+  # 葉芷瑜 / Zhi-Yu Yeh, dc.date.accepted 2026-08-17, dc.description.degree 碩士,
+  # dc.contributor.author-dept 基因體與系統生物學學位學程, doi
+  # 10.6342/NTU202604063. The romanisation is the author pair's Latin half, as
+  # the header above requires; her vault page's aliases say "Chih-Yu Yeh", which
+  # is a reading of the characters, and her lab address zhiyu@ agrees with the
+  # record rather than with the alias.
+  #
+  # Her members-overrides.yml entry carried the English title alone, from her
+  # committee invitation. The record has both, so both are here, and they agree
+  # with it. Two things that do not appear in either title, and are not meant to:
+  # the defense minutes read "Literal Searching", a transcription slip for
+  # "Literature", and the system was renamed MetaboMAIA (Metabolomics Multi-Agent
+  # Intelligent Assistant) after the defense asked it for a proper name -- the
+  # title never carried a system name and so did not change with it.
+  name_en: Zhi-Yu Yeh
+  graduated: 2026
+  department: GSB
+  degree: masters
+  thesis: 用於代謝體學文獻檢索和數據分析的對話式人工智慧助手
+  thesis_en: >-
+    A Conversational AI Assistant for Literature Searching and Data Analysis
+    in Metabolomics
+  thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/103939
 - name: 王珮驊
   # Her row renders again now that a graduate who stayed on is listed in both
   # sections, so it carries the romanisation the postdoc entry uses.
@@ -134,13 +167,21 @@ alumni:
     Effect of stem-cell-exosome-embedded GelMA hydrogel fabricated by 3D
     bioprinting on wound healing in streptozotocin-induced diabetic rats
 - name: 張家瑜
-  # NOT the 張家瑜 in the current roster, who is the lab's research assistant and
-  # publishes as Chia-I. Chang. This one is Chia-Yu Chang, whose 2019 thesis is
-  # on CHO cell metabolic models -- the lab said so and the repository record
-  # agrees: tdr.lib.ntu.edu.tw/jspui/handle/123456789/78485,
+  # NOT the 張家瑜 the vault carries, who was the lab's research assistant until
+  # 2026-08-31 and publishes as Chia-I. Chang. This one is Chia-Yu Chang, whose
+  # 2019 thesis is on CHO cell metabolic models -- the lab said so and the
+  # repository record agrees: tdr.lib.ntu.edu.tw/jspui/handle/123456789/78485,
   # doi 10.6342/NTU201904286, 出版年 2019, 碩士, 生醫電子與資訊學研究所. Two
   # people, one name; the romanisation is the only thing telling them apart on
   # the page, which is reason enough to carry it.
+  #
+  # Both of them are now on that page, and the day the other one stopped being
+  # staff this row nearly left it: allAlumni() dropped a historical row whenever
+  # the vault carried the same *name*, so her arrival in the vault's 校友 table
+  # deleted this one silently -- 67 rows became 66, taking the 2019 thesis and
+  # its repository link with them. A person is a name and a graduation year
+  # there now. The About paragraph's count is what noticed; two tests in
+  # tests/content.test.mjs hold it from here on.
   name_en: Chia-Yu Chang
   graduated: 2019
   department: BEBI

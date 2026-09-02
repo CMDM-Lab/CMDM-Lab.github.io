@@ -111,16 +111,21 @@ async function main() {
     await readFile(path.join(ROOT, 'data', 'alumni-historical.yml'), 'utf8'),
   ).alumni ?? [];
 
-  const vaultNames = new Set(members.filter((m) => m.role === 'alumni').map((m) => m.name));
-  const people = [
+  // Same rule as allAlumni(): a historical row the vault already carries is not
+  // on the page, so there is nothing to check it against. Keyed on the name and
+  // the graduation year together, because a name is not a person -- two 張家瑜
+  // graduated here, in 2019 and in 2025, and on the name alone the newer one
+  // hid the older one's record from this check as well as from the page.
+  const key = (p) => `${p.name}|${p.graduated ?? ''}`;
+  const fromVault = new Set(members.filter((m) => m.role === 'alumni').map(key));
+  const onPageRows = [
     ...members.filter((m) => m.role === 'alumni'),
-    // Same rule as allAlumni(): a historical row the vault already carries is
-    // not on the page, so there is nothing to check it against.
-    ...historical.filter((p) => !vaultNames.has(p.name)),
-  ].filter((p) => p.thesis_url && (only.size === 0 || only.has(p.name)));
+    ...historical.filter((p) => !fromVault.has(key(p))),
+  ];
+  const people = onPageRows
+    .filter((p) => p.thesis_url && (only.size === 0 || only.has(p.name)));
 
-  const onPage = members.filter((m) => m.role === 'alumni').length
-    + historical.filter((p) => !vaultNames.has(p.name)).length;
+  const onPage = onPageRows.length;
 
   console.log(`checking ${people.length} of ${onPage} alumni rows against ${RECORD_HOST}\n`);
 

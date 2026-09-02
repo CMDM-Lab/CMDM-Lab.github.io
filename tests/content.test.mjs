@@ -21,6 +21,28 @@ async function pages() {
   return YAML.parse(await readFile(path.join(ROOT, 'data', 'pages.yml'), 'utf8')) ?? {};
 }
 
+/**
+ * Which person a row is about. The copy of `alumnusKey` in src/lib/data.ts
+ * carries the reasoning: a name is not a person, because two 張家瑜 graduated
+ * here, in 2019 and in 2025.
+ */
+const alumnusKey = (person) => `${person.name}|${person.graduated ?? ''}`;
+
+/** The two files the alumni table is built from. */
+async function alumniSources() {
+  const members = YAML.parse(
+    await readFile(path.join(ROOT, 'data', 'members.yml'), 'utf8'),
+  ).members ?? [];
+  const historical = YAML.parse(
+    await readFile(path.join(ROOT, 'data', 'alumni-historical.yml'), 'utf8'),
+  ) ?? {};
+  return {
+    vault: members.filter((member) => member.role === 'alumni'),
+    historical: historical.alumni ?? [],
+    declaredCount: historical.count,
+  };
+}
+
 test('research pillars are declared symmetrically in both locales', async () => {
   const areas = (await pages()).research_areas ?? {};
   assert.ok(areas.zh?.length, 'no Chinese research pillars declared');
@@ -581,7 +603,7 @@ test('the numbers in the About prose match the data files', async () => {
 
   const current = members.filter((member) => member.role !== 'alumni');
   const vaultAlumni = members.filter((member) => member.role === 'alumni');
-  const alumniNames = new Set(vaultAlumni.map((member) => member.name));
+  const carriedByVault = new Set(vaultAlumni.map(alumnusKey));
 
   const expected = {
     journal: publications.filter((entry) => (entry.year ?? 0) >= LAB_FOUNDED).length,
@@ -596,7 +618,7 @@ test('the numbers in the About prose match the data files', async () => {
     // alumni. This clause used to exclude them and the page did too, and when
     // the page stopped, nothing failed -- hence the row count below.
     alumni: vaultAlumni.length
-      + historical.filter((person) => !alumniNames.has(person.name)).length,
+      + historical.filter((person) => !carriedByVault.has(alumnusKey(person))).length,
   };
 
   // The paragraph that carries the counts is the one naming cmdm.tw.
@@ -710,10 +732,10 @@ test('every thesis record reachable from the data is linked on the page', {
   const historical = YAML.parse(
     await readFile(path.join(ROOT, 'data', 'alumni-historical.yml'), 'utf8'),
   ).alumni ?? [];
-  const vault = new Set(members.filter((m) => m.role === 'alumni').map((m) => m.name));
+  const vault = new Set(members.filter((m) => m.role === 'alumni').map(alumnusKey));
   const onPage = [
     ...members.filter((m) => m.role === 'alumni'),
-    ...historical.filter((p) => !vault.has(p.name)),
+    ...historical.filter((p) => !vault.has(alumnusKey(p))),
   ].filter((p) => p.thesis_url);
 
   for (const locale of [['members'], ['en', 'members']]) {
@@ -750,6 +772,78 @@ test('the About page\'s alumni count is the length of the alumni table', {
     numbers.has(rows),
     `the alumni table has ${rows} rows and the About paragraph states none of `
     + `${[...numbers].join(', ')}`,
+  );
+});
+
+test('the alumni table has a row for every person the data names', {
+  skip: hasBuild ? false : 'run `npm run build` first',
+}, async () => {
+  // The two tests above both hold a copy of the rule allAlumni() uses to merge
+  // the vault's rows with the historical ones. This one holds none: it counts
+  // the people the two files name between them -- a person being a name and a
+  // graduation year -- and asserts the table has exactly that many rows.
+  //
+  // That is the assertion that was missing when the merge keyed on the name
+  // alone. The lab's 2025 張家瑜 stopped being staff, arrived in the vault's
+  // 校友 rows, and silently displaced the 2019 張家瑜, who is a different
+  // person: her row and her thesis link left the page and 67 rows became 66.
+  // Nothing was rendered wrongly, so only the About paragraph's total noticed.
+  const { vault, historical } = await alumniSources();
+  const people = new Set([...vault, ...historical].map(alumnusKey));
+
+  const html = await readFile(path.join(DIST, 'members', 'index.html'), 'utf8');
+  const start = html.indexOf('id="role-alumni"');
+  assert.ok(start > -1, 'the members page has no alumni section');
+  const table = html.slice(start, html.indexOf('</section>', start));
+  const rows = (table.match(/<td class="ds-num"/g) ?? []).length;
+
+  assert.equal(
+    rows, people.size,
+    `the data names ${people.size} alumni and the table has ${rows} rows -- a person `
+    + 'is a name and a graduation year, and two of them sharing a name are two rows',
+  );
+});
+
+test('alumni who share a name are told apart in their row', async () => {
+  // Two of the lab's alumni rows are 張家瑜: the 2019 one publishes as Chia-Yu
+  // Chang and the 2025 one as Chia-I. Chang, and both took a BEBI master's. Two
+  // more are 蔡東銘, but those are one person -- his 2009 master's and his 2017
+  // doctorate, as the previous site listed them.
+  //
+  // The name column cannot tell those two situations apart, and each is read
+  // through something else: the romanisation for 張家瑜, the degree level for
+  // 蔡東銘. A pair that shares both reads as the same row printed twice, and
+  // since neither file can see the other, nothing else would say so.
+  const { vault, historical } = await alumniSources();
+  // The vault's row wins where both files carry the same person, as on the page.
+  const onPage = new Map([...historical, ...vault].map((person) => [alumnusKey(person), person]));
+
+  const byName = new Map();
+  for (const person of onPage.values()) {
+    byName.set(person.name, [...(byName.get(person.name) ?? []), person]);
+  }
+
+  for (const [name, rows] of byName) {
+    if (rows.length < 2) continue;
+    const marks = new Set(rows.map((row) => `${row.degree ?? ''}|${row.name_en ?? ''}`));
+    assert.equal(
+      marks.size, rows.length,
+      `"${name}" has ${rows.length} alumni rows (${rows.map((r) => r.graduated).join(', ')}) `
+      + 'that a reader cannot tell apart: give the people their romanisations, or, if this is '
+      + 'one person, their degree levels',
+    );
+  }
+});
+
+test('the alumni file states how many people it holds', async () => {
+  // A hand-maintained count in a hand-maintained file. members.yml gets its own
+  // from the sync script and cannot drift; this one is typed, and a row added
+  // without touching it would leave the file asserting something false about
+  // itself -- the kind of number that is read once and trusted afterwards.
+  const { historical, declaredCount } = await alumniSources();
+  assert.equal(
+    declaredCount, historical.length,
+    `data/alumni-historical.yml says count: ${declaredCount} and holds ${historical.length} rows`,
   );
 });
 

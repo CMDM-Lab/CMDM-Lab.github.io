@@ -401,26 +401,49 @@ export function membersByRole(): Map<string, Member[]> {
 }
 
 /**
+ * Which person a row is about, for matching the vault's rows against the
+ * historical ones.
+ *
+ * A name is not a person. The lab has two 張家瑜: one graduated in 2019 and
+ * publishes as Chia-Yu Chang, the other in 2025 as Chia-I. Chang, and the second
+ * was the lab's research assistant until 2026-08-31. Keyed on the name alone,
+ * her arrival in the vault's 校友 table deleted the first one's row from the
+ * page -- 67 rows became 66, and the 2019 thesis and its repository link went
+ * with them. Nothing rendered wrong; a row was simply not there.
+ *
+ * The year distinguishes them, and it is the one thing both files publish about
+ * a graduate: the calendar year the 口試 was passed. Keep in step with the
+ * copies in scripts/check-thesis-records.mjs and tests/content.test.mjs -- if
+ * they drift, "the alumni table has a row for every person the data names"
+ * fails.
+ */
+function alumnusKey(person: { name: string; graduated?: number | null }): string {
+  return `${person.name}|${person.graduated ?? ''}`;
+}
+
+/**
  * All alumni, newest graduation year first.
  *
  * Two sources overlap here. The vault tracks people who left recently, while
  * `alumni-historical.yml` holds the 2008-2022 cohort recovered from the old
- * site, and a few names appear in both (Yu-Hao Ni, for one). The vault entry
- * wins where they do.
+ * site, and a few of the same people appear in both (Yu-Hao Ni, for one). The
+ * vault entry wins where they do -- but only where it is the same person, which
+ * a shared name does not settle. See `alumnusKey`.
  *
  * Someone who graduated here and then stayed on appears twice, once in each
- * section, which is what the lab asked for on 2026-08-23 -- three people, both
- * postdocs and a research assistant, and their degrees are as much a part of the
- * lab's record as anyone else's. This used to drop them from the alumni list on
- * the reasoning that one person should occupy one row. Their alumni row is the
- * historical one, since the graduation year exists nowhere else.
+ * section, which is what the lab asked for on 2026-08-23 -- both postdocs and
+ * the research assistant, and their degrees are as much a part of the lab's
+ * record as anyone else's. This used to drop them from the alumni list on the
+ * reasoning that one person should occupy one row. Their alumni row is the
+ * historical one, since the graduation year exists nowhere else: a current
+ * member's entry cannot carry one, and tests/members-privacy.test.mjs says so.
  */
 export function allAlumni(): Array<Member | HistoricalAlumnus> {
   const members = getMembers();
   const fromVault = members.filter((member) => member.role === 'alumni');
-  const seen = new Set(fromVault.map((member) => member.name));
+  const seen = new Set(fromVault.map(alumnusKey));
 
-  const historical = getHistoricalAlumni().filter((person) => !seen.has(person.name));
+  const historical = getHistoricalAlumni().filter((person) => !seen.has(alumnusKey(person)));
 
   return [...fromVault, ...historical].sort(
     (a, b) => (b.graduated ?? 0) - (a.graduated ?? 0)

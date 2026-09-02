@@ -184,21 +184,33 @@ members:
     thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/103607
 
   葉芷瑜:
-    role: alumni
-    graduated: 2026
-    department: GSB
-    degree: masters
+    # She took over the research assistant post on 2026-09-01, the day after
+    # 張家瑜 left it (reported by the lab), with her degree finished: 口試
+    # 2026-07-10, 離校 2026-08-21, both from her vault page. So `role: staff`
+    # replaces the `role: alumni` this entry carried, and she leads with the post
+    # she holds rather than with the degree she has just finished.
+    #
+    # Her graduation moved to alumni-historical.yml, which is where a graduate
+    # who stayed on carries it -- the same arrangement as the two postdocs, and
+    # the lab's own instruction of 2026-08-23: a degree earned here belongs in
+    # the lab's record whether or not the person is still in the building. It
+    # cannot stay in this entry, either: `degree` on anyone who is not an alumnus
+    # is a red light in tests/members-privacy.test.mjs, `thesis_url` is one in
+    # tests/content.test.mjs, and `department` would render in the staff ledger
+    # as though the lab employed her through that degree programme. Her row there
+    # carries the year, the unit, the level and the thesis, with the repository
+    # record they were read from.
+    role: staff
+    title: 研究助理
+    title_en: Research Assistant
+    # The Latin half of dc.contributor.author on her thesis record -- the source
+    # alumni-historical.yml's header names, and the standard the five guessed
+    # names removed from this file on 2026-08-22 failed. Her vault page's aliases
+    # say "Chih-Yu Yeh", which is a reading of the characters rather than what
+    # she deposited; her lab address, zhiyu@, agrees with the record instead.
+    name_en: Zhi-Yu Yeh
     area: 代謝體學
     area_en: Metabolomics
-    # From her own committee invitation and the vault's curated 研究主題 field.
-    # The system was renamed MetaboMAIA (Metabolomics Multi-Agent Intelligent
-    # Assistant) after the defense asked for a proper name, but the title carries
-    # no system name and so did not change with it. The defense minutes read
-    # "Literal Searching" -- a transcription slip for "Literature".
-    thesis: >-
-      A Conversational AI Assistant for Literature Searching and Data Analysis
-      in Metabolomics
-    thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/103939
 
   丁瓘茵:
     role: alumni
@@ -270,15 +282,30 @@ members:
     # "Chia-I. Chang" on 10.1021/acs.est.5c09769 and elsewhere, which is how the
     # name appears in the literature.
     name_en: Chia-I. Chang
-    # Graduated, then stayed on as the lab's research assistant (2026-08-22).
-    # The vault still has her under alumni; the current role wins, so this is
-    # which section she leads with. She is not the 張家瑜 who graduated in 2019 --
-    # that is Chia-Yu Chang, and alumni-historical.yml says so on her row.
-    role: staff
-    title: 研究助理
-    title_en: Research Assistant
+    # She graduated, stayed on as the lab's research assistant, and left that
+    # post on 2026-08-31 (reported by the lab). So the `role: staff` that used to
+    # sit here is gone rather than commented out: the vault has her under 校友
+    # already, and carrying no role is how this file says "as the vault has it".
+    #
+    # Her time as the research assistant adds no row of its own. 莊珮君 and
+    # 黃立緯 are in alumni-historical.yml with 研究助理 as their unit because the
+    # vault has no page for either and that file is the only record of them;
+    # she is vault-tracked, so the vault's row is hers, and it says what she
+    # earned here rather than what she was employed as.
+    #
+    # Year, unit and level are her vault page's 基本資訊: 畢業（2025）, 碩士
+    # （生醫電資所）. The 校友 table's 備註 cell reads "畢業 · manuscript 追蹤中"
+    # and carries no year, which is what this section exists to supply. No
+    # `thesis_url`: NTU's repository holds no 2025 生醫電資所 thesis under this
+    # name (searched 2026-09-02), so there is nothing for
+    # scripts/check-thesis-records.mjs to check the year against and no title to
+    # print. The 2019 record it does hold under 張家瑜 is the other one's.
+    graduated: 2025
+    department: BEBI
+    degree: masters
     # Deliberately blank at her request -- `area: ''` survives the classifier,
     # which would otherwise read "ExoCSC LLM pipeline" as AI Agent Systems.
+    # Leaving the post does not withdraw the request, so it stays.
     area: ''
   # ── Degrees and graduation years ───────────────────────────────────────
   # The vault's 校友 table publishes three columns: name, research topic, note.
@@ -525,9 +552,10 @@ additional:
       - BS in Pharmacy, National Taiwan University
 
   # Administrative assistant. Replaced 黃立緯 (Li-Wei Huang), who left the lab;
-  # the previous research assistant 莊珮君 (Pei-Jiun Chuang) has also left, and
-  # that post is now held by 張家瑜, entered in the `members` map above because
-  # the vault already knows her as a graduate.
+  # the research assistant 莊珮君 (Pei-Jiun Chuang) has also left, and that post
+  # passed to 張家瑜 and then, when she left it on 2026-08-31, to 葉芷瑜 from
+  # 2026-09-01. Both of them are entered in the `members` map above rather than
+  # here, because the vault already knows each of them as a graduate.
   #
   # Both departures were reported by the lab on 2026-08-22. This used to add that
   # "staff leave no alumni record -- that table is for graduates -- so their
