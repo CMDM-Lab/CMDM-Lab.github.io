@@ -311,12 +311,13 @@ members:
     # （生醫電資所）. The 校友 table's 備註 cell reads "畢業 · manuscript 追蹤中"
     # and carries no year, which is what this section exists to supply.
     #
-    # 生醫電資所, and not the 資工系 that her thesis cover's letterhead reads --
-    # confirmed by the lab on 2026-09-02, holding the cover next to the question.
-    # The cover names the college and the department the programme is taught in;
-    # the programme is the institute, and the institute is what this column
-    # publishes. Written down because it is the kind of thing a later reader
-    # corrects by mistake.
+    # 生醫電資所, and not the 資工系 that her thesis cover's letterhead reads.
+    # The lab settled that on 2026-09-02: she built her cover from an earlier
+    # student's and did not change the department line, so the cover is wrong
+    # there and this column is right. Recorded because the cover is the document
+    # a later reader would trust, and correcting a correct row from it is the
+    # obvious mistake to make. My own first explanation -- that the letterhead
+    # named the college the programme is taught in -- was a guess, and wrong.
     #
     # No thesis and no `thesis_url`. The repository holds no record under this
     # name and year (searched 2026-09-02) because the thesis is not out yet: it
