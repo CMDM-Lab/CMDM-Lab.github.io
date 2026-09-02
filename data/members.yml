@@ -27,12 +27,22 @@ members:
     role: staff
     title: 行政助理
     title_en: Administrative Assistant
+  - name: 李哲宇
+    name_en: Che-Yu Lee
+    role: staff
+    title: 研究助理
+    title_en: Research Assistant
+    research: VQE 有機錫化合物
+    research_en: ""
+    area: 量子計算
+    area_en: Quantum Computing
   - name: 葉芷瑜
     name_en: Zhi-Yu Yeh
     role: staff
     title: 研究助理
     title_en: Research Assistant
-    research: ""
+    graduated: 2026
+    research: MetaboMAIA — 代謝體學文獻檢索與資料分析對話式 AI 助手
     research_en: ""
     area: 代謝體學
     area_en: Metabolomics
@@ -368,7 +378,7 @@ members:
     department: BEBI
     graduated: 2026
     degree: masters
-    research: ""
+    research: CBT Agent — 自殺風險偵測 ＋ 檢索增強生成（RAG）
     research_en: ""
     thesis: "When Retrieval Helps and Hurts: Evaluating the Safety–Coherence Trade-off in
       Retrieval-Augmented CBT Agents"
@@ -385,25 +395,13 @@ members:
     thesis: 促進非致幻 5-HT2A 致效劑發現的 De Novo 生成式 AI 框架：邁向抗憂鬱藥物探索
     thesis_en: A De Novo Generative AI Framework Enabling Discovery of Non-Hallucinogenic 5-HT2A
       Agonists Toward Antidepressant Drug Discovery
-  - name: 李哲宇
-    name_en: Che-Yu Lee
-    role: alumni
-    department: BEBI
-    graduated: 2026
-    degree: masters
-    research: VQE 有機錫化合物
-    research_en: ""
-    thesis: 以變分量子特徵值法計算有機錫化合物基態能量之研究
-    thesis_en: Variational Quantum Eigensolver Calculation of Ground State Energies for Organotin Compounds
-    area: 量子計算
-    area_en: Quantum Computing
   - name: 高振翔
     name_en: Chen-Hsiang Kao
     role: alumni
     department: MHI
     graduated: 2026
     degree: masters
-    research: ""
+    research: SchizoTrain — 思覺失調症負性症狀評估訓練之虛擬病人系統
     research_en: ""
     thesis: SchizoTrain:思覺失調症負性症狀評估訓練之虛擬病人系統
     thesis_en: "SchizoTrain: A Virtual Patient System for Training Raters in Schizophrenia Negative
@@ -416,7 +414,7 @@ members:
     department: MHI
     graduated: 2026
     degree: masters
-    research: ""
+    research: 遲發性運動障礙辨識 — 語音與臉部動作多模態機器學習
     research_en: ""
     thesis: A Multimodal Machine Learning Framework for Distinguishing Tardive Dyskinesia via Voice and
       Facial Movement Analysis

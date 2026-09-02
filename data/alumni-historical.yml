@@ -27,7 +27,7 @@
 # 47 people -- this file is the only record of that stretch of lab history, so
 # it is hand-maintained here rather than generated. Recent graduates come from
 # the vault via scripts/sync-members.mjs instead.
-count: 45
+count: 46
 alumni:
 # STAFF WHO HAVE LEFT go here too, at the lab's instruction (2026-08-24). The
 # comment in members-overrides.yml said the opposite -- "staff leave no alumni
@@ -90,6 +90,24 @@ alumni:
     A Conversational AI Assistant for Literature Searching and Data Analysis
     in Metabolomics
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/103939
+- name: 李哲宇
+  # Here for the same reason as 葉芷瑜 above: he took the other half of the
+  # research assistant post on 2026-09-01, so his members-overrides.yml entry
+  # leads with the post and this row is what keeps his degree on the page.
+  #
+  # 2026, 生醫電資所, 碩士, from the lab (2026-08-23) and his own vault page; the
+  # vault's 校友 table carries no year for him.
+  #
+  # The empty title is deliberate and is not to be filled in. His thesis waits
+  # on the manuscript, so the repository has no record of it and the lab is not
+  # announcing the title yet (2026-09-02); he is on `thesis_embargo` in
+  # members-overrides.yml, which is where the reasoning and the test live. A row
+  # with a year, a unit and a level and no title is exactly right for now.
+  name_en: Che-Yu Lee
+  graduated: 2026
+  department: BEBI
+  degree: masters
+  thesis: ''
 - name: 王珮驊
   # Her row renders again now that a graduate who stayed on is listed in both
   # sections, so it carries the romanisation the postdoc entry uses.

@@ -835,6 +835,73 @@ test('alumni who share a name are told apart in their row', async () => {
   }
 });
 
+test('a withheld thesis title stays withheld', async () => {
+  // Two graduates' theses are not out yet -- they wait on the manuscript, so
+  // NTU's repository has no record and the title is not the lab's to announce.
+  // `thesis_embargo` in members-overrides.yml names them.
+  //
+  // The rule needs a test because absence cannot defend itself. 李哲宇's title
+  // was on the site for ten days, put there in good faith from what the lab had
+  // said at the time, and the next person to find a thesis cover would put it
+  // back the same way. An empty cell says nothing about why it is empty; this
+  // does.
+  const overrides = YAML.parse(
+    await readFile(path.join(ROOT, 'data', 'members-overrides.yml'), 'utf8'),
+  ) ?? {};
+  const withheld = overrides.thesis_embargo ?? [];
+  assert.ok(Array.isArray(withheld), 'thesis_embargo must be a list of names');
+
+  const members = YAML.parse(
+    await readFile(path.join(ROOT, 'data', 'members.yml'), 'utf8'),
+  ).members ?? [];
+  const historical = YAML.parse(
+    await readFile(path.join(ROOT, 'data', 'alumni-historical.yml'), 'utf8'),
+  ).alumni ?? [];
+
+  // Every place a title can be written, keyed by the name it would be written
+  // under: the curated entries, the generated file, and the hand-kept one.
+  const rows = [
+    ...Object.entries(overrides.members ?? {}).map(([name, entry]) => [
+      `data/members-overrides.yml (members: ${name})`, { name, ...(entry ?? {}) },
+    ]),
+    ...(overrides.additional ?? []).map((entry) => [
+      'data/members-overrides.yml (additional)', entry,
+    ]),
+    ...members.map((entry) => ['data/members.yml', entry]),
+    ...historical.map((entry) => ['data/alumni-historical.yml', entry]),
+  ];
+
+  // One entry names one person: the name, and the graduation year where the row
+  // being compared states one. The lab's other 張家瑜 graduated in 2019 and her
+  // thesis is public, so matching on the name alone would have hidden a title
+  // that belongs on the page -- which is what this test said when the list was
+  // a list of names.
+  const isThePerson = (entry, row) => entry.name === row.name
+    && (entry.graduated == null || row.graduated == null
+      || entry.graduated === row.graduated);
+
+  for (const entry of withheld) {
+    assert.ok(entry?.name, `thesis_embargo has an entry with no name: ${JSON.stringify(entry)}`);
+    // An entry that matches nobody protects nobody, and reads as though it does.
+    assert.ok(
+      rows.some(([, row]) => isThePerson(entry, row)),
+      `thesis_embargo names "${entry.name}" (${entry.graduated}), who is in none `
+      + 'of the member files',
+    );
+    for (const [where, row] of rows) {
+      if (!isThePerson(entry, row)) continue;
+      for (const field of ['thesis', 'thesis_en', 'thesis_url']) {
+        assert.ok(
+          !row[field],
+          `"${entry.name}" is on thesis_embargo and ${where} carries a ${field}: `
+          + `${row[field]} -- the thesis waits on the manuscript, so the title `
+          + 'does not go on the site until the repository has the record',
+        );
+      }
+    }
+  }
+});
+
 test('the alumni file states how many people it holds', async () => {
   // A hand-maintained count in a hand-maintained file. members.yml gets its own
   // from the sync script and cannot drift; this one is typed, and a row added

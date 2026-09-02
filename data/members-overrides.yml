@@ -14,6 +14,10 @@
 #               administrative and research staff, postdocs). Written in the
 #               same shape the site consumes.
 #
+#   thesis_embargo:
+#               people whose thesis title is not to be published yet. At the
+#               foot of the file, with the rule and the reason.
+#
 # EMAIL POLICY. Personal addresses are not published. Faculty, staff and
 # postdocs list a professional contact because being reachable is the point of
 # their entry. Current students list an institutional address only. Alumni list
@@ -105,25 +109,35 @@ members:
       network model and clinical breathomics database
   李哲宇:
     name_en: Che-Yu Lee
-    # As 徐銘聰 above: part of the 2026-08-23 batch, added to the entry he
-    # already had. The vault has him under 校友 with no year at all.
-    graduated: 2026
-    department: BEBI
-    degree: masters
-    thesis: 以變分量子特徵值法計算有機錫化合物基態能量之研究
-    thesis_en: >-
-      Variational Quantum Eigensolver Calculation of Ground State Energies for
-      Organotin Compounds
+    # He joined 葉芷瑜 in the research assistant post on 2026-09-01, reported by
+    # the lab on 2026-09-02, having graduated earlier in the year. The same
+    # arrangement as hers and the two postdocs': the post is what he leads with,
+    # and the degree is a row in alumni-historical.yml, which is the only place a
+    # current member's can sit.
+    #
+    # The year, the unit and the level are in that row now -- 2026, 生醫電資所,
+    # 碩士, from the lab's batch of 2026-08-23, the vault's own 校友 table having
+    # no year for him at all.
+    #
+    # His thesis title is not there. It is withheld rather than moved, per
+    # `thesis_embargo` at the foot of this file: the thesis waits on the
+    # manuscript. It was on this site between 2026-08-23 and 2026-09-02, which is
+    # a fact about the site and not a reason to leave it up.
+    role: staff
+    title: 研究助理
+    title_en: Research Assistant
   # ── Graduating cohort ──────────────────────────────────────────────────
-  # The vault lists these six under 現役成員 › 即將畢業, whose only publishable
-  # column is the name. Degree level, department and research area therefore come
-  # from the lab. `order` puts them at the head of their section, being the most
-  # senior in each.
+  # The vault listed these six under 現役成員 › 即將畢業, a table whose only
+  # publishable column is the name. Degree level, department and research area
+  # therefore came from the lab. `order` puts them at the head of their section,
+  # being the most senior in each.
   #
-  # Four of the six graduated in 2026 and are moved to the alumni table here, on
-  # the lab's word (2026-08-22). 廖翊婷 and 王又可 deferred and stay current, so
-  # they keep their degree-level role. The vault still lists all six under
-  # 現役成員 -- this file is ahead of it on purpose, not by accident.
+  # Four of the six graduated in 2026 and were moved to the alumni table here on
+  # the lab's word (2026-08-22), ahead of the vault on purpose. The vault caught
+  # up on 2026-09-02: all four have passed the 口試 and left, so their rows are
+  # in its 校友 table now, and their research topics reach `research` from the
+  # vault instead of being blank. 廖翊婷 and 王又可 deferred, stay current, keep
+  # their degree-level role, and are the two still under 即將畢業.
   #
   # `thesis` is the deposited title, transcribed from the vault. Titles moved
   # repeatedly during the defense round, so each one below records where it came
@@ -295,11 +309,20 @@ members:
     #
     # Year, unit and level are her vault page's 基本資訊: 畢業（2025）, 碩士
     # （生醫電資所）. The 校友 table's 備註 cell reads "畢業 · manuscript 追蹤中"
-    # and carries no year, which is what this section exists to supply. No
-    # `thesis_url`: NTU's repository holds no 2025 生醫電資所 thesis under this
-    # name (searched 2026-09-02), so there is nothing for
-    # scripts/check-thesis-records.mjs to check the year against and no title to
-    # print. The 2019 record it does hold under 張家瑜 is the other one's.
+    # and carries no year, which is what this section exists to supply.
+    #
+    # 生醫電資所, and not the 資工系 that her thesis cover's letterhead reads --
+    # confirmed by the lab on 2026-09-02, holding the cover next to the question.
+    # The cover names the college and the department the programme is taught in;
+    # the programme is the institute, and the institute is what this column
+    # publishes. Written down because it is the kind of thing a later reader
+    # corrects by mistake.
+    #
+    # No thesis and no `thesis_url`. The repository holds no record under this
+    # name and year (searched 2026-09-02) because the thesis is not out yet: it
+    # waits on the manuscript, as the lab said on 2026-09-02. The empty cell is
+    # the intended state -- see `thesis_embargo` at the foot of this file. The
+    # 2019 record the repository does hold under 張家瑜 is the other one's.
     graduated: 2025
     department: BEBI
     degree: masters
@@ -553,9 +576,10 @@ additional:
 
   # Administrative assistant. Replaced 黃立緯 (Li-Wei Huang), who left the lab;
   # the research assistant 莊珮君 (Pei-Jiun Chuang) has also left, and that post
-  # passed to 張家瑜 and then, when she left it on 2026-08-31, to 葉芷瑜 from
-  # 2026-09-01. Both of them are entered in the `members` map above rather than
-  # here, because the vault already knows each of them as a graduate.
+  # passed to 張家瑜 and then, when she left it on 2026-08-31, to two people at
+  # once: 葉芷瑜 and 李哲宇, both from 2026-09-01. All three are entered in the
+  # `members` map above rather than here, because the vault already knows each of
+  # them as a graduate.
   #
   # Both departures were reported by the lab on 2026-08-22. This used to add that
   # "staff leave no alumni record -- that table is for graduates -- so their
@@ -643,3 +667,35 @@ additional:
     research: 馬庫什結構生成與比較、P-醣蛋白抑制劑預測、量子演算法應用於醫藥領域
     research_en: Markush structure generation and comparison, P-glycoprotein inhibitor
       prediction, quantum algorithms for pharmaceutical applications
+
+# ── Withheld thesis titles ─────────────────────────────────────────────────
+#
+# A deposited thesis is a public bibliographic record and the alumni table
+# prints it. These ones are not public yet: the thesis waits on the manuscript,
+# so NTU's repository has no record to link and the title is not the lab's to
+# announce. The lab said so of both of them on 2026-09-02.
+#
+# For anyone named here, no `thesis`, `thesis_en` or `thesis_url` may appear --
+# not in the `members` map above, not in `additional`, and not in
+# alumni-historical.yml. Their alumni row publishes the year, the unit and the
+# level, and leaves the title column empty.
+#
+# 李哲宇's title was published here from 2026-08-23, on the lab's own word at the
+# time, and came down on 2026-09-02. That is why this list exists rather than a
+# deleted line: a title that is merely absent gets helpfully filled in again by
+# whoever next finds a cover page, and "the thesis is embargoed" is not something
+# an empty cell can say by itself. The test "a withheld thesis title stays
+# withheld" in tests/content.test.mjs is the part that actually stops it.
+#
+# A year, not just a name, because a name is not a person: the lab's other
+# 張家瑜 graduated in 2019, her thesis is in the repository, and it is published
+# here as it should be. Same identity rule as `alumnusKey` in src/lib/data.ts --
+# the test read this list as bare names first and caught the collision at once.
+#
+# Take someone off this list when the manuscript is out and the repository has
+# the record -- then add the title with its handle, like everyone else's.
+thesis_embargo:
+  - name: 張家瑜
+    graduated: 2025
+  - name: 李哲宇
+    graduated: 2026
