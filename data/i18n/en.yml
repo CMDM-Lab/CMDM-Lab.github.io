@@ -31,7 +31,7 @@ footer_copyright: Computational Molecular Design and Metabolomics Laboratory
 # ── Home ─────────────────────────────────────────────────────
 home_title: Computational Molecular Design and Metabolomics Lab
 home_description: >-
-  The CMDM Lab at National Taiwan University, led by Prof. Yufeng Jane Tseng, works on computational molecular design, metabolomics biomarkers, quantum computing, gait analysis and AI agent systems.
+  The CMDM Lab at National Taiwan University, led by Prof. Yufeng Jane Tseng, works on computational molecular design, metabolomics biomarkers, quantum computing, medical image computing and AI agent systems.
 home_kicker: NTU CSIE · Est. 2006
 home_subtitle: Prof. Yufeng Jane Tseng · Department of Computer Science and Information Engineering
 home_lede: >-
@@ -45,14 +45,14 @@ about_kicker: About
 about_subtitle: Research directions · Collaborations · Platforms
 about_lede: The lab is hosted in the Department of Computer Science and Information Engineering at
   National Taiwan University, working across computational molecular design, clinical metabolomics,
-  quantum computing, gait analysis, and AI agent systems.
+  quantum computing, medical image computing, and AI agent systems.
 
 # ── Research ─────────────────────────────────────────────────
 research_title: Research
 research_description: CMDM Lab research spans computational molecular design, predictive
   toxicology, metabolomic biomarker detection, and precision medicine.
 research_kicker: Research
-research_subtitle: Cheminformatics · Clinical metabolomics · Quantum computing · Gait analysis · AI agents
+research_subtitle: Cheminformatics · Clinical metabolomics · Quantum computing · Medical image computing · AI agents
 research_lede: The lab's five research pillars and representative work. The full record lives under
   Publications.
 

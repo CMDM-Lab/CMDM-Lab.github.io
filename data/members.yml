@@ -184,10 +184,10 @@ members:
     role: masters
     grade: M3
     department: CSIE
-    research: Gait Analysis
+    research: 醫學影像計算
     research_en: ""
-    area: 步態分析
-    area_en: Gait Analysis
+    area: 醫學影像計算
+    area_en: Medical Image Computing
   - name: 周佳葵
     name_en: ""
     role: masters
@@ -211,10 +211,10 @@ members:
     role: masters
     grade: M2
     department: CSIE
-    research: Gait Analysis
+    research: 醫學影像計算
     research_en: ""
-    area: 步態分析
-    area_en: Gait Analysis
+    area: 醫學影像計算
+    area_en: Medical Image Computing
   - name: 陳弈辰
     name_en: ""
     role: masters
@@ -256,10 +256,10 @@ members:
     role: masters
     grade: M2
     department: BEBI
-    research: Gait Analysis
+    research: 醫學影像計算
     research_en: ""
-    area: 步態分析
-    area_en: Gait Analysis
+    area: 醫學影像計算
+    area_en: Medical Image Computing
   - name: 鄭鈞文
     name_en: ""
     role: masters
@@ -292,19 +292,19 @@ members:
     role: masters
     grade: M1
     department: BEBI
-    research: Gait Analysis
+    research: 醫學影像計算
     research_en: ""
-    area: 步態分析
-    area_en: Gait Analysis
+    area: 醫學影像計算
+    area_en: Medical Image Computing
   - name: 翁平恵
     name_en: Gracia
     role: masters
     grade: M1
     department: BEBI
-    research: Gait Analysis
+    research: 醫學影像計算
     research_en: ""
-    area: 步態分析
-    area_en: Gait Analysis
+    area: 醫學影像計算
+    area_en: Medical Image Computing
   - name: 陳嘉緯
     name_en: Bradley
     role: masters
@@ -355,10 +355,10 @@ members:
     role: masters
     grade: M1
     department: BEBI
-    research: Gait Analysis
+    research: 醫學影像計算
     research_en: ""
-    area: 步態分析
-    area_en: Gait Analysis
+    area: 醫學影像計算
+    area_en: Medical Image Computing
   - name: 宋和峻
     name_en: ""
     role: undergraduate
@@ -406,8 +406,8 @@ members:
     thesis: SchizoTrain:思覺失調症負性症狀評估訓練之虛擬病人系統
     thesis_en: "SchizoTrain: A Virtual Patient System for Training Raters in Schizophrenia Negative
       Symptom Assessment"
-    area: AI Agent 系統
-    area_en: AI Agent Systems
+    area: 醫學影像計算
+    area_en: Medical Image Computing
   - name: 許漢強
     name_en: Dwayne Reinaldy
     role: alumni
@@ -419,8 +419,8 @@ members:
     thesis: A Multimodal Machine Learning Framework for Distinguishing Tardive Dyskinesia via Voice and
       Facial Movement Analysis
     thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/103607
-    area: 步態分析
-    area_en: Gait Analysis
+    area: 醫學影像計算
+    area_en: Medical Image Computing
   - name: 陳韻淇
     name_en: Yun-Chi Chen
     role: alumni

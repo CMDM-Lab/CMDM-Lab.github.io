@@ -30,7 +30,7 @@ about:
       # applications line gained environmental and regulatory chemistry, which is
       # what the PFAS work and the commissioned system below actually are.
       - >-
-        本實驗室以計算方法研究分子與代謝物。創立之初的兩大主軸為計算分子設計與代謝體學生物標記偵測，近年延伸至量子計算、步態分析與 AI Agent 系統，共五個方向。我們開發演算法與軟體工具，並將其應用於藥物開發、環境與法規化學，以及臨床評估。
+        本實驗室以計算方法研究分子與代謝物。創立之初的兩大主軸為計算分子設計與代謝體學生物標記偵測，近年延伸至量子計算、醫學影像計算與 AI Agent 系統，共五個方向。我們開發演算法與軟體工具，並將其應用於藥物開發、環境與法規化學，以及臨床評估。
       # Drug design track. The NRPB projects, partners and patents are the previous
       # site's text. The second half is the current record, and the journals stay out
       # of the prose at the lab's request -- recorded here so the claim is traceable:
@@ -56,7 +56,7 @@ about:
       #   Movement Anywhere                   IEEE J. Biomed. Health Inform. 2026
       #   generative AI, negative symptoms    Schizophrenia Bulletin 2025
       - >-
-        三個較新的方向都已有發表成果：量子計算用於藥物探索與專利檢索，並比較量子程式平台在量子化學上的表現；步態分析發展為開源的分散式二維影像動作分析平台；AI Agent 與生成式模型則用於思覺失調症負性症狀的自動評估。
+        三個較新的方向都已有發表成果：量子計算用於藥物探索與專利檢索，並比較量子程式平台在量子化學上的表現；醫學影像計算從步態分析出發，已有開源的分散式二維影像動作分析平台，並延伸至臨床影像的分析與轉換；AI Agent 與生成式模型則用於思覺失調症負性症狀的自動評估。
       # Commissioned work, added 2026-08-23 at the lab's request: the About page had
       # said nothing about the one system the lab has run for five years, which is
       # also the work behind two of the awards on the honours page. Every fact here
@@ -84,7 +84,7 @@ about:
   en:
     paragraphs:
       - >-
-        The lab studies molecules and metabolites by computation. Its two founding directions were computational molecular design and biomarker detection in metabolomics; in recent years these have been joined by quantum computing, gait analysis and AI agent systems, giving five research pillars. We develop algorithms and software tools, and apply them to drug development, environmental and regulatory chemistry, and clinical assessment.
+        The lab studies molecules and metabolites by computation. Its two founding directions were computational molecular design and biomarker detection in metabolomics; in recent years these have been joined by quantum computing, medical image computing and AI agent systems, giving five research pillars. We develop algorithms and software tools, and apply them to drug development, environmental and regulatory chemistry, and clinical assessment.
       # Sources are on the Chinese paragraph above.
       - >-
         In computational molecular design, the lab took part in six drug development projects under the National Research Program for Biopharmaceuticals, working with the chemistry and pharmacy departments of China Medical University, National Tsing Hua University and Taipei Medical University among others. The targets were treatments for neuropathic pain, thrombosis and cancer, and the work holds several U.S. patents. The earlier predictive models cover hERG cardiotoxicity, human oral drug absorption, and QSAR analyses of skin penetration and skin sensitization; the recent ones predict P-glycoprotein substrates with interpretable graph neural networks, curate a CYP450 interaction dataset covering most of phase I drug metabolism, and use deep learning to speed up the non-targeted annotation of per- and polyfluoroalkyl substances.
@@ -93,7 +93,7 @@ about:
         In metabolomics, the lab built a research group at the Metabolomics Core Laboratory of the NTU Center of Genomic Medicine, developing mass-spectrometry and NMR computing methods, and received the Best Informatics Paper award at an International Conference of the Metabolomics Society. Those methods have been applied to welding-fume exposure, compound identification and toxicity prediction in Chinese herbs, and markers for lung cancer, leukaemia, chronic obstructive pulmonary disease and mortality among intensive-care patients; the recent clinical work includes a human breathomics database and a clinical breathomics dataset, gut microbial networks and metabolic pathways in multiple system atrophy, and the identification of metabolites in children with attention-deficit hyperactivity disorder.
       # Sources are on the Chinese paragraph above.
       - >-
-        The three newer directions each have published results: quantum computing for drug discovery and patent search, including a comparison of two quantum programming platforms for quantum chemistry; gait analysis, now an open-source distributed platform for 2D video-based movement analysis; and AI agents and generative models for the automatic assessment of negative symptoms in schizophrenia.
+        The three newer directions each have published results: quantum computing for drug discovery and patent search, including a comparison of two quantum programming platforms for quantum chemistry; medical image computing, which grew out of the lab’s gait work into an open-source distributed platform for 2D video-based movement analysis and now reaches clinical image analysis and translation; and AI agents and generative models for the automatic assessment of negative symptoms in schizophrenia.
       # Sources are on the Chinese paragraph above.
       - >-
         Besides papers and public tools, the lab has run GreenN (SAS), the Searching, Assessment and Screening System for Safer Alternative Chemicals, since September 2021, commissioned by the Chemicals Administration of the Ministry of Environment. It helps companies assess the hazard and risk of a chemical, how closely it is regulated, and what it can be replaced with, supporting early-stage R&D decisions and regulatory compliance; the project is ongoing. "AI-Powered Green Chemistry Diagnostic Advisor", built on that framework, received a Team Excellence Award at the Presidential Hackathon 2025 and the Special Award in the 2026 NTU Electrical Engineering Class of 1975 Alumni Endowed Award for Technology Research Innovation.
@@ -107,11 +107,23 @@ about:
 #   Quantum computing  2 members, 5 papers (J Cheminform 2025, IEEE
 #                      Nanotechnology Magazine 2023, Scientific Reports 2022,
 #                      Structural Chemistry 2019)
-#   Gait analysis      6 master's students, 3 papers (IEEE JBHI 2026 and 2024,
-#                      npj Digital Medicine 2024)
-#   AI agent systems   8 members, 1 paper (Schizophrenia Bulletin 2025); most of
-#                      this work is still in progress, so the items describe the
-#                      subjects rather than claiming published results
+#   Medical image      8 roster entries whose area names this pillar -- six
+#   computing          current master's students and two 2026 graduates -- and
+#                      4 papers (IEEE JBHI 2026, IEEE JBHI 2024, npj Digital
+#                      Medicine 2024, LNCS 2024). Renamed from 步態分析 / Gait
+#                      Analysis on 2026-09-02 at the PI's word: the group has
+#                      moved to medical imaging and is not doing gait analysis
+#                      any more. The items say so -- the movement work is still
+#                      there, because three of the four papers are it, and the
+#                      image-analysis and image-translation line is the LNCS
+#                      paper and where the group is going.
+#   AI agent systems   12 entries, 10 of them naming this pillar alone and two
+#                      sharing it with 代謝體學. 1 paper (Schizophrenia Bulletin
+#                      2025); most of this work is still in progress, so the
+#                      items describe the subjects rather than claiming
+#                      published results. 高振翔 moved to medical image
+#                      computing on 2026-09-02, though the paper of his that
+#                      represents this pillar did not move with him.
 #
 # Acronyms expand on first use, per the design system's vocabulary rule.
 research_areas:
@@ -129,11 +141,12 @@ research_areas:
         - 量子演算法應用於藥物探索與專利檢索
         - 變分量子特徵求解器 (VQE) 計算分子性質
         - 量子程式開發平台評估
-    - group: 步態分析
+    - group: 醫學影像計算
       items:
-        - 影像式步態分析平台
-        - 帕金森氏症動作評估
-        - 半監督式學習應用於病理步態判讀
+        - 影像式動作與運動症狀量化
+        - 帕金森氏症與運動障礙評估
+        - 臨床影像分析與影像轉換
+        - 半監督式學習應用於臨床影像判讀
     - group: AI Agent 系統
       items:
         - 科學文獻分析與引證 Agent
@@ -154,11 +167,12 @@ research_areas:
         - Quantum algorithms for drug discovery and patent search
         - Variational quantum eigensolver (VQE) for molecular properties
         - Evaluation of quantum programming platforms
-    - group: Gait Analysis
+    - group: Medical Image Computing
       items:
-        - Video-based gait analysis platforms
-        - Parkinsonian movement assessment
-        - Semi-supervised learning for pathological gait
+        - Video-based movement and motor-symptom quantification
+        - Parkinsonian and movement-disorder assessment
+        - Clinical image analysis and image-to-image translation
+        - Semi-supervised learning for clinical image interpretation
     - group: AI Agent Systems
       items:
         - Scientific literature analysis and citation agents
@@ -287,9 +301,9 @@ home_intro:
   # pillars only, which was the whole lab in 2006 and two fifths of it now.
   # Rewritten 2026-08-24 from the same sources as the About page.
   zh: >-
-    本實驗室以計算方法研究分子與代謝物，開發演算法與軟體工具，並將其應用於藥物開發、環境與法規化學，以及臨床評估。創立時的兩大主軸為計算分子設計與代謝體學生物標記偵測，現已延伸為五個方向，另含量子計算、步態分析與 AI Agent 系統。
+    本實驗室以計算方法研究分子與代謝物，開發演算法與軟體工具，並將其應用於藥物開發、環境與法規化學，以及臨床評估。創立時的兩大主軸為計算分子設計與代謝體學生物標記偵測，現已延伸為五個方向，另含量子計算、醫學影像計算與 AI Agent 系統。
   en: >-
-    The lab studies molecules and metabolites by computation, developing algorithms and software tools and applying them to drug development, environmental and regulatory chemistry, and clinical assessment. Its two founding directions -- computational molecular design and biomarker detection in metabolomics -- have grown to five, the others being quantum computing, gait analysis and AI agent systems.
+    The lab studies molecules and metabolites by computation, developing algorithms and software tools and applying them to drug development, environmental and regulatory chemistry, and clinical assessment. Its two founding directions -- computational molecular design and biomarker detection in metabolomics -- have grown to five, the others being quantum computing, medical image computing and AI agent systems.
 home_video: https://www.youtube.com/embed/LUdHlIMiyFY?rel=0
 
 # The "Lab record" section of the home page.

@@ -84,9 +84,14 @@ function emailIsPublic(entry) {
  */
 const RESEARCH_AREAS = [
   {
-    zh: '步態分析',
-    en: 'Gait Analysis',
-    pattern: /gait|步態|parkinson|帕金森|螺旋繪圖/i,
+    // Renamed from 步態分析 / Gait Analysis on 2026-09-02, at the PI's word: the
+    // group's work has moved to medical imaging and is not gait analysis any
+    // more. The gait and Parkinson terms stay in the pattern -- the three
+    // published papers and the vault's older topics are this group's, so a topic
+    // naming them still belongs in this pillar.
+    zh: '醫學影像計算',
+    en: 'Medical Image Computing',
+    pattern: /medical image|醫學影像|影像計算|gait|步態|parkinson|帕金森|螺旋繪圖/i,
   },
   {
     zh: 'AI Agent 系統',

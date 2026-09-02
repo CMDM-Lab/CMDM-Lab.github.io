@@ -164,8 +164,14 @@ members:
     degree: masters
     # SchizoTrain: a video-retrieval virtual-patient system for training
     # assessment of schizophrenia negative symptoms, driven by speech and text.
-    area: AI Agent 系統
-    area_en: AI Agent Systems
+    #
+    # Moved out of AI Agent 系統 on 2026-09-02: the PI places him in the
+    # 醫學影像計算 group, which is the one his 智慧醫療學程 cohort belongs to and
+    # which the video half of SchizoTrain sits in. The paper on that work stays
+    # where the lab put it, as the AI Agent pillar's representative paper -- a
+    # paper's pillar and a person's are separate choices in this repository.
+    area: 醫學影像計算
+    area_en: Medical Image Computing
     # RESOLVED 2026-08-23, supplied by the lab. It was left blank while the
     # vault held three candidates and no record of which was deposited -- two of
     # his own and the PI's "Preceptor, an AI-driven virtual patient system…",
@@ -183,10 +189,12 @@ members:
     graduated: 2026
     department: MHI
     degree: masters
-    # Vault topic is Gait Analysis; thesis is a multimodal ML framework for
-    # tardive dyskinesia from speech and facial motion.
-    area: 步態分析
-    area_en: Gait Analysis
+    # Thesis is a multimodal ML framework for tardive dyskinesia from speech and
+    # facial motion. His pillar was renamed 步態分析 → 醫學影像計算 on 2026-09-02,
+    # the group's work having moved to medical imaging; the vault's topic cell for
+    # that group still read the placeholder "Gait Analysis" until the same day.
+    area: 醫學影像計算
+    area_en: Medical Image Computing
     # His own wording, 2026-07-08, two days before the defense: "Changed the
     # title from 'via Voice and Facial Analysis' to 'via Voice and Facial
     # *Movement* Analysis', to ensure grammatical consistency." An earlier
