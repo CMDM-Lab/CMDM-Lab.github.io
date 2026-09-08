@@ -101,13 +101,21 @@ about:
       # 歷屆成員 on the same footing as the assistants already counted, which is
       # why the table is headed 歷屆成員 and not 畢業成員.
       #
+      # 75 → 97 the same day, and this is the big one: the lab said 專題生
+      # belong on the table, so the rest of its list went on. 林盈安 as a
+      # doctorate, nine 大學部專題生 the student numbers on the list can
+      # actually establish, and twelve people carrying a year and a name and
+      # nothing else, because nothing establishes what they were here. Twenty
+      # of those twenty-two are 2008-2016, which is why a number that had moved
+      # by one or two all month moved by twenty-two at once.
+      #
       # The count starts at 2006, the lab's founding year. The journal list
       # reaches back to 2003, but those four entries (2003-2004, 4D-QSAR work at
       # UIC) are the PI's own postdoc publications from before the lab existed
       # and are not the lab's output. Corrected on 2026-08-22 at the lab's
       # instruction; the previous wording claimed all 117 since 2003.
       - >-
-        實驗室自 2006 年創立以來發表 113 篇期刊論文，其中 44 篇在 2020 年之後，另有 98 篇會議論文與 45 項專利。我們在 cmdm.tw 網域下維運 8 項公開服務，包含 3Omics、Lipidpedia、CypRules、GC2MS、Chromaligner 與 PITracer，皆開放外部研究者使用。實驗室現有成員 38 人，歷屆成員 75 人。
+        實驗室自 2006 年創立以來發表 113 篇期刊論文，其中 44 篇在 2020 年之後，另有 98 篇會議論文與 45 項專利。我們在 cmdm.tw 網域下維運 8 項公開服務，包含 3Omics、Lipidpedia、CypRules、GC2MS、Chromaligner 與 PITracer，皆開放外部研究者使用。實驗室現有成員 38 人，歷屆成員 97 人。
   en:
     # The PI's text as supplied; see the note above the locales.
     paragraphs:
@@ -125,7 +133,7 @@ about:
       # See the note on the Chinese paragraph above: the count starts at the
       # lab's founding in 2006, not at the first entry in the journal list.
       - >-
-        Since the lab was founded in 2006 it has published 113 journal articles, 44 of them since 2020, together with 98 conference papers and 45 patents. We maintain eight public services under cmdm.tw -- among them 3Omics, Lipidpedia, CypRules, GC2MS, Chromaligner and PITracer -- all open to external researchers. The lab currently has 38 members and 75 alumni.
+        Since the lab was founded in 2006 it has published 113 journal articles, 44 of them since 2020, together with 98 conference papers and 45 patents. We maintain eight public services under cmdm.tw -- among them 3Omics, Lipidpedia, CypRules, GC2MS, Chromaligner and PITracer -- all open to external researchers. The lab currently has 38 members and 97 alumni.
 
 # shows rather than written from scratch:
 #

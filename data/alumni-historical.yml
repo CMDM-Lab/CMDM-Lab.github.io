@@ -27,7 +27,7 @@
 # 47 people -- this file is the only record of that stretch of lab history, so
 # it is hand-maintained here rather than generated. Recent graduates come from
 # the vault via scripts/sync-members.mjs instead.
-count: 53
+count: 75
 alumni:
 # STAFF WHO HAVE LEFT go here too, at the lab's instruction (2026-08-24). The
 # comment in members-overrides.yml said the opposite -- "staff leave no alumni
@@ -203,6 +203,147 @@ alumni:
   department:
     zh: 碩士班研究生
     en: Graduate Student
+# 林盈安, added 2026-09-08. The lab's list marks her D at 2023 and the lab
+# confirms she graduated. Nothing contradicts it and a good deal supports it:
+# she is Olivia A. Lin on thirteen of the lab's papers between 2015 and 2024,
+# among them the Human Breathomics Database paper this file already treats as a
+# source for romanisations.
+#
+# NO `thesis_url`, AND THE ABSENCE IS CHECKED, NOT ASSUMED. NTU's repository
+# holds no record under 林盈安, none under Olivia as an author, and none in the
+# 49 records filed under 曾宇鳳's supervision (searched 2026-09-08 with
+# scripts/find-thesis-records.mjs, all three ways). A graduate with no deposited
+# record is a state this repository already has -- see `thesis_embargo` in
+# members-overrides.yml -- so the empty cell is not a gap to fill in. Note that
+# an absent record is not a contradicting record: this is a different situation
+# from 譚承恩 and 林潔, whose D on the same list is contradicted by an actual
+# master's record.
+#
+# EMBARGO IS THE ESTABLISHED EXPLANATION, not a guess. 黎芷琪 is the proof case
+# in the vault's own website-member snapshot (30-Resources, 2026-08-21): the lab
+# confirmed her 2023 doctorate and all three bibliographic systems -- NDLTD,
+# Alma and TDR -- hold nothing, because a thesis under 延後公開 appears in none
+# of them. 林盈安 is the same shape.
+#
+# The lab offered her ResearchGate profile as a source. The page itself returns
+# 403 to this network, so the lab supplied its publication list instead
+# (2026-09-08): 28 items, of which roughly half are with this lab between 2015
+# and 2024 and the rest are platelet pharmacology with a US group under Fadi T
+# Khasawneh between 2012 and 2019. Recorded because a reader who finds those
+# papers should not have to wonder whether they are the same person.
+#
+# So the doctorate rests on the lab's word, and the long association is
+# corroborated. The year is the lab's too.
+- name: 林盈安
+  # Olivia A. Lin, the form Crossref carries on her papers with this lab. The
+  # vault's snapshot writes "Ying-An Lin", which is a romanisation nobody
+  # sourced -- exactly what the note at the top of this file warns about -- and
+  # ResearchGate displays "Olivia Lin". How she publishes wins.
+  name_en: Olivia A. Lin
+  graduated: 2023
+  # 生醫電資所, from the vault's website-member snapshot (2026-08-21).
+  department: BEBI
+  degree: phd
+# ─────────────────────────────────────────────────────────────────────────────
+# 大學部專題生, added 2026-09-08 at the lab's word that 專題生 belong on this
+# table. They took no degree here and carry no `degree`; 專題生 is the post, so
+# it goes in `department` as a zh/en pair, the same shape as the assistants.
+#
+# THESE NINE ARE THE ONES THE EVIDENCE REACHES. The lab's list gives each an NTU
+# address whose prefix marks 大學部 and whose following two digits are the year
+# of entry -- four years before the year the list gives them, which is a
+# 大學部 graduation year and not a master's. The addresses themselves are not
+# recorded here; tests/members-privacy.test.mjs would fail the file for carrying
+# anything shaped like a student number, and rightly.
+- name: 巫茹怡
+  graduated: 2016
+  department:
+    zh: 專題生
+    en: Undergraduate Researcher
+- name: 曾子家
+  graduated: 2016
+  department:
+    zh: 專題生
+    en: Undergraduate Researcher
+- name: 盧泓志
+  graduated: 2013
+  department:
+    zh: 專題生
+    en: Undergraduate Researcher
+- name: 陳柏安
+  graduated: 2012
+  department:
+    zh: 專題生
+    en: Undergraduate Researcher
+- name: 林群皓
+  graduated: 2012
+  department:
+    zh: 專題生
+    en: Undergraduate Researcher
+- name: 張軍裕
+  graduated: 2011
+  department:
+    zh: 專題生
+    en: Undergraduate Researcher
+- name: 柯伊庭
+  graduated: 2011
+  department:
+    zh: 專題生
+    en: Undergraduate Researcher
+- name: 沈子琪
+  graduated: 2011
+  department:
+    zh: 專題生
+    en: Undergraduate Researcher
+- name: 黃庭箴
+  graduated: 2011
+  department:
+    zh: 專題生
+    en: Undergraduate Researcher
+# ─────────────────────────────────────────────────────────────────────────────
+# YEAR AND NAME ONLY, added 2026-09-08. Twelve people from the lab's list with
+# no post and no level, deliberately: the lab's answer on 2026-09-08 was that
+# only the nine above can be shown to be 專題生, and these twelve cannot. They
+# were in the lab in the year given -- that much the list is good for, and the
+# lab's own account is that it is edited year by year -- but nothing establishes
+# whether each was a 專題生, a graduate student who left, or an assistant.
+#
+# An empty unit cell is the honest rendering of that, and it is recoverable: put
+# the post or the level in `department` as a zh/en pair when the lab says which,
+# exactly as the nine above and the assistants carry theirs. Do not reach for
+# the list's M column -- it is the column that was wrong nine times out of the
+# twelve that could be checked. Several of these twelve do have NTU records
+# under other professors, which says where they went afterwards and nothing
+# about what they were here: 楊應甲 under 傅楸善 in 2013, 陳奕竹 under 林宗賢 in
+# 2014. 陳琤's search matched 陳琬琤, a different person, and the three 葉欣宜
+# records belong to 2015 and 2016 graduates of other labs.
+- name: 路本庭
+  # The lab's list writes the name as "Brendan Reilly 路本庭", the pair this file
+  # already carries for 舒艾琉 / Alioune Schurz.
+  name_en: Brendan Reilly
+  graduated: 2014
+- name: 唐皇
+  graduated: 2014
+- name: 杜宗霖
+  graduated: 2014
+- name: 彭康偉
+  graduated: 2013
+- name: 楊裕宏
+  graduated: 2013
+- name: 陳加頎
+  graduated: 2013
+- name: 陳奕竹
+  graduated: 2013
+- name: 陳琤
+  graduated: 2013
+- name: 楊應甲
+  graduated: 2011
+- name: 黃永沅
+  graduated: 2010
+- name: 江任捷
+  graduated: 2008
+- name: 葉欣宜
+  graduated: 2008
 - name: 王珮驊
   # Her row renders again now that a graduate who stayed on is listed in both
   # sections, so it carries the romanisation the postdoc entry uses.
