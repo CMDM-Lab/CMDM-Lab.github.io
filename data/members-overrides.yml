@@ -464,7 +464,14 @@ members:
       Nitrosamines Using Synthetic Data and Explainable Artificial Intelligence,
       with Applications to Drug Synthesis Pathway Planning
   林詩敏:
-    graduated: 2025
+    # 2025 -> 2024 on 2026-09-08. The lab's earlier answer gave 2025; its list of
+    # former members, which the administrative assistant edits year by year,
+    # gives 2024, and the lab's word on 2026-09-08 is that the list is the
+    # better of the two for exactly that reason. Nothing else can settle it:
+    # NTU holds no thesis record under her name, so scripts/check-thesis-records
+    # has nothing to read and the usual arbiter is absent. Recorded because a
+    # bare year change looks like a typo being fixed, and this is not that.
+    graduated: 2024
     department: CSIE
     # The lab gave the year, the unit and the thesis. The level is from the
     # vault's own 校友 row for her, which reads 碩士論文（主題待補）.

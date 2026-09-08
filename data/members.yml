@@ -500,17 +500,6 @@ members:
     thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/98909
     area: 代謝體學
     area_en: Metabolomics
-  - name: 林詩敏
-    name_en: ""
-    role: alumni
-    department: CSIE
-    graduated: 2025
-    degree: masters
-    research: ""
-    research_en: ""
-    thesis: 結合多目標最佳化與生成式網路應用於阿茲海默症分子藥物設計
-    thesis_en: Alzheimer’s Disease Drug Discovery through De Novo Molecular Design via Multi-objective
-      Optimization on Generative Network
   - name: 張家瑜
     name_en: Chia-I. Chang
     role: alumni
@@ -546,6 +535,17 @@ members:
     thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/96601
     area: AI Agent 系統
     area_en: AI Agent Systems
+  - name: 林詩敏
+    name_en: ""
+    role: alumni
+    department: CSIE
+    graduated: 2024
+    degree: masters
+    research: ""
+    research_en: ""
+    thesis: 結合多目標最佳化與生成式網路應用於阿茲海默症分子藥物設計
+    thesis_en: Alzheimer’s Disease Drug Discovery through De Novo Molecular Design via Multi-objective
+      Optimization on Generative Network
   - name: 詹易玹
     name_en: ""
     role: alumni

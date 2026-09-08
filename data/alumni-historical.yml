@@ -27,7 +27,7 @@
 # 47 people -- this file is the only record of that stretch of lab history, so
 # it is hand-maintained here rather than generated. Recent graduates come from
 # the vault via scripts/sync-members.mjs instead.
-count: 48
+count: 53
 alumni:
 # STAFF WHO HAVE LEFT go here too, at the lab's instruction (2026-08-24). The
 # comment in members-overrides.yml said the opposite -- "staff leave no alumni
@@ -145,6 +145,64 @@ alumni:
     system for the diagnosis of Parkinson's symptoms with hand videos using
     finger tapping
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/87724
+# FIVE PEOPLE FROM THE LAB'S LIST WHO TOOK NO DEGREE HERE, added 2026-09-08 on
+# the lab's account of each. None has a thesis record under 曾宇鳳, and none is
+# given a `degree`: that field means a degree obtained in this lab, and reading
+# the list's D/M column as one is exactly the mistake this file's foot warns
+# about. Their post or their level goes in `department` as a zh/en pair, which
+# is the shape the research assistants above already use, and their year is the
+# year they left -- the convention for anyone who did not graduate here.
+- name: 何蓓林
+  # Administrative assistant, left 2017. Reported by the lab (2026-09-08).
+  #
+  # The lab's list writes her name as 何蓓林 Karen. "Karen" is her own English
+  # given name, not a romanisation of 何蓓林, and a full Latin form of the name
+  # has no source -- she has no thesis record and no paper here carries her. So
+  # the row gives the Chinese name only, per the romanisation policy that pulled
+  # five guessed names out of members-overrides.yml on 2026-08-22.
+  graduated: 2017
+  department:
+    zh: 行政助理
+    en: Administrative Assistant
+- name: 江品億
+  # Research assistant, left 2014. Reported by the lab (2026-09-08).
+  graduated: 2014
+  department:
+    zh: 研究助理
+    en: Research Assistant
+- name: 呂宗諭
+  # Research assistant, left 2017. Reported by the lab (2026-09-08): he took a
+  # master's first, was a research assistant here, and then left for a PhD in
+  # the United States.
+  #
+  # The master's is not this lab's. NTU holds two records under this name, one
+  # advised by 陳佩燁 (2015) and one by 陳柏華 (2014), and neither is 曾宇鳳's --
+  # which of the two is him is not established and does not matter here, because
+  # neither is a degree taken in this lab. The lab's list carries him twice, at
+  # 2015 and at 2017; one person, and 2017 is the year the assistant post ended,
+  # which is the year this row states.
+  graduated: 2017
+  department:
+    zh: 研究助理
+    en: Research Assistant
+- name: 張乃文
+  # Doctoral student who changed advisor partway and left the lab in her D2 or
+  # D3 year, per the lab (2026-09-08). The list marks her D; she did not take
+  # the degree here, so the row carries the level she was reading at and no
+  # `degree`. Ten NTU records match the name and none is advised by 曾宇鳳.
+  graduated: 2014
+  department:
+    zh: 博士班研究生
+    en: Doctoral Student
+- name: 黃雍文
+  # Master's student who changed advisor not long after arriving, per the lab
+  # (2026-09-08). NTU holds his master's under 歐陽彥正, accepted 2015 -- a real
+  # record, and not this lab's, so it is not linked here. 2013 is the year he
+  # left this lab.
+  graduated: 2013
+  department:
+    zh: 碩士班研究生
+    en: Graduate Student
 - name: 王珮驊
   # Her row renders again now that a graduate who stayed on is listed in both
   # sections, so it carries the romanisation the postdoc entry uses.
