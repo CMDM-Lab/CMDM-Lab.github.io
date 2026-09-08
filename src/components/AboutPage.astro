@@ -1,11 +1,12 @@
 ---
 // About page, shared by both locales.
 //
-// The Chinese locale currently renders the English prose: the old site had a
-// `_zh` variant whose body was English, and no Chinese version exists anywhere
-// in the repository. See the translation-gap note in data/pages.yml. Machine
-// translating the lab's own account of its research would put words in its
-// mouth, so the gap is left visible instead.
+// Both locales have their own prose in data/pages.yml, so `translated` is true
+// on both and the Latin fallback below is dormant. It is kept because the
+// fallback path is real: getAbout() returns the English text whenever the
+// Chinese paragraphs are absent or marked `same_as_en`, and one 38em column of
+// English wastes half the page. See the provenance note on `about:` in
+// data/pages.yml for what each paragraph is and who wrote it.
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hairline from './ds/Hairline.astro';
 import Kicker from './ds/Kicker.astro';
