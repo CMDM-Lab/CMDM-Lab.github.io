@@ -57,7 +57,20 @@ about_title: 關於實驗室
 about_description: 認識國立臺灣大學計算分子設計與代謝體學實驗室的研究方向、合作計畫與聯絡方式。
 about_kicker: 關於
 about_subtitle: 研究方向 · 合作計畫 · 技術平台
-about_lede: 本實驗室設於國立臺灣大學資訊工程學系，研究橫跨計算分子設計、臨床代謝體學、量子計算、醫學影像計算與 AI Agent 系統。
+# The lede followed the body on 2026-09-08. It had listed the five research
+# pillars, which the PI's new About prose no longer frames the lab by, so the
+# masthead was naming five directions the text below it did not mention.
+#
+# It states the institution and the disease focus, and nothing else, on purpose.
+# The first body paragraph opens with the four disciplines the lab integrates,
+# and a lede that listed them too put the same four names on screen twice about
+# fifteen characters apart. So the lede names the diseases, which the body does
+# not do until its second paragraph, and leaves the disciplines to the prose.
+#
+# The Research page's own lede still names five pillars, correctly -- that page
+# still lists all five. So do home_description and home_intro; those were left
+# alone, and the mismatch with this page is the lab's to settle.
+about_lede: 本實驗室設於國立臺灣大學資訊工程學系，以計算方法研究阿茲海默症、帕金森氏症等神經退化性與腦部疾病。
 
 # ── Research ─────────────────────────────────────────────────
 research_title: 研究內容

@@ -43,9 +43,10 @@ about_description: Research directions, collaborations, and contact information 
   Computational Molecular Design and Metabolomics Lab at National Taiwan University.
 about_kicker: About
 about_subtitle: Research directions · Collaborations · Platforms
+# Rewritten 2026-09-08 with the body; the note is on the Chinese key.
 about_lede: The lab is hosted in the Department of Computer Science and Information Engineering at
-  National Taiwan University, working across computational molecular design, clinical metabolomics,
-  quantum computing, medical image computing, and AI agent systems.
+  National Taiwan University, and applies computational methods to neurodegenerative and brain
+  disorders such as Alzheimer’s and Parkinson’s disease.
 
 # ── Research ─────────────────────────────────────────────────
 research_title: Research
