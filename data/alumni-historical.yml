@@ -225,6 +225,11 @@ alumni:
 # Alma and TDR -- hold nothing, because a thesis under 延後公開 appears in none
 # of them. 林盈安 is the same shape.
 #
+# What separates her from 譚承恩 and 林潔, whose D on the same list also stands
+# against a master's row: their doctorates are from UC Davis and Carnegie
+# Mellon, so this lab's degree for them is settled and recorded. Hers is claimed
+# of this lab, and this lab has no record to show.
+#
 # The lab offered her ResearchGate profile as a source. The page itself returns
 # 403 to this network, so the lab supplied its publication list instead
 # (2026-09-08): 28 items, of which roughly half are with this lab between 2015
@@ -570,6 +575,11 @@ alumni:
   thesis: 離子軌跡偵測與訊號校正於高解析液相層析串聯飛行時間質譜儀平台之代謝體學應用
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/16871
 - name: 林潔
+  # Holds a PhD in machine learning from Carnegie Mellon, per the lab
+  # (2026-09-08). That is what the D beside her name on the lab's list means:
+  # the list answers "what is this person's highest degree", this column answers
+  # "what degree did they take in this lab". Her master's here is the row, and
+  # NTU's record settles it -- see the note at the foot of this file.
   name_en: Chieh Lin
   graduated: 2014
   department: CSIE
@@ -577,6 +587,9 @@ alumni:
   thesis: PolyName2Structure 系統 - 利用預測聚合物單體結構的反應途徑，來達成從聚合物名稱轉成結構的目標
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/57079
 - name: 譚承恩
+  # Reading for a doctorate at UC Davis, per the lab (2026-09-08). Same as 林潔
+  # above and 何明洋 below: the D on the lab's list is a doctorate taken
+  # elsewhere, not a claim about this lab.
   name_en: Cheng-En Tan
   graduated: 2014
   department: CSIE
@@ -740,12 +753,31 @@ alumni:
 # NTU holds their theses. The other twenty-eight are not, and this is why.
 #
 # WHAT THE LIST IS WORTH. Twelve rows on it could be checked against NTU's
-# records, and nine disagreed: 王恆, 張家瑜, 游子慧 and 許洸誠 were a year late,
-# 蕭毅 and 王三源 a year early, 譚承恩 was marked D against a master's record,
-# 林潔 the same, 張嘉芸 marked M against a doctorate, and 蔡東銘 appeared once
-# where the repository holds a master's in 2009 and a doctorate in 2017. The
-# rows here were right in all nine. So the list is a roll of people, and its
-# year and degree columns are not evidence.
+# records and nine disagreed, but the reasons are not all the same and the
+# difference matters when deciding what to do about one:
+#
+#   THE YEAR IS THE YEAR THEY LEFT, not the 口試. 王恆, 張家瑜, 游子慧 and
+#   許洸誠 read a year late on the list, 蕭毅 and 王三源 a year early. Both
+#   directions are what an exit year does against a defence date, and the lab
+#   says (2026-09-08) an administrative assistant edits the list year by year,
+#   which makes it the best source for anyone with no record at all. That is why
+#   林詩敏 sits at 2024 here and not 2025.
+#
+#   THE DEGREE COLUMN ANSWERS A DIFFERENT QUESTION -- what is this person's
+#   highest degree, wherever they took it. `degree` in this file answers what
+#   degree they took in this lab. 譚承恩 is reading for a doctorate at UC Davis,
+#   林潔 holds a PhD in machine learning from Carnegie Mellon, and 何明洋 is a
+#   doctoral student at Duke: all three read D on the list and all three took a
+#   master's here, and none of those three D's is an error. The lab supplied the
+#   three destinations on 2026-08-22 and 2026-09-08.
+#
+#   ONE ROW IS SIMPLY WRONG, which is why the record still has to settle it:
+#   張嘉芸 reads M and holds a doctorate from this lab. And one is incomplete:
+#   蔡東銘 appears once where the repository holds his master's in 2009 and his
+#   doctorate in 2017.
+#
+# So the list is a roll of people and an exit year, and its degree column is not
+# an answer to the question this file asks.
 #
 # WHY TWENTY-EIGHT PEOPLE HAVE NO RECORD. scripts/find-thesis-records.mjs reads
 # every thesis filed under 曾宇鳳's supervision -- 49 of them -- and that set
