@@ -587,9 +587,9 @@ alumni:
   thesis: PolyName2Structure 系統 - 利用預測聚合物單體結構的反應途徑，來達成從聚合物名稱轉成結構的目標
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/57079
 - name: 譚承恩
-  # Reading for a doctorate at UC Davis, per the lab (2026-09-08). Same as 林潔
-  # above and 何明洋 below: the D on the lab's list is a doctorate taken
-  # elsewhere, not a claim about this lab.
+  # Holds a doctorate from UC Davis, awarded in 2026, per the lab (2026-09-08).
+  # Same as 林潔 above and 何明洋 below: the D on the lab's list is a doctorate
+  # taken elsewhere, not a claim about this lab.
   name_en: Cheng-En Tan
   graduated: 2014
   department: CSIE
@@ -765,7 +765,7 @@ alumni:
 #
 #   THE DEGREE COLUMN ANSWERS A DIFFERENT QUESTION -- what is this person's
 #   highest degree, wherever they took it. `degree` in this file answers what
-#   degree they took in this lab. 譚承恩 is reading for a doctorate at UC Davis,
+#   degree they took in this lab. 譚承恩 took a doctorate at UC Davis in 2026,
 #   林潔 holds a PhD in machine learning from Carnegie Mellon, and 何明洋 is a
 #   doctoral student at Duke: all three read D on the list and all three took a
 #   master's here, and none of those three D's is an error. The lab supplied the
