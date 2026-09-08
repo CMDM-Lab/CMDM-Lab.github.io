@@ -27,7 +27,7 @@
 # 47 people -- this file is the only record of that stretch of lab history, so
 # it is hand-maintained here rather than generated. Recent graduates come from
 # the vault via scripts/sync-members.mjs instead.
-count: 46
+count: 48
 alumni:
 # STAFF WHO HAVE LEFT go here too, at the lab's instruction (2026-08-24). The
 # comment in members-overrides.yml said the opposite -- "staff leave no alumni
@@ -108,6 +108,43 @@ alumni:
   department: BEBI
   degree: masters
   thesis: ''
+# THE 2023 PAIR, added 2026-09-08. Both came from the list of former members the
+# lab supplied that day, and neither is published on the strength of that list:
+# the list's own degree column disagreed with NTU's records in nine of the twelve
+# rows that could be checked. These two were found in the repository instead, by
+# scripts/find-thesis-records.mjs, which reads every record filed under 曾宇鳳's
+# supervision and reports the ones no row here links. Every field below is that
+# record -- the year is `dc.date.accepted`, the 口試通過日期, as everywhere else
+# in this file.
+#
+# The list also named 林盈安 at 2023 as a doctorate. NTU holds no record under
+# that name at all, so there is no row for her here; see the note at the foot of
+# this file.
+- name: 李謙
+  name_en: Chien Lee
+  # 口試 2023-07-03, 資訊工程學系, 碩士.
+  graduated: 2023
+  department: CSIE
+  degree: masters
+  thesis: 蛋白質結構預測模型之比較分析及量子啟發式計算於天然物結構解析問題之探索
+  thesis_en: >-
+    Comparative Analysis of Protein Modelling Methods and Exploration of
+    Quantum-Inspired Computing for Natural Product Structure Elucidation
+  thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/88002
+- name: 楊淯元
+  name_en: Yu-Yuan Yang
+  # 口試 2023-04-11, 生醫電子與資訊學研究所, 碩士. The thesis is the FastEval
+  # Parkinsonism system, which is the movement work behind the medical image
+  # computing pillar.
+  graduated: 2023
+  department: BEBI
+  degree: masters
+  thesis: FastEval Parkinsonism：基於深度學習以手部影像建構之帕金森氏症狀線上即時自我評估系統—以手指打拍為例
+  thesis_en: >-
+    FastEval Parkinsonism: An instant deep learning-based online self-evaluation
+    system for the diagnosis of Parkinson's symptoms with hand videos using
+    finger tapping
+  thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/87724
 - name: 王珮驊
   # Her row renders again now that a graduate who stayed on is listed in both
   # sections, so it carries the romanisation the postdoc entry uses.
@@ -494,3 +531,56 @@ alumni:
   degree: masters
   thesis: 4D-QSAR分析TW01系列類似物之定量構效關係
   thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/26283
+
+# ─────────────────────────────────────────────────────────────────────────────
+# NOT ON THIS PAGE: the rest of the lab's list of 2026-09-08.
+#
+# The lab supplied a list of former members that day, one line per person, with
+# a degree column reading D or M. Thirty of those names had no row anywhere in
+# this repository. Two of them are rows now -- 李謙 and 楊淯元, above -- because
+# NTU holds their theses. The other twenty-eight are not, and this is why.
+#
+# WHAT THE LIST IS WORTH. Twelve rows on it could be checked against NTU's
+# records, and nine disagreed: 王恆, 張家瑜, 游子慧 and 許洸誠 were a year late,
+# 蕭毅 and 王三源 a year early, 譚承恩 was marked D against a master's record,
+# 林潔 the same, 張嘉芸 marked M against a doctorate, and 蔡東銘 appeared once
+# where the repository holds a master's in 2009 and a doctorate in 2017. The
+# rows here were right in all nine. So the list is a roll of people, and its
+# year and degree columns are not evidence.
+#
+# WHY TWENTY-EIGHT PEOPLE HAVE NO RECORD. scripts/find-thesis-records.mjs reads
+# every thesis filed under 曾宇鳳's supervision -- 49 of them -- and that set
+# already contained every record this site links. The search sees the whole
+# shelf, so "no record" means no thesis under her supervision, and for this
+# cohort that is the answer rather than a gap: they are 大學部專題生,
+# undergraduates doing a project here. The lab said so on 2026-09-08 and the
+# student numbers on its list agree -- a `b` prefix is 大學部 and the two digits
+# after it are the year of entry, which lands four years before the year the
+# list gives each of them.
+#
+# Several of them took a master's later, in another professor's lab: 曾子家
+# under 傅楸善 in 2019, 盧泓志 under 王傑智 in 2015, 黃雍文 under 歐陽彥正 in
+# 2015, 楊應甲 under 傅楸善 in 2013, 陳奕竹 under 林宗賢 in 2014. Those records
+# are real and say nothing about this lab, which is why none of them is linked
+# from a row here. Two searches returned somebody else entirely: 陳琤 matched
+# 陳琬琤, and the three 葉欣宜 records are 2015 and 2016 graduates of other labs.
+#
+# TWO CLAIMS THE RECORD DOES NOT SUPPORT, both doctorates:
+#   林盈安, listed at 2023 as D -- NTU holds no record under that name at all.
+#   張乃文, listed at 2014 as D -- ten records match the name, none advised by
+#           曾宇鳳.
+# A doctorate is not published here on a list alone, so neither has a row.
+#
+# WHAT IS STILL OPEN, and what it needs:
+#   - Which of the twenty-eight were 研究助理 or 行政助理 rather than 專題生.
+#     The lab is supplying that; the assistants already here carry the post in
+#     `department` as a zh/en pair and no `degree`, which is the shape to reuse.
+#   - Whether 專題生 belong on 歷屆成員 at all, and under what label. The table
+#     is headed 歷屆成員 and already holds staff, so there is a case for it, but
+#     it is the lab's call and nobody has made it.
+#   - 林詩敏, 2025 here and 2024 on the list, with no thesis record either way.
+#   - 何明洋, masters here and D on the list, likewise no record.
+#   - 呂宗諭 appears on the list twice, at 2015 and at 2017.
+#   - Four people this file or the vault carries are absent from the list:
+#     許漢強 (2026), 徐銘聰 (2018), and the two assistants 黃立緯 and 莊珮君.
+#     The list is not a superset, so nothing was removed on the strength of it.

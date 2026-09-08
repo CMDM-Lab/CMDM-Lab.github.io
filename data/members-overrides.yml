@@ -489,6 +489,14 @@ members:
       Identification in Resting-State and Auditory Steady-State Response
       EEG-Based Diagnosis of Neurodegenerative Diseases with Interpretable
       Cognitive Assessments
+    # Found 2026-09-08 by scripts/find-thesis-records.mjs, which reported this
+    # record as the only 曾宇鳳-advised thesis with no row linking it. It is
+    # filed under her Chinese name 楊美美, which is why a search for the name
+    # this site prints had never turned it up. The two titles above were already
+    # here from the lab and match the record word for word, which is what
+    # identifies the record as hers; the 口試 was 2024-08-02, the year this row
+    # already carried.
+    thesis_url: https://tdr.lib.ntu.edu.tw/jspui/handle/123456789/93775
   倪宇澔:
     # Supplied by the lab with the thesis, 2026-08-23.
     name_en: Yu-Hao Ni

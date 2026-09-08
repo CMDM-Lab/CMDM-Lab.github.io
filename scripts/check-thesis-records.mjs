@@ -30,64 +30,13 @@ import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import YAML from 'yaml';
 import { fetchText } from './lib/fetch-util.mjs';
+// The host, the advisor, the unit map and the DSpace parser live in the lib
+// because find-thesis-records.mjs reads the same repository the same way.
+import {
+  ADVISOR, DEGREE_FROM_ZH, RECORD_HOST, UNIT_FOR_CODE, parseRecord,
+} from './lib/thesis-records.mjs';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
-const ADVISOR = '曾宇鳳';
-
-/** The one host this script will talk to. A `thesis_url` elsewhere is a bug. */
-const RECORD_HOST = 'tdr.lib.ntu.edu.tw';
-
-const DEGREE_FROM_ZH = { 碩士: 'masters', 博士: 'phd' };
-
-/**
- * Department codes, as the repository writes the unit out in full.
- *
- * Kept here rather than imported from src/lib/data.ts because that file is
- * TypeScript and this is a plain script; tests/members-privacy.test.mjs already
- * asserts the codes agree across the two places that matter. A unit missing
- * from this map is reported, not assumed wrong.
- */
-const UNIT_FOR_CODE = {
-  // A list, because the repository's own wording for the home department moved:
-  // a thesis accepted in September 2022 is filed under 資訊工程學研究所 and one
-  // accepted in July 2023 under 資訊工程學系. Either is right for its own
-  // graduate. Which of the two the page prints is decided by `bareBefore` in
-  // src/lib/data.ts, off the graduation year -- and the year is checked here, so
-  // matching either name costs nothing.
-  //
-  // These are the repository's strings, not the site's: it writes MHI out as
-  // 智慧醫療與健康資訊碩士學位學程 where DEPARTMENT_LABELS has
-  // 智慧醫療與健康資訊學程.
-  CSIE: ['資訊工程學系', '資訊工程學研究所'],
-  BEBI: ['生醫電子與資訊學研究所'],
-  GSB: ['基因體與系統生物學學位學程'],
-  MHI: ['智慧醫療與健康資訊碩士學位學程'],
-  GINM: ['資訊網路與多媒體研究所'],
-  PHARM: ['藥學研究所'],
-  EE: ['電機工程學研究所'],
-};
-
-/** Parse the `?mode=full` page into its dc.* fields. */
-function parseRecord(html) {
-  const fields = {};
-  for (const row of html.matchAll(/<tr>([\s\S]*?)<\/tr>/g)) {
-    const cells = [...row[1].matchAll(/<td[^>]*>([\s\S]*?)<\/td>/g)]
-      .map((cell) => cell[1].replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim())
-      .filter(Boolean);
-    if (cells.length >= 2 && cells[0].startsWith('dc.')) {
-      (fields[cells[0]] ??= []).push(decodeEntities(cells[1]));
-    }
-  }
-  return fields;
-}
-
-function decodeEntities(text) {
-  return text
-    .replace(/&#(\d+);/g, (_, code) => String.fromCharCode(Number(code)))
-    .replace(/&#x([0-9a-f]+);/gi, (_, code) => String.fromCharCode(parseInt(code, 16)))
-    .replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>')
-    .replace(/&quot;/g, '"').replace(/&apos;/g, "'").replace(/&nbsp;/g, ' ');
-}
 
 /**
  * Compare titles loosely, because we transcribe deliberately.
