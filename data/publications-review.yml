@@ -2,5 +2,14 @@ _generated: Candidates from "Tseng YJ[Author] AND National Taiwan University[Aff
   NOT in a trusted source.
 _instructions: This query name-collides with another NTU researcher. Move real lab papers into
   publications-overrides.yml `include:`, and the rest into `exclude:`.
-count: 0
-candidates: []
+count: 1
+candidates:
+  - title: "Area Under the Curve-Guided Therapeutic Drug Monitoring of Mycophenolic Acid in Lung
+      Transplant Recipients: Volumetric Absorptive Microsampling and Population
+      Pharmacokinetic-Based Limited Sampling Strategies."
+    doi: 10.1208/s12248-026-01284-1
+    pmid: "42760471"
+    year: 2026
+    journal: The AAPS journal
+    type: journal-article
+    source: pubmed
