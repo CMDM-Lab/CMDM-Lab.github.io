@@ -243,6 +243,14 @@ members:
     role: staff
     title: 研究助理
     title_en: Research Assistant
+    # Her own form, with the lower-case y: the signature on the committee
+    # invitations she sent on 2026-06-26 reads "丁瓘茵 / Guan-yin Ding", and every
+    # thesis draft in the vault (v6 of 2026-05-16 to the clean copy of
+    # 2026-07-02) prints "丁瓘茵 Guan-yin Ding" on the cover. Her vault page's
+    # aliases carry only the Chinese name. Recheck against dc.contributor.author
+    # once the thesis is deposited; the Drive file names say Guan-Yin_Ding, which
+    # is not her spelling.
+    name_en: Guan-yin Ding
     area: AI Agent 系統
     area_en: AI Agent Systems
 

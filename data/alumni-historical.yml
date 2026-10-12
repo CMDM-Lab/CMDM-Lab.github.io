@@ -116,8 +116,10 @@ alumni:
   #
   # 2026, 生醫電資所, 碩士, from the vault and the lab. On 2026-10-12
   # scripts/find-thesis-records.mjs found no record under her name, so there is
-  # no thesis_url, and no name_en: a romanisation comes from the record, not
-  # from a guess.
+  # no thesis_url. The romanisation is not from a record either, but it is not a
+  # reading of the characters: it is her own, from her thesis cover and her mail
+  # signature. members-overrides.yml gives the sources.
+  name_en: Guan-yin Ding
   #
   # The vault carries two titles for her. This is the later one, from the
   # defense announcement she sent on 2026-07-16: "口試題目: When Retrieval
