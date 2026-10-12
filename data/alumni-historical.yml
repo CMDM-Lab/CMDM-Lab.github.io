@@ -27,7 +27,7 @@
 # 47 people -- this file is the only record of that stretch of lab history, so
 # it is hand-maintained here rather than generated. Recent graduates come from
 # the vault via scripts/sync-members.mjs instead.
-count: 75
+count: 76
 alumni:
 # STAFF WHO HAVE LEFT go here too, at the lab's instruction (2026-08-24). The
 # comment in members-overrides.yml said the opposite -- "staff leave no alumni
@@ -108,6 +108,30 @@ alumni:
   department: BEBI
   degree: masters
   thesis: ''
+- name: 丁瓘茵
+  # Here for the same reason as 葉芷瑜 and 李哲宇 above: the lab reported on
+  # 2026-10-12 that she is now also a research assistant, so her
+  # members-overrides.yml entry leads with the post and this row keeps her
+  # degree on the page.
+  #
+  # 2026, 生醫電資所, 碩士, from the vault and the lab. On 2026-10-12
+  # scripts/find-thesis-records.mjs found no record under her name, so there is
+  # no thesis_url, and no name_en: a romanisation comes from the record, not
+  # from a guess.
+  #
+  # The vault carries two titles for her. This is the later one, from the
+  # defense announcement she sent on 2026-07-16: "口試題目: When Retrieval
+  # Helps and Hurts ... (因內容微調，論文題目更新，以此最新版本為準)". Her
+  # person page still shows the earlier "Development and Evaluation of a CBT
+  # Agent System Integrating Suicide Risk Detection and Retrieval-Augmented
+  # Generation", which her own mail supersedes. Worth confirming against the
+  # 審定書 signed 2026-08-18, or against the record once it is deposited.
+  graduated: 2026
+  department: BEBI
+  degree: masters
+  thesis: >-
+    When Retrieval Helps and Hurts: Evaluating the Safety–Coherence Trade-off
+    in Retrieval-Augmented CBT Agents
 # THE 2023 PAIR, added 2026-09-08. Both came from the list of former members the
 # lab supplied that day, and neither is published on the strength of that list:
 # the list's own degree column disagreed with NTU's records in nine of the twelve

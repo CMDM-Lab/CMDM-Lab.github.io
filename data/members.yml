@@ -23,6 +23,16 @@ members:
     education_en:
       - PhD in Medicinal Chemistry and Pharmacognosy, University of Illinois at Chicago
       - BS in Pharmacy, National Taiwan University
+  - name: 丁瓘茵
+    name_en: ""
+    role: staff
+    title: 研究助理
+    title_en: Research Assistant
+    graduated: 2026
+    research: CBT Agent — 自殺風險偵測 ＋ 檢索增強生成（RAG）
+    research_en: ""
+    area: AI Agent 系統
+    area_en: AI Agent Systems
   - name: 朱于君
     role: staff
     title: 行政助理
@@ -372,18 +382,6 @@ members:
     research_en: ""
     area: 計算分子設計
     area_en: Computational Molecular Design
-  - name: 丁瓘茵
-    name_en: ""
-    role: alumni
-    department: BEBI
-    graduated: 2026
-    degree: masters
-    research: CBT Agent — 自殺風險偵測 ＋ 檢索增強生成（RAG）
-    research_en: ""
-    thesis: "When Retrieval Helps and Hurts: Evaluating the Safety–Coherence Trade-off in
-      Retrieval-Augmented CBT Agents"
-    area: AI Agent 系統
-    area_en: AI Agent Systems
   - name: 古庭榮
     name_en: Ting-Jung Ku
     role: alumni

@@ -235,22 +235,16 @@ members:
     area_en: Metabolomics
 
   丁瓘茵:
-    role: alumni
-    graduated: 2026
-    department: BEBI
-    degree: masters
+    # The lab reported on 2026-10-12 that she is now also a research assistant.
+    # No start date came with it. The same arrangement as 葉芷瑜 and 李哲宇
+    # above: she leads with the post, and her 2026 master's moved to a row in
+    # alumni-historical.yml, which carries the thesis title and where it came
+    # from.
+    role: staff
+    title: 研究助理
+    title_en: Research Assistant
     area: AI Agent 系統
     area_en: AI Agent Systems
-    # The vault carries two titles for her. This is the later one, from the
-    # defense announcement she sent on 2026-07-16: "口試題目: When Retrieval
-    # Helps and Hurts ... (因內容微調，論文題目更新，以此最新版本為準)". Her
-    # person page still shows the earlier "Development and Evaluation of a CBT
-    # Agent System Integrating Suicide Risk Detection and Retrieval-Augmented
-    # Generation", which her own mail supersedes. Worth confirming against the
-    # 審定書 signed 2026-08-18.
-    thesis: >-
-      When Retrieval Helps and Hurts: Evaluating the Safety–Coherence Trade-off
-      in Retrieval-Augmented CBT Agents
 
   蔡哲維:
     # Stated by the lab (2026-08-23). The classifier read only 代謝體學, off a
