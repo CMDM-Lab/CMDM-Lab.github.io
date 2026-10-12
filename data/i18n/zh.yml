@@ -109,8 +109,8 @@ members_kicker: 成員
 members_subtitle: 主持人 · 博士後 · 博碩士生 · 校友
 # {units} is filled in from the roster -- see labAffiliationProse().
 members_lede: 本實驗室設於國立臺灣大學資訊工程學系，並與{units}合聘指導學生。
-members_photo_alt: 實驗室成員在歲末聚餐上的合影，約二十餘人並排合照。
-members_photo_caption: 實驗室成員合影，2023 年。
+members_photo_alt: 實驗室成員在 20 週年聚餐時的合影，約三十人站在建築物前的台階上合照。
+members_photo_caption: 實驗室 20 週年聚餐合影，2026 年。
 
 # ── Services ─────────────────────────────────────────────────
 services_title: 軟體服務

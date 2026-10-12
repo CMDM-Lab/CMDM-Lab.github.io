@@ -98,9 +98,9 @@ members_subtitle: Principal investigator · Postdocs · Graduate students · Alu
 # {units} is filled in from the roster -- see labAffiliationProse().
 members_lede: The lab is hosted in the Department of Computer Science and Information Engineering
   at National Taiwan University, with students co-supervised across {units}.
-members_photo_alt: Members of the lab at a year-end dinner, some two dozen people standing
-  together for a group photograph.
-members_photo_caption: Lab members, 2023.
+members_photo_alt: Members of the lab at the dinner for its 20th anniversary, some thirty people
+  standing together on the steps outside a building for a group photograph.
+members_photo_caption: Lab members at the lab's 20th anniversary dinner, 2026.
 
 # ── Services ─────────────────────────────────────────────────
 services_title: Software and Web Services
