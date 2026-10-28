@@ -113,13 +113,16 @@ about:
       # 歷屆成員 stays 97, because her degree moved from the vault's alumni rows
       # to alumni-historical.yml, which the count also reads.
       #
+      # 39 → 41 current on 2026-10-28: 翁菡隃 (M1) and 林榆涵 (大學部) were on
+      # the vault roster but never synced, because CI has no CMDM_LOBE_TOKEN.
+      #
       # The count starts at 2006, the lab's founding year. The journal list
       # reaches back to 2003, but those four entries (2003-2004, 4D-QSAR work at
       # UIC) are the PI's own postdoc publications from before the lab existed
       # and are not the lab's output. Corrected on 2026-08-22 at the lab's
       # instruction; the previous wording claimed all 117 since 2003.
       - >-
-        實驗室自 2006 年創立以來發表 113 篇期刊論文，其中 44 篇在 2020 年之後，另有 98 篇會議論文與 45 項專利。我們在 cmdm.tw 網域下維運 8 項公開服務，包含 3Omics、Lipidpedia、CypRules、GC2MS、Chromaligner 與 PITracer，皆開放外部研究者使用。實驗室現有成員 39 人，歷屆成員 97 人。
+        實驗室自 2006 年創立以來發表 113 篇期刊論文，其中 44 篇在 2020 年之後，另有 98 篇會議論文與 45 項專利。我們在 cmdm.tw 網域下維運 8 項公開服務，包含 3Omics、Lipidpedia、CypRules、GC2MS、Chromaligner 與 PITracer，皆開放外部研究者使用。實驗室現有成員 41 人，歷屆成員 97 人。
   en:
     # The PI's text as supplied; see the note above the locales.
     paragraphs:
@@ -137,7 +140,7 @@ about:
       # See the note on the Chinese paragraph above: the count starts at the
       # lab's founding in 2006, not at the first entry in the journal list.
       - >-
-        Since the lab was founded in 2006 it has published 113 journal articles, 44 of them since 2020, together with 98 conference papers and 45 patents. We maintain eight public services under cmdm.tw -- among them 3Omics, Lipidpedia, CypRules, GC2MS, Chromaligner and PITracer -- all open to external researchers. The lab currently has 39 members and 97 alumni.
+        Since the lab was founded in 2006 it has published 113 journal articles, 44 of them since 2020, together with 98 conference papers and 45 patents. We maintain eight public services under cmdm.tw -- among them 3Omics, Lipidpedia, CypRules, GC2MS, Chromaligner and PITracer -- all open to external researchers. The lab currently has 41 members and 97 alumni.
 
 # shows rather than written from scratch:
 #

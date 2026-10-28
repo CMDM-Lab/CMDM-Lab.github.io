@@ -9,7 +9,7 @@ withheld_by_override:
   - 林柏嶢
 emails_withheld:
   - 王珮驊
-count: 9
+count: 10
 items:
   - name: 廖翊婷
     reason: graduating soon; assign degree level in members-overrides.yml
@@ -23,6 +23,8 @@ items:
     reason: the 所屬 cell holds more than a department code; only the code was published
   - name: 宋和峻
     reason: research topic is a placeholder in the vault
+  - name: 林榆涵
+    reason: the 所屬 cell holds more than a department code; only the code was published
   - name: 杜博文
     reason: research topic internal shorthand for parallel projects
   - name: 許郁廷
