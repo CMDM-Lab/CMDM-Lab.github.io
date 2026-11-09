@@ -11,9 +11,13 @@
 #   Create a fine-grained personal access token with `Contents: read` on
 #   CMDM-Lab/CMDM-Lobe only, and add it as the repository secret
 #   `CMDM_LOBE_TOKEN`. Without it, the member step is skipped and only
-#   publications are refreshed -- the workflow still succeeds, so a missing or
-#   expired token shows up as a smaller PR rather than a red run. The step
-#   summary says which syncs actually ran.
+#   publications are refreshed. The run still succeeds, so the skip opens (or
+#   comments on) an issue labelled `vault-token`; the first run that syncs
+#   members again closes it. A token that is set but expired or revoked fails
+#   the vault checkout, which turns the run red.
+#
+#   Before the issue existed, a missing token skipped the member sync for three
+#   weeks with every run green (2026-10, two new members never reached the site).
 #
 # WHY A PULL REQUEST AND NOT A DIRECT COMMIT. The member data is derived from a
 # private vault that also tracks oral-defense outcomes, thesis drafts and
@@ -34,6 +38,7 @@ on:
 permissions:
   contents: write
   pull-requests: write
+  issues: write
 
 jobs:
   sync:
@@ -62,6 +67,59 @@ jobs:
           path: .vault
           # Only the roster file is read; a shallow clone is plenty.
           fetch-depth: 1
+
+      # A skipped member sync is invisible in a green run, so it becomes an
+      # issue. One issue is reused, the same way the thesis check does it.
+      - name: Raise an issue for the missing vault token
+        if: env.HAS_VAULT_TOKEN != 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const { data: open } = await github.rest.issues.listForRepo({
+              owner, repo, state: 'open', labels: 'vault-token',
+            });
+            const body = [
+              'The weekly sync skipped the members: the repository secret',
+              '`CMDM_LOBE_TOKEN` is not set. New or changed rows in the vault',
+              'roster will not reach the site until it is.',
+              '',
+              'Create a fine-grained token with `Contents: read` on',
+              '`CMDM-Lab/CMDM-Lobe` only, save it as `CMDM_LOBE_TOKEN`, then run',
+              '"Sync data" by hand. That run closes this issue.',
+              '',
+              `From ${context.serverUrl}/${owner}/${repo}/actions/runs/${context.runId}`,
+            ].join('\n');
+            if (open.length) {
+              await github.rest.issues.createComment({
+                owner, repo, issue_number: open[0].number, body,
+              });
+            } else {
+              await github.rest.issues.create({
+                owner, repo, body,
+                title: 'Member sync skipped: CMDM_LOBE_TOKEN is not set',
+                labels: ['vault-token'],
+              });
+            }
+
+      - name: Close the vault token issue
+        if: steps.vault.outcome == 'success'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const { data: open } = await github.rest.issues.listForRepo({
+              owner, repo, state: 'open', labels: 'vault-token',
+            });
+            for (const issue of open) {
+              await github.rest.issues.createComment({
+                owner, repo, issue_number: issue.number,
+                body: `The vault checkout succeeded in ${context.serverUrl}/${owner}/${repo}/actions/runs/${context.runId}.`,
+              });
+              await github.rest.issues.update({
+                owner, repo, issue_number: issue.number, state: 'closed',
+              });
+            }
 
       - name: Sync members from the vault
         if: ${{ steps.vault.outcome == 'success' }}
