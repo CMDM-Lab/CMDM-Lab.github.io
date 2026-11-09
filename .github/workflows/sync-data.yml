@@ -121,6 +121,72 @@ jobs:
               });
             }
 
+      # The token has a fixed expiry date. GitHub reports it on every API call,
+      # so the warning comes from the token itself rather than from a date
+      # someone wrote down. Renewing the token closes the issue on the next run.
+      - name: Warn before the vault token expires
+        if: steps.vault.outcome == 'success'
+        uses: actions/github-script@v7
+        env:
+          VAULT_TOKEN: ${{ secrets.CMDM_LOBE_TOKEN }}
+        with:
+          script: |
+            const { parseTokenExpiration, daysUntil, EXPIRY_WARNING_DAYS } =
+              await import(`${process.env.GITHUB_WORKSPACE}/scripts/lib/token-expiry.mjs`);
+            const res = await fetch('https://api.github.com/repos/CMDM-Lab/CMDM-Lobe', {
+              headers: {
+                authorization: `Bearer ${process.env.VAULT_TOKEN}`,
+                accept: 'application/vnd.github+json',
+              },
+            });
+            if (!res.ok) throw new Error(`vault API returned ${res.status}`);
+            const expiry = parseTokenExpiration(
+              res.headers.get('github-authentication-token-expiration'));
+            const days = expiry && daysUntil(expiry);
+            core.info(expiry
+              ? `CMDM_LOBE_TOKEN expires ${expiry.toISOString()} (${days} days)`
+              : 'CMDM_LOBE_TOKEN has no expiry date');
+
+            const { owner, repo } = context.repo;
+            const { data: open } = await github.rest.issues.listForRepo({
+              owner, repo, state: 'open', labels: 'vault-token-expiry',
+            });
+            const run = `${context.serverUrl}/${owner}/${repo}/actions/runs/${context.runId}`;
+            if (expiry && days <= EXPIRY_WARNING_DAYS) {
+              const body = [
+                `\`CMDM_LOBE_TOKEN\` expires on ${expiry.toISOString().slice(0, 10)}`
+                  + ` (${days} days from this run).`,
+                'After that the weekly sync can no longer read the member roster.',
+                '',
+                'Regenerate the token (`Contents: read` on `CMDM-Lab/CMDM-Lobe`),',
+                'update the **Actions** secret `CMDM_LOBE_TOKEN`, then run',
+                '"Sync data" by hand. That run closes this issue.',
+                '',
+                `From ${run}`,
+              ].join('\n');
+              if (open.length) {
+                await github.rest.issues.createComment({
+                  owner, repo, issue_number: open[0].number, body,
+                });
+              } else {
+                await github.rest.issues.create({
+                  owner, repo, body,
+                  title: 'CMDM_LOBE_TOKEN expires soon',
+                  labels: ['vault-token-expiry'],
+                });
+              }
+            } else {
+              for (const issue of open) {
+                await github.rest.issues.createComment({
+                  owner, repo, issue_number: issue.number,
+                  body: `The token no longer expires within ${EXPIRY_WARNING_DAYS} days (${run}).`,
+                });
+                await github.rest.issues.update({
+                  owner, repo, issue_number: issue.number, state: 'closed',
+                });
+              }
+            }
+
       - name: Sync members from the vault
         if: ${{ steps.vault.outcome == 'success' }}
         env:
