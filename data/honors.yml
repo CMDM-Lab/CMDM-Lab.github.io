@@ -72,6 +72,61 @@ achievements:
 # postdoctoral researcher and a doctoral student then. It is kept because this
 # page's rule is that people carry their title, and the sentence identifies who
 # won rather than claiming what she was at the time.
+  # Announced 2026-11-10 by the department. 特優獎 and 優等獎 were not awarded in
+  # the academic research category that year; the announcement says so in the
+  # same sentence, so the citation says so too. The prize went to the SPARK
+  # Taiwan team, with Prof. Tseng as its named representative (團體代表人), so
+  # the sentence names the team and her role and not her alone. The English for
+  # the award and for the work's title are descriptive renderings, as elsewhere
+  # on this page; NARLabs is the institute's own English name.
+  - citation:
+      zh: 2026 年，曾宇鳳教授代表團隊以「SPARK Taiwan 計畫十年回顧——美國轉譯醫學與商業化方法之在地化實踐」，榮獲第二十屆國家實驗研究院傑出科技貢獻獎學術研究類佳作獎（該類特優獎及優等獎從缺）。
+      en: 2026, a team represented by Professor Yufeng Jane Tseng received an Honourable
+        Mention in the academic research category of the 20th National Applied Research
+        Laboratories (NARLabs) Outstanding Science and Technology Contribution Awards, for a
+        ten-year review of SPARK Taiwan and its local adaptation of US translational
+        medicine and commercialisation methods. No first or second prize was awarded in the
+        category that year.
+    links:
+      - label: NTU CSIE
+        url: https://www.csie.ntu.edu.tw/zh_tw/AboutUs/Honor/%5B%E7%8D%B2%E7%8D%8E%E5%85%AC%E5%91%8A%5D-%E8%B3%80-%E6%9B%BE%E5%AE%87%E9%B3%B3%E6%95%99%E6%8E%88%E5%9C%98%E9%9A%8A%E6%A6%AE%E7%8D%B2%E5%9C%8B%E5%AE%B6%E5%AF%A6%E9%A9%97%E7%A0%94%E7%A9%B6%E9%99%A2%E5%82%91%E5%87%BA%E7%A7%91%E6%8A%80%E8%B2%A2%E7%8D%BB%E7%8D%8E%E5%AD%B8%E8%A1%93%E7%A0%94%E7%A9%B6%E9%A1%9E%E4%BD%B3%E4%BD%9C%E7%8D%8E-5247874
+
+  # Announced 2026-10-13 by the TFDA (115 年度 list, 藥品類, item 3).
+  #
+  # THE RECIPIENT ON THE LIST IS THE COMPANY, 思捷優達股份有限公司, not the lab or
+  # the PI, and the citation says so. The lab put this award forward
+  # (2026-11-11), and the About page names YA-101 among the compounds the lab
+  # designs. That is the basis for "參與研發" here. The company's name stays in
+  # Chinese in the English sentence, for the same reason as 安成醫藥基金會 below:
+  # no English name of its own was found, and a guessed one cannot be looked up.
+  # The product description is the list's own wording, shortened.
+  - citation:
+      zh: 2026 年，曾宇鳳教授團隊參與研發的 YA-101（治療罕見疾病多重系統退化症之新穎性雙重機制藥物），由思捷優達股份有限公司獲衛生福利部食品藥物管理署 115 年度國家藥物科技研究發展獎藥品類銅質獎。
+      en: 2026, YA-101, a novel dual-mechanism drug for the rare disease multiple system
+        atrophy that Professor Yufeng Jane Tseng's team helped develop, received a Bronze
+        Award in the pharmaceutical category of the Taiwan Food and Drug Administration's
+        National Pharmaceutical Technology Research and Development Awards for 2026, with
+        思捷優達股份有限公司 as the named recipient.
+    links:
+      - label: TFDA
+        url: https://www.fda.gov.tw/tc/siteListContent.aspx?sid=8917&id=51962
+
+  # Announced 2026-10-12 by the college: the 2025 edition of the list, the year
+  # after the 2024 entry further down. SINGLE-YEAR AGAIN, NOT CAREER-LONG -- the
+  # announcement tabulates 57 teachers on the career-long list (1960-2025), 30 on
+  # the 2025 single-year list, 25 on both, 62 in total, and Prof. Tseng appears
+  # once, in the single-year table (under 資訊工程學系 this time). Checked against
+  # the page on 2026-11-11.
+  - citation:
+      zh: 2026 年，曾宇鳳教授入榜史丹佛大學 2025 年「全球前 2% 頂尖科學家」年度科學影響力榜單。
+      en: 2026, Professor Yufeng Jane Tseng was named in the single-year impact table of
+        Stanford University's World's Top 2% Scientists list for 2025.
+    links:
+      - label: NTU EECS
+        url: https://eecs.ntu.edu.tw/zh_tw/News/Spotlight/%E8%B3%80-%E6%9C%AC%E9%99%A262%E5%90%8D%E6%95%99%E5%B8%AB%E5%85%A5%E6%A6%9C2025%E5%B9%B4%E5%85%A8%E7%90%83%E5%89%8D2-%E9%A0%82%E5%B0%96%E7%A7%91%E5%AD%B8%E5%AE%B6%E6%A6%9C%E5%96%AE-32370122
+      - label: Elsevier Data Repository
+        url: https://elsevier.digitalcommonsdata.com/datasets/btchxktzyw/
+
   # The college's own winners list is dated 2026-05-28 and the lab's note here
   # said 2026-06-15; the earlier date is the announcement, so it is the one used.
   #
