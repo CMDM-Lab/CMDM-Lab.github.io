@@ -96,9 +96,9 @@ achievements:
   # THE RECIPIENT ON THE LIST IS THE COMPANY, 思捷優達股份有限公司, not the lab or
   # the PI, and the citation says so. The lab put this award forward
   # (2026-11-11), and the About page names YA-101 among the compounds the lab
-  # designs. That is the basis for "參與研發" here. The company's name stays in
-  # Chinese in the English sentence, for the same reason as 安成醫藥基金會 below:
-  # no English name of its own was found, and a guessed one cannot be looked up.
+  # designs. That is the basis for "參與研發" here. The company's English name,
+  # Dasher Neuroscience, is from the lab (2026-11-11); the TFDA list gives only
+  # the Chinese name, so the Chinese citation keeps the list's wording.
   # The product description is the list's own wording, shortened.
   - citation:
       zh: 2026 年，曾宇鳳教授團隊參與研發的 YA-101（治療罕見疾病多重系統退化症之新穎性雙重機制藥物），由思捷優達股份有限公司獲衛生福利部食品藥物管理署 115 年度國家藥物科技研究發展獎藥品類銅質獎。
@@ -106,7 +106,7 @@ achievements:
         atrophy that Professor Yufeng Jane Tseng's team helped develop, received a Bronze
         Award in the pharmaceutical category of the Taiwan Food and Drug Administration's
         National Pharmaceutical Technology Research and Development Awards for 2026, with
-        思捷優達股份有限公司 as the named recipient.
+        Dasher Neuroscience as the named recipient.
     links:
       - label: TFDA
         url: https://www.fda.gov.tw/tc/siteListContent.aspx?sid=8917&id=51962
