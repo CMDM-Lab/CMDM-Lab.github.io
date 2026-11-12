@@ -297,6 +297,17 @@ members:
     area: 計算分子設計
     area_en: Computational Molecular Design
 
+  # Pinned to the group the lab lists them under. Their 2026-11-12 vault topics
+  # (an LLM virtual patient; a patent-analysis agent) classify as AI Agent, but
+  # the lab asked on 2026-11-12 that the site show each one's group instead.
+  洪譽侖:
+    area: 醫學影像計算
+    area_en: Medical Image Computing
+
+  陳嘉緯:
+    area: 計算分子設計
+    area_en: Computational Molecular Design
+
   陳筱蓁:
     # HBDB is the lab's Human Breathomics Database, so the classifier now reads
     # this correctly on its own; kept explicit because the lab stated it.

@@ -195,8 +195,8 @@ members:
     role: masters
     grade: M2
     department: CSIE
-    area: AI Agent 系統
-    area_en: AI Agent Systems
+    area: 醫學影像計算
+    area_en: Medical Image Computing
   - name: 陳弈辰
     name_en: ""
     role: masters
@@ -279,8 +279,8 @@ members:
     role: masters
     grade: M1
     department: MHI
-    area: AI Agent 系統
-    area_en: AI Agent Systems
+    area: 計算分子設計
+    area_en: Computational Molecular Design
   - name: 馮聖晉
     name_en: ""
     role: masters
