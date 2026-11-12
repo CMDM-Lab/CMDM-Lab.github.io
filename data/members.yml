@@ -99,8 +99,6 @@ members:
     role: phd
     department: BEBI
     order: 1
-    research: ""
-    research_en: ""
     area: AI Agent 系統
     area_en: AI Agent Systems
   - name: 杜博文
@@ -108,8 +106,6 @@ members:
     role: phd
     grade: D4
     department: BEBI
-    research: 並行兩題：① 文獻分析與引證 Agent — 科學文獻可信度分析 ② 3D MSI Web Tool — 線上自動化 MSI 重建
-    research_en: ""
     area: AI Agent 系統 · 代謝體學
     area_en: AI Agent Systems · Metabolomics
   - name: 梁家維
@@ -117,8 +113,6 @@ members:
     role: phd
     grade: D4
     department: BEBI
-    research: Molecular Modeling
-    research_en: ""
     area: 計算分子設計
     area_en: Computational Molecular Design
   - name: 嚴正翰
@@ -126,8 +120,6 @@ members:
     role: phd
     grade: D3
     department: BEBI
-    research: ""
-    research_en: ""
     area: AI Agent 系統
     area_en: AI Agent Systems
   - name: 許郁廷
@@ -135,8 +127,6 @@ members:
     role: phd
     grade: D2
     department: BEBI
-    research: LC-MS/MS PFAS spectra 與結構預測；林首志 Breathomics 共同作者
-    research_en: ""
     area: 代謝體學
     area_en: Metabolomics
   - name: 蔡哲維
@@ -144,8 +134,6 @@ members:
     role: phd
     grade: D2
     department: CSIE
-    research: Saliency map/XAI untargeted metabolomic profiling；新方向：Causal Inference 論文重現；王仁宏 ALI/ARDS 共同作者
-    research_en: ""
     area: 代謝體學 · 量子計算
     area_en: Metabolomics · Quantum Computing
     honors:
@@ -158,26 +146,20 @@ members:
     role: masters
     department: BEBI
     order: 1
-    research: ""
-    research_en: ""
     area: AI Agent 系統
     area_en: AI Agent Systems
   - name: 吳家欣
     name_en: ""
     role: masters
-    grade: M3
     department: CSIE
-    research: "Computational Chemistry: amyline receptor 1,2,3 agonist peptide"
-    research_en: ""
+    order: 2
     area: 計算分子設計
     area_en: Computational Molecular Design
   - name: 李曄瑋
     name_en: ""
     role: masters
-    grade: M3
     department: CSIE
-    research: Computational Chemistry
-    research_en: ""
+    order: 2
     area: 計算分子設計
     area_en: Computational Molecular Design
   - name: 林之耀
@@ -185,8 +167,6 @@ members:
     role: masters
     grade: M3
     department: MHI
-    research: AI Agent
-    research_en: ""
     area: AI Agent 系統
     area_en: AI Agent Systems
   - name: 劉晉宏
@@ -194,8 +174,6 @@ members:
     role: masters
     grade: M3
     department: CSIE
-    research: 醫學影像計算
-    research_en: ""
     area: 醫學影像計算
     area_en: Medical Image Computing
   - name: 周佳葵
@@ -203,8 +181,6 @@ members:
     role: masters
     grade: M2
     department: GINM
-    research: 法規資料自動化 Agent — 化學品風險評估
-    research_en: ""
     area: AI Agent 系統
     area_en: AI Agent Systems
   - name: 柯雅文
@@ -212,8 +188,6 @@ members:
     role: masters
     grade: M2
     department: BEBI
-    research: AI Agent
-    research_en: ""
     area: AI Agent 系統
     area_en: AI Agent Systems
   - name: 洪譽侖
@@ -221,17 +195,13 @@ members:
     role: masters
     grade: M2
     department: CSIE
-    research: 醫學影像計算
-    research_en: ""
-    area: 醫學影像計算
-    area_en: Medical Image Computing
+    area: AI Agent 系統
+    area_en: AI Agent Systems
   - name: 陳弈辰
     name_en: ""
     role: masters
     grade: M2
     department: MHI
-    research: Computational Chemistry
-    research_en: ""
     area: 計算分子設計
     area_en: Computational Molecular Design
   - name: 陳筱蓁
@@ -239,8 +209,6 @@ members:
     role: masters
     grade: M2
     department: BEBI
-    research: HBDB 新版架構
-    research_en: ""
     area: 代謝體學
     area_en: Metabolomics
   - name: 黃子陽
@@ -248,8 +216,6 @@ members:
     role: masters
     grade: M2
     department: GSB
-    research: Computational Chemistry
-    research_en: ""
     area: 計算分子設計
     area_en: Computational Molecular Design
   - name: 劉庭伊
@@ -257,8 +223,6 @@ members:
     role: masters
     grade: M2
     department: MHI
-    research: RAG 資料庫建置 — 工業化學品安全替代物知識庫
-    research_en: ""
     area: AI Agent 系統
     area_en: AI Agent Systems
   - name: 蔡中愷
@@ -266,8 +230,6 @@ members:
     role: masters
     grade: M2
     department: BEBI
-    research: 醫學影像計算
-    research_en: ""
     area: 醫學影像計算
     area_en: Medical Image Computing
   - name: 鄭鈞文
@@ -275,8 +237,6 @@ members:
     role: masters
     grade: M2
     department: MHI
-    research: LipidPedia 更新 — pipeline 重建
-    research_en: ""
     area: 代謝體學
     area_en: Metabolomics
   - name: 吳宗鴻
@@ -284,8 +244,6 @@ members:
     role: masters
     grade: M1
     department: CSIE
-    research: ""
-    research_en: ""
     area: 計算分子設計
     area_en: Computational Molecular Design
   - name: 洪聖棻
@@ -293,8 +251,6 @@ members:
     role: masters
     grade: M1
     department: BEBI
-    research: GCN 分析代謝物與疾病組合
-    research_en: ""
     area: 代謝體學
     area_en: Metabolomics
   - name: 范軒豪
@@ -302,8 +258,6 @@ members:
     role: masters
     grade: M1
     department: BEBI
-    research: 醫學影像計算
-    research_en: ""
     area: 醫學影像計算
     area_en: Medical Image Computing
   - name: 翁平恵
@@ -311,8 +265,6 @@ members:
     role: masters
     grade: M1
     department: BEBI
-    research: 醫學影像計算
-    research_en: ""
     area: 醫學影像計算
     area_en: Medical Image Computing
   - name: 翁菡隃
@@ -320,8 +272,6 @@ members:
     role: masters
     grade: M1
     department: CSIE
-    research: Metabolomics
-    research_en: ""
     area: 代謝體學
     area_en: Metabolomics
   - name: 陳嘉緯
@@ -329,17 +279,13 @@ members:
     role: masters
     grade: M1
     department: MHI
-    research: Computational Chemistry
-    research_en: ""
-    area: 計算分子設計
-    area_en: Computational Molecular Design
+    area: AI Agent 系統
+    area_en: AI Agent Systems
   - name: 馮聖晉
     name_en: ""
     role: masters
     grade: M1
     department: BEBI
-    research: Computational Chemistry
-    research_en: ""
     area: 計算分子設計
     area_en: Computational Molecular Design
   - name: 黃聖瀚
@@ -347,8 +293,6 @@ members:
     role: masters
     grade: M1
     department: MHI
-    research: AI Agent
-    research_en: ""
     area: AI Agent 系統
     area_en: AI Agent Systems
   - name: 蕭怡菱
@@ -356,8 +300,6 @@ members:
     role: masters
     grade: M1
     department: BEBI
-    research: Retention time 預測
-    research_en: ""
     area: 代謝體學
     area_en: Metabolomics
   - name: 戴筱娟
@@ -365,8 +307,6 @@ members:
     role: masters
     grade: M1
     department: BEBI
-    research: Metabolomics
-    research_en: ""
     area: 代謝體學
     area_en: Metabolomics
   - name: 韓宇軒
@@ -374,28 +314,20 @@ members:
     role: masters
     grade: M1
     department: BEBI
-    research: 醫學影像計算
-    research_en: ""
     area: 醫學影像計算
     area_en: Medical Image Computing
   - name: 宋和峻
     name_en: ""
     role: undergraduate
     department: CSIE
-    research: ""
-    research_en: ""
   - name: 林榆涵
     name_en: ""
     role: undergraduate
-    research: 十年尺度 LC-MS 代謝體訊號漂移（跨年 pooled QC、feature 可靠度分數）＋ 植物來源外源代謝物
-    research_en: ""
     area: 代謝體學
     area_en: Metabolomics
   - name: 洪廉詠
     name_en: ""
     role: undergraduate
-    research: EAT QSAR — Nitrosamine / NDSRI 致突變性預測
-    research_en: ""
     area: 計算分子設計
     area_en: Computational Molecular Design
   - name: 古庭榮

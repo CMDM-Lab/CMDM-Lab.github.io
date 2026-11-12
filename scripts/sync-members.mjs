@@ -66,6 +66,9 @@ function emailIsPublic(entry) {
   return entry.publish_email === true && Boolean(entry.email);
 }
 
+/** Vault roster sections that list current students, by their parsed role. */
+const STUDENT_SECTION_ROLES = new Set(['current', 'phd', 'masters', 'undergraduate']);
+
 /**
  * Coarse research areas, and the vault wording that maps onto each.
  *
@@ -183,6 +186,11 @@ async function main() {
 
     const role = override.role ?? record.role;
     const research = override.research ?? record.research ?? '';
+    // A current student's vault topic still picks their coarse area, but is not
+    // written out: the lab asked on 2026-11-12 that student topics stay off the
+    // site, and this repository is public. A curated override is a deliberate
+    // publication and still goes out. tests/members-privacy.test.mjs enforces it.
+    const withholdTopic = STUDENT_SECTION_ROLES.has(record.role) && !override.research;
     // `area: ''` in an override means "deliberately none" and must survive the
     // classifier -- one research assistant is listed without an area at her
     // own request.
@@ -215,8 +223,7 @@ async function main() {
       // from the overrides file, where the lab's own answer can be recorded per
       // person along with where it came from.
       ...(override.degree ? { degree: override.degree } : {}),
-      research,
-      research_en: override.research_en ?? '',
+      ...(withholdTopic ? {} : { research, research_en: override.research_en ?? '' }),
       // The deposited thesis title, which is a public bibliographic record --
       // unlike `research`, which is the vault's working topic and is never
       // rendered. Curated per person, never derived: the vault's own titles moved
@@ -250,13 +257,17 @@ async function main() {
       && role !== 'faculty' && role !== 'alumni') {
       flagged.push({
         name: record.name,
-        reason: `research topic matches no coarse area: "${research.slice(0, 60)}"`,
+        // Never quote a withheld topic: this file is tracked in a public repo.
+        reason: withholdTopic
+          ? 'research topic matches no coarse area (topic withheld; see the vault)'
+          : `research topic matches no coarse area: "${research.slice(0, 60)}"`,
       });
     }
 
     // Only flag the vault's own wording; a curated override has already been
     // reviewed by definition.
-    if (!override.research && record.research) {
+    // A withheld topic is never shown, so its public wording needs no review.
+    if (!withholdTopic && !override.research && record.research) {
       for (const { pattern, note } of INTERNAL_TOPIC_MARKERS) {
         if (pattern.test(record.research)) {
           flagged.push({ name: record.name, reason: `research topic ${note}` });

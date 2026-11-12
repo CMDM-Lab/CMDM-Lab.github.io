@@ -281,6 +281,22 @@ members:
     area: AI Agent 系統
     area_en: AI Agent Systems
 
+  # Both moved to the vault's 即將畢業 table on 2026-11-12, which publishes only
+  # the name. These restore what the 碩士班 table gave them before the move.
+  吳家欣:
+    role: masters
+    order: 2
+    department: CSIE
+    area: 計算分子設計
+    area_en: Computational Molecular Design
+
+  李曄瑋:
+    role: masters
+    order: 2
+    department: CSIE
+    area: 計算分子設計
+    area_en: Computational Molecular Design
+
   陳筱蓁:
     # HBDB is the lab's Human Breathomics Database, so the classifier now reads
     # this correctly on its own; kept explicit because the lab stated it.

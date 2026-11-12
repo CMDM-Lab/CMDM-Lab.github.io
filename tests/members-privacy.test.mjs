@@ -155,6 +155,45 @@ test('data/members.yml carries no unexpected fields', {
   }
 });
 
+// The lab asked on 2026-11-12 that current students' topics stay off the site.
+// The page already rendered none, but this repository is public, so a topic in
+// the data file was published all the same. Alumni topics are unaffected.
+const STUDENT_ROLES = new Set(['current', 'phd', 'masters', 'undergraduate']);
+const MEMBERS_REVIEW_YML = path.join(ROOT, 'data', 'members-review.yml');
+
+test('data/members.yml carries no research topic for a current student', {
+  skip: hasGeneratedMembers ? false : 'data/members.yml not generated yet',
+}, async () => {
+  const parsed = YAML.parse(await readFile(MEMBERS_YML, 'utf8'));
+  for (const entry of parsed.members ?? []) {
+    if (!STUDENT_ROLES.has(entry.role)) continue;
+    for (const field of ['research', 'research_en']) {
+      assert.ok(
+        !(field in entry),
+        `student "${entry.name}" carries "${field}"; student topics are not published`,
+      );
+    }
+  }
+});
+
+test('data/members-review.yml quotes no research topic for a current student', {
+  skip: hasGeneratedMembers && existsSync(MEMBERS_REVIEW_YML)
+    ? false : 'generated data not present',
+}, async () => {
+  const members = YAML.parse(await readFile(MEMBERS_YML, 'utf8')).members ?? [];
+  const students = new Set(
+    members.filter((entry) => STUDENT_ROLES.has(entry.role)).map((entry) => entry.name),
+  );
+  const review = YAML.parse(await readFile(MEMBERS_REVIEW_YML, 'utf8'));
+  for (const item of review.items ?? []) {
+    if (!students.has(item.name)) continue;
+    assert.ok(
+      !/research topic .*"/.test(item.reason),
+      `review entry for "${item.name}" quotes their research topic`,
+    );
+  }
+});
+
 test('member entries carry no ISO dates, which would imply defense scheduling', {
   skip: hasGeneratedMembers ? false : 'data/members.yml not generated yet',
 }, async () => {
