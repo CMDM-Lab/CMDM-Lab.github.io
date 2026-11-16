@@ -2,5 +2,22 @@ _generated: Candidates from "Tseng YJ[Author] AND National Taiwan University[Aff
   NOT in a trusted source.
 _instructions: This query name-collides with another NTU researcher. Move real lab papers into
   publications-overrides.yml `include:`, and the rest into `exclude:`.
-count: 0
-candidates: []
+count: 2
+candidates:
+  - title: "Area Under the Curve-Guided Therapeutic Drug Monitoring of Mycophenolic Acid in Lung
+      Transplant Recipients: Volumetric Absorptive Microsampling and Population
+      Pharmacokinetic-Based Limited Sampling Strategies."
+    doi: 10.1208/s12248-026-01284-1
+    pmid: "42760471"
+    year: 2026
+    journal: The AAPS journal
+    type: journal-article
+    source: pubmed
+  - title: Real-world outcomes of continuous infusion of sedative agents in critically ill patients with
+      invasive mechanical ventilation.
+    doi: 10.1016/j.jcrc.2026.155808
+    pmid: "42976438"
+    year: 2026
+    journal: Journal of critical care
+    type: journal-article
+    source: pubmed
